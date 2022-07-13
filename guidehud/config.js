@@ -1,9 +1,9 @@
 var config = {
   'title': '',
-  'welcomeMessage':'GBRP',
+  'welcomeMessage':'GMT Roleplay',
   // Add images for the loading screen background.
   images: [
-    'https://i.imgur.com/5WlRicd.png', 'https://i.imgur.com/5WlRicd.png', 'https://i.imgur.com/5WlRicd.png',  
+    'https://cdn.discordapp.com/attachments/972542378684592158/972578104226742272/home.png', 'https://cdn.discordapp.com/attachments/972542378684592158/972578104226742272/home.png', 'https://cdn.discordapp.com/attachments/972542378684592158/972578104226742272/home.png',  
   ],
 
   /*enableMusic: false,
@@ -17,7 +17,7 @@ var config = {
   // Change Discord settings and link.
   'discord': {
     'show': true,
-    'discordLink': 'discord.io/GBRPUK',
+    'discordLink': 'https://discord.gg/GMT',
   },
   // Change which key you have set in guidehud/client/client.lua
   'menuHotkey': 'F1',
@@ -36,28 +36,29 @@ var config = {
 
 // Home page annountments.
 var announcements = [
-	'Welcome to the #2 FiveM British Community.',
-  'Welcome to the city of GBRP.',
+	'Welcome to the #1 British FiveM Community.',
+  'Welcome to GMT.',
 ]
 
 // Add/Modify rules below.
 var gettingstarted = [
-  'Welcome to GBRP',
+  'Welcome to GMT',
   'Here\'s a couple things you can do to get started within the city:', 
   '',
-  '1. There is a FREE car at Simeons, look on the map if you don\'t know where Simeons is located.',
+  '1. To get started, Head to Simeons and purchase one of the free cars.',
   '',
-  '2. Try out the life of crime, there are many benefits the criminal life offers, you may rob people, rob shops, banks and even do illegal drug runs.',
+  '2. Try out the life of crime, there are many benefits the criminal life offers, you may start/join a gang(F5), rob people, rob shops, banks and even do illegal drug runs.',
   '',
-  '3. As you progress through the server, you will need to buy licenses to access certain jobs & garages, see the License centre at the Job centre',  
+  '3. As you progress through the server, you will need to buy better licenses to progress through the rags and get to the riches!',  
 ]
 
 // Modify hotkeys below.
 var generalhotkeys = [
   'Press <kbd>T</kbd> then type to use Twitter.',
-  'Press <kbd>T</kbd> then type <code>/ooc [msg]</code>to use OOC chat.',
-  'Press <kbd>pgup</kbd> to switch voice distance.',
+  'Press <kbd>T</kbd> then type <code>// [msg]</code>to use OOC chat.',
+  'Press <kbd>N</kbd> to switch voice distance.',
   'Press <kbd>L</kbd> to open your personal inventory.',
+  'Press <kbd>F5</kbd> to open the Gang Menu',
   'Press <kbd>F6</kbd> to view your licenses',
   'Press <kbd>F10</kbd> to view your warning log',
 ]

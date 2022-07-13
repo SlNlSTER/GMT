@@ -5,6 +5,7 @@ body {
     background: none !important;
 }
 
+/* JAKEexe is king*/
 p2{
   font-size: 15px;
 }
@@ -55,10 +56,10 @@ p2{
 }
 
 .navbar-brand {
-  font-size: 40px;
-  color: #fff !important;
-  padding: 0 !important;
-  text-shadow: #000 1px 0 10px;
+    font-size: 40px;
+    color: #fff !important;
+    padding: 0 !important;
+    text-shadow: #000 1px 0 10px;
 }
 
 .navbar {
@@ -67,31 +68,30 @@ p2{
 }
 
 .container {
-  max-width: 1300px !important;
-  position: absolute;
-  top: 55%;
-  left: 50%;
-  margin-top: -390px;
-  margin-left: -650px;
-  padding-bottom: 20px;
+    max-width: 1300px !important;
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    margin-top: -390px;
+    margin-left: -650px;
+    padding-bottom: 20px;
 }
 
 .nav-item {
-  width: 413px;
-  background: rgb(255, 255, 255);
-  text-align: center;
-  margin-top: 15px;
-  margin-right: 5px;
-  margin-left: 5px;
-  border-color: #fff;
-  border-style: solid;
-  border-width: 1px;
+    width: 200px;
+    background: black;
+    text-align: center;
+    margin-top: 15px;
+    margin-right: 5px;
+    margin-left: 5px;
+    /*border-color: #fff;
+    border-style: solid;
+    border-width: 1px;*/
 }
 
 .nav-item a {
-  color: rgb(0, 0, 0) !important;
-  font-weight: normal;
-  font-weight: bold;
+    color: #fff !important;
+    font-weight: normal;
 }
 
 .nav-link.active {
@@ -100,14 +100,13 @@ p2{
 }
 
 .nav-link {
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(0, 0, 0, 0.2);
   display: block;
   padding: .5rem 1rem;
 }
 
 a.nav-link.active {
-  background-color: rgba(0, 0, 0, 0.2);
-  border-radius: 0px !important;
+    color:white !important;
 }
 
 .tab-content {
@@ -117,35 +116,28 @@ a.nav-link.active {
 }
 
 .inner-tabs {
-  width: 100px;
-  margin-left: 5px;
-  float: left;
-  width: 410px;
-  display: flex;
-  font-style: normal !important;
+    width: 100px;
+    margin-left: 5px;
+    float: left;
+    width: 410px;
+    display: flex;
+    font-style: normal !important;
 
   }
 
 
 .nav-link-inner {
-  background-color: rgba(255, 255, 255, 0.8);/*Background Colour*/
-  color: rgb(0, 0, 0);
-  height: 40px;
-  margin-bottom: 10px;
-  /*font-weight: bold;
-  font-size: 30px;*/
-  font-weight: bold;
-  border-radius: 0px !important;
-  margin-right: 5px;
-  margin-left: 5px;
-  border-color: #fff;
-  border-style: solid;
-  border-width: 1px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    height: 40px;
+    margin-bottom: 10px;
+    /*font-weight: bold;*/
+    border-radius: 0px !important;
 }
 
 a.nav-link-inner {
-  color: rgb(0, 0, 0);
-  text-decoration: none;
+    color: #fff;
+    text-decoration: none;
 }
 
 .nav-link-inner.active {
@@ -174,13 +166,13 @@ kbd {
 }
 
 code {
-  color: #fff;
-  font-family: Oswald;
-  background: #3c3c3c;
-  padding-left: 4px;
-  padding-right: 4px;
-  padding-top: 1px;
-  padding-bottom: 1px;
+    color: #fff;
+    font-family: Oswald;
+    background: #3c3c3c;
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-top: 1px;
+    padding-bottom: 1px;
 }
 
 .home-tab {

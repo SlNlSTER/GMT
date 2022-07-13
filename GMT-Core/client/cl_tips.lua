@@ -1,4 +1,4 @@
-prefix = '^1[GBRP]^7 '
+prefix = '^1[GMT]^7 '
 
 GBRPTips = 
 { 

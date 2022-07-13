@@ -1,17 +1,18 @@
 local Tunnel = module("vrp", "lib/Tunnel")
 local Proxy = module("vrp", "lib/Proxy")
 vRP = Proxy.getInterface("vRP")
-vRPclient = Tunnel.getInterface("vRP", "vrp_fuel")
+vRPclient = Tunnel.getInterface("vRP", "vRP")
 
-if cfgfuel.UseVRP then
-	RegisterServerEvent('fuel:pay')
-	AddEventHandler('fuel:pay', function(price)
-		local user_id = vRP.getUserId({source})
-		local fuelAmount = math.floor(price)
-		if price >= 99999999999 then 
-			print(user_id.. "is cheating")
-		if vRP.tryFullPayment({user_id ,fuelAmount})then
-			end
-		end
-	end)
-end
+RegisterServerEvent('Jud:pay')
+AddEventHandler('Jud:pay', function(price)
+	local user_id = vRP.getUserId({source})
+	local fuelAmount = math.floor(price)
+
+    if user_id ~= nil then
+        if vRP.tryFullPayment({user_id, fuelAmount})then
+            vRPclient.notify(source,{"~g~Paid £"..fuelAmount})
+        else
+            vRPclient.notify(source,{"~r~Its fine... Tax payers will pay your fuel instead."})
+        end
+    end
+end)

@@ -3,12 +3,12 @@ local PlayerCount = 0
 
 RegisterNetEvent('discord:getpermid2')
 AddEventHandler('discord:getpermid2', function(UserID)
-    SetDiscordAppId(985405230869004288)
-    SetDiscordRichPresenceAsset('big')
-    SetDiscordRichPresenceAssetText('GBRP')
-    SetDiscordRichPresenceAssetSmallText('GBRP Server #1')
-    SetDiscordRichPresenceAction(0, "Join Discord", "https://discord.gg/gbrpfivem")
-    SetDiscordRichPresenceAction(1, "Connect To GBRP", "fivem://connect/gbrp.city")
+    SetDiscordAppId(994958477216710776)
+    SetDiscordRichPresenceAsset('gmt')
+    SetDiscordRichPresenceAssetText('GMT UK')
+    SetDiscordRichPresenceAssetSmallText('GMT Server #1')
+    SetDiscordRichPresenceAction(0, "Join Discord", "https://discord.io/gmtuk")
+    SetDiscordRichPresenceAction(1, "Connect To GMT", "fivem://connect/gmt.city")
    -- SetRichPresence("[ID: " .. tostring(UserID) .. "] |" .. #GetActivePlayers() " /128")
 end)
 

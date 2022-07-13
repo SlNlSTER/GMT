@@ -1,4 +1,4 @@
-local cfg = module("GBRP-Core", "cfg/cfg_stores")
+local cfg = module("GMT-Core", "cfg/cfg_stores")
 local inMenu = false
 local currentShop = nil
 local currentItemID = nil

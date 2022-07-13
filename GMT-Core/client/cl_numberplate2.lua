@@ -4,7 +4,7 @@ local currentPlate = nil
 local carstable = {}
 
 local location = vector3(-532.82318115234,-192.98789978027,38.222385406494)
-local m = module("GBRPCars", "cfg/cfg_garages")
+local m = module("GMTCars", "cfg/cfg_garages")
 m=m.garage_types
 
 RMenu.Add('PlateShop', 'main', RageUI.CreateMenu("Number Plate", "~b~Number Plate", 1350, 50))

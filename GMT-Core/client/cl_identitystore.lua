@@ -1,4 +1,4 @@
-local cfg = module("GBRP-Core", "cfg/cfg_identitystore")
+local cfg = module("GMT-Core", "cfg/cfg_identitystore")
 local inMenu = false
 
 RMenu.Add("GBRP:Identity", "main", RageUI.CreateMenu("Identity Shop", "~b~Identity Shop", 1350, 50))

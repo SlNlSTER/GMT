@@ -1,7 +1,7 @@
 
 -- Credit to jud#8976 for making this for GBRP.
 
-local cfg = module("GBRP-Core", "cfg/cfg_licenses")
+local cfg = module("GMT-Core", "cfg/cfg_licenses")
 local currentLicense = nil
 local currentLicensePrice = nil
 local currentType = nil

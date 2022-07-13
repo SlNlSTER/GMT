@@ -1,4 +1,4 @@
-local Housing = module("GBRP-Core", "cfg/cfg_homes")
+local Housing = module("GMT-Core", "cfg/cfg_homes")
 
 hasPD = false
 local inCam = false

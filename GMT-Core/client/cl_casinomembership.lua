@@ -4,7 +4,7 @@ local a = {
         pedHeading = 175.0,
     }
 }
-local cfg = module("GBRP-Core", "cfg/cfg_licenses")
+local cfg = module("GMT-Core", "cfg/cfg_licenses")
 local currentLicense = nil
 local currentLicensePrice = nil
 local currentType = nil

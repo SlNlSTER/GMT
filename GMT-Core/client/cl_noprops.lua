@@ -1,4 +1,4 @@
-local a = module("GBRP-Core", "cfg/cfg_noprops")
+local a = module("GMT-Core", "cfg/cfg_noprops")
 local b={}
 local c={}
 local d={}

@@ -215,7 +215,7 @@ RegisterCommand("return", function()
         NetworkFadeInEntity(PlayerPedId(), 0)
         DoScreenFadeIn(1000)
         notify("~g~Returned to position.")
-        TriggerEvent("GBRP:vehicleMenu",false,false)
+        TriggerEvent("GMT:vehicleMenu",false,false)
         isInTicket = false
     end
 end)
@@ -223,7 +223,7 @@ end)
 RegisterNetEvent("staffon")
 AddEventHandler("staffon", function(isInTicket)
 
-    TriggerEvent("GBRP:vehicleMenu", true, isInTicket)
+    TriggerEvent("GMT:vehicleMenu", true, isInTicket)
     if GetEntityHealth(GetPlayerPed(-1)) <= 103 then
     TriggerEvent('GBRP:FixClient')
     end
@@ -232,7 +232,7 @@ end)
 RegisterNetEvent("staffoff")
 AddEventHandler("staffoff", function()
     isInTicket = false
-    TriggerEvent("GBRP:vehicleMenu", false, isInTicket) 
+    TriggerEvent("GMT:vehicleMenu", false, isInTicket) 
 end)
 
 

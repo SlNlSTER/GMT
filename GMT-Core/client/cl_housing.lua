@@ -1,6 +1,6 @@
 tvRP = Proxy.getInterface("vRP")
 
-local Housing = module("GBRP-Core", "cfg/cfg_homes")
+local Housing = module("GMT-Core", "cfg/cfg_homes")
 
 local inHome = false
 local isInMenu = false

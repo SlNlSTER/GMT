@@ -10,7 +10,7 @@ var guildId = "975208938695962664"; // Guild ID for a Discord Server, see https:
 var botToken = "OTkxMDUxNzM5OTYyNjc1MjUw.Grf-de.5W9xlNsBEYubgMRIGs9-5JhKfKT2k6N1WBf3qM"; // This must be a Discord bot token, create a bot @ https://discord.com/developers/applications
 
 var whitelistRoles = [ // Roles by ID that are whitelisted.
-    "975214410257809479"
+    "995684696073715722"
 ];
 var blacklistRoles = [ // Roles by Id that are blacklisted.
     "995687874286604338"

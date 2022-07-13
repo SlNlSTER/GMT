@@ -1,4 +1,4 @@
-local cfg = module("GBRPCars", "cfg/cfg_speedcap")
+local cfg = module("GMTCars", "cfg/cfg_speedcap")
 vRP = Proxy.getInterface("vRP")
 tvRP = Proxy.getInterface("vRP")
 

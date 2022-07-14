@@ -4,8 +4,8 @@ vRP = Proxy.getInterface("vRP")
 
 local usersInTruckJob = {}
 
-RegisterNetEvent('GBRP:startTruckJob')
-AddEventHandler('GBRP:startTruckJob', function()
+RegisterNetEvent('GMT:startTruckJob')
+AddEventHandler('GMT:startTruckJob', function()
     local source = source
     local user_id = vRP.getUserId({source})
     if user_id ~= nil then
@@ -18,8 +18,8 @@ AddEventHandler('GBRP:startTruckJob', function()
     print(usersInTruckJob)
 end)
 
-RegisterNetEvent('GBRP:finishTruckJob')
-AddEventHandler('GBRP:finishTruckJob', function(jobname)
+RegisterNetEvent('GMT:finishTruckJob')
+AddEventHandler('GMT:finishTruckJob', function(jobname)
     local source = source
     local user_id = vRP.getUserId({source})
     if user_id ~= nil then

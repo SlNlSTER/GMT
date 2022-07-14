@@ -103,25 +103,25 @@ RegisterCommand(
     "hideui",
     function()
         a = true
-        TriggerEvent("GBRP-Client:UI:Toggle", false)
+        TriggerEvent("GMT-Client:UI:Toggle", false)
     end
 )
 RegisterCommand(
     "showui",
     function()
         a = false
-        TriggerEvent("GBRP-Client:UI:Toggle", true)
+        TriggerEvent("GMT-Client:UI:Toggle", true)
     end
 )
-RegisterNetEvent("GBRP:ToggleHud")
+RegisterNetEvent("GMT:ToggleHud")
 AddEventHandler(
-    "GBRP:ToggleHud",
+    "GMT:ToggleHud",
     function()
         a = not a
         if not a then
-            TriggerEvent("GBRP-Client:UI:Toggle", true)
+            TriggerEvent("GMT-Client:UI:Toggle", true)
         else
-            TriggerEvent("GBRP-Client:UI:Toggle", false)
+            TriggerEvent("GMT-Client:UI:Toggle", false)
         end
     end
 )

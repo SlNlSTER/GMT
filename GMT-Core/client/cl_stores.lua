@@ -11,11 +11,11 @@ for i = 1, 100 do
     table.insert(maxAmount, i)
 end
 
-RMenu.Add("GBRP:Shops", "main", RageUI.CreateMenu("Shop", "~b~Shop", 1350, 50))
-RMenu.Add("GBRP:Shops", "sub", RageUI.CreateSubMenu(RMenu:Get("GBRP:Shops", "main"), "Shop", "~b~Confirm Purchase", 1350, 50))
+RMenu.Add("GMT:Shops", "main", RageUI.CreateMenu("Shop", "~b~Shop", 1350, 50))
+RMenu.Add("GMT:Shops", "sub", RageUI.CreateSubMenu(RMenu:Get("GMT:Shops", "main"), "Shop", "~b~Confirm Purchase", 1350, 50))
 
-RageUI.CreateWhile(1.0, RMenu:Get("GBRP:Shops", "main"), nil, function()
-    RageUI.IsVisible(RMenu:Get("GBRP:Shops", "main"), true, false, true, function()
+RageUI.CreateWhile(1.0, RMenu:Get("GMT:Shops", "main"), nil, function()
+    RageUI.IsVisible(RMenu:Get("GMT:Shops", "main"), true, false, true, function()
         for k, v in pairs(cfg.items) do
             if v.type == 'store' then
                 RageUI.Button(v.name, "£"..getMoneyStringFormatted(v.price), {RightLabel = "→→→"}, true, function(Hovered, Active, Selected)
@@ -24,22 +24,22 @@ RageUI.CreateWhile(1.0, RMenu:Get("GBRP:Shops", "main"), nil, function()
                         currentItemPrice = v.price
                         currentItemName = v.name
                     end
-                end, RMenu:Get("GBRP:Shops", "sub", true))
+                end, RMenu:Get("GMT:Shops", "sub", true))
             end
         end
 
     end, function() 
     end)
 
-    RageUI.IsVisible(RMenu:Get("GBRP:Shops", "sub"), true, false, true, function()
+    RageUI.IsVisible(RMenu:Get("GMT:Shops", "sub"), true, false, true, function()
         RageUI.List("Amount", maxAmount, amount, nil, {}, true, function(Hovered, Active, Selected, Index)
             amount = Index
         end)
         RageUI.Button("~g~Confirm Purchase",nil,  {RightLabel = "£"..getMoneyStringFormatted(currentItemPrice * amount)}, true, function(Hovered, Active, Selected)
             if Selected then
-                TriggerServerEvent("GBRP:BuyShopItem", currentItemID, amount)
+                TriggerServerEvent("GMT:BuyShopItem", currentItemID, amount)
             end
-        end, RMenu:Get("GBRP:Shops", "main", true))
+        end, RMenu:Get("GMT:Shops", "main", true))
 
     end, function()
     end)
@@ -98,7 +98,7 @@ Citizen.CreateThread(function()
                 if IsControlJustPressed(0, 51) then 
                     inMenu = true
                     currentShop = k
-                    RageUI.Visible(RMenu:Get("GBRP:Shops", "main"), true)
+                    RageUI.Visible(RMenu:Get("GMT:Shops", "main"), true)
                 end
             end
 

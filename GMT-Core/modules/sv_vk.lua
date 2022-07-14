@@ -5,8 +5,8 @@ vRPclient = Tunnel.getInterface("vRP", "vk")
 
 
 
-RegisterServerEvent("GBRP:PDVK")
-AddEventHandler('GBRP:PDVK', function()
+RegisterServerEvent("GMT:PDVK")
+AddEventHandler('GMT:PDVK', function()
     local source = source
     user_id = vRP.getUserId({source})
     if vRP.hasPermission({user_id, 'police.armoury'}) then 

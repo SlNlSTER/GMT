@@ -7,8 +7,8 @@ local Lang = module("vrp", "lib/Lang")
 local cfg = module("vrp", "cfg/base")
 local lang = Lang.new(module("vrp", "cfg/lang/"..cfg.lang) or {})
 
-RegisterNetEvent('GBRP:policeDrag')
-AddEventHandler('GBRP:policeDrag', function()
+RegisterNetEvent('GMT:policeDrag')
+AddEventHandler('GMT:policeDrag', function()
     
     local source = source
     Citizen.Wait(0)
@@ -24,7 +24,7 @@ AddEventHandler('GBRP:policeDrag', function()
             if nuser_id ~= nil then
                 vRPclient.isHandcuffed(nplayer,{},function(handcuffed)
                 if handcuffed then
-                    TriggerClientEvent("GBRP:drag2", nplayer, source)
+                    TriggerClientEvent("GMT:drag2", nplayer, source)
                 else
                     vRPclient.notify(source,{"Player is not handcuffed."})
                 end
@@ -62,8 +62,8 @@ local crookuncuff = {
 }
 local playerHandcuffed = false
 
- RegisterNetEvent("GBRP:policeCuff")
- AddEventHandler("GBRP:policeCuff", function()
+ RegisterNetEvent("GMT:policeCuff")
+ AddEventHandler("GMT:policeCuff", function()
      local player = source
      local user_id = vRP.getUserId({source})
      handcuffed = nil
@@ -109,8 +109,8 @@ end)
 
  end)
 
-RegisterNetEvent('GBRP:policeCuffStaff')
-AddEventHandler('GBRP:policeCuffStaff', function(staffmode)
+RegisterNetEvent('GMT:policeCuffStaff')
+AddEventHandler('GMT:policeCuffStaff', function(staffmode)
   local player = source
   local user_id = vRP.getUserId({source})
   handcuffed = nil
@@ -148,25 +148,25 @@ end)
 
 Tunnel.bindInterface("vrp_basic_menu",vRPbm)
 BMclient = Tunnel.getInterface("vRP_basic_menu","vRP_basic_menu")
-RegisterServerEvent('GBRP:toggleTrafficMenu')
-AddEventHandler('GBRP:toggleTrafficMenu', function()
+RegisterServerEvent('GMT:toggleTrafficMenu')
+AddEventHandler('GMT:toggleTrafficMenu', function()
     local source = source
     local user_id = vRP.getUserId({source})
     if user_id ~= nil and vRP.hasPermission({user_id, "police.menu"}) then
         print("vRP Identification Accepted") 
-        TriggerClientEvent("GBRP:openTrafficMenu", source)
+        TriggerClientEvent("GMT:openTrafficMenu", source)
     end
 end)
 
-RegisterServerEvent('GBRP:zoneActivated')
-AddEventHandler('GBRP:zoneActivated', function(message, speed, radius, x, y, z)
+RegisterServerEvent('GMT:zoneActivated')
+AddEventHandler('GMT:zoneActivated', function(message, speed, radius, x, y, z)
     TriggerClientEvent('chatMessage', -1, message)
-    TriggerClientEvent('GBRP:createZone', -1, speed, radius, x, y, z)
+    TriggerClientEvent('GMT:createZone', -1, speed, radius, x, y, z)
 end)
 
-RegisterServerEvent('GBRP:disableZone')
-AddEventHandler('GBRP:disableZone', function(blip)
-    TriggerClientEvent('GBRP:removeBlip', -1)
+RegisterServerEvent('GMT:disableZone')
+AddEventHandler('GMT:disableZone', function(blip)
+    TriggerClientEvent('GMT:removeBlip', -1)
 end)
 
 
@@ -208,8 +208,8 @@ function jail_clock(target_id,timer)
   end
 end
 
-RegisterServerEvent('GBRP:Fine')
-AddEventHandler('GBRP:Fine', function() 
+RegisterServerEvent('GMT:Fine')
+AddEventHandler('GMT:Fine', function() 
     player = source
     local user_id = vRP.getUserId({player})
     if user_id ~= nil and vRP.hasPermission({user_id, "police.menu"}) then
@@ -270,8 +270,8 @@ AddEventHandler('GBRP:Fine', function()
 end)
 
 
-RegisterServerEvent('GBRP:Drag')
-AddEventHandler('GBRP:Drag', function() 
+RegisterServerEvent('GMT:Drag')
+AddEventHandler('GMT:Drag', function() 
       -- get nearest player
       local user_id = vRP.getUserId({player})
       if user_id ~= nil then
@@ -296,13 +296,13 @@ AddEventHandler('GBRP:Drag', function()
       end
 end)
 
-RegisterServerEvent('GBRP:TrafficMenuLogs')
-AddEventHandler('GBRP:TrafficMenuLogs', function(objspawned) 
+RegisterServerEvent('GMT:TrafficMenuLogs')
+AddEventHandler('GMT:TrafficMenuLogs', function(objspawned) 
   local player = source
   local admin_id = vRP.getUserId({player})
   local admin_name = GetPlayerName(player)
   local logs = ""
-  local communityname = "GBRP Staff Logs"
+  local communityname = "GMT Staff Logs"
   local communtiylogo = "" --Must end with .png or .jpg
         
   local command = {
@@ -316,5 +316,5 @@ AddEventHandler('GBRP:TrafficMenuLogs', function(objspawned)
       },
     }
   }
-  PerformHttpRequest(logs, function(err, text, headers) end, 'POST', json.encode({username = "GBRP Staff Logs", embeds = command}), { ['Content-Type'] = 'application/json' })
+  PerformHttpRequest(logs, function(err, text, headers) end, 'POST', json.encode({username = "GMT Staff Logs", embeds = command}), { ['Content-Type'] = 'application/json' })
 end)

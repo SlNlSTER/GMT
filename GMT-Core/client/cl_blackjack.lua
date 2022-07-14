@@ -409,14 +409,14 @@ Citizen.CreateThread(function()
     end
 end)
 
-RMenu.Add('GBRPblackjack', 'instructions', RageUI.CreateMenu("", "test",0,100,"casinoui_cards_blackjack", "casinoui_cards_blackjack"))
-RMenu:Get('GBRPblackjack', 'instructions'):SetSubtitle("~b~BLACKJACK")
-RMenu.Add('GBRPblackjack_high', 'instructions', RageUI.CreateMenu("", "test",0,100,"casinoui_cards_blackjack_high", "casinoui_cards_blackjack_high"))
-RMenu:Get('GBRPblackjack_high', 'instructions'):SetSubtitle("~b~BLACKJACK")
+RMenu.Add('GMTblackjack', 'instructions', RageUI.CreateMenu("", "test",0,100,"casinoui_cards_blackjack", "casinoui_cards_blackjack"))
+RMenu:Get('GMTblackjack', 'instructions'):SetSubtitle("~b~BLACKJACK")
+RMenu.Add('GMTblackjack_high', 'instructions', RageUI.CreateMenu("", "test",0,100,"casinoui_cards_blackjack_high", "casinoui_cards_blackjack_high"))
+RMenu:Get('GMTblackjack_high', 'instructions'):SetSubtitle("~b~BLACKJACK")
 
 
 RageUI.CreateWhile(1.0, true, function()
-    if RageUI.Visible(RMenu:Get('GBRPblackjack', 'instructions')) then
+    if RageUI.Visible(RMenu:Get('GMTblackjack', 'instructions')) then
         RageUI.DrawContent({ header = true, glare = true, instructionalButton = true }, function()           
             RageUI.FakeButton("test", "The aim of Blackjack is to beat the Dealer's hand without going over 21. This game uses four 52           card decks, which are shuffled at the start of every hand.                                                                                    The dealer will stand on soft 17.", { RightLabel = "→→→" }, true, function(Hovered, Active, Selected)
                 if (Hovered) then
@@ -428,7 +428,7 @@ RageUI.CreateWhile(1.0, true, function()
                 if (Selected) then
 
                 end
-            end, RMenu:Get('GBRPblackjack', 'instructions'))            
+            end, RMenu:Get('GMTblackjack', 'instructions'))            
         end, function()
             ---Panels
         end)
@@ -437,7 +437,7 @@ RageUI.CreateWhile(1.0, true, function()
 end, 1)
 
 RageUI.CreateWhile(1.0, true, function()
-    if RageUI.Visible(RMenu:Get('GBRPblackjack_high', 'instructions')) then
+    if RageUI.Visible(RMenu:Get('GMTblackjack_high', 'instructions')) then
         RageUI.DrawContent({ header = true, glare = true, instructionalButton = true }, function()           
             RageUI.FakeButton("test", "The aim of Blackjack is to beat the Dealer's hand without going over 21. This game uses four 52           card decks, which are shuffled at the start of every hand.                                                                                    The dealer will stand on soft 17.", { RightLabel = "→→→" }, true, function(Hovered, Active, Selected)
                 if (Hovered) then
@@ -449,7 +449,7 @@ RageUI.CreateWhile(1.0, true, function()
                 if (Selected) then
 
                 end
-            end, RMenu:Get('GBRPblackjack_high', 'instructions'))            
+            end, RMenu:Get('GMTblackjack_high', 'instructions'))            
         end, function()
             ---Panels
         end)
@@ -459,9 +459,9 @@ end, 1)
 
 function showHowToBlackjack(flag)
     if closestChair < 8 then 
-        RageUI.Visible(RMenu:Get('GBRPblackjack', 'instructions'), flag)
+        RageUI.Visible(RMenu:Get('GMTblackjack', 'instructions'), flag)
     else 
-        RageUI.Visible(RMenu:Get('GBRPblackjack_high', 'instructions'), flag)
+        RageUI.Visible(RMenu:Get('GMTblackjack_high', 'instructions'), flag)
     end
 end
 function rrrrrrrrrrround(exact, quantum)
@@ -666,7 +666,7 @@ function goToBlackjackSeat(blackjackSeatID)
     showHowToBlackjack(false)
     closestDealerPed, closestDealerPedDistance = getClosestDealer()
     PlayAmbientSpeech1(closestDealerPed,"MINIGAME_DEALER_GREET","SPEECH_PARAMS_FORCE_NORMAL_CLEAR",1)
-    --print("[GBRP Casino] start sit at blackjack seat") 
+    --print("[GMT Casino] start sit at blackjack seat") 
     drawNativeNotification("Waiting for next game to start...")
     blackjackAnimsToLoad = {
       "anim_casino_b@amb@casino@games@blackjack@dealer",
@@ -680,13 +680,13 @@ function goToBlackjackSeat(blackjackSeatID)
           Wait(0)
       end
     end
-    --print("[GBRP Casino] blackjack anims loaded") 
+    --print("[GMT Casino] blackjack anims loaded") 
     Local_198f_247 = blackjackSeatID
     --print("blackjackSeatID: " .. blackjackSeatID)
     fVar3 = blackjack_func_217(PlayerPedId(),blackjack_func_218(Local_198f_247, 0), 1)
     fVar4 = blackjack_func_217(PlayerPedId(),blackjack_func_218(Local_198f_247, 1), 1)
     fVar5 = blackjack_func_217(PlayerPedId(),blackjack_func_218(Local_198f_247, 2), 1)
-    --print("[GBRP Casino] fVars passed")
+    --print("[GMT Casino] fVars passed")
     if (fVar4 < fVar5 and fVar4 < fVar3) then 
       Local_198f_251 = 1
     elseif (fVar5 < fVar4 and fVar5 < fVar3) then 
@@ -698,17 +698,17 @@ function goToBlackjackSeat(blackjackSeatID)
     --param0 is 0-3 && param1 is 0-15? (OF blackjack_func_218)
     local walkToVector = blackjack_func_218(Local_198f_247, Local_198f_251)
     local targetHeading = blackjack_func_216(Local_198f_247, Local_198f_251)
-    --print("[GBRP Casino] walking to seat, x: " .. tostring(walkToVector.x) .. " y: " .. tostring(walkToVector.y) .. " z: " .. tostring(walkToVector.z))
+    --print("[GMT Casino] walking to seat, x: " .. tostring(walkToVector.x) .. " y: " .. tostring(walkToVector.y) .. " z: " .. tostring(walkToVector.z))
     TaskGoStraightToCoord(PlayerPedId(), walkToVector.x, walkToVector.y, walkToVector.z, 1.0, 5000, targetHeading, 0.01)
 
     local goToVector = blackjack_func_348(Local_198f_247)
     local xRot,yRot,zRot = blackjack_func_215(Local_198f_247)
-    --print("[GBRP Casino] Blackjack sit at table net scene starting")
-    --print("[GBRP Casino] creating Scene at, x: " .. tostring(goToVector.x) .. " y: " .. tostring(goToVector.y) .. " z: " .. tostring(goToVector.z))
+    --print("[GMT Casino] Blackjack sit at table net scene starting")
+    --print("[GMT Casino] creating Scene at, x: " .. tostring(goToVector.x) .. " y: " .. tostring(goToVector.y) .. " z: " .. tostring(goToVector.z))
     Local_198f_255 = NetworkCreateSynchronisedScene(goToVector.x, goToVector.y, goToVector.z, xRot, yRot, zRot, 2, 1, 0, 1065353216, 0, 1065353216)
     NetworkAddPedToSynchronisedScene(PlayerPedId(), Local_198f_255, "anim_casino_b@amb@casino@games@shared@player@", blackjack_func_213(Local_198f_251), 2.0, -2.0, 13, 16, 2.0, 0) -- 8.0, -1.5, 157, 16, 1148846080, 0) ?
     NetworkStartSynchronisedScene(Local_198f_255)
-    --print("[GBRP Casino] Blackjack sit at table net scene started")
+    --print("[GMT Casino] Blackjack sit at table net scene started")
     --Local_198.f_255 = NETWORK::NETWORK_CREATE_SYNCHRONISED_SCENE(func_348(Local_198.f_247), func_215(Local_198.f_247), 2, 1, 0, 1065353216, 0, 1065353216)
     --NETWORK::NETWORK_ADD_PED_TO_SYNCHRONISED_SCENE(PLAYER::PLAYER_PED_ID(), Local_198.f_255, "anim_casino_b@amb@casino@games@shared@player@", blackjack_func_213(Local_198f_251), 2f, -2f, 13, 16, 2f, 0)
     --NETWORK::NETWORK_START_SYNCHRONISED_SCENE(Local_198.f_255)
@@ -1153,7 +1153,7 @@ function betChipsForNextHand(chipsAmount,chipsProp,something,chairID,someBool,zO
     RequestModel(chipsProp)
     while not HasModelLoaded(chipsProp) do  
         Wait(0)
-        --print("[GBRP Casino] Stuck requesting model: " .. tostring(chipsProp))
+        --print("[GMT Casino] Stuck requesting model: " .. tostring(chipsProp))
         RequestModel(chipsProp)
     end
     vVar8 =  vector3(0.0, 0.0, getTableHeading(blackjack_func_368(chairID)))

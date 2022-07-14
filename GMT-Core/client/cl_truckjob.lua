@@ -1,14 +1,14 @@
-RMenu.Add('GBRPtruckjob', 'main', RageUI.CreateMenu("", "~g~Truck Job", nil, nil, "banners", ""))
-RMenu:Get('GBRPtruckjob', 'main'):SetPosition(1350, 10)
+RMenu.Add('GMTtruckjob', 'main', RageUI.CreateMenu("", "~g~Truck Job", nil, nil, "banners", ""))
+RMenu:Get('GMTtruckjob', 'main'):SetPosition(1350, 10)
 
 local jobStarted = false
 local truckJobCoords = nil
 local truckJobfinishBlip = nil
 local currentTruckJob = nil
 local truckJobPay = 0
-RageUI.CreateWhile(1.0, RMenu:Get('GBRPtruckjob', 'main'), nil, function()
+RageUI.CreateWhile(1.0, RMenu:Get('GMTtruckjob', 'main'), nil, function()
 
-    RageUI.IsVisible(RMenu:Get('GBRPtruckjob', 'main'), true, false, true, function()
+    RageUI.IsVisible(RMenu:Get('GMTtruckjob', 'main'), true, false, true, function()
         for k,v in pairs(truckjob.locations) do 
             RageUI.Button(v.name , "~g~On completion you will receive £" ..Comma(v.pay), { RightLabel = '→→→'}, true, function(Hovered, Active, Selected)
                 if Selected then
@@ -24,7 +24,7 @@ RageUI.CreateWhile(1.0, RMenu:Get('GBRPtruckjob', 'main'), nil, function()
                         SpawnTruck()
                         RageUI.CloseAll()
                         notify("~g~Your shift has started, good luck.")
-                        TriggerServerEvent('GBRP:startTruckJob', v.name)
+                        TriggerServerEvent('GMT:startTruckJob', v.name)
                     else
                         notify("~r~You are currently on a job, either finish or stop it.")
                     end
@@ -42,7 +42,7 @@ RageUI.CreateWhile(1.0, RMenu:Get('GBRPtruckjob', 'main'), nil, function()
                         DeleteVehicle(GetVehiclePedIsIn(PlayerPedId()))
                         RemoveBlip(truckJobfinishBlip)
                         notify("~g~Stopped your current job.")
-                        TriggerServerEvent('GBRP:finishTruckJob')
+                        TriggerServerEvent('GMT:finishTruckJob')
                         truckJobPay = 0
                     else
                         notify("~r~You are not currently on a job.")
@@ -74,12 +74,12 @@ Citizen.CreateThread(function()
             if IsControlJustPressed(0, 51) then 
                 if not IsPedSittingInAnyVehicle(PlayerPedId()) then
                     RageUI.CloseAll()
-                    RageUI.Visible(RMenu:Get("GBRPtruckjob", "main"), true)
+                    RageUI.Visible(RMenu:Get("GMTtruckjob", "main"), true)
                 else
                     if (IsPedSittingInAnyVehicle(PlayerPedId())) then
                         if IsVehicleModel(GetVehiclePedIsIn(PlayerPedId(), true), GetHashKey(truckjob.vehicle)) then
                             RageUI.CloseAll()
-                            RageUI.Visible(RMenu:Get("GBRPtruckjob", "main"), true)
+                            RageUI.Visible(RMenu:Get("GMTtruckjob", "main"), true)
                         else
                             notify("~r~You must be outside your car.")
                         end
@@ -108,7 +108,7 @@ Citizen.CreateThread(function()
                                 DeleteVehicle(GetVehiclePedIsIn(PlayerPedId()))
                                 RemoveBlip(truckJobfinishBlip)
                                 notify("~g~Truck job finished. Payment: £" ..Comma(truckJobPay))
-                                TriggerServerEvent('GBRP:finishTruckJob', currentTruckJob)
+                                TriggerServerEvent('GMT:finishTruckJob', currentTruckJob)
                                 jobStarted = false
                                 truckJobCoords = nil
                                 truckJobfinishBlip = nil
@@ -168,7 +168,7 @@ function SpawnTruck()
 	local coords = GetOffsetFromEntityInWorldCoords(PlayerPedId(), 0, 5.0, 0)
 	local spawned_car = CreateVehicle(vehicle, coords, 180, true, false)
 	SetVehicleOnGroundProperly(spawned_car)
-	SetVehicleNumberPlateText(spawned_car, "GBRP")
+	SetVehicleNumberPlateText(spawned_car, "GMT")
 	SetPedIntoVehicle(PlayerPedId(), spawned_car, - 1)
 	SetModelAsNoLongerNeeded(vehicle)
 	Citizen.InvokeNative(0xB736A491E64A32CF, Citizen.PointerValueIntInitialized(spawned_car))

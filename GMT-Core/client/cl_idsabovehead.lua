@@ -73,9 +73,9 @@ end)
 
 RegisterCommand("farids", function()
     if faridsenabled then
-        TriggerServerEvent("GBRP:IDsAboveHead", true)
+        TriggerServerEvent("GMT:IDsAboveHead", true)
     else
-        TriggerServerEvent("GBRP:IDsAboveHead", false)
+        TriggerServerEvent("GMT:IDsAboveHead", false)
     end
 end)
 
@@ -90,17 +90,17 @@ RegisterCommand("showids", function()
 end)
 
 RegisterCommand("hidechat", function()
-    TriggerEvent('GBRP:toggleChat', true)
+    TriggerEvent('GMT:toggleChat', true)
     notify('~g~Chat Hidden')
 end)
 
 RegisterCommand("showchat", function()
-    TriggerEvent('GBRP:toggleChat', false)
+    TriggerEvent('GMT:toggleChat', false)
     notify('~g~Chat Shown')
 end)
 
-RegisterNetEvent("GBRP:ChangeIDs")
-AddEventHandler("GBRP:ChangeIDs", function(status)
+RegisterNetEvent("GMT:ChangeIDs")
+AddEventHandler("GMT:ChangeIDs", function(status)
     if status then
         disPlayerNames = 10
         notify("~r~Disabled Far IDs")

@@ -1,7 +1,7 @@
 local status = false
 
-RegisterNetEvent('GBRP:pdRadioAnim')
-AddEventHandler('GBRP:pdRadioAnim', function(status, b)
+RegisterNetEvent('GMT:pdRadioAnim')
+AddEventHandler('GMT:pdRadioAnim', function(status, b)
     if status then
         TriggerEvent("vrp:PlaySound", "radioon")
         loadAnimDict("random@arrests")
@@ -18,10 +18,10 @@ Citizen.CreateThread(function()
 		Citizen.Wait(0)
         b = GetPlayerPed(-1)
         if IsControlJustReleased(0, 19) then
-            TriggerServerEvent('GBRP:pdRadioPerms', false, b)
+            TriggerServerEvent('GMT:pdRadioPerms', false, b)
         else
             if IsControlJustPressed(0, 19) then
-                TriggerServerEvent('GBRP:pdRadioPerms', true, b)
+                TriggerServerEvent('GMT:pdRadioPerms', true, b)
             end
         end
     end

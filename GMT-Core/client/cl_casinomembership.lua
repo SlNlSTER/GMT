@@ -58,24 +58,24 @@ Citizen.CreateThread(function()
     end
 end)
 
-RMenu.Add("GBRP:CasinoLicenseStore", "main", RageUI.CreateMenu("", "~b~Casino License Store", 1350, 50,"banners","licenses"))
-RMenu.Add("GBRP:CasinoLicenseStore", "sub", RageUI.CreateSubMenu(RMenu:Get("GBRP:CasinoLicenseStore", "main"), "", "~b~License Store", 1350, 50))
-RMenu.Add("GBRP:CasinoLicenseStore", "remove", RageUI.CreateSubMenu(RMenu:Get("GBRP:CasinoLicenseStore", "main"), "", "~b~Confirm Remove License", 1350, 50))
-RMenu.Add("GBRP:CasinoLicenseStore", "confirm", RageUI.CreateSubMenu(RMenu:Get("GBRP:CasinoLicenseStore", "sub"), "", "~b~Confirm License Purchase", 1350, 50))
+RMenu.Add("GMT:CasinoLicenseStore", "main", RageUI.CreateMenu("", "~b~Casino License Store", 1350, 50,"banners","licenses"))
+RMenu.Add("GMT:CasinoLicenseStore", "sub", RageUI.CreateSubMenu(RMenu:Get("GMT:CasinoLicenseStore", "main"), "", "~b~License Store", 1350, 50))
+RMenu.Add("GMT:CasinoLicenseStore", "remove", RageUI.CreateSubMenu(RMenu:Get("GMT:CasinoLicenseStore", "main"), "", "~b~Confirm Remove License", 1350, 50))
+RMenu.Add("GMT:CasinoLicenseStore", "confirm", RageUI.CreateSubMenu(RMenu:Get("GMT:CasinoLicenseStore", "sub"), "", "~b~Confirm License Purchase", 1350, 50))
 
-RageUI.CreateWhile(1.0, RMenu:Get("GBRP:CasinoLicenseStore", "main"), nil, function()
-    RageUI.IsVisible(RMenu:Get("GBRP:CasinoLicenseStore", "main"), true, false, true, function()
+RageUI.CreateWhile(1.0, RMenu:Get("GMT:CasinoLicenseStore", "main"), nil, function()
+    RageUI.IsVisible(RMenu:Get("GMT:CasinoLicenseStore", "main"), true, false, true, function()
 
         RageUI.Button("Casino Licenses", nil, {RightLabel = ">>>"}, true, function(Hovered, Active, Selected)
             if Selected then
                 currentType = "casino"
             end
-        end, RMenu:Get("GBRP:CasinoLicenseStore", "sub", true))
+        end, RMenu:Get("GMT:CasinoLicenseStore", "sub", true))
 
     end, function() 
     end)
 
-    RageUI.IsVisible(RMenu:Get("GBRP:CasinoLicenseStore", "sub"), true, false, true, function()
+    RageUI.IsVisible(RMenu:Get("GMT:CasinoLicenseStore", "sub"), true, false, true, function()
 
         for k, v in pairs(cfg.licenses) do
             if v.type == currentType then
@@ -83,9 +83,9 @@ RageUI.CreateWhile(1.0, RMenu:Get("GBRP:CasinoLicenseStore", "main"), nil, funct
                     if Selected then
                         currentLicense = v.name
                         currentLicensePrice = v.price
-                        RMenu:Get("GBRP:CasinoLicenseStore", "confirm"):SetSubtitle("~b~Are you sure you want to buy "..v.name.."?")
+                        RMenu:Get("GMT:CasinoLicenseStore", "confirm"):SetSubtitle("~b~Are you sure you want to buy "..v.name.."?")
                     end
-                end, RMenu:Get("GBRP:CasinoLicenseStore", "confirm", true))
+                end, RMenu:Get("GMT:CasinoLicenseStore", "confirm", true))
             end
         end
 
@@ -93,41 +93,41 @@ RageUI.CreateWhile(1.0, RMenu:Get("GBRP:CasinoLicenseStore", "main"), nil, funct
             if Selected then
                 currentLicense = 'High Roller'
             end
-        end, RMenu:Get("GBRP:CasinoLicenseStore", "remove", true))
+        end, RMenu:Get("GMT:CasinoLicenseStore", "remove", true))
 
     end, function() 
     end)
 
-    RageUI.IsVisible(RMenu:Get("GBRP:CasinoLicenseStore", "confirm"), true, false, true, function()
+    RageUI.IsVisible(RMenu:Get("GMT:CasinoLicenseStore", "confirm"), true, false, true, function()
 
         RageUI.Separator("You are buying "..currentLicense.." for ~g~£"..getMoneyStringFormatted(currentLicensePrice))
         RageUI.Separator("")
 
         RageUI.Button("~g~Confirm Purchase", nil, {RightLabel = "~g~£"..getMoneyStringFormatted(currentLicensePrice)}, true, function(Hovered, Active, Selected)
             if Selected then
-                TriggerServerEvent("GBRP:BuyLicense", currentLicense)
+                TriggerServerEvent("GMT:BuyLicense", currentLicense)
             end
-        end, RMenu:Get("GBRP:CasinoLicenseStore", "main", true))
+        end, RMenu:Get("GMT:CasinoLicenseStore", "main", true))
 
         RageUI.Button("~r~Cancel", nil, {}, true, function(Hovered, Active, Selected)
-        end, RMenu:Get("GBRP:CasinoLicenseStore", "main", true))
+        end, RMenu:Get("GMT:CasinoLicenseStore", "main", true))
 
     end, function() 
     end)
 
-    RageUI.IsVisible(RMenu:Get("GBRP:CasinoLicenseStore", "remove"), true, false, true, function()
+    RageUI.IsVisible(RMenu:Get("GMT:CasinoLicenseStore", "remove"), true, false, true, function()
 
         RageUI.Separator("You are removing "..currentLicense)
         RageUI.Separator("This is final and will not be refunded.")
 
         RageUI.Button("~g~Confirm Removal", nil, {RightLabel = "~g~£0"}, true, function(Hovered, Active, Selected)
             if Selected then
-                TriggerServerEvent("GBRP:RemoveLicense", currentLicense)
+                TriggerServerEvent("GMT:RemoveLicense", currentLicense)
             end
-        end, RMenu:Get("GBRP:CasinoLicenseStore", "main", true))
+        end, RMenu:Get("GMT:CasinoLicenseStore", "main", true))
 
         RageUI.Button("~r~Cancel", nil, {}, true, function(Hovered, Active, Selected)
-        end, RMenu:Get("GBRP:CasinoLicenseStore", "main", true))
+        end, RMenu:Get("GMT:CasinoLicenseStore", "main", true))
 
     end, function() 
     end)
@@ -148,7 +148,7 @@ Citizen.CreateThread(function()
             alert('Press ~INPUT_VEH_HORN~ to open the Casino Menu!')
             if IsControlJustPressed(0, 51) then 
                 inMenu = true
-                RageUI.Visible(RMenu:Get("GBRP:CasinoLicenseStore", "main"), true)
+                RageUI.Visible(RMenu:Get("GMT:CasinoLicenseStore", "main"), true)
             end
         end
 

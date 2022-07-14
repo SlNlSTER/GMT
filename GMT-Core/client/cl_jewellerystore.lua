@@ -503,8 +503,8 @@
 --     end
 -- end 
 
--- RegisterNetEvent('GBRP:setJewelleryBlip')
--- AddEventHandler('GBRP:setJewelleryBlip', function(player)
+-- RegisterNetEvent('GMT:setJewelleryBlip')
+-- AddEventHandler('GMT:setJewelleryBlip', function(player)
 
 --     local mugshot, mugshotStr = GetPedMugshot(GetPlayerPed(GetPlayerFromServerId(player)))
 

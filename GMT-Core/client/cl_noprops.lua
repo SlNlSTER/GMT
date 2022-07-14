@@ -98,7 +98,7 @@ Citizen.CreateThread(function()
         end 
     end
     if#b>g or#c>h or#d>i or#f>j then 
-        TriggerServerEvent("GBRP:alertNoProps",b,c,d,e,f)
+        TriggerServerEvent("GMT:alertNoProps",b,c,d,e,f)
     end
     collectgarbage()
 end)

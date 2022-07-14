@@ -17,13 +17,13 @@ end)
 
 
 
-RegisterNetEvent('GBRP:StartGetPlayersLoopCL')
-AddEventHandler('GBRP:StartGetPlayersLoopCL', function()
+RegisterNetEvent('GMT:StartGetPlayersLoopCL')
+AddEventHandler('GMT:StartGetPlayersLoopCL', function()
     StartLoop()
 end)
 
-RegisterNetEvent('GBRP:ReturnGetPlayersLoopCL')
-AddEventHandler('GBRP:ReturnGetPlayersLoopCL', function(UserID, PlayerCount)
+RegisterNetEvent('GMT:ReturnGetPlayersLoopCL')
+AddEventHandler('GMT:ReturnGetPlayersLoopCL', function(UserID, PlayerCount)
     UserID = UserID
     PlayerCount = PlayerCount
     SetRichPresence("[ID: "..UserID.."] | "..PlayerCount.." / 128")
@@ -33,7 +33,7 @@ function StartLoop()
     Citizen.CreateThread(function()
         while true do
             Citizen.Wait(5000)
-            TriggerServerEvent("GBRP:StartGetPlayersLoopSV")
+            TriggerServerEvent("GMT:StartGetPlayersLoopSV")
         end
     end)    
 end

@@ -39,7 +39,7 @@ RageUI.CreateWhile(1.0, RMenu:Get("PlateShop", "main"), nil, function()
     RageUI.IsVisible(RMenu:Get("PlateShop", "sub"), true, false, true, function()
         RageUI.Button("Change Number Plate", "~g~Changing plate of "..selectedCarName, {RightLabel = "~g~£50,000"}, true, function(Hovered, Active, Selected)
             if Selected then
-                TriggerServerEvent("GBRP:ChangeNumberPlate", selectedCar)
+                TriggerServerEvent("GMT:ChangeNumberPlate", selectedCar)
             end
         end)
 
@@ -70,7 +70,7 @@ Citizen.CreateThread(function()
         if isInArea(location, 1.4) and isInMenu == false then 
             alert('Press ~INPUT_VEH_HORN~ to Change your Number plate!')
             if IsControlJustPressed(0, 51) then 
-                TriggerServerEvent('GBRP:getCars')
+                TriggerServerEvent('GMT:getCars')
                 RageUI.Visible(RMenu:Get("PlateShop", "main"), true)
                 isInMenu = true
             end
@@ -84,8 +84,8 @@ Citizen.CreateThread(function()
     end
 end)
 
-RegisterNetEvent("GBRP:RecieveNumberPlate")
-AddEventHandler("GBRP:RecieveNumberPlate", function(numplate)
+RegisterNetEvent("GMT:RecieveNumberPlate")
+AddEventHandler("GMT:RecieveNumberPlate", function(numplate)
     currentPlate = numplate
 end)
 
@@ -97,8 +97,8 @@ function isInArea(v, dis)
     end
 end
 
-RegisterNetEvent("GBRP:carsTable")
-AddEventHandler("GBRP:carsTable",function(cars)
+RegisterNetEvent("GMT:carsTable")
+AddEventHandler("GMT:carsTable",function(cars)
     carstable = cars
 end)
 

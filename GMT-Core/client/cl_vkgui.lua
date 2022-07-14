@@ -17,7 +17,7 @@ gui_interiors = {
 		scale = 0.4,
 		font = 0,
 		["main"] = {
-			title = "~r~GBRP Menu",
+			title = "~r~GMT Menu",
 			name = "main",
 			buttons = {
 			}

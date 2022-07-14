@@ -4,12 +4,12 @@ local scaleform = RequestScaleformMovie("MP_BIG_MESSAGE_FREEMODE")
 RegisterCommand("purge", function(source,args,rawCommand)
     purge = not purge
     print(purge)
-    TriggerServerEvent('GBRP:activatePurgeSV', purge)
+    TriggerServerEvent('GMT:activatePurgeSV', purge)
 end)
 
 RegisterCommand("testgun", function(source,args,rawCommand)
     if purge then
-        TriggerServerEvent('GBRP:purgeRespawn')
+        TriggerServerEvent('GMT:purgeRespawn')
     end
 end)
 
@@ -65,8 +65,8 @@ coords =
 }
 
 
-RegisterNetEvent("GBRP:activatePurge")
-AddEventHandler("GBRP:activatePurge", function()
+RegisterNetEvent("GMT:activatePurge")
+AddEventHandler("GMT:activatePurge", function()
     purgeActivatingAnnounce = true
     TriggerEvent("vrp:PlaySound", "purge")
     Wait(10000)

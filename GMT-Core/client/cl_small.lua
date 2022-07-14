@@ -12,9 +12,9 @@ local O
 
 returnedSMALLGuns2 = {}
 
-RMenu.Add("SmallArmsMenu", "main", RageUI.CreateMenu("", "~r~GBRP Small Arms", 1300, 50, "banners", "small"))
-RMenu.Add("SmallArmsMenu", "sub", RageUI.CreateSubMenu(RMenu:Get("SmallArmsMenu", "main"), "", "~r~GBRP Small Arms", 1300, 50, "banners", "small"))
-RMenu.Add("SmallArmsMenu", "whitelisted", RageUI.CreateSubMenu(RMenu:Get("SmallArmsMenu", "main"), "", "~r~GBRP Small Arms", 1300, 50, "banners", "small"))
+RMenu.Add("SmallArmsMenu", "main", RageUI.CreateMenu("", "~r~GMT Small Arms", 1300, 50, "banners", "small"))
+RMenu.Add("SmallArmsMenu", "sub", RageUI.CreateSubMenu(RMenu:Get("SmallArmsMenu", "main"), "", "~r~GMT Small Arms", 1300, 50, "banners", "small"))
+RMenu.Add("SmallArmsMenu", "whitelisted", RageUI.CreateSubMenu(RMenu:Get("SmallArmsMenu", "main"), "", "~r~GMT Small Arms", 1300, 50, "banners", "small"))
 RageUI.CreateWhile(1.0, RMenu:Get("SmallArmsMenu", "main"), nil, function()
     RageUI.IsVisible(RMenu:Get("SmallArmsMenu", "main"), true, false, true, function()
         for i, p in pairs(smallarms.guns) do 

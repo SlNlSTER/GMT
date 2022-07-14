@@ -1,6 +1,6 @@
 prefix = '^1[GMT]^7 '
 
-GBRPTips = 
+GMTTips = 
 { 
     prefix.."You can view your Licenses by pressing (F6)",
     prefix.."The redzones located on the map are KOS",
@@ -14,7 +14,6 @@ GBRPTips =
     prefix.."Press (F10) to see your past punishments",
     prefix.."For vehicle functions press (M)",
     prefix.."If you need support with anything do /calladmin",
-    prefix.."Place discord.io/gbrpfivem in your discord status and then /redeem for a free £500,000",
 }
 
 
@@ -22,8 +21,8 @@ Citizen.CreateThread(function()
     Wait(100000)
     while true do
         math.randomseed(GetGameTimer())
-        num = math.random(1,#GBRPTips)
-        TriggerEvent('chatMessage',"", {255, 51, 51}, "" .. GBRPTips[num], "ooc")
+        num = math.random(1,#GMTTips)
+        TriggerEvent('chatMessage',"", {255, 51, 51}, "" .. GMTTips[num], "ooc")
         Wait(600000)
     end
 end)

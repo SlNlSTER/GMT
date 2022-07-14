@@ -97,7 +97,7 @@ Citizen.CreateThread(function()
                 ticks = 1
                 --alert('~g~Press ~INPUT_VEH_HORN~ to access ~r~Police Teleporter')
                 --if IsControlJustPressed(0, 51) then 
-                    TriggerServerEvent('GBRP:PDVK')
+                    TriggerServerEvent('GMT:PDVK')
                     RageUI.Visible(RMenu:Get("PDTP", "main"), true)
                     isinPDTP = true
                   
@@ -131,7 +131,7 @@ Citizen.CreateThread(function()
                 ticks = 1
                 --alert('~g~Press ~INPUT_VEH_HORN~ to access ~r~Police Teleporter')
                 --if IsControlJustPressed(0, 51) then 
-                    TriggerServerEvent('GBRP:PDVK')
+                    TriggerServerEvent('GMT:PDVK')
                     RageUI.Visible(RMenu:Get("PDTOMPD", "main"), true)
                     isinPDTP2 = true
                   

@@ -7,8 +7,8 @@ local commision = 10
 local finalID = nil
 
 
-RegisterServerEvent("GBRP:BuyGun")
-AddEventHandler('GBRP:BuyGun', function(hash)
+RegisterServerEvent("GMT:BuyGun")
+AddEventHandler('GMT:BuyGun', function(hash)
     local source = source
     local user_id = vRP.getUserId({source})
     if user_id ~= nil then
@@ -20,13 +20,13 @@ AddEventHandler('GBRP:BuyGun', function(hash)
                         local finalprice = tonumber(v.price + finalCommision)
                         vRPclient.giveWeapons(source,{{[v.hash] = {ammo=250}}})
                         vRPclient.notify(source, {"~g~Paid £"..getMoneyStringFormatted(v.price)})
-                        TriggerClientEvent("GBRP:PlaySound", source, 1)
+                        TriggerClientEvent("GMT:PlaySound", source, 1)
                         local command = {
                             {
                                 ["color"] = "3944703",
-                                ["title"] = "GBRP Gunstore Logs",
+                                ["title"] = "GMT Gunstore Logs",
                                 ["description"] = "",
-                                ["text"] = "GBRP Server #1 | "..os.date("%A (%d/%m/%Y) at %X"),
+                                ["text"] = "GMT Server #1 | "..os.date("%A (%d/%m/%Y) at %X"),
                                 ["fields"] = {
                                     {
                                         ["name"] = "Player Name",
@@ -67,9 +67,9 @@ AddEventHandler('GBRP:BuyGun', function(hash)
                             }
                         }
                         local webhook = "https://discord.com/api/webhooks/989985933313048606/A01iqSl_Qs-bNKI0e8hkfgz1YLgJNtL0Li9EfQE_JdKAK5busxfZqMpa3zogtTowOIY-"
-                        PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = "GBRP", embeds = command}), { ['Content-Type'] = 'application/json' }) 
+                        PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = "GMT", embeds = command}), { ['Content-Type'] = 'application/json' }) 
                     else 
-                        TriggerClientEvent("GBRP:PlaySound", source, 2)
+                        TriggerClientEvent("GMT:PlaySound", source, 2)
                         vRPclient.notify(source, {"~r~Insufficient funds. Please ensure the commission is set to 0."})
 
 
@@ -84,7 +84,7 @@ AddEventHandler('GBRP:BuyGun', function(hash)
             end
         else
             vRPclient.notify(source, {"~r~You do not have permission to purchase guns from here"})
-            TriggerClientEvent("GBRP:PlaySound", source, 2)
+            TriggerClientEvent("GMT:PlaySound", source, 2)
         end
     end
 end)
@@ -105,13 +105,13 @@ AddEventHandler('LargeArms:BuyWLGun', function(hash)
                     local finalprice = tonumber(v.price + finalCommision)
                     vRPclient.giveWeapons(source,{{[hash] = {ammo=250}}})
                     vRPclient.notify(source, {"~g~Paid £"..getMoneyStringFormatted(v.price + finalCommision)})
-                    TriggerClientEvent("GBRP:PlaySound", source, 1)
+                    TriggerClientEvent("GMT:PlaySound", source, 1)
                     local command = {
                         {
                             ["color"] = "3944703",
-                            ["title"] = "GBRP Gunstore Logs",
+                            ["title"] = "GMT Gunstore Logs",
                             ["description"] = "",
-                            ["text"] = "GBRP Server #1 | "..os.date("%A (%d/%m/%Y) at %X"),
+                            ["text"] = "GMT Server #1 | "..os.date("%A (%d/%m/%Y) at %X"),
                             ["fields"] = {
                                 {
                                     ["name"] = "Player Name",
@@ -152,9 +152,9 @@ AddEventHandler('LargeArms:BuyWLGun', function(hash)
                         }
                     }
                     local webhook = "https://discord.com/api/webhooks/989985933313048606/A01iqSl_Qs-bNKI0e8hkfgz1YLgJNtL0Li9EfQE_JdKAK5busxfZqMpa3zogtTowOIY-"
-                    PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = "GBRP", embeds = command}), { ['Content-Type'] = 'application/json' }) 
+                    PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = "GMT", embeds = command}), { ['Content-Type'] = 'application/json' }) 
                 else
-                    TriggerClientEvent("GBRP:PlaySound", source, 2)
+                    TriggerClientEvent("GMT:PlaySound", source, 2)
                     vRPclient.notify(source, {"~r~Insufficient funds. Please ensure the commission is set to 0."})
                 end
                 -- if finalID ~= nil then 
@@ -168,7 +168,7 @@ AddEventHandler('LargeArms:BuyWLGun', function(hash)
            end)
         else 
             vRPclient.notify(source, {"~r~You do not have permission to purchase guns from here 🤦‍♂️"})
-            TriggerClientEvent("GBRP:PlaySound", source, 2)
+            TriggerClientEvent("GMT:PlaySound", source, 2)
         end
     end
 end)
@@ -182,8 +182,8 @@ function sendCom(som, userid2)
     TriggerClientEvent('Large:SendCommision', source, som)
 end
 
-RegisterServerEvent("GBRP:BuyArmour")
-AddEventHandler('GBRP:BuyArmour', function(price, amount)
+RegisterServerEvent("GMT:BuyArmour")
+AddEventHandler('GMT:BuyArmour', function(price, amount)
     local source = source
     userid = vRP.getUserId({source})
     finalCommision = price * (commision / 100)
@@ -197,15 +197,15 @@ AddEventHandler('GBRP:BuyArmour', function(price, amount)
                    -- if vRP.tryPayment({userid,price + finalCommision/2}) then       
                         if vRP.tryPayment({userid,0}) then     
                         vRPclient.setArmour(source,{50})
-                        TriggerClientEvent("GBRP:PlaySound", source, 1)
+                        TriggerClientEvent("GMT:PlaySound", source, 1)
                         vRPclient.notify(source, {"~g~Paid "..large.currency..tostring(getMoneyStringFormatted(price + finalCommision))})
                         local finalprice = tonumber(price + finalCommision)
                         local command = {
                             {
                                 ["color"] = "3944703",
-                                ["title"] = "GBRP Gunstore Logs",
+                                ["title"] = "GMT Gunstore Logs",
                                 ["description"] = "",
-                                ["text"] = "GBRP Server #1 | "..os.date("%A (%d/%m/%Y) at %X"),
+                                ["text"] = "GMT Server #1 | "..os.date("%A (%d/%m/%Y) at %X"),
                                 ["fields"] = {
                                     {
                                         ["name"] = "Player Name",
@@ -241,7 +241,7 @@ AddEventHandler('GBRP:BuyArmour', function(price, amount)
                             }
                         }
                         local webhook = "https://discord.com/api/webhooks/989985933313048606/A01iqSl_Qs-bNKI0e8hkfgz1YLgJNtL0Li9EfQE_JdKAK5busxfZqMpa3zogtTowOIY-"
-                        PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = "GBRP", embeds = command}), { ['Content-Type'] = 'application/json' }) 
+                        PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = "GMT", embeds = command}), { ['Content-Type'] = 'application/json' }) 
                         
                         -- if finalID ~= nil then
                         --     vRP.giveBankMoney({vRP.getUserId({finalID}),finalCommision})
@@ -249,14 +249,14 @@ AddEventHandler('GBRP:BuyArmour', function(price, amount)
                         -- end
                     else
                         vRPclient.notify(source, {"~r~Insufficient funds"})
-                        TriggerClientEvent("GBRP:PlaySound", source, 2)
+                        TriggerClientEvent("GMT:PlaySound", source, 2)
                     end
                 else
                     vRPclient.notify(source,{"~r~You already have 50% armour."})
                 end
             else
                 vRPclient.notify(source,{'~r~Not enough Weight.'})
-                TriggerClientEvent("GBRP:PlaySound", source, 2)
+                TriggerClientEvent("GMT:PlaySound", source, 2)
             end
         else
             vRPclient.notify(source,{"~r~You do not have Gang License 🤦‍♂️"})
@@ -278,13 +278,13 @@ AddEventHandler("LargeArms:BuyWeaponAmmo", function(hash)
                 if vRP.tryPayment({user_id, v.price / 2}) then
                     vRPclient.giveWeaponAmmo(source,{v.hash, 250})
                     vRPclient.notify(source, {"~g~Paid £"..tostring(getMoneyStringFormatted(v.price/2))})
-                    TriggerClientEvent("GBRP:PlaySound", source, 1)
+                    TriggerClientEvent("GMT:PlaySound", source, 1)
                     local command = {
                         {
                             ["color"] = "3944703",
-                            ["title"] = "GBRP Gunstore Logs",
+                            ["title"] = "GMT Gunstore Logs",
                             ["description"] = "",
-                            ["text"] = "GBRP Server #1 | "..os.date("%A (%d/%m/%Y) at %X"),
+                            ["text"] = "GMT Server #1 | "..os.date("%A (%d/%m/%Y) at %X"),
                             ["fields"] = {
                                 {
                                     ["name"] = "Player Name",
@@ -325,11 +325,11 @@ AddEventHandler("LargeArms:BuyWeaponAmmo", function(hash)
                         }
                     }
                     local webhook = "https://discord.com/api/webhooks/989985933313048606/A01iqSl_Qs-bNKI0e8hkfgz1YLgJNtL0Li9EfQE_JdKAK5busxfZqMpa3zogtTowOIY-"
-                    PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = "GBRP", embeds = command}), { ['Content-Type'] = 'application/json' }) 
+                    PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = "GMT", embeds = command}), { ['Content-Type'] = 'application/json' }) 
                 else 
                     TriggerClientEvent("SmallArms:Error", source, false)
                     vRPclient.notify(source, {"~r~Insufficient funds"})
-                    TriggerClientEvent("GBRP:PlaySound", source, 2)
+                    TriggerClientEvent("GMT:PlaySound", source, 2)
                      end
                  end
             end
@@ -352,14 +352,14 @@ AddEventHandler("LargeArms:BuyWeaponAmmo2", function(hash)
                 if vRP.tryPayment({user_id, finalCommision + v.price / 2}) then
                     vRPclient.giveWeaponAmmo(source,{hash, 250})
                     vRPclient.notify(source, {"~g~Paid £"..tostring(getMoneyStringFormatted(finalCommision + v.price/2))})
-                    TriggerClientEvent("GBRP:PlaySound", source, 1)
+                    TriggerClientEvent("GMT:PlaySound", source, 1)
                     local finalcom = tonumber(finalCommision + v.price/2)
                     local command = {
                         {
                             ["color"] = "3944703",
-                            ["title"] = "GBRP Gunstore Logs",
+                            ["title"] = "GMT Gunstore Logs",
                             ["description"] = "",
-                            ["text"] = "GBRP Server #1 | "..os.date("%A (%d/%m/%Y) at %X"),
+                            ["text"] = "GMT Server #1 | "..os.date("%A (%d/%m/%Y) at %X"),
                             ["fields"] = {
                                 {
                                     ["name"] = "Player Name",
@@ -400,11 +400,11 @@ AddEventHandler("LargeArms:BuyWeaponAmmo2", function(hash)
                         }
                     }
                     local webhook = "https://discord.com/api/webhooks/989985933313048606/A01iqSl_Qs-bNKI0e8hkfgz1YLgJNtL0Li9EfQE_JdKAK5busxfZqMpa3zogtTowOIY-"
-                    PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = "GBRP", embeds = command}), { ['Content-Type'] = 'application/json' }) 
+                    PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = "GMT", embeds = command}), { ['Content-Type'] = 'application/json' }) 
                 else 
                     TriggerClientEvent("SmallArms:Error", source, false)
                     vRPclient.notify(source, {"~r~Insufficient funds"})
-                    TriggerClientEvent("GBRP:PlaySound", source, 2)
+                    TriggerClientEvent("GMT:PlaySound", source, 2)
                             end
                         
                     end

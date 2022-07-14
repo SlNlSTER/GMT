@@ -43,7 +43,7 @@ Citizen.CreateThread(function()
 
 				SendNUIMessage({
 					showfuel = true,
-					fuel = exports['GBRP-Core']:GetFuel(PedCar)
+					fuel = exports['GMT-Core']:GetFuel(PedCar)
 				})
 			end
 		end

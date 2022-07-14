@@ -8,14 +8,14 @@ Citizen.CreateThread(function()
               DrawMarker(38, v, 0, 0, 0, 0, 0, 0, 1.0, 1.0, 1.0, 89, 255, 0, 150, false, true, 0, 0, 0, 0, 0)
           end
           if isInArea(v, 1.4) then 
-              TriggerEvent('GBRP:bmxSpawner')
+              TriggerEvent('GMT:bmxSpawner')
           end
       end
   end
 end)
 
-RegisterNetEvent('GBRP:bmxSpawner')
-AddEventHandler('GBRP:bmxSpawner', function()
+RegisterNetEvent('GMT:bmxSpawner')
+AddEventHandler('GMT:bmxSpawner', function()
     alert('~g~Press ~INPUT_VEH_HORN~ to spawn ~b~BMX')
     if IsControlJustPressed(0, 51) then
       if bmxCooldown == false then

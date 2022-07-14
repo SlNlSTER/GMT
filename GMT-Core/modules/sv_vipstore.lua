@@ -25,16 +25,16 @@ AddEventHandler('VIP:BuyWeapon', function(hash)
                     if vRP.tryPayment({user_id, v.price}) then
                         vRPclient.giveWeapons(source,{{[v.hash] = {ammo=250}}})
                         vRPclient.notify(source, {"~g~Paid £"..getMoneyStringFormatted(v.price)})
-                        TriggerClientEvent("GBRP:PlaySound", source, 1)
+                        TriggerClientEvent("GMT:PlaySound", source, 1)
                     else 
-                        TriggerClientEvent("GBRP:PlaySound", source, 2)
+                        TriggerClientEvent("GMT:PlaySound", source, 2)
                         vRPclient.notify(source, {"~r~Insufficient funds"})
                     end
                 end
             end
         else
             vRPclient.notify(source, {"~r~You do not have permission to purchase guns from here 🤦‍♂️"})
-            TriggerClientEvent("GBRP:PlaySound", source, 2)
+            TriggerClientEvent("GMT:PlaySound", source, 2)
         end
     end
 end)
@@ -53,9 +53,9 @@ AddEventHandler('VIP:BuyWLWeapon', function(hash)
                     if vRP.tryPayment({user_id, tonumber(price)}) then
                         vRPclient.giveWeapons(source,{{[hash] = {ammo=250}}})
                         vRPclient.notify(source, {"~g~Paid £"..getMoneyStringFormatted(v.price)})
-                        TriggerClientEvent("GBRP:PlaySound", source, 1)
+                        TriggerClientEvent("GMT:PlaySound", source, 1)
                     else 
-                        TriggerClientEvent("GBRP:PlaySound", source, 2)
+                        TriggerClientEvent("GMT:PlaySound", source, 2)
                         vRPclient.notify(source, {"~r~Insufficient funds"})
                     end
                 end
@@ -64,7 +64,7 @@ AddEventHandler('VIP:BuyWLWeapon', function(hash)
             end)
         else
             vRPclient.notify(source, {"~r~You do not have permission to purchase guns from here 🤦‍♂️"})
-            TriggerClientEvent("GBRP:PlaySound", source, 2)
+            TriggerClientEvent("GMT:PlaySound", source, 2)
         end
     end
 end)
@@ -78,10 +78,10 @@ AddEventHandler('VIP:BuyArmour', function()
             if currentArmour < 100 then
                 if vRP.tryPayment({user_id, VIP.maxArmourPrice}) then
                     vRPclient.setArmour(source,{100})
-                    TriggerClientEvent("GBRP:PlaySound", source, 1)
+                    TriggerClientEvent("GMT:PlaySound", source, 1)
                     vRPclient.notify(source, {"~g~Paid £"..tostring(getMoneyStringFormatted(VIP.maxArmourPrice))})
                 else 
-                    TriggerClientEvent("GBRP:PlaySound", source, 2)
+                    TriggerClientEvent("GMT:PlaySound", source, 2)
                     vRPclient.notify(source, {"~r~Insufficient funds"})
                 end
             else
@@ -89,7 +89,7 @@ AddEventHandler('VIP:BuyArmour', function()
             end
         else
             vRPclient.notify(source, {"~r~You do not have permission to purchase armour from here 🤦‍♂️"})
-            TriggerClientEvent("GBRP:PlaySound", source, 2)
+            TriggerClientEvent("GMT:PlaySound", source, 2)
         end
     end
 end)
@@ -107,10 +107,10 @@ AddEventHandler('VIP:ReplenishArmour', function()
             if newArmour ~= 0 then
                 if vRP.tryPayment({user_id, price}) then
                     vRPclient.setArmour(source,{100})
-                    TriggerClientEvent("GBRP:PlaySound", source, 1)
+                    TriggerClientEvent("GMT:PlaySound", source, 1)
                     vRPclient.notify(source, {"~g~Paid £"..tostring(getMoneyStringFormatted(price))})
                 else 
-                    TriggerClientEvent("GBRP:PlaySound", source, 2)
+                    TriggerClientEvent("GMT:PlaySound", source, 2)
                     vRPclient.notify(source, {"~r~Insufficient funds"})
                 end
             else
@@ -118,7 +118,7 @@ AddEventHandler('VIP:ReplenishArmour', function()
             end
         else
             vRPclient.notify(source, {"~r~You do not have permission to purchase armour from here 🤦‍♂️"})
-            TriggerClientEvent("GBRP:PlaySound", source, 2)
+            TriggerClientEvent("GMT:PlaySound", source, 2)
         end
     end
 end)
@@ -134,11 +134,11 @@ AddEventHandler("VIP:BuyWeaponAmmo", function(hash)
                 if vRP.tryPayment({user_id, v.price / 2}) then
                     vRPclient.giveWeaponAmmo(source,{v.hash, 250})
                     vRPclient.notify(source, {"~g~Paid £"..tostring(getMoneyStringFormatted(v.price/2))})
-                    TriggerClientEvent("GBRP:PlaySound", source, 1)
+                    TriggerClientEvent("GMT:PlaySound", source, 1)
                 else 
                     TriggerClientEvent("SmallArms:Error", source, false)
                     vRPclient.notify(source, {"~r~Insufficient funds"})
-                    TriggerClientEvent("GBRP:PlaySound", source, 2)
+                    TriggerClientEvent("GMT:PlaySound", source, 2)
                  end
             end
         end
@@ -158,11 +158,11 @@ AddEventHandler("VIP:BuyWeaponAmmo2", function(hash)
                 if vRP.tryPayment({user_id, tonumber(v.price / 2)}) then
                     vRPclient.giveWeaponAmmo(source,{v.gunhash, 250})
                     vRPclient.notify(source, {"~g~Paid £"..tostring(getMoneyStringFormatted(v.price/2))})
-                    TriggerClientEvent("GBRP:PlaySound", source, 1)
+                    TriggerClientEvent("GMT:PlaySound", source, 1)
                 else 
                     TriggerClientEvent("SmallArms:Error", source, false)
                     vRPclient.notify(source, {"~r~Insufficient funds"})
-                    TriggerClientEvent("GBRP:PlaySound", source, 2)
+                    TriggerClientEvent("GMT:PlaySound", source, 2)
                  end
             end
         end

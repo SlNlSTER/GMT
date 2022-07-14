@@ -106,7 +106,7 @@
 --         end
 --     end
 
---             TriggerClientEvent('GBRP:SendSecondaryInventoryData', source, currentLoot, vRP.computeItemsWeight({currentLoot}), 30)
+--             TriggerClientEvent('GMT:SendSecondaryInventoryData', source, currentLoot, vRP.computeItemsWeight({currentLoot}), 30)
 -- end) 
 
 -- Citizen.CreateThread(function()

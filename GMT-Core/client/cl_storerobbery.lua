@@ -1,7 +1,7 @@
 local robbing = false
 local bank = ""
 local secondsRemaining = 0
-TriggerEvent('GBRP:RobberyBlip', bank, false)
+TriggerEvent('GMT:RobberyBlip', bank, false)
 
 function bank_DisplayHelpText(str)
 	SetTextComponentFormat("STRING")
@@ -133,7 +133,7 @@ AddEventHandler('es_bank:currentlyrobbing', function(robb)
 	robbing = true
 	bank = robb
 	secondsRemaining = 180
-	--TriggerEvent('GBRP:RobberyBlip', bank, true)
+	--TriggerEvent('GMT:RobberyBlip', bank, true)
 end)
 
 
@@ -148,7 +148,7 @@ AddEventHandler('es_bank:toofarlocal', function(robb)
 	robbingName = ""
 	secondsRemaining = 0
 	incircle = false
-	--TriggerEvent('GBRP:RobberyBlip', bank, false)
+	--TriggerEvent('GMT:RobberyBlip', bank, false)
 end)
 
 RegisterNetEvent('es_bank:playerdiedlocal')
@@ -158,7 +158,7 @@ AddEventHandler('es_bank:playerdiedlocal', function(robb)
 	robbingName = ""
 	secondsRemaining = 0
 	incircle = false
-	--TriggerEvent('GBRP:RobberyBlip', bank, false)
+	--TriggerEvent('GMT:RobberyBlip', bank, false)
 end)
 
 
@@ -169,7 +169,7 @@ AddEventHandler('es_bank:robberycomplete', function()
 	bank = ""
 	secondsRemaining = 0
 	incircle = false
-	--TriggerEvent('GBRP:RobberyBlip', bank, false)
+	--TriggerEvent('GMT:RobberyBlip', bank, false)
 end)
 
 Citizen.CreateThread(function()

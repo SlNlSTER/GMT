@@ -77,8 +77,8 @@ local forbiddenNames = {
 MySQL.createCommand("vRP/update_numplate","UPDATE vrp_user_identities SET registration = @registration WHERE user_id = @user_id")
 MySQL.createCommand("vRP/update_numplate2","UPDATE vrp_user_vehicles SET vehicle_plate = @registration WHERE user_id = @user_id AND vehicle = @vehicle")
 
-RegisterNetEvent('GBRP:getCars')
-AddEventHandler('GBRP:getCars', function()
+RegisterNetEvent('GMT:getCars')
+AddEventHandler('GMT:getCars', function()
     local cars = {}
     local source = source
     local user_id = vRP.getUserId({source})
@@ -89,13 +89,13 @@ AddEventHandler('GBRP:getCars', function()
                     cars[v.vehicle] = {v.vehicle, v.vehicle_plate}
                 end
             end
-            TriggerClientEvent('GBRP:carsTable', source, cars)
+            TriggerClientEvent('GMT:carsTable', source, cars)
         end
     end)
 end)
 
-RegisterNetEvent("GBRP:ChangeNumberPlate")
-AddEventHandler("GBRP:ChangeNumberPlate", function(vehicle)
+RegisterNetEvent("GMT:ChangeNumberPlate")
+AddEventHandler("GMT:ChangeNumberPlate", function(vehicle)
     local user_id = vRP.getUserId({source})
 
 	vRP.prompt({source,"Plate Name:","",function(source, plateName)
@@ -110,12 +110,12 @@ AddEventHandler("GBRP:ChangeNumberPlate", function(vehicle)
 			vRPclient.notify(source,{"~g~Changed Number plate of "..vehicle.." to "..plateName})
 			MySQL.execute("vRP/update_numplate2", {user_id = user_id, registration = plateName, vehicle = vehicle})
 			MySQL.execute("vRP/update_numplate2", {user_id = user_id, registration = plateName})
-			TriggerClientEvent("GBRP:RecieveNumberPlate", source, plateName)
-			TriggerClientEvent("GBRP:PlaySound", source, 1)
-			TriggerEvent('GBRP:getCars')
+			TriggerClientEvent("GMT:RecieveNumberPlate", source, plateName)
+			TriggerClientEvent("GMT:PlaySound", source, 1)
+			TriggerEvent('GMT:getCars')
 		else
 			vRPclient.notify(source,{"~r~You don't have enough money!"})
-			TriggerClientEvent("GBRP:PlaySound", source, 2)
+			TriggerClientEvent("GMT:PlaySound", source, 2)
 		end
 	end})
 end)

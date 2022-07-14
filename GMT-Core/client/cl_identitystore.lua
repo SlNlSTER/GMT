@@ -1,10 +1,10 @@
 local cfg = module("GMT-Core", "cfg/cfg_identitystore")
 local inMenu = false
 
-RMenu.Add("GBRP:Identity", "main", RageUI.CreateMenu("Identity Shop", "~b~Identity Shop", 1350, 50))
+RMenu.Add("GMT:Identity", "main", RageUI.CreateMenu("Identity Shop", "~b~Identity Shop", 1350, 50))
 
-RageUI.CreateWhile(1.0, RMenu:Get("GBRP:Identity", "main"), nil, function()
-    RageUI.IsVisible(RMenu:Get("GBRP:Identity", "main"), true, false, true, function()
+RageUI.CreateWhile(1.0, RMenu:Get("GMT:Identity", "main"), nil, function()
+    RageUI.IsVisible(RMenu:Get("GMT:Identity", "main"), true, false, true, function()
 
         RageUI.Button("Change Identity", nil, {RightLabel = "£"..cfg.price}, true, function(Hovered, Active, Selected)
             if Selected then
@@ -35,7 +35,7 @@ RageUI.CreateWhile(1.0, RMenu:Get("GBRP:Identity", "main"), nil, function()
                                 if (GetOnscreenKeyboardResult()) then
                                     local age = GetOnscreenKeyboardResult()
                                     if tonumber(age) and tonumber(age) < 100 then 
-                                        TriggerServerEvent("GBRP:ChangeIdentity", firstName, secondName, tonumber(age))
+                                        TriggerServerEvent("GMT:ChangeIdentity", firstName, secondName, tonumber(age))
                                     else
                                         notify("~r~Invalid age!")
                                     end
@@ -76,14 +76,14 @@ Citizen.CreateThread(function()
         if isInArea(cfg.location, 1.0) and inMenu == false then
             alert('Press ~INPUT_VEH_HORN~ to Change your Identity.')
             if IsControlJustPressed(0, 51) then 
-            RageUI.Visible(RMenu:Get("GBRP:Identity", "main"), true)
+            RageUI.Visible(RMenu:Get("GMT:Identity", "main"), true)
             inMenu = true
             end
         end
 
         if isInArea(cfg.location, 1.0) == false and inMenu then
             inMenu = false
-            RageUI.Visible(RMenu:Get("GBRP:Identity", "main"), false)
+            RageUI.Visible(RMenu:Get("GMT:Identity", "main"), false)
         end
     end
 end)

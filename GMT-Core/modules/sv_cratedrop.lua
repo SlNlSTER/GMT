@@ -95,7 +95,7 @@ Citizen.CreateThread(function()
         local coords = Coords[num]
         if #GetPlayers() > 5 then
             TriggerClientEvent('crateDrop', -1, coords)
-            TriggerClientEvent('chatMessage', -1, "^0GBRP │ ^0", {255, 255, 255}, dropMsg, "alert")
+            TriggerClientEvent('chatMessage', -1, "^0GMT │ ^0", {255, 255, 255}, dropMsg, "alert")
             TriggerClientEvent("vrp:PlaySound", -1, "supplydrop")
         end
         used = false
@@ -110,7 +110,7 @@ RegisterCommand('cratedrop', function(source, args, RawCommand)
     local coords = Coords[num]
     if user_id == 1 or user_id == 2 or user_id == 3  or user_id == 10 then
         TriggerClientEvent('crateDrop', -1, coords)
-        TriggerClientEvent('chatMessage', -1, "^0GBRP │ ^0", {255, 255, 255}, dropMsg, "alert")
+        TriggerClientEvent('chatMessage', -1, "^0GMT │ ^0", {255, 255, 255}, dropMsg, "alert")
         TriggerClientEvent("vrp:PlaySound", -1, "supplydrop")
 
     used = false

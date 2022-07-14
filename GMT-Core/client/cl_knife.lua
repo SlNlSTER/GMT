@@ -9,9 +9,9 @@ local currentMeleeName1 = nil
 
 
 returnedMelee2 = {}
-RMenu.Add('KnifeStoreMenu', 'main', RageUI.CreateMenu("", "~r~GBRP Knife Store", 1300, 50, "banners", "knife"))
-RMenu.Add("KnifeStoreMenu", "sub", RageUI.CreateSubMenu(RMenu:Get("KnifeStoreMenu", "main"), "", "~r~GBRP Knife Store", 1300, 50, "banners", "knife"))
-RMenu.Add("KnifeStoreMenu", "whietlistedmelees", RageUI.CreateSubMenu(RMenu:Get("KnifeStoreMenu", "main"), "", "~r~GBRP Knife Store", 1300, 50, "banners", "knife"))
+RMenu.Add('KnifeStoreMenu', 'main', RageUI.CreateMenu("", "~r~GMT Knife Store", 1300, 50, "banners", "knife"))
+RMenu.Add("KnifeStoreMenu", "sub", RageUI.CreateSubMenu(RMenu:Get("KnifeStoreMenu", "main"), "", "~r~GMT Knife Store", 1300, 50, "banners", "knife"))
+RMenu.Add("KnifeStoreMenu", "whietlistedmelees", RageUI.CreateSubMenu(RMenu:Get("KnifeStoreMenu", "main"), "", "~r~GMT Knife Store", 1300, 50, "banners", "knife"))
 RageUI.CreateWhile(1.0, RMenu:Get('KnifeStoreMenu', 'main'), nil, function()
     RageUI.IsVisible(RMenu:Get('KnifeStoreMenu', 'main'), true, false, true, function()
         for i , p in pairs(knife.knives) do 
@@ -41,7 +41,7 @@ RageUI.CreateWhile(1.0, RMenu:Get('KnifeStoreMenu', 'main'), nil, function()
                 if HasPedGotWeapon(Ped, currentMeleeHash, false) then
                     notify("~r~You already have this weapon equipped.")
                 else
-                    TriggerServerEvent('GBRP:BuyKnife', currentMeleeHash)
+                    TriggerServerEvent('GMT:BuyKnife', currentMeleeHash)
                 end
             end
         end)
@@ -55,7 +55,7 @@ RageUI.CreateWhile(1.0, RMenu:Get('KnifeStoreMenu', 'main'), nil, function()
                 if HasPedGotWeapon(Ped, currentMeleeHash1, false) then
                     notify("~r~You already have this weapon equipped.")
                 else
-                    TriggerServerEvent('GBRP:BuyWLKnife', currentMeleeHash1)
+                    TriggerServerEvent('GMT:BuyWLKnife', currentMeleeHash1)
                 end
             end
         end)
@@ -72,8 +72,8 @@ AddEventHandler("SHANK:GUNSRETURNED", function(table)
     returnedMelee2 = table 
 end)
 
-RegisterNetEvent('GBRP:Error')
-AddEventHandler('GBRP:Error', function()
+RegisterNetEvent('GMT:Error')
+AddEventHandler('GMT:Error', function()
     RageUI.Visible(RMenu:Get("KnifeStoreMenu", "main"))
     alert('~r~Insufficent funds')
 end)

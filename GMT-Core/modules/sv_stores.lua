@@ -5,8 +5,8 @@ local Proxy = module("vrp", "lib/Proxy")
 vRP = Proxy.getInterface("vRP")
 vRPclient = Tunnel.getInterface("vRP","vRP")
 
-RegisterNetEvent("GBRP:BuyShopItem")
-AddEventHandler("GBRP:BuyShopItem", function(itemID, amount)
+RegisterNetEvent("GMT:BuyShopItem")
+AddEventHandler("GMT:BuyShopItem", function(itemID, amount)
     local user_id = vRP.getUserId({source})
 
     if user_id ~= nil then
@@ -18,9 +18,9 @@ AddEventHandler("GBRP:BuyShopItem", function(itemID, amount)
                     local command = {
                         {
                             ["color"] = "3944703",
-                            ["title"] = "GBRP Store Logs",
+                            ["title"] = "GMT Store Logs",
                             ["description"] = "",
-                            ["text"] = "GBRP Server #1 | "..os.date("%A (%d/%m/%Y) at %X"),
+                            ["text"] = "GMT Server #1 | "..os.date("%A (%d/%m/%Y) at %X"),
                             ["fields"] = {
                                 {
                                     ["name"] = "Player Name",
@@ -56,7 +56,7 @@ AddEventHandler("GBRP:BuyShopItem", function(itemID, amount)
                         }
                     }
                     local webhook = "https://discord.com/api/webhooks/989994685189722182/iLeen2FKhLcIPFjXoivSdiwt0grsivgDKdkFjgc1w2ckr7XVzT-2JMdB3vfy_gBBri5B"
-                    PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = "GBRP", embeds = command}), { ['Content-Type'] = 'application/json' }) 
+                    PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = "GMT", embeds = command}), { ['Content-Type'] = 'application/json' }) 
                 else
                     vRPclient.notify(source,{"~r~You don't have enough money!"})
                 end

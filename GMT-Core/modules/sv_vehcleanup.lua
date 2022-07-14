@@ -17,15 +17,15 @@ end)
 
 
 function VehCleanup()
-    TriggerClientEvent("GBRP:VehicleCleanup", -1)
+    TriggerClientEvent("GMT:VehicleCleanup", -1)
 end
 
 function entityCleanup()
-    TriggerClientEvent("GBRP:EntityCleanup", -1)
+    TriggerClientEvent("GMT:EntityCleanup", -1)
 end
 
-RegisterNetEvent('GBRP:CleanAllAuto')
-AddEventHandler('GBRP:CleanAllAuto', function()
+RegisterNetEvent('GMT:CleanAllAuto')
+AddEventHandler('GMT:CleanAllAuto', function()
         for i,v in pairs(GetAllVehicles()) do 
             DeleteEntity(v)
             print(v)
@@ -44,6 +44,6 @@ end)
 RegisterCommand('entity', function(source, args, RawCommand)
     local user_id = vRP.getUserId(source)
     if vRP.hasPermission(user_id, "admin.tickets") then
-    TriggerClientEvent('GBRP:EntityCleanUp', -1)
+    TriggerClientEvent('GMT:EntityCleanUp', -1)
     end
 end)

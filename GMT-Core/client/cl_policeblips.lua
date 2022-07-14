@@ -6,7 +6,7 @@ RegisterCommand("blips", function()
     Citizen.CreateThread(function()
       while blipon do
         if blipon then
-          TriggerServerEvent("GBRP:ENABLEBLIPS")
+          TriggerServerEvent("GMT:ENABLEBLIPS")
           Citizen.Wait(10000)
         end
       end
@@ -23,8 +23,8 @@ AddEventHandler("DeleteBlipsALL", function()
     blipon = false
 end)
 
-RegisterNetEvent("GBRP:BLIPS")
-AddEventHandler("GBRP:BLIPS", function(cop,nhs)
+RegisterNetEvent("GMT:BLIPS")
+AddEventHandler("GMT:BLIPS", function(cop,nhs)
   DeleteAllBlips()
   local LocalServerID = GetPlayerServerId(PlayerId())
   for PermID, Player in pairs(cop) do

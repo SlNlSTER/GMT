@@ -18,7 +18,7 @@ Citizen.CreateThread(function()
 				if time > 0 then
 					if kickWarning and time == math.ceil(secondsUntilKick / 4) then
 						TriggerEvent("chatMessage", "WARNING", {255, 0, 0}, "^1You'll be kicked in " .. time .. " seconds for being AFK!")
-						TriggerServerEvent("GBRP:pdMoneyFarming")
+						TriggerServerEvent("GMT:pdMoneyFarming")
 					end
 					time = time - 1
 				else

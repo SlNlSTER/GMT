@@ -189,8 +189,8 @@ function AddTextEntry(key, value)
 end
 
 Citizen.CreateThread(function()
-	AddTextEntry('FE_THDR_GTAO', 'GBRP - discord.io/gbrpfivem')
-	AddTextEntry("PM_PANE_CFX", "GBRP")
+	AddTextEntry('FE_THDR_GTAO', 'GMT - discord.io/gmtuk')
+	AddTextEntry("PM_PANE_CFX", "GMT")
 end)
 
 --------------------------------- British Plates --------------------------------

@@ -13,8 +13,8 @@ MySQL.createCommand("vRP/get_home_owner","SELECT user_id FROM vrp_user_homes WHE
 MySQL.createCommand("vRP/rm_address","DELETE FROM vrp_user_homes WHERE user_id = @user_id AND home = @home")
 MySQL.createCommand("vRP/set_address","REPLACE INTO vrp_user_homes(user_id,home,number) VALUES(@user_id,@home,@number)")
 
-RegisterNetEvent('GBRP:getHouses')
-AddEventHandler('GBRP:getHouses', function()
+RegisterNetEvent('GMT:getHouses')
+AddEventHandler('GMT:getHouses', function()
     local houses = {}
     local source = source
     local user_id = vRP.getUserId({source})
@@ -26,7 +26,7 @@ AddEventHandler('GBRP:getHouses', function()
                     table.insert(houses, v.home)
                 end
             end
-            TriggerClientEvent('GBRP:HousingTable', source, houses)
+            TriggerClientEvent('GMT:HousingTable', source, houses)
         end
     end)
 end)
@@ -110,9 +110,9 @@ AddEventHandler("JudHousing:Buy", function(house)
                                 local command = {
                                     {
                                         ["color"] = "3944703",
-                                        ["title"] = "GBRP Housing Logs",
+                                        ["title"] = "GMT Housing Logs",
                                         ["description"] = "",
-                                        ["text"] = "GBRP Server #1 | "..os.date("%A (%d/%m/%Y) at %X"),
+                                        ["text"] = "GMT Server #1 | "..os.date("%A (%d/%m/%Y) at %X"),
                                         ["fields"] = {
                                             {
                                                 ["name"] = "Player Name",
@@ -143,7 +143,7 @@ AddEventHandler("JudHousing:Buy", function(house)
                                     }
                                 }
                                 local webhook = "https://discord.com/api/webhooks/989910726145609788/9q7T_03RBolKfkv3aHIMPC3_kfBHuHt8fB8JFDj-mHJX-bbpweRndOl7YGsUN-G33V1_"
-                                PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = "GBRP", embeds = command}), { ['Content-Type'] = 'application/json' })
+                                PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = "GMT", embeds = command}), { ['Content-Type'] = 'application/json' })
                             else
                                 vRPclient.notify(player,{"~r~You do not have enough money to buy "..k}) --not enough money
                             end
@@ -246,9 +246,9 @@ AddEventHandler("JudHousing:Sell", function(house)
                                                     local command = {
                                                         {
                                                             ["color"] = "3944703",
-                                                            ["title"] = "GBRP Housing Logs",
+                                                            ["title"] = "GMT Housing Logs",
                                                             ["description"] = "",
-                                                            ["text"] = "GBRP Server #1 | "..os.date("%A (%d/%m/%Y) at %X"),
+                                                            ["text"] = "GMT Server #1 | "..os.date("%A (%d/%m/%Y) at %X"),
                                                             ["fields"] = {
                                                                 {
                                                                     ["name"] = "Player Name",
@@ -294,7 +294,7 @@ AddEventHandler("JudHousing:Sell", function(house)
                                                         }
                                                     }
                                                     local webhook = "https://discord.com/api/webhooks/989910726145609788/9q7T_03RBolKfkv3aHIMPC3_kfBHuHt8fB8JFDj-mHJX-bbpweRndOl7YGsUN-G33V1_"
-                                                    PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = "GBRP", embeds = command}), { ['Content-Type'] = 'application/json' })           
+                                                    PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = "GMT", embeds = command}), { ['Content-Type'] = 'application/json' })           
                                                 else
                                                     vRPclient.notify(player,{"~r~".. GetPlayerName(target).." doesn't have enough money!"}) --notify original owner
                                                     vRPclient.notify(target,{"~r~You don't have enough money!"}) --notify new owner
@@ -334,7 +334,7 @@ AddEventHandler("JudHousing:OpenChest", function(house)
 
     getUserByAddress(house, 1, function(huser_id)
         if huser_id == user_id then --check if homeowner is user
-            TriggerClientEvent("GBRP:OpenHomeStorage", player, true , house) --JamesUK inventory modified by me
+            TriggerClientEvent("GMT:OpenHomeStorage", player, true , house) --JamesUK inventory modified by me
         --print(house)
         else
             vRPclient.notify(player,{"~r~You do not own this house!"})

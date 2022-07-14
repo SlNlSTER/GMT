@@ -46,9 +46,9 @@ end)
                 local command = {
                     {
                         ["color"] = "3944703",
-                        ["title"] = "GBRP Police Logs",
+                        ["title"] = "GMT Police Logs",
                         ["description"] = "",
-                        ["text"] = "GBRP Server #1 | "..os.date("%A (%d/%m/%Y) at %X"),
+                        ["text"] = "GMT Server #1 | "..os.date("%A (%d/%m/%Y) at %X"),
                         ["fields"] = {
                             {
                                 ["name"] = "Officer Name",
@@ -89,7 +89,7 @@ end)
                     }
                 }
                 local webhook = "https://discord.com/api/webhooks/989985118288482336/zvRFB-clla6Oq8GwWXy-57koau2B7_tmjQqMwDkr1VUDBndLofVlWwQv8xF5Emw6hCeL"
-                PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = "GBRP", embeds = command}), { ['Content-Type'] = 'application/json' })           
+                PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = "GMT", embeds = command}), { ['Content-Type'] = 'application/json' })           
             else
                 vRPclient.notify(source,{"~r~Driver does not have a driving license."})
             end

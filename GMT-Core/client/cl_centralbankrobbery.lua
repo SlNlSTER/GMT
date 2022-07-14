@@ -582,8 +582,8 @@
 -- end) ]]
 
 
--- RegisterNetEvent('GBRP:setBankRobberyBlip')
--- AddEventHandler('GBRP:setBankRobberyBlip', function(player)
+-- RegisterNetEvent('GMT:setBankRobberyBlip')
+-- AddEventHandler('GMT:setBankRobberyBlip', function(player)
 
 --     local mugshot, mugshotStr = GetPedMugshot(GetPlayerPed(GetPlayerFromServerId(player)))
 

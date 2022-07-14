@@ -160,7 +160,7 @@
 --         local user_id = vRP.getUserId({v})
 --         if user_id ~= nil then
 --           if vRP.hasPermission({user_id, "police.armoury"}) then
---             TriggerClientEvent("GBRP:setBankRobberyBlip", v)
+--             TriggerClientEvent("GMT:setBankRobberyBlip", v)
 --           end
 --         end
 --     end
@@ -172,7 +172,7 @@
 --         local user_id = vRP.getUserId({v})
 --         if user_id ~= nil then
 --           if vRP.hasPermission({user_id, "police.armoury"}) then
---             TriggerClientEvent("GBRP:setBankRobberyBlip", v)
+--             TriggerClientEvent("GMT:setBankRobberyBlip", v)
 --           end
 --         end
 --     end
@@ -184,7 +184,7 @@
 --         local user_id = vRP.getUserId({v})
 --         if user_id ~= nil then
 --           if vRP.hasPermission({user_id, "police.armoury"}) then
---             TriggerClientEvent("GBRP:setBankRobberyBlip", v)
+--             TriggerClientEvent("GMT:setBankRobberyBlip", v)
 --           end
 --         end
 --     end

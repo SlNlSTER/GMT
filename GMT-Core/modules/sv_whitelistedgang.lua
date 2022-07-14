@@ -26,7 +26,7 @@ AddEventHandler('WHITELISTEDGANGS:BuyWeapon', function(hash)
                     if vRP.tryPayment({user_id, v.price}) then
                         vRPclient.giveWeapons(source,{{[v.gunhash] = {ammo=250}}})
                         vRPclient.notify(source, {"~g~Paid £"..getMoneyStringFormatted(v.price)})
-                        TriggerClientEvent("GBRP:PlaySound", source, 1)
+                        TriggerClientEvent("GMT:PlaySound", source, 1)
                     end
                 end
             end
@@ -44,7 +44,7 @@ AddEventHandler("WHITELISTEDGANGS:BuyWeaponAmmo", function(hash)
                 if vRP.tryPayment({user_id, v.price / 2}) then
                     vRPclient.giveWeaponAmmo(source,{v.gunhash, 250})
                     vRPclient.notify(source, {"~g~Paid £"..tostring(getMoneyStringFormatted(v.price/2))})
-                    TriggerClientEvent("GBRP:PlaySound", source, 1)
+                    TriggerClientEvent("GMT:PlaySound", source, 1)
                  end
             end
         end

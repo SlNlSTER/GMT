@@ -53,7 +53,7 @@ RageUI.CreateWhile(1.0, RMenu:Get('LargeArmsMenu', 'main'), nil, function()
                 hoveredArmour = true
             end
             if Selected then
-                TriggerServerEvent('GBRP:BuyArmour', 0, 50)
+                TriggerServerEvent('GMT:BuyArmour', 0, 50)
             end
         end)
      
@@ -68,7 +68,7 @@ RageUI.CreateWhile(1.0, RMenu:Get('LargeArmsMenu', 'main'), nil, function()
                 if HasPedGotWeapon(Ped, currentGunHash, false) then
                     notify("~r~You already have this weapon equipped.")
                 else
-                TriggerServerEvent("GBRP:BuyGun", currentGunHash)
+                TriggerServerEvent("GMT:BuyGun", currentGunHash)
                 end
             end
         end)

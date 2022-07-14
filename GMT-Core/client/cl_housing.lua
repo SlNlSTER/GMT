@@ -105,7 +105,7 @@ RageUI.CreateWhile(1.0, RMenu:Get("JudHousing", "main"), nil, function()
                         
                         SetTimeout(50, function()
                             SetPedArmour(PlayerPedId(), savedArmour)
-                            TriggerServerEvent('GBRP:changeHairStyle')
+                            TriggerServerEvent('GMT:changeHairStyle')
                         end)
                     end
                 end

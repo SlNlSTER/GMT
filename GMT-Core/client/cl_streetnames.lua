@@ -2,8 +2,8 @@ streetson = false
 local veh = 0;
 local hash1, hash2, heading;
 
-RegisterNetEvent("GBRP:StreetNames")
-AddEventHandler("GBRP:StreetNames", function(bool)
+RegisterNetEvent("GMT:StreetNames")
+AddEventHandler("GMT:StreetNames", function(bool)
     streetson = bool
 	if streetson then
         --ShowNotification("~y~Street Names Are Now ~g~Enabled")

@@ -1,5 +1,5 @@
 
--- Credit to jud#8976 for making this for GBRP.
+-- Credit to jud#8976 for making this for GMT.
 
 local cfg = module("GMT-Core", "cfg/cfg_licenses")
 local currentLicense = nil
@@ -7,29 +7,29 @@ local currentLicensePrice = nil
 local currentType = nil
 local inMenu = false
 
-RMenu.Add("GBRP:LicenseStore", "main", RageUI.CreateMenu("", "~b~License Store", 1350, 50,"banners","licenses"))
-RMenu.Add("GBRP:LicenseStore", "sub", RageUI.CreateSubMenu(RMenu:Get("GBRP:LicenseStore", "main"), "", "~b~License Store", 1350, 50))
-RMenu.Add("GBRP:LicenseStore", "confirm", RageUI.CreateSubMenu(RMenu:Get("GBRP:LicenseStore", "sub"), "", "~b~Confirm License Purchase", 1350, 50))
+RMenu.Add("GMT:LicenseStore", "main", RageUI.CreateMenu("", "~b~License Store", 1350, 50,"banners","licenses"))
+RMenu.Add("GMT:LicenseStore", "sub", RageUI.CreateSubMenu(RMenu:Get("GMT:LicenseStore", "main"), "", "~b~License Store", 1350, 50))
+RMenu.Add("GMT:LicenseStore", "confirm", RageUI.CreateSubMenu(RMenu:Get("GMT:LicenseStore", "sub"), "", "~b~Confirm License Purchase", 1350, 50))
 
-RageUI.CreateWhile(1.0, RMenu:Get("GBRP:LicenseStore", "main"), nil, function()
-    RageUI.IsVisible(RMenu:Get("GBRP:LicenseStore", "main"), true, false, true, function()
+RageUI.CreateWhile(1.0, RMenu:Get("GMT:LicenseStore", "main"), nil, function()
+    RageUI.IsVisible(RMenu:Get("GMT:LicenseStore", "main"), true, false, true, function()
 
         RageUI.Button("~g~Grinding Licenses", nil, {RightLabel = ">>>"}, true, function(Hovered, Active, Selected)
             if Selected then
                 currentType = "grinding"
             end
-        end, RMenu:Get("GBRP:LicenseStore", "sub", true))
+        end, RMenu:Get("GMT:LicenseStore", "sub", true))
 
         RageUI.Button("~r~Illegal Licenses", nil, {RightLabel = ">>>"}, true, function(Hovered, Active, Selected)
             if Selected then
                 currentType = "other"
             end
-        end, RMenu:Get("GBRP:LicenseStore", "sub", true))
+        end, RMenu:Get("GMT:LicenseStore", "sub", true))
 
     end, function() 
     end)
 
-    RageUI.IsVisible(RMenu:Get("GBRP:LicenseStore", "sub"), true, false, true, function()
+    RageUI.IsVisible(RMenu:Get("GMT:LicenseStore", "sub"), true, false, true, function()
 
         for k, v in pairs(cfg.licenses) do
             if v.type == currentType then
@@ -37,28 +37,28 @@ RageUI.CreateWhile(1.0, RMenu:Get("GBRP:LicenseStore", "main"), nil, function()
                     if Selected then
                         currentLicense = v.name
                         currentLicensePrice = v.price
-                        RMenu:Get("GBRP:LicenseStore", "confirm"):SetSubtitle("~b~Are you sure you want to buy "..v.name.."?")
+                        RMenu:Get("GMT:LicenseStore", "confirm"):SetSubtitle("~b~Are you sure you want to buy "..v.name.."?")
                     end
-                end, RMenu:Get("GBRP:LicenseStore", "confirm", true))
+                end, RMenu:Get("GMT:LicenseStore", "confirm", true))
             end
         end
 
     end, function() 
     end)
 
-    RageUI.IsVisible(RMenu:Get("GBRP:LicenseStore", "confirm"), true, false, true, function()
+    RageUI.IsVisible(RMenu:Get("GMT:LicenseStore", "confirm"), true, false, true, function()
 
         RageUI.Separator("You are buying "..currentLicense.." for ~g~£"..getMoneyStringFormatted(currentLicensePrice))
         RageUI.Separator("")
 
         RageUI.Button("~g~Confirm Purchase", nil, {RightLabel = "~g~£"..getMoneyStringFormatted(currentLicensePrice)}, true, function(Hovered, Active, Selected)
             if Selected then
-                TriggerServerEvent("GBRP:BuyLicense", currentLicense)
+                TriggerServerEvent("GMT:BuyLicense", currentLicense)
             end
-        end, RMenu:Get("GBRP:LicenseStore", "main", true))
+        end, RMenu:Get("GMT:LicenseStore", "main", true))
 
         RageUI.Button("~r~Cancel", nil, {}, true, function(Hovered, Active, Selected)
-        end, RMenu:Get("GBRP:LicenseStore", "main", true))
+        end, RMenu:Get("GMT:LicenseStore", "main", true))
 
     end, function() 
     end)
@@ -87,7 +87,7 @@ Citizen.CreateThread(function()
             alert('Press ~INPUT_VEH_HORN~ to open the License Store!')
             if IsControlJustPressed(0, 51) then 
                 inMenu = true
-                RageUI.Visible(RMenu:Get("GBRP:LicenseStore", "main"), true)
+                RageUI.Visible(RMenu:Get("GMT:LicenseStore", "main"), true)
             end
         end
 

@@ -10,8 +10,8 @@ AddEventHandler("kickForBeingAnAFKDouchebag", function()
 	DropPlayer(source, "You were AFK for too long☠️")
 end)
 
-RegisterServerEvent("GBRP:pdMoneyFarming")
-AddEventHandler("GBRP:pdMoneyFarming", function()
+RegisterServerEvent("GMT:pdMoneyFarming")
+AddEventHandler("GMT:pdMoneyFarming", function()
 	local source = source
 	local user_id = vRP.getUserId({source})
 	if vRP.hasPermission({user_id, 'admin.tickets'}) then return end
@@ -20,9 +20,9 @@ AddEventHandler("GBRP:pdMoneyFarming", function()
             local command = {
                 {
                     ["color"] = "16448403",
-                    ["title"] = "GBRP Anti-AFK Logs",
+                    ["title"] = "GMT Anti-AFK Logs",
                     ["description"] = "",
-                    ["text"] = "GBRP Server #1 | "..os.date("%A (%d/%m/%Y) at %X"),
+                    ["text"] = "GMT Server #1 | "..os.date("%A (%d/%m/%Y) at %X"),
                     ["fields"] = {
                         {
                             ["name"] = "Player Name",
@@ -48,7 +48,7 @@ AddEventHandler("GBRP:pdMoneyFarming", function()
                 }
             }
             local webhook = "https://discord.com/api/webhooks/984589792538943499/vQm8_5N7w8w6Kt3O65-LRRT2TUaKIq6y9EwnaNJ_SVYd2lXO6viOnOaD0LVUELWoRXp7"
-            PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = "GBRP", embeds = command}), { ['Content-Type'] = 'application/json' })
+            PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = "GMT", embeds = command}), { ['Content-Type'] = 'application/json' })
 		end
 	end)
 end)

@@ -12,8 +12,8 @@ local cuffStates = {}
 MetPD = false
 onduty = MetPD
 
-RegisterNetEvent("GBRP:PoliceClockedOn")
-AddEventHandler("GBRP:PoliceClockedOn", function(MetPD)
+RegisterNetEvent("GMT:PoliceClockedOn")
+AddEventHandler("GMT:PoliceClockedOn", function(MetPD)
     onduty = MetPD
 end)
 
@@ -106,33 +106,33 @@ newSubMenus = {
     ['vehmenu:openboot'] = {
         title = "Open Boot",
         icon = "#vehicle-options-vehicle",
-        functionName = "GBRPInventory:OpenBoot"
+        functionName = "GMTInventory:OpenBoot"
     }, 
     -- ['vehmenu:lockcar'] = {
     --     title = "Lock Car",
     --     icon = "#impound-vehicle",
-    --     functionName = "GBRPVeh:lockcar"
+    --     functionName = "GMTVeh:lockcar"
     -- },
     -- ['vehmenu:repaircar'] = {
     --     title = "Repair Vehicle",
     --     icon = "#general-check-vehicle",
-    --     functionName = "GBRP:ComingSoon"
+    --     functionName = "GMT:ComingSoon"
     -- }, 
     ['vehmenu:lockpick'] = {
         title = "Lockpick Vehicle",
         icon = "#general-keys-give",
-        functionName = "GBRP:LockPick2"
+        functionName = "GMT:LockPick2"
     },
     ['vehmenu:cleancar'] = {
         title = "Clean Your Vehicle",
         icon = "#general-keys-give",
-        functionName = "GBRP:CleanCar"
+        functionName = "GMT:CleanCar"
     },
 
     ['police:cpr'] = {
         title = "CPR",
         icon = "#general-check-over-target",
-        functionName = 'GBRP:reviveRadial'
+        functionName = 'GMT:reviveRadial'
     },
     
 
@@ -147,12 +147,12 @@ newSubMenus = {
     ['vehmenupd:clampveh'] = {
         title = "Clamp Vehicle",
         icon = "#car-side",
-        functionName = "GBRP:ClampVehicle"
+        functionName = "GMT:ClampVehicle"
     },  
     ['vehmenupd:unclampveh'] = {
         title = "Unclamp Vehicle",
         icon = "#car-side",
-        functionName = "GBRP:UnClampVehicles"
+        functionName = "GMT:UnClampVehicles"
     },  
     ['general:exitmenu'] = {
         title = "Exit Menu",
@@ -171,22 +171,22 @@ newSubMenus = {
     ['general:emotes'] = {
         title = "Store Weapons",
         icon = "#general-emotes",
-        functionName = "GBRP:Storeweapons"
+        functionName = "GMT:Storeweapons"
     },    
     ['general:askid'] = {
         title = "Ask For ID",
         icon = "#police-vehicle-plate",
-        functionName = "GBRP:AskID"
+        functionName = "GMT:AskID"
     },
     ['general:searchnearest'] = {
         title = "Search Player",
         icon = "#cuffs-check-inventory",
-        functionName = "GBRP:SearchPlr"
+        functionName = "GMT:SearchPlr"
     },
     ['general:cpr'] = {
         title = "CPR",
         icon = "",
-        functionName = "GBRP:reviveRadial"
+        functionName = "GMT:reviveRadial"
     },
     ['general:aparttakekey'] = {
         title = "Take Key",
@@ -196,7 +196,7 @@ newSubMenus = {
     ['general:givemoney'] = {
         title = "Give Money",
         icon = "#animation-money",
-        functionName = "GBRP:GiveMoney"
+        functionName = "GMT:GiveMoney"
     },
 --[[     ['general:checkoverself'] = {
         title = "Examine Self",
@@ -216,12 +216,12 @@ newSubMenus = {
     ['general:putinvehicle'] = {
         title = "Seat Vehicle",
         icon = "#general-put-in-veh",
-        functionName = "GBRP:PutPlrInVeh"
+        functionName = "GMT:PutPlrInVeh"
     },
     ['general:unseatnearest'] = {
         title = "Unseat Nearest",
         icon = "#general-unseat-nearest",
-        functionName = "GBRP:TakeOutOfVehicle"
+        functionName = "GMT:TakeOutOfVehicle"
     },    
     ['general:flipvehicle'] = {
         title = "Flip Vehicle",
@@ -412,35 +412,35 @@ newSubMenus = {
     ['cuffs:cuff'] = {
         title = "Cuff",
         icon = "#cuffs-cuff",
-        functionName = "GBRP:policeCuff"
+        functionName = "GMT:policeCuff"
     }, 
 
 
     ['police:jail'] = {
         title = "Jail Near",
         icon = "#cuffs-cuff",
-        functionName = 'GBRP:JailPlayer'
+        functionName = 'GMT:JailPlayer'
     }, 
     ['police:unjail'] = {
         title = "Unjail Player",
         icon = "#cuffs-uncuff",
-        functionName = "GBRP:UnJailPlayer"
+        functionName = "GMT:UnJailPlayer"
     }, 
 
     ['police:fine'] = {
         title = "Fine Nearest",
         icon = "#animation-money",
-        functionName = 'GBRP:Fine'
+        functionName = 'GMT:Fine'
     }, 
     ['police:seize'] = {
         title = "Seize Weapons",
         icon = "#police-action-remove-weapons",
-        functionName = 'GBRP:SeizeWeapons2'
+        functionName = 'GMT:SeizeWeapons2'
     }, 
 --[[     ['police:seizeitems'] = {
         title = "Seize Items",
         icon = "#police-action-remove-weapons",
-        functionName = 'GBRP:SeizeWeapons'
+        functionName = 'GMT:SeizeWeapons'
     },  ]]
     ['cuffs:softcuff'] = {
         title = "Soft Cuff",
@@ -460,22 +460,22 @@ newSubMenus = {
     ['cuffs:checkinventory'] = {
         title = "Search Person",
         icon = "#cuffs-check-inventory",
-        functionName = "GBRP:SearchPlr"
+        functionName = "GMT:SearchPlr"
     },
     ['police:escort'] = {
         title = "Drag Player",
         icon = "#general-escort",
-        functionName = 'GBRP:Drag'
+        functionName = 'GMT:Drag'
     },
     ['police:putinvehicle'] = {
         title = "Put In Vehicle",
         icon = "#general-put-in-veh",
-        functionName = "GBRP:PutPlrInVeh"
+        functionName = "GMT:PutPlrInVeh"
     },
     ['police:unseatnearest'] = {
         title = "Unseat Player",
         icon = "#general-unseat-nearest",
-        functionName = "GBRP:TakeOutOfVehicle"
+        functionName = "GMT:TakeOutOfVehicle"
     },
     ['police:cuff'] = {
         title = "Cuff",
@@ -485,7 +485,7 @@ newSubMenus = {
     ['police:getid'] = {
         title = "Get ID",
         icon = "#police-vehicle-plate",
-        functionName = "GBRP:AskID"
+        functionName = "GMT:AskID"
     },
 }
 

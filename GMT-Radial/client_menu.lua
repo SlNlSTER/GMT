@@ -19,8 +19,8 @@ local keybindControls = {
 local MAX_MENU_ITEMS = 7
 
 Citizen.CreateThread(function()
-    TriggerServerEvent("GBRP:PoliceCheckRadial")
-    TriggerServerEvent("GBRP:NHSCheckRadial")
+    TriggerServerEvent("GMT:PoliceCheckRadial")
+    TriggerServerEvent("GMT:NHSCheckRadial")
 end)
 
 function playerIsAlive()
@@ -29,7 +29,7 @@ end
 
 local Display = false;
 function Crosshair(enable)
-    TriggerEvent("GBRP:PutCrossHairOnScreen", enable)
+    TriggerEvent("GMT:PutCrossHairOnScreen", enable)
     Display = enable;
 end
 
@@ -56,8 +56,8 @@ CreateThread(function()
                 if EntityType == 1 and Entity ~= playerPed and IsPedAPlayer(Entity) then
                     Crosshair(true)
                     if IsDisabledControlPressed(0, keybindControls[keyBind]) and GetLastInputMethod(2) and not showMenu then
-                        TriggerServerEvent("GBRP:PoliceCheckRadial")
-                        TriggerServerEvent("GBRP:NHSCheckRadial")
+                        TriggerServerEvent("GMT:PoliceCheckRadial")
+                        TriggerServerEvent("GMT:NHSCheckRadial")
                         showMenu = true
                         local enabledMenus = {}
                         for _, menuConfig in ipairs(rootMenuConfig) do
@@ -130,8 +130,8 @@ CreateThread(function()
                     if EntityType == 2 and Entity ~= playerPed then
                         Crosshair(true)
                         if IsDisabledControlPressed(0, keybindControls[keyBind]) and GetLastInputMethod(2) and not showMenu then
-                            TriggerServerEvent("GBRP:PoliceCheckRadial")
-                            TriggerServerEvent("GBRP:NHSCheckRadial")
+                            TriggerServerEvent("GMT:PoliceCheckRadial")
+                            TriggerServerEvent("GMT:NHSCheckRadial")
                             showMenu = true
                             local enabledCarMenus = {}
                             for _, menuConfig in ipairs(rootCarMenuConfig) do
@@ -318,8 +318,8 @@ AddEventHandler("police:impound",function()
     end 
 end)
 
-RegisterNetEvent("GBRP:CleanCar")
-AddEventHandler("GBRP:CleanCar",function()
+RegisterNetEvent("GMT:CleanCar")
+AddEventHandler("GMT:CleanCar",function()
     if GetEntityHealth(GetPlayerPed(-1)) >= 103 and not IsEntityDead(GetPlayerPed(-1)) then 
         showMenu = false
         SendNUIMessage({

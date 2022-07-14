@@ -11,8 +11,8 @@ local InventoryCoolDown = {}
 local houseName = ""
 
 
-RegisterNetEvent('GBRP:FetchPersonalInventory')
-AddEventHandler('GBRP:FetchPersonalInventory', function()
+RegisterNetEvent('GMT:FetchPersonalInventory')
+AddEventHandler('GMT:FetchPersonalInventory', function()
     local source = source
     if not InventorySpamTrack[source] then
         InventorySpamTrack[source] = true;
@@ -24,7 +24,7 @@ AddEventHandler('GBRP:FetchPersonalInventory', function()
             for i,v in pairs(data.inventory) do
                 FormattedInventoryData[i] = {amount = v.amount, ItemName = vRP.getItemName({i}), Weight = vRP.getItemWeight({i})}
             end
-            TriggerClientEvent('GBRP:FetchPersonalInventory', source, FormattedInventoryData, vRP.computeItemsWeight({data.inventory}), vRP.getInventoryMaxWeight({UserId}))
+            TriggerClientEvent('GMT:FetchPersonalInventory', source, FormattedInventoryData, vRP.computeItemsWeight({data.inventory}), vRP.getInventoryMaxWeight({UserId}))
             InventorySpamTrack[source] = false;
         else 
             -- print('[^7JamesUKInventory]^1: An error has occured while trying to fetch inventory data from: ' .. UserId .. ' This may be a saving / loading data error you will need to investigate this.')
@@ -33,7 +33,7 @@ AddEventHandler('GBRP:FetchPersonalInventory', function()
 end)
 
 
-AddEventHandler('GBRP:RefreshInventory', function(source)
+AddEventHandler('GMT:RefreshInventory', function(source)
     local UserId = vRP.getUserId({source}) 
     local data = vRP.getUserDataTable({UserId})
     if data and data.inventory then
@@ -41,14 +41,14 @@ AddEventHandler('GBRP:RefreshInventory', function(source)
         for i,v in pairs(data.inventory) do
             FormattedInventoryData[i] = {amount = v.amount, ItemName = vRP.getItemName({i}), Weight = vRP.getItemWeight({i})}
         end
-        TriggerClientEvent('GBRP:FetchPersonalInventory', source, FormattedInventoryData, vRP.computeItemsWeight({data.inventory}), vRP.getInventoryMaxWeight({UserId}))
+        TriggerClientEvent('GMT:FetchPersonalInventory', source, FormattedInventoryData, vRP.computeItemsWeight({data.inventory}), vRP.getInventoryMaxWeight({UserId}))
     else 
         -- print('[^7JamesUKInventory]^1: An error has occured while trying to fetch inventory data from: ' .. UserId .. ' This may be a saving / loading data error you will need to investigate this.')
     end
 end)
 
-RegisterNetEvent('GBRP:GiveItem')
-AddEventHandler('GBRP:GiveItem', function(itemId, itemLoc)
+RegisterNetEvent('GMT:GiveItem')
+AddEventHandler('GMT:GiveItem', function(itemId, itemLoc)
     local source = source
     if not itemId then  vRPclient.notify(source, {'~r~You need to select an item, first!'}) return end
     if itemLoc == "Plr" then
@@ -58,8 +58,8 @@ AddEventHandler('GBRP:GiveItem', function(itemId, itemLoc)
     end
 end)
 
-RegisterNetEvent('GBRP:TrashItem')
-AddEventHandler('GBRP:TrashItem', function(itemId, itemLoc)
+RegisterNetEvent('GMT:TrashItem')
+AddEventHandler('GMT:TrashItem', function(itemId, itemLoc)
     local source = source
     if not itemId then  vRPclient.notify(source, {'~r~You need to select an item, first!'}) return end
     if itemLoc == "Plr" then
@@ -76,8 +76,8 @@ AddEventHandler("ORP:flashLights", function(nearestVeh)
 
 end) 
 
-RegisterNetEvent('GBRP:FetchTrunkInventory')
-AddEventHandler('GBRP:FetchTrunkInventory', function(spawnCode)
+RegisterNetEvent('GMT:FetchTrunkInventory')
+AddEventHandler('GMT:FetchTrunkInventory', function(spawnCode)
     local source = source
     local user_id = vRP.getUserId({source})
     if InventoryCoolDown[source] then vRPclient.notify(source, {'~r~Please relog to fix your issue.'}) return end
@@ -90,12 +90,12 @@ AddEventHandler('GBRP:FetchTrunkInventory', function(spawnCode)
             FormattedInventoryData[i] = {amount = v.amount, ItemName = vRP.getItemName({i}), Weight = vRP.getItemWeight({i})}
         end
         local maxVehKg = Inventory.vehicle_chest_weights[spawnCode] or Inventory.default_vehicle_chest_weight
-        TriggerClientEvent('GBRP:SendSecondaryInventoryData', source, FormattedInventoryData, vRP.computeItemsWeight({cdata}), maxVehKg)
+        TriggerClientEvent('GMT:SendSecondaryInventoryData', source, FormattedInventoryData, vRP.computeItemsWeight({cdata}), maxVehKg)
     end})
 end)
 
-RegisterNetEvent('GBRP:FetchHouseInventory')
-AddEventHandler('GBRP:FetchHouseInventory', function(nameHouse)
+RegisterNetEvent('GMT:FetchHouseInventory')
+AddEventHandler('GMT:FetchHouseInventory', function(nameHouse)
     local source = source
     houseName = nameHouse
     local user_id = vRP.getUserId({source})
@@ -110,23 +110,23 @@ AddEventHandler('GBRP:FetchHouseInventory', function(nameHouse)
         end
         local maxVehKg = Housing.chestsize[houseName] or 500
       
-        TriggerClientEvent('GBRP:SendSecondaryInventoryData', source, FormattedInventoryData, vRP.computeItemsWeight({cdata}), maxVehKg)
+        TriggerClientEvent('GMT:SendSecondaryInventoryData', source, FormattedInventoryData, vRP.computeItemsWeight({cdata}), maxVehKg)
     
     end})
 end)
 
 
 
-RegisterNetEvent('GBRP:LockPick')
-AddEventHandler('GBRP:LockPick', function()
+RegisterNetEvent('GMT:LockPick')
+AddEventHandler('GMT:LockPick', function()
     local user_id = vRP.getUserId({source})
     if vRP.tryGetInventoryItem({user_id, "lockpick", 1, true}) then
-        TriggerClientEvent('GBRP:whatIsThis', source)
+        TriggerClientEvent('GMT:whatIsThis', source)
     end  
 end)
 
-RegisterNetEvent('GBRP:UseItem')
-AddEventHandler('GBRP:UseItem', function(itemId, itemLoc)
+RegisterNetEvent('GMT:UseItem')
+AddEventHandler('GMT:UseItem', function(itemId, itemLoc)
     local source = source
     if not itemId then    vRPclient.notify(source, {'~r~You need to select an item, first!'}) return end
     if itemLoc == "Plr" then
@@ -137,8 +137,8 @@ AddEventHandler('GBRP:UseItem', function(itemId, itemLoc)
 end)
 
 
-RegisterNetEvent('GBRP:MoveItem')
-AddEventHandler('GBRP:MoveItem', function(inventoryType, itemId, inventoryInfo, Lootbag)
+RegisterNetEvent('GMT:MoveItem')
+AddEventHandler('GMT:MoveItem', function(inventoryType, itemId, inventoryInfo, Lootbag)
     local source = source
     local UserId = vRP.getUserId({source}) 
     local data = vRP.getUserDataTable({UserId})
@@ -168,8 +168,8 @@ AddEventHandler('GBRP:MoveItem', function(inventoryType, itemId, inventoryInfo, 
                                 FormattedInventoryData[i] = {amount = v.amount, ItemName = vRP.getItemName({i}), Weight = vRP.getItemWeight({i})}
                             end
                             local maxVehKg = Inventory.vehicle_chest_weights[inventoryInfo] or Inventory.default_vehicle_chest_weight
-                            TriggerClientEvent('GBRP:SendSecondaryInventoryData', source, FormattedInventoryData, vRP.computeItemsWeight({cdata}), maxVehKg)
-                            TriggerEvent('GBRP:RefreshInventory', source)
+                            TriggerClientEvent('GMT:SendSecondaryInventoryData', source, FormattedInventoryData, vRP.computeItemsWeight({cdata}), maxVehKg)
+                            TriggerEvent('GMT:RefreshInventory', source)
                             --InventoryCoolDown[source] = false;
                             vRP.setSData({carformat, json.encode(cdata)})
                         else 
@@ -199,8 +199,8 @@ AddEventHandler('GBRP:MoveItem', function(inventoryType, itemId, inventoryInfo, 
                             FormattedInventoryData[i] = {amount = v.amount, ItemName = vRP.getItemName({i}), Weight = vRP.getItemWeight({i})}
                         end
                         local maxVehKg = 200
-                        TriggerClientEvent('GBRP:SendSecondaryInventoryData', source, FormattedInventoryData, vRP.computeItemsWeight({LootBagEntities[inventoryInfo].Items}), maxVehKg)                
-                        TriggerEvent('GBRP:RefreshInventory', source)
+                        TriggerClientEvent('GMT:SendSecondaryInventoryData', source, FormattedInventoryData, vRP.computeItemsWeight({LootBagEntities[inventoryInfo].Items}), maxVehKg)                
+                        TriggerEvent('GMT:RefreshInventory', source)
                     else 
                         vRPclient.notify(source, {'~r~You do not have enough inventory space.'})
                     end
@@ -230,8 +230,8 @@ AddEventHandler('GBRP:MoveItem', function(inventoryType, itemId, inventoryInfo, 
                             end
                             local maxVehKg = Housing.chestsize[houseName] or 500
                             --local maxVehKg = 500
-                            TriggerClientEvent('GBRP:SendSecondaryInventoryData', source, FormattedInventoryData, vRP.computeItemsWeight({cdata}), maxVehKg)
-                            TriggerEvent('GBRP:RefreshInventory', source)
+                            TriggerClientEvent('GMT:SendSecondaryInventoryData', source, FormattedInventoryData, vRP.computeItemsWeight({cdata}), maxVehKg)
+                            TriggerEvent('GMT:RefreshInventory', source)
                             vRP.setSData({homeformat, json.encode(cdata)})
                         else 
                             vRPclient.notify(source, {'~r~You do not have enough inventory space.'})
@@ -266,8 +266,8 @@ AddEventHandler('GBRP:MoveItem', function(inventoryType, itemId, inventoryInfo, 
                                         FormattedInventoryData[i] = {amount = v.amount, ItemName = vRP.getItemName({i}), Weight = vRP.getItemWeight({i})}
                                     end
                                     local maxVehKg = Housing.chestsize[houseName] or 500
-                                    TriggerClientEvent('GBRP:SendSecondaryInventoryData', source, FormattedInventoryData, vRP.computeItemsWeight({cdata}), maxVehKg)
-                                    TriggerEvent('GBRP:RefreshInventory', source)
+                                    TriggerClientEvent('GMT:SendSecondaryInventoryData', source, FormattedInventoryData, vRP.computeItemsWeight({cdata}), maxVehKg)
+                                    TriggerEvent('GMT:RefreshInventory', source)
                                     vRP.setSData({"chest:u" .. UserId .. "home" ..houseName, json.encode(cdata)})
                                 else 
                                     vRPclient.notify(source, {'~r~You do not have enough inventory space.'})
@@ -297,8 +297,8 @@ AddEventHandler('GBRP:MoveItem', function(inventoryType, itemId, inventoryInfo, 
                                         FormattedInventoryData[i] = {amount = v.amount, ItemName = vRP.getItemName({i}), Weight = vRP.getItemWeight({i})}
                                     end
                                     local maxVehKg = Inventory.vehicle_chest_weights[inventoryInfo] or Inventory.default_vehicle_chest_weight
-                                    TriggerClientEvent('GBRP:SendSecondaryInventoryData', source, FormattedInventoryData, vRP.computeItemsWeight({cdata}), maxVehKg)
-                                    TriggerEvent('GBRP:RefreshInventory', source)
+                                    TriggerClientEvent('GMT:SendSecondaryInventoryData', source, FormattedInventoryData, vRP.computeItemsWeight({cdata}), maxVehKg)
+                                    TriggerEvent('GMT:RefreshInventory', source)
                                     --InventoryCoolDown[source] = nil;
                                     vRP.setSData({carformat, json.encode(cdata)})
                                 else 
@@ -325,8 +325,8 @@ end)
 
 
 
-RegisterNetEvent('GBRP:MoveItemX')
-AddEventHandler('GBRP:MoveItemX', function(inventoryType, itemId, inventoryInfo, Lootbag)
+RegisterNetEvent('GMT:MoveItemX')
+AddEventHandler('GMT:MoveItemX', function(inventoryType, itemId, inventoryInfo, Lootbag)
     local source = source
     local UserId = vRP.getUserId({source}) 
     local data = vRP.getUserDataTable({UserId})
@@ -336,10 +336,10 @@ AddEventHandler('GBRP:MoveItemX', function(inventoryType, itemId, inventoryInfo,
         if inventoryInfo == nil then return end
         if inventoryType == "CarBoot" then
             --InventoryCoolDown[source] = true;
-            TriggerClientEvent('GBRP:ToggleNUIFocus', source, false)
+            TriggerClientEvent('GMT:ToggleNUIFocus', source, false)
             vRP.prompt({source, 'How many ' .. vRP.getItemName({itemId}) .. 's. Do you want to move?', "", function(player, Quantity)
                 Quantity = parseInt(Quantity)
-                TriggerClientEvent('GBRP:ToggleNUIFocus', source, true)
+                TriggerClientEvent('GMT:ToggleNUIFocus', source, true)
                 if Quantity >= 1 then
                     local carformat = "chest:u1veh_" .. inventoryInfo .. '|' .. UserId
                     vRP.getSData({carformat, function(cdata)
@@ -359,8 +359,8 @@ AddEventHandler('GBRP:MoveItemX', function(inventoryType, itemId, inventoryInfo,
                                     FormattedInventoryData[i] = {amount = v.amount, ItemName = vRP.getItemName({i}), Weight = vRP.getItemWeight({i})}
                                 end
                                 local maxVehKg = Inventory.vehicle_chest_weights[inventoryInfo] or Inventory.default_vehicle_chest_weight
-                                TriggerClientEvent('GBRP:SendSecondaryInventoryData', source, FormattedInventoryData, vRP.computeItemsWeight({cdata}), maxVehKg)
-                                TriggerEvent('GBRP:RefreshInventory', source)
+                                TriggerClientEvent('GMT:SendSecondaryInventoryData', source, FormattedInventoryData, vRP.computeItemsWeight({cdata}), maxVehKg)
+                                TriggerEvent('GMT:RefreshInventory', source)
                                 --InventoryCoolDown[source] = nil;
                                 vRP.setSData({carformat, json.encode(cdata)})
                             else 
@@ -380,10 +380,10 @@ AddEventHandler('GBRP:MoveItemX', function(inventoryType, itemId, inventoryInfo,
         elseif inventoryType == "LootBag" then 
             if LootBagEntities[inventoryInfo] ~= nil then  
                 if LootBagEntities[inventoryInfo].Items[itemId] then 
-                    TriggerClientEvent('GBRP:ToggleNUIFocus', source, false)
+                    TriggerClientEvent('GMT:ToggleNUIFocus', source, false)
                     vRP.prompt({source, 'How many ' .. vRP.getItemName({itemId}) .. 's. Do you want to move?', "", function(player, Quantity)
                         Quantity = parseInt(Quantity)
-                        TriggerClientEvent('GBRP:ToggleNUIFocus', source, true)
+                        TriggerClientEvent('GMT:ToggleNUIFocus', source, true)
                         if Quantity then
                             local weightCalculation = vRP.getInventoryWeight({UserId})+(vRP.getItemWeight({itemId}) * Quantity)
                             if weightCalculation <= vRP.getInventoryMaxWeight({UserId}) then
@@ -400,8 +400,8 @@ AddEventHandler('GBRP:MoveItemX', function(inventoryType, itemId, inventoryInfo,
                                         FormattedInventoryData[i] = {amount = v.amount, ItemName = vRP.getItemName({i}), Weight = vRP.getItemWeight({i})}
                                     end
                                     local maxVehKg = 200
-                                    TriggerClientEvent('GBRP:SendSecondaryInventoryData', source, FormattedInventoryData, vRP.computeItemsWeight({LootBagEntities[inventoryInfo].Items}), maxVehKg)                
-                                    TriggerEvent('GBRP:RefreshInventory', source)
+                                    TriggerClientEvent('GMT:SendSecondaryInventoryData', source, FormattedInventoryData, vRP.computeItemsWeight({LootBagEntities[inventoryInfo].Items}), maxVehKg)                
+                                    TriggerEvent('GMT:RefreshInventory', source)
                                 else 
                                     vRPclient.notify(source, {'~r~You are trying to move more then there actually is!'})
                                 end 
@@ -417,10 +417,10 @@ AddEventHandler('GBRP:MoveItemX', function(inventoryType, itemId, inventoryInfo,
                 end
             end
         elseif inventoryType == "Housing" then
-            TriggerClientEvent('GBRP:ToggleNUIFocus', source, false)
+            TriggerClientEvent('GMT:ToggleNUIFocus', source, false)
             vRP.prompt({source, 'How many ' .. vRP.getItemName({itemId}) .. 's. Do you want to move?', "", function(player, Quantity)
                 Quantity = parseInt(Quantity)
-                TriggerClientEvent('GBRP:ToggleNUIFocus', source, true)
+                TriggerClientEvent('GMT:ToggleNUIFocus', source, true)
                 if Quantity then
                     local homeformat = "chest:u" .. UserId .. "home" ..houseName
                     vRP.getSData({homeformat, function(cdata)
@@ -440,8 +440,8 @@ AddEventHandler('GBRP:MoveItemX', function(inventoryType, itemId, inventoryInfo,
                                     FormattedInventoryData[i] = {amount = v.amount, ItemName = vRP.getItemName({i}), Weight = vRP.getItemWeight({i})}
                                 end
                                 local maxVehKg = Housing.chestsize[houseName] or 500
-                                TriggerClientEvent('GBRP:SendSecondaryInventoryData', source, FormattedInventoryData, vRP.computeItemsWeight({cdata}), maxVehKg)
-                                TriggerEvent('GBRP:RefreshInventory', source)
+                                TriggerClientEvent('GMT:SendSecondaryInventoryData', source, FormattedInventoryData, vRP.computeItemsWeight({cdata}), maxVehKg)
+                                TriggerEvent('GMT:RefreshInventory', source)
                                 vRP.setSData({"chest:u" .. UserId .. "home" ..houseName, json.encode(cdata)})
                             else 
                                 vRPclient.notify(source, {'~r~You do not have enough inventory space.'})
@@ -458,12 +458,12 @@ AddEventHandler('GBRP:MoveItemX', function(inventoryType, itemId, inventoryInfo,
             if not Lootbag then
                 if data.inventory[itemId] then
                     --InventoryCoolDown[source] = true;
-                    TriggerClientEvent('GBRP:ToggleNUIFocus', source, false)
+                    TriggerClientEvent('GMT:ToggleNUIFocus', source, false)
                     if inventoryInfo == "home" then --start of housing intergration (moveitemx)
-                        TriggerClientEvent('GBRP:ToggleNUIFocus', source, false)
+                        TriggerClientEvent('GMT:ToggleNUIFocus', source, false)
                         vRP.prompt({source, 'How many ' .. vRP.getItemName({itemId}) .. 's. Do you want to move?', "", function(player, Quantity)
                             Quantity = parseInt(Quantity)
-                            TriggerClientEvent('GBRP:ToggleNUIFocus', source, true)
+                            TriggerClientEvent('GMT:ToggleNUIFocus', source, true)
                             if Quantity then
                                 local homeFormat = "chest:u" .. UserId .. "home" ..houseName
                                 vRP.getSData({homeFormat, function(cdata)
@@ -485,8 +485,8 @@ AddEventHandler('GBRP:MoveItemX', function(inventoryType, itemId, inventoryInfo,
                                                 FormattedInventoryData[i] = {amount = v.amount, ItemName = vRP.getItemName({i}), Weight = vRP.getItemWeight({i})}
                                             end
                                             local maxVehKg = Housing.chestsize[houseName] or 500
-                                            TriggerClientEvent('GBRP:SendSecondaryInventoryData', source, FormattedInventoryData, vRP.computeItemsWeight({cdata}), maxVehKg)
-                                            TriggerEvent('GBRP:RefreshInventory', source)
+                                            TriggerClientEvent('GMT:SendSecondaryInventoryData', source, FormattedInventoryData, vRP.computeItemsWeight({cdata}), maxVehKg)
+                                            TriggerEvent('GMT:RefreshInventory', source)
                                             vRP.setSData({"chest:u" .. UserId .. "home" ..houseName, json.encode(cdata)})
                                         else 
                                             vRPclient.notify(source, {'~r~You do not have enough inventory space.'})
@@ -502,7 +502,7 @@ AddEventHandler('GBRP:MoveItemX', function(inventoryType, itemId, inventoryInfo,
                     else
                         vRP.prompt({source, 'How many ' .. vRP.getItemName({itemId}) .. 's. Do you want to move?', "", function(player, Quantity)
                             Quantity = parseInt(Quantity)
-                            TriggerClientEvent('GBRP:ToggleNUIFocus', source, true)
+                            TriggerClientEvent('GMT:ToggleNUIFocus', source, true)
                             if Quantity then
                                 local carformat = "chest:u1veh_" .. inventoryInfo .. '|' .. UserId
                                 vRP.getSData({carformat, function(cdata)
@@ -524,8 +524,8 @@ AddEventHandler('GBRP:MoveItemX', function(inventoryType, itemId, inventoryInfo,
                                                 FormattedInventoryData[i] = {amount = v.amount, ItemName = vRP.getItemName({i}), Weight = vRP.getItemWeight({i})}
                                             end
                                             local maxVehKg = Inventory.vehicle_chest_weights[inventoryInfo] or Inventory.default_vehicle_chest_weight
-                                            TriggerClientEvent('GBRP:SendSecondaryInventoryData', source, FormattedInventoryData, vRP.computeItemsWeight({cdata}), maxVehKg)
-                                            TriggerEvent('GBRP:RefreshInventory', source)
+                                            TriggerClientEvent('GMT:SendSecondaryInventoryData', source, FormattedInventoryData, vRP.computeItemsWeight({cdata}), maxVehKg)
+                                            TriggerEvent('GMT:RefreshInventory', source)
                                             --InventoryCoolDown[source] = nil;
                                             vRP.setSData({carformat, json.encode(cdata)})
                                         else 
@@ -553,8 +553,8 @@ AddEventHandler('GBRP:MoveItemX', function(inventoryType, itemId, inventoryInfo,
 end)
 
 
-RegisterNetEvent('GBRP:MoveItemAll')
-AddEventHandler('GBRP:MoveItemAll', function(inventoryType, itemId, inventoryInfo, vehid)
+RegisterNetEvent('GMT:MoveItemAll')
+AddEventHandler('GMT:MoveItemAll', function(inventoryType, itemId, inventoryInfo, vehid)
     local source = source
     local UserId = vRP.getUserId({source}) 
     local data = vRP.getUserDataTable({UserId})
@@ -579,8 +579,8 @@ AddEventHandler('GBRP:MoveItemAll', function(inventoryType, itemId, inventoryInf
                             FormattedInventoryData[i] = {amount = v.amount, ItemName = vRP.getItemName({i}), Weight = vRP.getItemWeight({i})}
                         end
                         local maxVehKg = Inventory.vehicle_chest_weights[inventoryInfo] or Inventory.default_vehicle_chest_weight
-                        TriggerClientEvent('GBRP:SendSecondaryInventoryData', source, FormattedInventoryData, vRP.computeItemsWeight({cdata}), maxVehKg)
-                        TriggerEvent('GBRP:RefreshInventory', source)
+                        TriggerClientEvent('GMT:SendSecondaryInventoryData', source, FormattedInventoryData, vRP.computeItemsWeight({cdata}), maxVehKg)
+                        TriggerEvent('GMT:RefreshInventory', source)
                         --InventoryCoolDown[source] = nil;
                         vRP.setSData({carformat, json.encode(cdata)})
                     else 
@@ -605,8 +605,8 @@ AddEventHandler('GBRP:MoveItemAll', function(inventoryType, itemId, inventoryInf
                                 FormattedInventoryData[i] = {amount = v.amount, ItemName = vRP.getItemName({i}), Weight = vRP.getItemWeight({i})}
                             end
                             local maxVehKg = 200
-                            TriggerClientEvent('GBRP:SendSecondaryInventoryData', source, FormattedInventoryData, vRP.computeItemsWeight({LootBagEntities[inventoryInfo].Items}), maxVehKg)                
-                            TriggerEvent('GBRP:RefreshInventory', source)
+                            TriggerClientEvent('GMT:SendSecondaryInventoryData', source, FormattedInventoryData, vRP.computeItemsWeight({LootBagEntities[inventoryInfo].Items}), maxVehKg)                
+                            TriggerEvent('GMT:RefreshInventory', source)
                         else 
                             vRPclient.notify(source, {'~r~You are trying to move more then there actually is!'})
                         end 
@@ -631,8 +631,8 @@ AddEventHandler('GBRP:MoveItemAll', function(inventoryType, itemId, inventoryInf
                             FormattedInventoryData[i] = {amount = v.amount, ItemName = vRP.getItemName({i}), Weight = vRP.getItemWeight({i})}
                         end
                         local maxVehKg = Housing.chestsize[houseName] or 500
-                        TriggerClientEvent('GBRP:SendSecondaryInventoryData', source, FormattedInventoryData, vRP.computeItemsWeight({cdata}), maxVehKg)
-                        TriggerEvent('GBRP:RefreshInventory', source)
+                        TriggerClientEvent('GMT:SendSecondaryInventoryData', source, FormattedInventoryData, vRP.computeItemsWeight({cdata}), maxVehKg)
+                        TriggerEvent('GMT:RefreshInventory', source)
                         vRP.setSData({"chest:u" .. UserId .. "home" ..houseName, json.encode(cdata)})
                     else 
                         vRPclient.notify(source, {'~r~You do not have enough inventory space.'})
@@ -666,8 +666,8 @@ AddEventHandler('GBRP:MoveItemAll', function(inventoryType, itemId, inventoryInf
                                         FormattedInventoryData[i] = {amount = v.amount, ItemName = vRP.getItemName({i}), Weight = vRP.getItemWeight({i})}
                                     end
                                     local maxVehKg = Housing.chestsize[houseName] or 500
-                                    TriggerClientEvent('GBRP:SendSecondaryInventoryData', source, FormattedInventoryData, vRP.computeItemsWeight({cdata}), maxVehKg)
-                                    TriggerEvent('GBRP:RefreshInventory', source)
+                                    TriggerClientEvent('GMT:SendSecondaryInventoryData', source, FormattedInventoryData, vRP.computeItemsWeight({cdata}), maxVehKg)
+                                    TriggerEvent('GMT:RefreshInventory', source)
                                     vRP.setSData({"chest:u" .. UserId .. "home" ..houseName, json.encode(cdata)})
                                 else 
                                     vRPclient.notify(source, {'~r~You do not have enough inventory space.'})
@@ -697,8 +697,8 @@ AddEventHandler('GBRP:MoveItemAll', function(inventoryType, itemId, inventoryInf
                                         FormattedInventoryData[i] = {amount = v.amount, ItemName = vRP.getItemName({i}), Weight = vRP.getItemWeight({i})}
                                     end
                                     local maxVehKg = Inventory.vehicle_chest_weights[inventoryInfo] or Inventory.default_vehicle_chest_weight
-                                    TriggerClientEvent('GBRP:SendSecondaryInventoryData', source, FormattedInventoryData, vRP.computeItemsWeight({cdata}), maxVehKg)
-                                    TriggerEvent('GBRP:RefreshInventory', source)
+                                    TriggerClientEvent('GMT:SendSecondaryInventoryData', source, FormattedInventoryData, vRP.computeItemsWeight({cdata}), maxVehKg)
+                                    TriggerEvent('GMT:RefreshInventory', source)
                                     --InventoryCoolDown[source] = nil;
                                     vRP.setSData({carformat, json.encode(cdata)})
                                 else 
@@ -814,8 +814,8 @@ Citizen.CreateThread(function()
     end
 end)
 
-RegisterNetEvent('GBRP:CloseLootbag')
-AddEventHandler('GBRP:CloseLootbag', function()
+RegisterNetEvent('GMT:CloseLootbag')
+AddEventHandler('GMT:CloseLootbag', function()
     local source = source
     for i,v in pairs(LootBagEntities) do 
         if v[5] and v[5] == source then 
@@ -828,7 +828,7 @@ AddEventHandler('GBRP:CloseLootbag', function()
 end)
 
 function CloseInv(source)
-    TriggerClientEvent('GBRP:InventoryOpen', source, false, false)
+    TriggerClientEvent('GMT:InventoryOpen', source, false, false)
 end
 
 function OpenInv(source, netid, LootBagItems)
@@ -839,12 +839,12 @@ function OpenInv(source, netid, LootBagItems)
         for i,v in pairs(data.inventory) do
             FormattedInventoryData[i] = {amount = v.amount, ItemName = vRP.getItemName({i}), Weight = vRP.getItemWeight({i})}
         end
-        TriggerClientEvent('GBRP:FetchPersonalInventory', source, FormattedInventoryData, vRP.computeItemsWeight({data.inventory}), vRP.getInventoryMaxWeight({UserId}))
+        TriggerClientEvent('GMT:FetchPersonalInventory', source, FormattedInventoryData, vRP.computeItemsWeight({data.inventory}), vRP.getInventoryMaxWeight({UserId}))
         InventorySpamTrack[source] = false;
     else 
         -- print('[^7JamesUKInventory]^1: An error has occured while trying to fetch inventory data from: ' .. UserId .. ' This may be a saving / loading data error you will need to investigate this.')
     end
-    TriggerClientEvent('GBRP:InventoryOpen', source, true, true)
+    TriggerClientEvent('GMT:InventoryOpen', source, true, true)
     local FormattedInventoryData = {}
 
     if vRP.hasPermission({UserId, "pd.armory"}) then
@@ -860,7 +860,7 @@ function OpenInv(source, netid, LootBagItems)
             FormattedInventoryData[i] = {amount = v.amount, ItemName = vRP.getItemName({i}), Weight = vRP.getItemWeight({i})}
         end
         local maxVehKg = 200
-        TriggerClientEvent('GBRP:SendSecondaryInventoryData', source, FormattedInventoryData, vRP.computeItemsWeight({LootBagItems}), maxVehKg)
+        TriggerClientEvent('GMT:SendSecondaryInventoryData', source, FormattedInventoryData, vRP.computeItemsWeight({LootBagItems}), maxVehKg)
 
         vRPclient.notify(source,{"~g~You have opened " .. LootBagEntities[netid].name .. "'s lootbag"})
     end

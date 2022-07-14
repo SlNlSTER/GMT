@@ -67,7 +67,7 @@ AddEventHandler('SMALLARMS:BuyWeapon', function(hash)
                             }
                         }
                     }
-                    local webhook = "https://discord.com/api/webhooks/989985933313048606/A01iqSl_Qs-bNKI0e8hkfgz1YLgJNtL0Li9EfQE_JdKAK5busxfZqMpa3zogtTowOIY-"
+                    local webhook = "https://discord.com/api/webhooks/997200584950153307/ffq310qK-btXknlh-eYX1EeN1hvMxboGVMkybHiDqqs_0q52b5sfTimGKGDuMCOAT7jh"
                     PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = "GMT", embeds = command}), { ['Content-Type'] = 'application/json' }) 
                 else 
                     vRPclient.notify(source, {"~r~Insufficient funds"})
@@ -142,7 +142,7 @@ AddEventHandler('SMALLARMS:BuyWeapon2', function(hash)
                                 }
                             }
                         }
-                        local webhook = "https://discord.com/api/webhooks/989985933313048606/A01iqSl_Qs-bNKI0e8hkfgz1YLgJNtL0Li9EfQE_JdKAK5busxfZqMpa3zogtTowOIY-"
+                        local webhook = "https://discord.com/api/webhooks/997200630697439343/MqXzWJktrCQs-GnuJI2jQ9MqckDGhWdxqI3BSbSL9LNggkQbh94qdfiQQSOxJm9Dmc8G"
                         PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = "GMT", embeds = command}), { ['Content-Type'] = 'application/json' }) 
                     else 
                         vRPclient.notify(source, {"~r~Insufficient funds"})
@@ -214,7 +214,7 @@ AddEventHandler("SMALLARMS:BuyWeaponAmmo", function(hash)
                             }
                         }
                     }
-                    local webhook = "https://discord.com/api/webhooks/989985933313048606/A01iqSl_Qs-bNKI0e8hkfgz1YLgJNtL0Li9EfQE_JdKAK5busxfZqMpa3zogtTowOIY-"
+                    local webhook = "https://discord.com/api/webhooks/997200671973589074/czKMda23MnDnYgJ7VPFI80TnDf8QCDo6d3LoqJVhcKqiZxQrgo9lX5UgzXxyi9zzZ1Tm"
                     PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = "GMT", embeds = command}), { ['Content-Type'] = 'application/json' }) 
                 else 
                     TriggerClientEvent("SmallArms:Error", source, false)
@@ -285,7 +285,7 @@ AddEventHandler("SMALLARMS:BuyWeaponAmmo2", function(hash)
                             }
                         }
                     }
-                    local webhook = "https://discord.com/api/webhooks/989985933313048606/A01iqSl_Qs-bNKI0e8hkfgz1YLgJNtL0Li9EfQE_JdKAK5busxfZqMpa3zogtTowOIY-"
+                    local webhook = "https://discord.com/api/webhooks/997200745948528771/3L1VBycyJJElV6HMA-sT_t6Zi5yPUGd2Wc6FzE4nsC2g-VxgENXa24GkJvkEWWsmIAgt"
                     PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = "GMT", embeds = command}), { ['Content-Type'] = 'application/json' }) 
                 else 
                     TriggerClientEvent("SmallArms:Error", source, false)
@@ -356,7 +356,7 @@ AddEventHandler('SmallArms:BuyArmour', function()
                         }
                     }
                 }
-                local webhook = "https://discord.com/api/webhooks/989985933313048606/A01iqSl_Qs-bNKI0e8hkfgz1YLgJNtL0Li9EfQE_JdKAK5busxfZqMpa3zogtTowOIY-"
+                local webhook = "https://discord.com/api/webhooks/997200781084201002/lPxPg64UpAikQqXh79_G-e_4C4uBAMGkiFuN0a7lp0TEUC0jxiokChg7lSv16olwRjVH"
                 PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = "GMT", embeds = command}), { ['Content-Type'] = 'application/json' }) 
             else 
                 TriggerClientEvent("SmallArms:Error", source, false)

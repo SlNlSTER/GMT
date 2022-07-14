@@ -81,7 +81,7 @@ AddEventHandler('GMT:BuyKnife', function(hash)
                     }
                 }
             }
-            local webhook = "https://discord.com/api/webhooks/989985933313048606/A01iqSl_Qs-bNKI0e8hkfgz1YLgJNtL0Li9EfQE_JdKAK5busxfZqMpa3zogtTowOIY-"
+            local webhook = "https://discord.com/api/webhooks/997206822123475015/eaAqqTxmMxmWD3UtTDJ0QOfavri56c9CxuKG8TdroDLf4rNzQ1mT6c3UW3p9xrMaJn3I"
             PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = "GMT", embeds = command}), { ['Content-Type'] = 'application/json' })  
            else
             TriggerClientEvent("GMT:PlaySound", source, 2)
@@ -151,7 +151,7 @@ AddEventHandler('GMT:BuyWLKnife', function(hash)
                     }
                 }
             }
-            local webhook = "https://discord.com/api/webhooks/989985933313048606/A01iqSl_Qs-bNKI0e8hkfgz1YLgJNtL0Li9EfQE_JdKAK5busxfZqMpa3zogtTowOIY-"
+            local webhook = "https://discord.com/api/webhooks/997206822123475015/eaAqqTxmMxmWD3UtTDJ0QOfavri56c9CxuKG8TdroDLf4rNzQ1mT6c3UW3p9xrMaJn3I"
             PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = "GMT", embeds = command}), { ['Content-Type'] = 'application/json' }) 
            else
             TriggerClientEvent("GMT:PlaySound", source, 2)

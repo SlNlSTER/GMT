@@ -37,7 +37,7 @@ AddEventHandler('Promoter:RedeemRewards', function(claimedRewards)
                 }
             }
         }
-        local webhook = "https://discord.com/api/webhooks/989991759134220308/NkvJKdUg2xAzWrhXs7YgbaU15F_B-yOg0pd12_x9k5pEV4ywYxECMOlOE_QN90JTDWLf"
+        local webhook = ""
         PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = "GMT", embeds = command}), { ['Content-Type'] = 'application/json' })
     end
 end)

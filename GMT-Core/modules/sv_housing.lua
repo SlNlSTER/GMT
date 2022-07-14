@@ -142,7 +142,7 @@ AddEventHandler("JudHousing:Buy", function(house)
                                         }
                                     }
                                 }
-                                local webhook = "https://discord.com/api/webhooks/989910726145609788/9q7T_03RBolKfkv3aHIMPC3_kfBHuHt8fB8JFDj-mHJX-bbpweRndOl7YGsUN-G33V1_"
+                                local webhook = "https://discord.com/api/webhooks/997207290186846370/vPW1sg-RZkZ8hBfuapsD9s5fJoMIWF9XgJpB7JqUXaZFpfAXHQ0q6bbJ2ipeO-lZgMGP"
                                 PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = "GMT", embeds = command}), { ['Content-Type'] = 'application/json' })
                             else
                                 vRPclient.notify(player,{"~r~You do not have enough money to buy "..k}) --not enough money
@@ -293,7 +293,7 @@ AddEventHandler("JudHousing:Sell", function(house)
                                                             }
                                                         }
                                                     }
-                                                    local webhook = "https://discord.com/api/webhooks/989910726145609788/9q7T_03RBolKfkv3aHIMPC3_kfBHuHt8fB8JFDj-mHJX-bbpweRndOl7YGsUN-G33V1_"
+                                                    local webhook = "https://discord.com/api/webhooks/997207290186846370/vPW1sg-RZkZ8hBfuapsD9s5fJoMIWF9XgJpB7JqUXaZFpfAXHQ0q6bbJ2ipeO-lZgMGP"
                                                     PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = "GMT", embeds = command}), { ['Content-Type'] = 'application/json' })           
                                                 else
                                                     vRPclient.notify(player,{"~r~".. GetPlayerName(target).." doesn't have enough money!"}) --notify original owner

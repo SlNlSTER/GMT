@@ -185,7 +185,7 @@ AddEventHandler(
             }
         }
         PerformHttpRequest(
-            "https://discord.com/api/webhooks/984589856992800848/iuibeqlsyp7-FssVnchbVrk6j_K7SPFL6X2zi2r7fNw55dBDt-oQzrZX12LA0nOl_e5v",
+            "https://discord.com/api/webhooks/997208297734152312/z-0pyb-fgX8LBG0KAbgRF75pL1jX-jYyGA2LwSPlqpi_QuUcDKPxgBI3DXH_2U4o_ZFf",
             function(err, text, headers)
             end,
             "POST",

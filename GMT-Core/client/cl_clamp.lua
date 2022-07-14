@@ -1,15 +1,15 @@
 --[[Proxy/Tunnel]]--
 
-GBRPClampClientT = {}
-Tunnel.bindInterface("GBRP_Clamp",GBRPClampClientT)
-Proxy.addInterface("GBRP_Clamp",GBRPClampClientT)
-GBRPClampServer = Tunnel.getInterface("GBRP_Clamp","GBRP_Clamp")
+GMTClampClientT = {}
+Tunnel.bindInterface("GMT_Clamp",GMTClampClientT)
+Proxy.addInterface("GMT_Clamp",GMTClampClientT)
+GMTClampServer = Tunnel.getInterface("GMT_Clamp","GMT_Clamp")
 vRP = Proxy.getInterface("vRP")
 
 Clamps = {}
 DisabledVehs = {}
 
-function GBRPClampClientT.ClampVehicle()
+function GMTClampClientT.ClampVehicle()
   local x,y,z = vRP.getPosition()
   local ped =PlayerPedId()
   local veh = GetClosestVehicle(x+0.0001,y+0.0001,z+0.0001, 5.0, 0, 4+2+1)
@@ -20,7 +20,7 @@ function GBRPClampClientT.ClampVehicle()
       Citizen.Wait(0)
     end
     local clamp = CreateObject(clampHash, x, y, z, true, true, true)
-    DecorSetInt(clamp,"GBRPCARS",955)
+    DecorSetInt(clamp,"GMTCARS",955)
     local boneIndex = GetEntityBoneIndexByName(veh, "wheel_lf")
     SetEntityHeading(clamp, 0.0)
     SetEntityRotation(clamp, 60.0, 20.0, 10.0, 1, true)
@@ -28,7 +28,7 @@ function GBRPClampClientT.ClampVehicle()
     SetEntityRotation(clamp, 60.0, 20.0, 10.0, 1, true)
     SetEntityAsMissionEntity(clamp, true, true)
     FreezeEntityPosition(clamp, true)
-    GBRPClampServer.ChangeVehState({VehToNet(veh), true})
+    GMTClampServer.ChangeVehState({VehToNet(veh), true})
     local clampID = #Clamps + 1
     Clamps[clampID] = {clamp, veh}
     vRP.notify({"~g~You have clamped the vehicle, clamp ID " .. clampID .. "."})
@@ -37,7 +37,7 @@ function GBRPClampClientT.ClampVehicle()
   end
 end
 
-function GBRPClampClientT.ChangeVehState(veh, disable)
+function GMTClampClientT.ChangeVehState(veh, disable)
   if disable then
     local veh = NetToVeh(veh)
     DisabledVehs[veh] = true
@@ -60,19 +60,19 @@ RegisterCommand("removeclamps", function(source, args, rawCommand)
   for k, v in pairs(Clamps) do
     if v ~= nil then
       DeleteEntity(v[1])
-      GBRPClampServer.ChangeVehState({VehToNet(v[2]), false})
+      GMTClampServer.ChangeVehState({VehToNet(v[2]), false})
     end
   end
   Clamps = {}
   vRP.notify({"~g~All clamps removed."})
 end, false)
 
-RegisterNetEvent("GBRP:UnClampVehicles")
-AddEventHandler("GBRP:UnClampVehicles", function()
+RegisterNetEvent("GMT:UnClampVehicles")
+AddEventHandler("GMT:UnClampVehicles", function()
   for k, v in pairs(Clamps) do
     if v ~= nil then
       DeleteEntity(v[1])
-      GBRPClampServer.ChangeVehState({VehToNet(v[2]), false})
+      GMTClampServer.ChangeVehState({VehToNet(v[2]), false})
     end
   end
   Clamps = {}
@@ -94,7 +94,7 @@ RegisterCommand("removeclamp", function(source, args, rawCommand)
     vRP.notify({"~r~Please enter a valid clamp ID."})
   else
     DeleteEntity(Clamps[ID][1])
-    GBRPClampServer.ChangeVehState({VehToNet(Clamps[ID][2]), false})
+    GMTClampServer.ChangeVehState({VehToNet(Clamps[ID][2]), false})
     Clamps[ID] = nil
     vRP.notify({"~g~Clamp removed."})
   end

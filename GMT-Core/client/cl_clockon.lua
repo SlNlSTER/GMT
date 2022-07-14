@@ -14,16 +14,16 @@ clockon = {
     {group = "PCSO"},
 }
 
-RMenu.Add('PDClockOn', 'main', RageUI.CreateMenu("", "~b~GBRP PD Clockon", 1300, 50, "banners", "police"))
+RMenu.Add('PDClockOn', 'main', RageUI.CreateMenu("", "~b~GMT PD Clockon", 1300, 50, "banners", "police"))
 
 RageUI.CreateWhile(1.0, RMenu:Get('PDClockOn', 'main'), nil, function()
     RageUI.IsVisible(RMenu:Get('PDClockOn', 'main'), true, false, true, function()
         for i , p in pairs(clockon) do 
             RageUI.Button(p.group, nil, { RightLabel = "→→→" }, true, function(Hovered, Active, Selected)
                 if Selected then
-                    TriggerServerEvent('GBRP:Clockon', p.group)
-                    TriggerEvent('GBRP:policeRemove')
-                    TriggerServerEvent("GBRP:PoliceCheckRadial")
+                    TriggerServerEvent('GMT:Clockon', p.group)
+                    TriggerEvent('GMT:policeRemove')
+                    TriggerServerEvent("GMT:PoliceCheckRadial")
                 end
             end)
         end
@@ -31,7 +31,7 @@ RageUI.CreateWhile(1.0, RMenu:Get('PDClockOn', 'main'), nil, function()
         RageUI.Button("~r~[Unemployed]", nil, { RightLabel = "→→→" }, true, function(Hovered, Active, Selected)
             if Selected then
                 TriggerServerEvent('removeGroups')
-                TriggerEvent('GBRP:policeRemove')
+                TriggerEvent('GMT:policeRemove')
                 notify("~r~You are now Clocked Off")
             end
         end)
@@ -39,8 +39,8 @@ RageUI.CreateWhile(1.0, RMenu:Get('PDClockOn', 'main'), nil, function()
     end)
 end)
 
-RegisterNetEvent('GBRP:policeRemove')
-AddEventHandler('GBRP:policeRemove', function()
+RegisterNetEvent('GMT:policeRemove')
+AddEventHandler('GMT:policeRemove', function()
     local source = source
     local id = PlayerPedId(source)
     RemoveAllPedWeapons(id, true)

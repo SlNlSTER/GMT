@@ -1,7 +1,7 @@
 local CanSeeMarker = false
 
-RegisterNetEvent("GBRP:goParachuting")
-AddEventHandler("GBRP:goParachuting", function()
+RegisterNetEvent("GMT:goParachuting")
+AddEventHandler("GMT:goParachuting", function()
     if not a then
         a = true
         CreateThread(function()
@@ -63,7 +63,7 @@ Citizen.CreateThread(function()
             if isInArea(v1, 1.4) then 
                 alert('Press ~INPUT_VEH_HORN~ to go Parachuting ~g~[£15,000]')
                 if IsControlJustPressed(0, 51) then
-                    TriggerServerEvent('GBRP:checkParachuteMoney')
+                    TriggerServerEvent('GMT:checkParachuteMoney')
                 end
             end
         end

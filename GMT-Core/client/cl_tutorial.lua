@@ -99,8 +99,8 @@ end
 
 cpr_in_progress = false
 
-RegisterNetEvent('GBRP:cprAnim')
-AddEventHandler('GBRP:cprAnim', function(nplayer)
+RegisterNetEvent('GMT:cprAnim')
+AddEventHandler('GMT:cprAnim', function(nplayer)
   if GetEntityHealth(GetPlayerPed(GetPlayerFromServerId(nplayer))) == 102 then
     if not cpr_in_progress then
       cpr_in_progress = true
@@ -114,7 +114,7 @@ AddEventHandler('GBRP:cprAnim', function(nplayer)
       TaskPlayAnim(PlayerPedId(), ad, ad2, 8.0, 1.0, -1, 12, 0, 0, 0, 0 )
       Wait(12000)
       if cprChance == 1 then
-        TriggerServerEvent("GBRP:SendFixClient", nplayer)
+        TriggerServerEvent("GMT:SendFixClient", nplayer)
         notify("~g~You have saved this person's life.")
       else
         notify("~r~You need to practice CPR more, please try again.")

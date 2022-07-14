@@ -10,16 +10,16 @@ spawn.position = nil
 
 
 
-RegisterNetEvent("GBRP:PolicePerms")
-AddEventHandler("GBRP:PolicePerms",function(pd)
+RegisterNetEvent("GMT:PolicePerms")
+AddEventHandler("GMT:PolicePerms",function(pd)
     hasPD = pd
 end)
-RegisterNetEvent("GBRP:RebelPerms")
-AddEventHandler("GBRP:RebelPerms",function(rebel)
+RegisterNetEvent("GMT:RebelPerms")
+AddEventHandler("GMT:RebelPerms",function(rebel)
     hasRebel = rebel
 end)
-RegisterNetEvent("GBRP:VIPPerms")
-AddEventHandler("GBRP:VIPPerms",function(vip)
+RegisterNetEvent("GMT:VIPPerms")
+AddEventHandler("GMT:VIPPerms",function(vip)
     hasVIP = vip
 end)
 
@@ -147,8 +147,8 @@ local function isInArea(v, dis)
     end
 end
 
-RegisterNetEvent("GBRP:StartRespawnCam")
-AddEventHandler("GBRP:StartRespawnCam",function()
+RegisterNetEvent("GMT:StartRespawnCam")
+AddEventHandler("GMT:StartRespawnCam",function()
     inRedZone = false
     inCam = true
     inMenu = true
@@ -204,7 +204,7 @@ function table.includes(table,p)
     return false 
 end
 
-RegisterNetEvent("GBRP:HousingTable")
-AddEventHandler("GBRP:HousingTable",function(houses)
+RegisterNetEvent("GMT:HousingTable")
+AddEventHandler("GMT:HousingTable",function(houses)
     housetable = houses
 end)

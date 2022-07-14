@@ -1,12 +1,12 @@
--- local cfg = module("GBRP-Core", "cfg/cfg_stores")
+-- local cfg = module("GMT-Core", "cfg/cfg_stores")
 
 -- local Tunnel = module("vrp", "lib/Tunnel")
 -- local Proxy = module("vrp", "lib/Proxy")
 -- vRP = Proxy.getInterface("vRP")
 -- vRPclient = Tunnel.getInterface("vRP","vRP")
 
--- RegisterNetEvent("GBRP:BuyHeistItem")
--- AddEventHandler("GBRP:BuyHeistItem", function(itemID, amount)
+-- RegisterNetEvent("GMT:BuyHeistItem")
+-- AddEventHandler("GMT:BuyHeistItem", function(itemID, amount)
 --     local user_id = vRP.getUserId({source})
 
 --     if user_id ~= nil then
@@ -23,8 +23,8 @@
 --     end
 -- end)
 
--- RegisterNetEvent("GBRP:SellHeistItem")
--- AddEventHandler("GBRP:SellHeistItem", function(itemID, amount)
+-- RegisterNetEvent("GMT:SellHeistItem")
+-- AddEventHandler("GMT:SellHeistItem", function(itemID, amount)
 --     local user_id = vRP.getUserId({source})
 
 --     if user_id ~= nil then

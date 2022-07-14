@@ -54,15 +54,15 @@ RegisterCommand("calladmin", function(source, args, rawCommand)
     vRP.prompt({source, "Reason:", "", function(player, Reason)
         if Reason == "" then return end
         if #Reason > 9 then 
-            TriggerClientEvent('GBRP:AdminTicketCooldown', source, Reason)
+            TriggerClientEvent('GMT:AdminTicketCooldown', source, Reason)
         else
             vRPclient.notify(source,{"~r~Reason must be 10 characters or longer."})
         end
     end})
 end)
 
-RegisterNetEvent('GBRP:sendAdminTicket')
-AddEventHandler('GBRP:sendAdminTicket', function(Reason)
+RegisterNetEvent('GMT:sendAdminTicket')
+AddEventHandler('GMT:sendAdminTicket', function(Reason)
     local index = #adminTickets + 1
     adminTickets[index] = {GetPlayerName(source), source, Reason}
     for k, v in pairs(vRP.getUsers({})) do 
@@ -81,12 +81,12 @@ end)
 RegisterCommand("999", function(source, args, rawCommand)
     vRP.prompt({source, "Reason:", "", function(player, Reason)
         if Reason == "" then return end
-        TriggerClientEvent('GBRP:PDCallCooldown', source, Reason)
+        TriggerClientEvent('GMT:PDCallCooldown', source, Reason)
     end})
 end)
 
-RegisterNetEvent('GBRP:sendPDCall')
-AddEventHandler('GBRP:sendPDCall', function(Reason)
+RegisterNetEvent('GMT:sendPDCall')
+AddEventHandler('GMT:sendPDCall', function(Reason)
     local index = #pdCalls + 1   
     pdCalls[index] = {GetPlayerName(source), source, Reason}
     for k, v in pairs(vRP.getUsers({})) do 
@@ -105,12 +105,12 @@ end)
 RegisterCommand("111", function(source, args, rawCommand)
     vRP.prompt({source, "Reason:", "", function(player, Reason)
         if Reason == "" then return end
-        TriggerClientEvent('GBRP:NHSCallCooldown', source, Reason)
+        TriggerClientEvent('GMT:NHSCallCooldown', source, Reason)
     end})
 end)
 
-RegisterNetEvent('GBRP:sendNHSCall')
-AddEventHandler('GBRP:sendNHSCall', function(Reason)
+RegisterNetEvent('GMT:sendNHSCall')
+AddEventHandler('GMT:sendNHSCall', function(Reason)
     vRPclient.notify(source,{"~g~NHS will be added at a later date!"})
     -- REMOVE this section below when NHS is added in future.
 --[[     local index = #nhsCalls + 1   
@@ -124,11 +124,11 @@ AddEventHandler('GBRP:sendNHSCall', function(Reason)
     vRPclient.notify(source,{"~g~NHS called!"})  ]]
 end)
 
-RegisterNetEvent('GBRP:getTempFromPerm')
-AddEventHandler('GBRP:getTempFromPerm', function(tempid)
+RegisterNetEvent('GMT:getTempFromPerm')
+AddEventHandler('GMT:getTempFromPerm', function(tempid)
     local source = source
     permid = vRP.getUserId({tempid})
-    TriggerClientEvent('GBRP:sendPermID', source, permid)
+    TriggerClientEvent('GMT:sendPermID', source, permid)
 end)
 
 
@@ -138,8 +138,8 @@ function CallManagerServer.GetUpdatedCoords(target)
     return GetEntityCoords(GetPlayerPed(tonumber(target)))
 end
 
-RegisterNetEvent('GBRP:GiveTicketMoney')
-AddEventHandler('GBRP:GiveTicketMoney', function(admin, ticket, reason, isInTicket)
+RegisterNetEvent('GMT:GiveTicketMoney')
+AddEventHandler('GMT:GiveTicketMoney', function(admin, ticket, reason, isInTicket)
     local source = source
     local name = GetPlayerName(source)
     local ticketcount = 0
@@ -150,7 +150,7 @@ AddEventHandler('GBRP:GiveTicketMoney', function(admin, ticket, reason, isInTick
     vRP.giveBankMoney({user_id, 15000})
     vRPclient.notify(ticket,{'~g~An Admin has Taken your Ticket! [Name: ' .. name .. ' | ID: ' .. userid .. ']'})
     TriggerClientEvent("staffon", source, ticketStatus)
-    TriggerEvent('GBRP:AddTicketToLB', user_id)
+    TriggerEvent('GMT:AddTicketToLB', user_id)
 	local name = GetPlayerName(source)
 
     
@@ -160,9 +160,9 @@ AddEventHandler('GBRP:GiveTicketMoney', function(admin, ticket, reason, isInTick
     local command = {
         {
             ["color"] = "3944703",
-            ["title"] = "GBRP Ticket Logs",
+            ["title"] = "GMT Ticket Logs",
             ["description"] = "```"..reason.."```",
-            ["text"] = "GBRP Server #1 | "..os.date("%A (%d/%m/%Y) at %X"),
+            ["text"] = "GMT Server #1 | "..os.date("%A (%d/%m/%Y) at %X"),
             ["fields"] = {
                 {
                     ["name"] = "Admin Name",
@@ -198,12 +198,12 @@ AddEventHandler('GBRP:GiveTicketMoney', function(admin, ticket, reason, isInTick
         }
     }
     local webhook = "https://discord.com/api/webhooks/989908757309972530/cXlAD3HxgjPp7HxTZ0mAHATpo7LSRzPZhbP4qtNY3TotOI-_jVfra5-d2RxURzj90bT0"
-    PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = "GBRP", embeds = command}), { ['Content-Type'] = 'application/json' })
+    PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = "GMT", embeds = command}), { ['Content-Type'] = 'application/json' })
     end
 end)
 
-RegisterNetEvent('GBRP:AddTicketToLB')
-AddEventHandler('GBRP:AddTicketToLB', function(user_id)
+RegisterNetEvent('GMT:AddTicketToLB')
+AddEventHandler('GMT:AddTicketToLB', function(user_id)
     if vRP.hasPermission({user_id, "admin.tickets"}) then
     exports['ghmattimysql']:execute("SELECT * FROM `staff_tickets` WHERE userid = @user_id", {user_id = user_id}, function(result)
         if result ~= nil then 

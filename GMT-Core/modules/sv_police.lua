@@ -21,7 +21,7 @@ AddEventHandler(
                         if v.hash == hash then
                             if vRP.tryPayment({userid, 0}) then
                                 vRPclient.giveWeapons(source, {{[v.hash] = {ammo = 250}}})
-                                TriggerClientEvent("GBRP:PlaySound", source, 1)
+                                TriggerClientEvent("GMT:PlaySound", source, 1)
                                 TriggerEvent("policesmall:senddiscord", userid, hash, name)
                                 vRPclient.notify(source,{"~g~You have been supplied with a " .. hash.gsub(hash, "WEAPON_", "")})
                             end
@@ -29,7 +29,7 @@ AddEventHandler(
                     end
                 else
                     vRPclient.notify(source, {"~r~You should not be in here, ALARM TRIGGERED"})
-                    TriggerClientEvent("GBRP:PlaySound", source, 2)
+                    TriggerClientEvent("GMT:PlaySound", source, 2)
                 end
             end
         )
@@ -52,7 +52,7 @@ AddEventHandler(
                         if v.gunhash == hash then
                             if vRP.tryPayment({userid, 0}) then
                                 vRPclient.giveWeapons(source, {{[v.gunhash] = {ammo = 250}}})
-                                TriggerClientEvent("GBRP:PlaySound", source, 1)
+                                TriggerClientEvent("GMT:PlaySound", source, 1)
                                 TriggerEvent("policesmall:senddiscord", userid, hash, name)
                                 vRPclient.notify(
                                     source,
@@ -63,7 +63,7 @@ AddEventHandler(
                     end
                 else
                     vRPclient.notify(source, {"~r~You should not be in here, ALARM TRIGGERED "})
-                    TriggerClientEvent("GBRP:PlaySound", source, 2)
+                    TriggerClientEvent("GMT:PlaySound", source, 2)
                 end
             end
         )
@@ -89,13 +89,13 @@ AddEventHandler(
                                     source,
                                     {"~g~Paid £" .. tostring(getMoneyStringFormatted(v.price / 2))}
                                 )
-                                TriggerClientEvent("GBRP:PlaySound", source, 1)
+                                TriggerClientEvent("GMT:PlaySound", source, 1)
                             end
                         end
                     end
                 else
                     vRPclient.notify(source, {"~r~You should not be in here, ALARM TRIGGERED "})
-                    TriggerClientEvent("GBRP:PlaySound", source, 2)
+                    TriggerClientEvent("GMT:PlaySound", source, 2)
                 end
             end
         )
@@ -121,13 +121,13 @@ AddEventHandler(
                                     source,
                                     {"~g~Paid £" .. tostring(getMoneyStringFormatted(v.price / 2))}
                                 )
-                                TriggerClientEvent("GBRP:PlaySound", source, 1)
+                                TriggerClientEvent("GMT:PlaySound", source, 1)
                             end
                         end
                     end
                 else
                     vRPclient.notify(source, {"~r~You should not be in here, ALARM TRIGGERED "})
-                    TriggerClientEvent("GBRP:PlaySound", source, 2)
+                    TriggerClientEvent("GMT:PlaySound", source, 2)
                 end
             end
         )
@@ -147,19 +147,19 @@ AddEventHandler(
                 if hasRole == true and vRP.hasPermission({userid, "police.armoury"}) then
                     if vRP.hasPermission({userid, "police.maxarmour"}) then
                         TriggerClientEvent("Polices:givearmour", source, 100)
-                        TriggerClientEvent("GBRP:PlaySound", source, 1)
+                        TriggerClientEvent("GMT:PlaySound", source, 1)
                         vRPclient.notify(source, {"~g~You have received your armour."})
                     elseif vRP.hasGroup({userid, "Inspector"}) then
                         TriggerClientEvent("Polices:givearmour", source, 75)
-                        TriggerClientEvent("GBRP:PlaySound", source, 1)
+                        TriggerClientEvent("GMT:PlaySound", source, 1)
                         vRPclient.notify(source, {"~g~You have received your armour."})
                     elseif vRP.hasGroup({userid, "Senior Constable"}) or vRP.hasGroup({userid, "Sergeant"}) then
                         TriggerClientEvent("Polices:givearmour", source, 50)
-                        TriggerClientEvent("GBRP:PlaySound", source, 1)
+                        TriggerClientEvent("GMT:PlaySound", source, 1)
                         vRPclient.notify(source, {"~g~You have received your armour."})
                     elseif vRP.hasGroup({userid, "PCSO"}) or vRP.hasGroup({userid, "Police Constable"}) then
                         TriggerClientEvent("Polices:givearmour", source, 25)
-                        TriggerClientEvent("GBRP:PlaySound", source, 1)
+                        TriggerClientEvent("GMT:PlaySound", source, 1)
                         vRPclient.notify(source, {"~g~You have received your armour."})
                     else
                         TriggerClientEvent("Polices:menu", source, false)

@@ -25,7 +25,7 @@ local permid = nil
 local name = ''
 
 
-RMenu.Add('callmanager', 'main', RageUI.CreateMenu("", '~r~GBRP Call Manager', 1300, 50, "banners", "callmanager"))
+RMenu.Add('callmanager', 'main', RageUI.CreateMenu("", '~r~GMT Call Manager', 1300, 50, "banners", "callmanager"))
 RMenu.Add("callmanager", "admin", RageUI.CreateSubMenu(RMenu:Get("callmanager", "main",  1300, 50)))
 RMenu.Add("callmanager", "adminsub", RageUI.CreateSubMenu(RMenu:Get("callmanager", "admin",  1300, 50)))
 RMenu.Add("callmanager", "police", RageUI.CreateSubMenu(RMenu:Get("callmanager", "main",  1300, 50)))
@@ -110,12 +110,12 @@ RageUI.CreateWhile(1.0, RMenu:Get('callmanager', 'adminsub'), nil, function()
                                 NetworkFadeInEntity(PlayerPedId(), 0)
                                 DoScreenFadeIn(1000)
                                 notify("~g~You earned £15,000 for being cute!")
-                                TriggerServerEvent("GBRP:GiveTicketMoney", v[1], v[2], v[3], true)
+                                TriggerServerEvent("GMT:GiveTicketMoney", v[1], v[2], v[3], true)
                             end)  
                             CallManagerServer.RemoveTicket({k, "admin"})
                             name = v[1]
                             isInTicket = true
-                            TriggerServerEvent('GBRP:getTempFromPerm',v[2])
+                            TriggerServerEvent('GMT:getTempFromPerm',v[2])
                         end
                     end
                 end
@@ -225,7 +225,7 @@ AddEventHandler("staffon", function(isInTicket)
 
     TriggerEvent("GMT:vehicleMenu", true, isInTicket)
     if GetEntityHealth(GetPlayerPed(-1)) <= 103 then
-    TriggerEvent('GBRP:FixClient')
+    TriggerEvent('GMT:FixClient')
     end
 end)
 
@@ -236,10 +236,10 @@ AddEventHandler("staffoff", function()
 end)
 
 
-RegisterNetEvent('GBRP:AdminTicketCooldown')
-AddEventHandler('GBRP:AdminTicketCooldown', function(source, Reason)
+RegisterNetEvent('GMT:AdminTicketCooldown')
+AddEventHandler('GMT:AdminTicketCooldown', function(source, Reason)
     if AdminTicketCooldown == false then
-        TriggerServerEvent('GBRP:sendAdminTicket', source, Reason)
+        TriggerServerEvent('GMT:sendAdminTicket', source, Reason)
         AdminTicketCooldown = true
         Wait(60000*5)
         AdminTicketCooldown = false
@@ -249,10 +249,10 @@ AddEventHandler('GBRP:AdminTicketCooldown', function(source, Reason)
     end
 end)
 
-RegisterNetEvent('GBRP:PDCallCooldown')
-AddEventHandler('GBRP:PDCallCooldown', function(source, Reason)
+RegisterNetEvent('GMT:PDCallCooldown')
+AddEventHandler('GMT:PDCallCooldown', function(source, Reason)
     if PDCallCooldown == false then
-        TriggerServerEvent('GBRP:sendPDCall', source, Reason)
+        TriggerServerEvent('GMT:sendPDCall', source, Reason)
         PDCallCooldown = true
         Wait(60000*2)
         PDCallCooldown = false
@@ -262,10 +262,10 @@ AddEventHandler('GBRP:PDCallCooldown', function(source, Reason)
     end
 end)
 
-RegisterNetEvent('GBRP:NHSCallCooldown')
-AddEventHandler('GBRP:NHSCallCooldown', function(source, Reason)
+RegisterNetEvent('GMT:NHSCallCooldown')
+AddEventHandler('GMT:NHSCallCooldown', function(source, Reason)
     if NHSCallCooldown == false then
-        TriggerServerEvent('GBRP:sendNHSCall', source, Reason)
+        TriggerServerEvent('GMT:sendNHSCall', source, Reason)
         NHSCallCooldown = true
         Wait(60000*2)
         NHSCallCooldown = false
@@ -281,13 +281,13 @@ function notify(string)
     DrawNotification(true, false)
 end
 
-RegisterNetEvent('GBRP:PLAYTICKETRECIEVED')
-AddEventHandler('GBRP:PLAYTICKETRECIEVED', function(source)
+RegisterNetEvent('GMT:PLAYTICKETRECIEVED')
+AddEventHandler('GMT:PLAYTICKETRECIEVED', function(source)
     PlaySoundFrontend(-1, "Apt_Style_Purchase", "DLC_APT_Apartment_SoundSet", 0)
 end)
 
-RegisterNetEvent('GBRP:sendPermID')
-AddEventHandler('GBRP:sendPermID', function(permid)
+RegisterNetEvent('GMT:sendPermID')
+AddEventHandler('GMT:sendPermID', function(permid)
     permid = permid
     while isInTicket do
         inRedzone = false

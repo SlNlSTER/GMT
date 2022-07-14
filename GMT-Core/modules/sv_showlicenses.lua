@@ -5,8 +5,8 @@ local Proxy = module("vrp", "lib/Proxy")
 vRP = Proxy.getInterface("vRP")
 vRPclient = Tunnel.getInterface("vRP","vRP")
 
-RegisterNetEvent("GBRP:RequestLicenses")
-AddEventHandler("GBRP:RequestLicenses", function()
+RegisterNetEvent("GMT:RequestLicenses")
+AddEventHandler("GMT:RequestLicenses", function()
     local user_id = vRP.getUserId({source})
     local licenses = {}
 
@@ -17,6 +17,6 @@ AddEventHandler("GBRP:RequestLicenses", function()
             end
         end
 
-        TriggerClientEvent("GBRP:RecieveLicenses", source, licenses)
+        TriggerClientEvent("GMT:RecieveLicenses", source, licenses)
     end
 end)

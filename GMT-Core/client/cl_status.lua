@@ -8,7 +8,7 @@ AddEventHandler('discord:getpermid2', function(UserID)
     SetDiscordRichPresenceAssetText('GMT UK')
     SetDiscordRichPresenceAssetSmallText('GMT Server #1')
     SetDiscordRichPresenceAction(0, "Join Discord", "https://discord.io/gmtuk")
-    SetDiscordRichPresenceAction(1, "Connect To GMT", "fivem://connect/gbrp.city")
+    SetDiscordRichPresenceAction(1, "Connect To GMT", "fivem://connect/gmt.city")
    -- SetRichPresence("[ID: " .. tostring(UserID) .. "] |" .. #GetActivePlayers() " /128")
 end)
 
@@ -17,13 +17,13 @@ end)
 
 
 
-RegisterNetEvent('GBRP:StartGetPlayersLoopCL')
-AddEventHandler('GBRP:StartGetPlayersLoopCL', function()
+RegisterNetEvent('GMT:StartGetPlayersLoopCL')
+AddEventHandler('GMT:StartGetPlayersLoopCL', function()
     StartLoop()
 end)
 
-RegisterNetEvent('GBRP:ReturnGetPlayersLoopCL')
-AddEventHandler('GBRP:ReturnGetPlayersLoopCL', function(UserID, PlayerCount)
+RegisterNetEvent('GMT:ReturnGetPlayersLoopCL')
+AddEventHandler('GMT:ReturnGetPlayersLoopCL', function(UserID, PlayerCount)
     UserID = UserID
     PlayerCount = PlayerCount
     SetRichPresence("[ID: "..UserID.."] | "..PlayerCount.." / 128")
@@ -33,7 +33,7 @@ function StartLoop()
     Citizen.CreateThread(function()
         while true do
             Citizen.Wait(5000)
-            TriggerServerEvent("GBRP:StartGetPlayersLoopSV")
+            TriggerServerEvent("GMT:StartGetPlayersLoopSV")
         end
-    end)
+    end)    
 end

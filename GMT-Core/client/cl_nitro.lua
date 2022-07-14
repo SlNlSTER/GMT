@@ -59,7 +59,7 @@ AddEventHandler("SpawningNitro", function()
             ClearPedTasks(pid)
             FreezeEntityPosition(pid, false)
             local vehicle = CreateVehicle(vehiclehash, x, y, z, GetEntityHeading(PlayerPedId())+90, 1, 0)
-            ShowNotification("~g~BMX Spawned Thanks for Boosting GBRP!")
+            ShowNotification("~g~BMX Spawned Thanks for Boosting GMT!")
             SetPedIntoVehicle(PlayerPedId(), vehicle, -1)
         end)
     end

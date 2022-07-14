@@ -2,14 +2,14 @@ local Tunnel = module("vrp", "lib/Tunnel")
 local Proxy = module("vrp", "lib/Proxy")
 
 vRP = Proxy.getInterface("vRP")
-vRPclient = Tunnel.getInterface("vRP", "GBRP")
+vRPclient = Tunnel.getInterface("vRP", "GMT")
 
 local isPlayerInTurf = {}
 
 local completedTurf = false
 
-RegisterServerEvent('GBRP:TooFar')
-AddEventHandler('GBRP:TooFar', function(isnTurf)
+RegisterServerEvent('GMT:TooFar')
+AddEventHandler('GMT:TooFar', function(isnTurf)
 
 	local user_id = vRP.getUserId({source})
 	local player = vRP.getUserSource({user_id})
@@ -17,7 +17,7 @@ AddEventHandler('GBRP:TooFar', function(isnTurf)
 	if turfs[isnTurf] then
 		local turf = turfs[isnTurf]
 		if(isPlayerInTurf[source]) then
-			TriggerClientEvent('GBRP:OutOfZone', source)
+			TriggerClientEvent('GMT:OutOfZone', source)
 			isPlayerInTurf[source] = nil
 
 			TriggerClientEvent('chatMessage', -1, 'Turf Infomation │', {255, 255, 255}, "Turf capture failed at ^2" .. turf.nameofturf, "alert")
@@ -29,8 +29,8 @@ AddEventHandler('GBRP:TooFar', function(isnTurf)
 
 end)
 
-RegisterServerEvent('GBRP:PlayerDied')
-AddEventHandler('GBRP:PlayerDied', function(isnTurf)
+RegisterServerEvent('GMT:PlayerDied')
+AddEventHandler('GMT:PlayerDied', function(isnTurf)
 
 	
 	local user_id = vRP.getUserId({source})
@@ -39,7 +39,7 @@ AddEventHandler('GBRP:PlayerDied', function(isnTurf)
 	if turfs[isnTurf] then
 		local turf = turfs[isnTurf]
 		if(isPlayerInTurf[source])then
-			TriggerClientEvent('GBRP:PlayerDied', source)
+			TriggerClientEvent('GMT:PlayerDied', source)
 			isPlayerInTurf[source] = nil
 			TriggerClientEvent('chatMessage', -1, 'Turf Infomation │', {255, 255, 255}, "Turf capture failed at ^2" .. turf.nameofturf, "alert")
 
@@ -68,8 +68,8 @@ AddEventHandler("changeCom", function(com)
 end)
 
 
-RegisterServerEvent('GBRP:rob')
-AddEventHandler('GBRP:rob', function(isnTurf)
+RegisterServerEvent('GMT:rob')
+AddEventHandler('GMT:rob', function(isnTurf)
 	local user_id = vRP.getUserId({source})
 	local player = vRP.getUserSource({user_id})
 
@@ -91,7 +91,7 @@ AddEventHandler('GBRP:rob', function(isnTurf)
 			  completedTurf = false
 			  TriggerClientEvent("turfTrue", -1, true)
 			vRPclient.notify(player,{"~g~Defend the area for ~w~120 ~g~Seconds and the Turf is yours!"})
-		  	TriggerClientEvent('GBRP:TakenTurf', player, isnTurf)
+		  	TriggerClientEvent('GMT:TakenTurf', player, isnTurf)
 			  TriggerClientEvent("doneIt", -1, false)
 
 				
@@ -163,7 +163,7 @@ AddEventHandler('GBRP:rob', function(isnTurf)
 							
 							
 						end
-					 	TriggerClientEvent('GBRP:TurfComplete', savedSource, turf.reward, turf.nameofturf)
+					 	TriggerClientEvent('GMT:TurfComplete', savedSource, turf.reward, turf.nameofturf)
 						 TriggerClientEvent("turfTrue", -1, false)
 						 completedTurf = true
 				  	end

@@ -1,4 +1,4 @@
--- local cfg = module("GBRP-Core", "cfg/cfg_stores")
+-- local cfg = module("GMT-Core", "cfg/cfg_stores")
 -- local inMenu = false
 -- local currentShop = nil
 -- local currentItemID = nil
@@ -11,11 +11,11 @@
 --     table.insert(maxAmount, i)
 -- end
 
--- RMenu.Add("GBRP:HeistShops", "main", RageUI.CreateMenu("Heist Store", "~b~Heist Store", 1350, 50))
--- RMenu.Add("GBRP:HeistShops", "sub", RageUI.CreateSubMenu(RMenu:Get("GBRP:HeistShops", "main"), "Heist Store", "~b~Confirm Purchase", 1350, 50))
+-- RMenu.Add("GMT:HeistShops", "main", RageUI.CreateMenu("Heist Store", "~b~Heist Store", 1350, 50))
+-- RMenu.Add("GMT:HeistShops", "sub", RageUI.CreateSubMenu(RMenu:Get("GMT:HeistShops", "main"), "Heist Store", "~b~Confirm Purchase", 1350, 50))
 
--- RageUI.CreateWhile(1.0, RMenu:Get("GBRP:HeistShops", "main"), nil, function()
---     RageUI.IsVisible(RMenu:Get("GBRP:HeistShops", "main"), true, false, true, function()
+-- RageUI.CreateWhile(1.0, RMenu:Get("GMT:HeistShops", "main"), nil, function()
+--     RageUI.IsVisible(RMenu:Get("GMT:HeistShops", "main"), true, false, true, function()
 --         for k, v in pairs(cfg.items) do
 --             if v.type == 'robbery' then
 --                 RageUI.Button(v.name, nil, {RightLabel = "£"..getMoneyStringFormatted(v.price)}, true, function(Hovered, Active, Selected)
@@ -24,28 +24,28 @@
 --                         currentItemPrice = v.price
 --                         currentItemName = v.name
 --                     end
---                 end, RMenu:Get("GBRP:HeistShops", "sub", true))
+--                 end, RMenu:Get("GMT:HeistShops", "sub", true))
 --             end
 --         end
 --     end, function() 
 --     end)
 
---     RageUI.IsVisible(RMenu:Get("GBRP:HeistShops", "sub"), true, false, true, function()
+--     RageUI.IsVisible(RMenu:Get("GMT:HeistShops", "sub"), true, false, true, function()
 --         RageUI.List("Amount", maxAmount, amount, nil, {}, true, function(Hovered, Active, Selected, Index)
 --             amount = Index
 --         end)
 --         if currentItemName == 'Jewellery' then
 --             RageUI.Button("~g~Confirm Sale", nil, {RightLabel = "£"..getMoneyStringFormatted(currentItemPrice * amount)}, true, function(Hovered, Active, Selected)
 --                 if Selected then
---                     TriggerServerEvent("GBRP:SellHeistItem", currentItemID, amount)
+--                     TriggerServerEvent("GMT:SellHeistItem", currentItemID, amount)
 --                 end
---             end, RMenu:Get("GBRP:HeistShops", "main", true))
+--             end, RMenu:Get("GMT:HeistShops", "main", true))
 --         else
 --             RageUI.Button("~g~Confirm Purchase", nil, {RightLabel = "£"..getMoneyStringFormatted(currentItemPrice * amount)}, true, function(Hovered, Active, Selected)
 --                 if Selected then
---                     TriggerServerEvent("GBRP:BuyHeistItem", currentItemID, amount)
+--                     TriggerServerEvent("GMT:BuyHeistItem", currentItemID, amount)
 --                 end
---             end, RMenu:Get("GBRP:HeistShops", "main", true))
+--             end, RMenu:Get("GMT:HeistShops", "main", true))
 --         end
 
 --     end, function()
@@ -76,7 +76,7 @@
 --             if IsControlJustPressed(0, 51) then 
 --                 inMenu = true
 --                 currentShop = k
---                 RageUI.Visible(RMenu:Get("GBRP:HeistShops", "main"), true)
+--                 RageUI.Visible(RMenu:Get("GMT:HeistShops", "main"), true)
 --             end
 --         end
 

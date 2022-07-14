@@ -4,11 +4,11 @@ vRP = Proxy.getInterface("vRP")
 cop = {}
 nhs = {}
 
-RegisterServerEvent("GBRP:ENABLEBLIPS")
-AddEventHandler("GBRP:ENABLEBLIPS", function()
+RegisterServerEvent("GMT:ENABLEBLIPS")
+AddEventHandler("GMT:ENABLEBLIPS", function()
   local user_id = vRP.getUserId({source})
   if vRP.hasPermission({user_id, "police.menu"}) or vRP.hasPermission({user_id, "emergency.vehicle"}) then
-    TriggerClientEvent("GBRP:BLIPS",source,cop,nhs)
+    TriggerClientEvent("GMT:BLIPS",source,cop,nhs)
   end
 end)
 

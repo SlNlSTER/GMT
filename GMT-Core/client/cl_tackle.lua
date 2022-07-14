@@ -34,13 +34,13 @@ end)
 
 
 
-RegisterNetEvent('GBRP:isPoliceVar')
-AddEventHandler('GBRP:isPoliceVar', function(target)
+RegisterNetEvent('GMT:isPoliceVar')
+AddEventHandler('GMT:isPoliceVar', function(target)
 
 end)
 
-RegisterNetEvent('GBRP:getTackled')
-AddEventHandler('GBRP:getTackled', function(target)
+RegisterNetEvent('GMT:getTackled')
+AddEventHandler('GMT:getTackled', function(target)
 	isGettingTackled = true
 
 	local playerPed =PlayerPedId()
@@ -65,8 +65,8 @@ AddEventHandler('GBRP:getTackled', function(target)
 	isGettingTackled = false
 end)
 
-RegisterNetEvent('GBRP:playTackle')
-AddEventHandler('GBRP:playTackle', function()
+RegisterNetEvent('GMT:playTackle')
+AddEventHandler('GMT:playTackle', function()
 	isTackling = true
 	local playerPed =PlayerPedId()
 
@@ -119,7 +119,7 @@ Citizen.CreateThread(function()
 				
 				lastTackleTime = GetGameTimer()
 				--print("Should trigger server event")
-				TriggerServerEvent('GBRP:tryTackle', closestPlayerId)
+				TriggerServerEvent('GMT:tryTackle', closestPlayerId)
 			end
 		end
 	end

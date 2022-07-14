@@ -5,8 +5,8 @@ local Proxy = module("vrp", "lib/Proxy")
 vRP = Proxy.getInterface("vRP")
 vRPclient = Tunnel.getInterface("vRP","vRP")
 
-RegisterNetEvent("GBRP:BuyLicense")
-AddEventHandler("GBRP:BuyLicense", function(name)
+RegisterNetEvent("GMT:BuyLicense")
+AddEventHandler("GMT:BuyLicense", function(name)
     local user_id = vRP.getUserId({source})
 
     if user_id ~= nil then
@@ -30,8 +30,8 @@ AddEventHandler("GBRP:BuyLicense", function(name)
     end
 end)
 
-RegisterNetEvent("GBRP:RemoveLicense")
-AddEventHandler("GBRP:RemoveLicense", function(name)
+RegisterNetEvent("GMT:RemoveLicense")
+AddEventHandler("GMT:RemoveLicense", function(name)
     local user_id = vRP.getUserId({source})
 
     if user_id ~= nil then

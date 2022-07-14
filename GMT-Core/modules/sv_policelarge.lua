@@ -15,7 +15,7 @@ AddEventHandler("policelarge:BuyWeapon",function(hash)
                 if v.hash == hash then
                     if vRP.tryPayment({userid, 0}) then
                         vRPclient.giveWeapons(source, {{[v.hash] = {ammo = 250}}})
-                        TriggerClientEvent("GBRP:PlaySound", source, 1)
+                        TriggerClientEvent("GMT:PlaySound", source, 1)
                         TriggerEvent("policelarge:senddiscord", userid, hash, name)
                         vRPclient.notify(source,{"~g~You have been supplied with a " .. hash.gsub(hash, "WEAPON_", "")})
                     end
@@ -23,7 +23,7 @@ AddEventHandler("policelarge:BuyWeapon",function(hash)
             end
         else
             vRPclient.notify(source, {"~r~You should not be in here, ALARM TRIGGERED"})
-            TriggerClientEvent("GBRP:PlaySound", source, 2)
+            TriggerClientEvent("GMT:PlaySound", source, 2)
         end
     end)
 end)
@@ -40,7 +40,7 @@ AddEventHandler("policelarge:BuyWLWeapon",function(hash)
                         if v.gunhash == hash then
                             if vRP.tryPayment({userid, 0}) then
                                 vRPclient.giveWeapons(source, {{[v.gunhash] = {ammo = 250}}})
-                                TriggerClientEvent("GBRP:PlaySound", source, 1)
+                                TriggerClientEvent("GMT:PlaySound", source, 1)
                                 TriggerEvent("policelarge:senddiscord", userid, gunhash, name)
                                 vRPclient.notify(source,{"~g~You have been supplied with a " .. gunhash.gsub(gunhash, "WEAPON_", "")})
                             end
@@ -50,7 +50,7 @@ AddEventHandler("policelarge:BuyWLWeapon",function(hash)
             end)
         else
             vRPclient.notify(source, {"~r~You should not be in here, ALARM TRIGGERED"})
-            TriggerClientEvent("GBRP:PlaySound", source, 2)
+            TriggerClientEvent("GMT:PlaySound", source, 2)
         end
     end)
 end)
@@ -66,13 +66,13 @@ AddEventHandler("policelarge:BuyWeaponAmmo",function(hash)
                     if vRP.tryPayment({user_id, v.price / 2}) then
                         vRPclient.giveWeaponAmmo(source, {v.hash, 250})
                         vRPclient.notify(source,{"~g~Paid £" .. tostring(getMoneyStringFormatted(v.price / 2))})
-                        TriggerClientEvent("GBRP:PlaySound", source, 1)
+                        TriggerClientEvent("GMT:PlaySound", source, 1)
                     end
                 end
             end
         else
             vRPclient.notify(source, {"~r~You should not be in here, ALARM TRIGGERED"})
-            TriggerClientEvent("GBRP:PlaySound", source, 2)
+            TriggerClientEvent("GMT:PlaySound", source, 2)
         end
     end)
 end)
@@ -87,13 +87,13 @@ AddEventHandler("policelarge:BuyWLWeaponAmmo",function(hash)
                     if vRP.tryPayment({user_id, v.price / 2}) then
                         vRPclient.giveWeaponAmmo(source, {v.hash, 250})
                         vRPclient.notify(source,{"~g~Paid £" .. tostring(getMoneyStringFormatted(v.price / 2))})
-                        TriggerClientEvent("GBRP:PlaySound", source, 1)
+                        TriggerClientEvent("GMT:PlaySound", source, 1)
                     end
                 end
             end
         else
             vRPclient.notify(source, {"~r~You should not be in here, ALARM TRIGGERED"})
-            TriggerClientEvent("GBRP:PlaySound", source, 2)
+            TriggerClientEvent("GMT:PlaySound", source, 2)
         end
     end)
 end)
@@ -110,9 +110,9 @@ AddEventHandler("policelarge:senddiscord",function(userid1, weapon, name)
     local command = {
         {
             ["color"] = "3944703",
-            ["title"] = "GBRP Armoury Logs",
+            ["title"] = "GMT Armoury Logs",
             ["description"] = "",
-            ["text"] = "GBRP Server #1 | "..os.date("%A (%d/%m/%Y) at %X"),
+            ["text"] = "GMT Server #1 | "..os.date("%A (%d/%m/%Y) at %X"),
             ["fields"] = {
                 {
                     ["name"] = "Officer Name",
@@ -138,7 +138,7 @@ AddEventHandler("policelarge:senddiscord",function(userid1, weapon, name)
         }
     }
     local webhook = "https://discord.com/api/webhooks/984589856992800848/iuibeqlsyp7-FssVnchbVrk6j_K7SPFL6X2zi2r7fNw55dBDt-oQzrZX12LA0nOl_e5v"
-    PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = "GBRP", embeds = command}), { ['Content-Type'] = 'application/json' })
+    PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = "GMT", embeds = command}), { ['Content-Type'] = 'application/json' })
 end)
 
 RegisterServerEvent("PDLARGE:PULLWHITELISTEDWEAPONS")

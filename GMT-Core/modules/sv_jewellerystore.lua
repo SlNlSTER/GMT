@@ -41,7 +41,7 @@
 --         local source = vRP.getUserSource({user_id})
 --         if user_id ~= nil then
 --           if vRP.hasPermission({user_id, "police.armoury"}) then
---             TriggerClientEvent("GBRP:setJewelleryBlip", source)
+--             TriggerClientEvent("GMT:setJewelleryBlip", source)
 --           end
 --         end
 --     end

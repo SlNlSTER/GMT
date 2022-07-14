@@ -4,8 +4,8 @@ vRP = Proxy.getInterface("vRP")
 vRPclient = Tunnel.getInterface("vRP", "vRP_gunshop")
 hasMoney = false
 
-RegisterNetEvent("GBRP:checkParachuteMoney")
-AddEventHandler("GBRP:checkParachuteMoney", function()
+RegisterNetEvent("GMT:checkParachuteMoney")
+AddEventHandler("GMT:checkParachuteMoney", function()
     local source = source
     user_id = vRP.getUserId({source})
     local bankBalance = vRP.getBankMoney({user_id})
@@ -14,8 +14,8 @@ AddEventHandler("GBRP:checkParachuteMoney", function()
         vRP.setBankMoney({user_id, newBalance})
         hasMoney = true
         vRPclient.notify(user_id, {"~g~You have paid £15,000 to parachute."})
-        TriggerClientEvent("GBRP:PlaySound", source, 1)
-        TriggerClientEvent("GBRP:goParachuting", source, 1)
+        TriggerClientEvent("GMT:PlaySound", source, 1)
+        TriggerClientEvent("GMT:goParachuting", source, 1)
     else
         vRPclient.notify(user_id, {"~r~You do not have enough money."})
     end

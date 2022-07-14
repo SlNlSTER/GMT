@@ -2,37 +2,37 @@ local Tunnel = module('vrp', 'lib/Tunnel')
 local Proxy = module('vrp', 'lib/Proxy')
 vRP = Proxy.getInterface("vRP")
 
-RegisterNetEvent('GBRP:PoliceCheck')
-AddEventHandler('GBRP:PoliceCheck', function()
+RegisterNetEvent('GMT:PoliceCheck')
+AddEventHandler('GMT:PoliceCheck', function()
     local source = source
     local user_id = vRP.getUserId({source})
     if vRP.hasPermission({user_id, 'police.armoury'}) then
-        TriggerClientEvent('GBRP:PolicePerms', source, true)
+        TriggerClientEvent('GMT:PolicePerms', source, true)
     else
-        TriggerClientEvent('GBRP:PolicePerms', source, false)
+        TriggerClientEvent('GMT:PolicePerms', source, false)
     end
 end)
 
-RegisterNetEvent('GBRP:RebelCheck')
-AddEventHandler('GBRP:RebelCheck', function()
+RegisterNetEvent('GMT:RebelCheck')
+AddEventHandler('GMT:RebelCheck', function()
     local source = source
     local user_id = vRP.getUserId({source})
     if vRP.hasPermission({user_id, 'rebel.guns'}) then
-        TriggerClientEvent('GBRP:RebelPerms', source, true)
+        TriggerClientEvent('GMT:RebelPerms', source, true)
     else
-        TriggerClientEvent('GBRP:RebelPerms', source, false)
+        TriggerClientEvent('GMT:RebelPerms', source, false)
     end
 end)
 
 
-RegisterNetEvent('GBRP:VIPCheck')
-AddEventHandler('GBRP:VIPCheck', function()
+RegisterNetEvent('GMT:VIPCheck')
+AddEventHandler('GMT:VIPCheck', function()
     local source = source
     local user_id = vRP.getUserId({source})
     if vRP.hasPermission({user_id, 'vip.guns'}) then
-        TriggerClientEvent('GBRP:VIPPerms', source, true)
+        TriggerClientEvent('GMT:VIPPerms', source, true)
     else
-        TriggerClientEvent('GBRP:VIPPerms', source, false)
+        TriggerClientEvent('GMT:VIPPerms', source, false)
     end
 end)
 

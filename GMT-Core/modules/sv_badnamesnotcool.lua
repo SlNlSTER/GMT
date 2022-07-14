@@ -83,7 +83,7 @@ local forbiddenNames = {
 AddEventHandler("playerConnecting", function(playerName, setKickReason)
 	for name in pairs(forbiddenNames) do
 		if(string.gsub(string.gsub(string.gsub(string.gsub(playerName:lower(), "-", ""), ",", ""), "%.", ""), " ", ""):find(forbiddenNames[name])) then
-			setKickReason('GBRP: Hello, please change your name('..playerName..').')
+			setKickReason('GMT: Hello, please change your name('..playerName..').')
 			CancelEvent()
 			break
 		end

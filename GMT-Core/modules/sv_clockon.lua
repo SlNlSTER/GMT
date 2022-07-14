@@ -3,8 +3,8 @@ local Proxy = module('vrp', 'lib/Proxy')
 vRP = Proxy.getInterface("vRP")
 vRPclient = Tunnel.getInterface("vRP", "PDClockon")
 
-RegisterNetEvent("GBRP:Clockon")
-AddEventHandler('GBRP:Clockon', function(group)
+RegisterNetEvent("GMT:Clockon")
+AddEventHandler('GMT:Clockon', function(group)
     local source = source
     userid = vRP.getUserId({source})
     name = GetPlayerName(source)
@@ -22,7 +22,7 @@ AddEventHandler('GBRP:Clockon', function(group)
                 ["title"] = name .. " has clocked on as a " .. group,
                 ["description"] = "ID: " .. userid .. " / Name: " .. name .. " Clocked on as a **[" .. group .. "]**",
                 ["footer"] = {
-                  ["text"] = "GBRP - "..os.date("%X"),
+                  ["text"] = "GMT - "..os.date("%X"),
                   ["icon_url"] = "https://cdn.discordapp.com/attachments/848856393012346930/877183938420953118/TGRPLogo.png",
                 }
             }

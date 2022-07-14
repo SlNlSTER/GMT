@@ -1,6 +1,6 @@
 -- local Proxy = module("vrp", "lib/Proxy")
 -- vRP = Proxy.getInterface("vRP")
--- local cfg = module("GBRP-Core", "cfg/cfg_doorlock")
+-- local cfg = module("GMT-Core", "cfg/cfg_doorlock")
 
 -- local doors = cfg.doors
 -- local owned = {}

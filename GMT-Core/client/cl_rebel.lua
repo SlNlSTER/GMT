@@ -12,10 +12,10 @@ local hoveredArmour = false
 local N
 local O
 
-RMenu.Add('RebelMenu', 'main', RageUI.CreateMenu("", "~r~GBRP Rebel", 1300, 50, "banners", "rebel"))
-RMenu.Add("RebelMenu", "sub", RageUI.CreateSubMenu(RMenu:Get("RebelMenu", "main"), "", "~r~GBRP Rebel", 1300, 50, "banners", "rebel"))
-RMenu.Add("RebelMenu", "adrebel", RageUI.CreateSubMenu(RMenu:Get("RebelMenu", "main"), "", "~r~GBRP Rebel", 1300, 50, "banners", "rebel"))
-RMenu.Add("RebelMenu", "armourplate", RageUI.CreateSubMenu(RMenu:Get("RebelMenu", "main"), "", "~r~GBRP Rebel", 1300, 50, "banners", "rebel"))
+RMenu.Add('RebelMenu', 'main', RageUI.CreateMenu("", "~r~GMT Rebel", 1300, 50, "banners", "rebel"))
+RMenu.Add("RebelMenu", "sub", RageUI.CreateSubMenu(RMenu:Get("RebelMenu", "main"), "", "~r~GMT Rebel", 1300, 50, "banners", "rebel"))
+RMenu.Add("RebelMenu", "adrebel", RageUI.CreateSubMenu(RMenu:Get("RebelMenu", "main"), "", "~r~GMT Rebel", 1300, 50, "banners", "rebel"))
+RMenu.Add("RebelMenu", "armourplate", RageUI.CreateSubMenu(RMenu:Get("RebelMenu", "main"), "", "~r~GMT Rebel", 1300, 50, "banners", "rebel"))
 
 RageUI.CreateWhile(1.0, RMenu:Get('RebelMenu', 'main'), nil, function()
     RageUI.IsVisible(RMenu:Get('RebelMenu', 'main'), true, false, true, function()
@@ -113,8 +113,8 @@ RageUI.CreateWhile(1.0, RMenu:Get('RebelMenu', 'main'), nil, function()
     end)
 end)
 
-RegisterNetEvent("GBRP:PlaySound")
-AddEventHandler("GBRP:PlaySound", function(status)
+RegisterNetEvent("GMT:PlaySound")
+AddEventHandler("GMT:PlaySound", function(status)
     if status == 1 then 
         PlaySoundFrontend(-1, "Hack_Success", "DLC_HEIST_BIOLAB_PREP_HACKING_SOUNDS", 0)
     end

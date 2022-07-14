@@ -8,12 +8,12 @@ Citizen.CreateThread(function()
         if IsControlJustPressed(0, 167) then
             showMenu = not showMenu
             if showMenu then
-                TriggerServerEvent("GBRP:RequestLicenses")
+                TriggerServerEvent("GMT:RequestLicenses")
             end
         end
         if showMenu then
             DrawRect(0.50, 0.222, 0.223, 0.075, 16, 86, 229, 255)
-            DrawAdvancedText(0.595, 0.217, 0.005, 0.0028, 0.7, "GBRP Licenses", 255, 255, 255, 255, 6, 0)
+            DrawAdvancedText(0.595, 0.217, 0.005, 0.0028, 0.7, "GMT Licenses", 255, 255, 255, 255, 6, 0)
             DrawAdvancedText(0.595, 0.275, 0.005, 0.0028, 0.4, "Licenses Owned", 0, 255, 50, 255, 6, 0)
             DrawRect(0.50, 0.272, 0.223, 0.026, 0, 0, 0, 222)
             for k, v in pairs(licenses) do
@@ -26,8 +26,8 @@ Citizen.CreateThread(function()
     end
 end)
 
-RegisterNetEvent("GBRP:RecieveLicenses")
-AddEventHandler("GBRP:RecieveLicenses", function(table)
+RegisterNetEvent("GMT:RecieveLicenses")
+AddEventHandler("GMT:RecieveLicenses", function(table)
     licenses = table
 end)
 

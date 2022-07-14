@@ -38,12 +38,12 @@ function getVehicles()
 end
 
 
-RegisterNetEvent("GBRP:VehicleCleanup")
-AddEventHandler("GBRP:VehicleCleanup", function()
-	TriggerEvent('chatMessage', "^7^*[GBRP]^r All unoccupied vehicles will be deleted in "..deleteTime.." seconds!" , { 128, 128, 128 }, message, "alert")
+RegisterNetEvent("GMT:VehicleCleanup")
+AddEventHandler("GMT:VehicleCleanup", function()
+	TriggerEvent('chatMessage', "^7^*[GMT]^r All unoccupied vehicles will be deleted in "..deleteTime.." seconds!" , { 128, 128, 128 }, message, "alert")
 	SetTimeout(deleteTime * 1000, function()
 		theVehicles = getVehicles()
-		TriggerEvent('chatMessage', "^7^*[GBRP]^r Vehicle cleanup complete!" , { 128, 128, 128 }, message, "alert")
+		TriggerEvent('chatMessage', "^7^*[GMT]^r Vehicle cleanup complete!" , { 128, 128, 128 }, message, "alert")
 		for veh in theVehicles do
 			if (DoesEntityExist(veh)) then 
 				if((GetPedInVehicleSeat(veh, -1)) == false) or ((GetPedInVehicleSeat(veh, -1)) == nil) or ((GetPedInVehicleSeat(veh, -1)) == 0)then
@@ -55,12 +55,12 @@ AddEventHandler("GBRP:VehicleCleanup", function()
 end)
 
 
-RegisterNetEvent("GBRP:EntityCleanUp")
-AddEventHandler("GBRP:EntityCleanUp", function()
-	TriggerEvent('chatMessage', "^7^*[GBRP]^r All unoccupied vehicles will be deleted in "..deleteTime.." seconds!" , { 128, 128, 128 }, message, "alert")
+RegisterNetEvent("GMT:EntityCleanUp")
+AddEventHandler("GMT:EntityCleanUp", function()
+	TriggerEvent('chatMessage', "^7^*[GMT]^r All unoccupied vehicles will be deleted in "..deleteTime.." seconds!" , { 128, 128, 128 }, message, "alert")
 	SetTimeout(deleteTime * 1000, function()
-		TriggerEvent('chatMessage', "^7^*[GBRP]^r Vehicle cleanup complete!" , { 128, 128, 128 }, message, "alert")
-		TriggerServerEvent('GBRP:CleanAllAuto')
+		TriggerEvent('chatMessage', "^7^*[GMT]^r Vehicle cleanup complete!" , { 128, 128, 128 }, message, "alert")
+		TriggerServerEvent('GMT:CleanAllAuto')
 
 	end)
 end)

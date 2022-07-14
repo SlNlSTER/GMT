@@ -4,8 +4,8 @@ local sucess = false
 
 local doneIt = false
 
-RegisterNetEvent('GBRP:TakenTurf')
-AddEventHandler('GBRP:TakenTurf', function(isnTurf)
+RegisterNetEvent('GMT:TakenTurf')
+AddEventHandler('GMT:TakenTurf', function(isnTurf)
 	
 	inTurf = true
 	turf = isnTurf
@@ -16,11 +16,11 @@ AddEventHandler('GBRP:TakenTurf', function(isnTurf)
 
 end)
 
-RegisterNetEvent('GBRP:OutOfZone')
-AddEventHandler('GBRP:OutOfZone', function(isnTurf)
+RegisterNetEvent('GMT:OutOfZone')
+AddEventHandler('GMT:OutOfZone', function(isnTurf)
 	inTurf = false
 
-	-- TriggerEvent('chatMessage', '[GBRP Turf System]:', {255, 34, 0}, "The turf cap was cancelled, you will receive nothing.")
+	-- TriggerEvent('chatMessage', '[GMT Turf System]:', {255, 34, 0}, "The turf cap was cancelled, you will receive nothing.")
 	notify("~r~The The turf cap was cancelled, you will receive nothing.")
 	doneIt = false
 	sucess = true
@@ -28,10 +28,10 @@ AddEventHandler('GBRP:OutOfZone', function(isnTurf)
 	inZone = false
 end)
 
-RegisterNetEvent('GBRP:PlayerDied')
-AddEventHandler('GBRP:PlayerDied', function(isnTurf)
+RegisterNetEvent('GMT:PlayerDied')
+AddEventHandler('GMT:PlayerDied', function(isnTurf)
 	inTurf = false
-	-- TriggerEvent('chatMessage', '[GBRP Turf System]:', {255, 34, 0}, "The turf cap was cancelled, you died!")
+	-- TriggerEvent('chatMessage', '[GMT Turf System]:', {255, 34, 0}, "The turf cap was cancelled, you died!")
 	notify("~r~The turf cap was cancelled, you died!")
 	doneIt = false
 	inTurfName = ""
@@ -43,10 +43,10 @@ AddEventHandler('GBRP:PlayerDied', function(isnTurf)
 	
 end)
 
-RegisterNetEvent('GBRP:TurfComplete')
-AddEventHandler('GBRP:TurfComplete', function(reward, name)
+RegisterNetEvent('GMT:TurfComplete')
+AddEventHandler('GMT:TurfComplete', function(reward, name)
 	inTurf = false
-	-- TriggerEvent('chatMessage', '[GBRP Turf System]:', {255, 34, 0}, "Turf capture sucessful, you received:^2 £" .. reward)
+	-- TriggerEvent('chatMessage', '[GMT Turf System]:', {255, 34, 0}, "Turf capture sucessful, you received:^2 £" .. reward)
 	
 	sucess = true
 	
@@ -140,7 +140,7 @@ Citizen.CreateThread(function()
 						end
 						inZone = true
 						if (IsControlJustReleased(1, 51)) then
-							TriggerServerEvent('GBRP:rob', k)
+							TriggerServerEvent('GMT:rob', k)
 							istakingturf = v.nameofturf
 						end
 					elseif (Vdist(pos.x, pos.y, pos.z, pos2.x, pos2.y, pos2.z) > 1.4) then
@@ -160,10 +160,10 @@ Citizen.CreateThread(function()
 
 			
             if IsEntityDead(ped) then
-			TriggerServerEvent('GBRP:PlayerDied', turf)
+			TriggerServerEvent('GMT:PlayerDied', turf)
 
 			elseif (Vdist(pos.x, pos.y, pos.z, pos2.x, pos2.y, pos2.z) > turfs[turf].radius) then
-				TriggerServerEvent('GBRP:TooFar', turf)
+				TriggerServerEvent('GMT:TooFar', turf)
 			end
 		end
 

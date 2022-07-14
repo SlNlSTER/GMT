@@ -8,9 +8,9 @@ local currentGunPrice1 = nil
 local currentGunName1 = nil
 returnedPDsmallGuns2 = {}
 
-RMenu.Add('pdsmall', 'main', RageUI.CreateMenu("", "~b~GBRP Police Armoury", 1300, 50, "banners", "police"))
-RMenu.Add("pdsmall", "sub", RageUI.CreateSubMenu(RMenu:Get("pdsmall", "main"), "", "~b~GBRP Police Armoury", 1300, 50, "banners", "police"))
-RMenu.Add("pdsmall", "whitelistedguns", RageUI.CreateSubMenu(RMenu:Get("pdsmall", "main"), "", "~b~GBRP Police Armoury", 1300, 50, "banners", "police"))
+RMenu.Add('pdsmall', 'main', RageUI.CreateMenu("", "~b~GMT Police Armoury", 1300, 50, "banners", "police"))
+RMenu.Add("pdsmall", "sub", RageUI.CreateSubMenu(RMenu:Get("pdsmall", "main"), "", "~b~GMT Police Armoury", 1300, 50, "banners", "police"))
+RMenu.Add("pdsmall", "whitelistedguns", RageUI.CreateSubMenu(RMenu:Get("pdsmall", "main"), "", "~b~GMT Police Armoury", 1300, 50, "banners", "police"))
 RageUI.CreateWhile(1.0, RMenu:Get('pdsmall', 'main'), nil, function()
     RageUI.IsVisible(RMenu:Get('pdsmall', 'main'), true, false, true, function()
         for i , p in pairs(police.guns) do 

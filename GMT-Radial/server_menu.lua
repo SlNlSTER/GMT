@@ -1,10 +1,10 @@
 local Tunnel = module("vrp", "lib/Tunnel")
 local Proxy = module("vrp", "lib/Proxy")
 vRP = Proxy.getInterface("vRP")
-vRPclient = Tunnel.getInterface("vRP", "GBRP_RadialMenu")
+vRPclient = Tunnel.getInterface("vRP", "GMT_RadialMenu")
 
-RegisterServerEvent("GBRP:PoliceCheckRadial")
-AddEventHandler("GBRP:PoliceCheckRadial", function()
+RegisterServerEvent("GMT:PoliceCheckRadial")
+AddEventHandler("GMT:PoliceCheckRadial", function()
     local source = source
     local user_id = vRP.getUserId({source})
     if vRP.hasPermission({user_id, "police.armoury"}) then
@@ -12,7 +12,7 @@ AddEventHandler("GBRP:PoliceCheckRadial", function()
     else
         MetPD = false
     end
-    TriggerClientEvent("GBRP:PoliceClockedOn", source, MetPD)
+    TriggerClientEvent("GMT:PoliceClockedOn", source, MetPD)
 end)
 
 RegisterServerEvent("serverBoot")

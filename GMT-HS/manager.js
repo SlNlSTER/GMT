@@ -25,7 +25,7 @@ const audio = [
     { name: "gtaloadin", file: "gtaloadin.ogg", volume: 0.20 },
     { name: "drill", file: "drill.ogg", volume: 0.20 },
     { name: "alarm", file: "alarm.ogg", volume: 0.40 },
-    { name: "starter", file: "GBRPstarter.ogg", volume: 0.40 },
+    { name: "starter", file: "GMTStarter.ogg", volume: 0.40 },
     { name: "supplydrop", file: "supplydrop.ogg", volume: 0.40 },
 ]
 

@@ -29,7 +29,7 @@ AddEventHandler('openBoot', function()
 
         tvRP.vc_openDoor({VehTypeC, 5})
         inventoryType = 'CarBoot'
-        TriggerServerEvent('GBRP:FetchTrunkInventory', NVeh, NetworkGetNetworkIdFromEntity(nearestVeh))
+        TriggerServerEvent('GMT:FetchTrunkInventory', NVeh, NetworkGetNetworkIdFromEntity(nearestVeh))
     else
         notify("~r~This is not your Vehicle!")
     end
@@ -39,7 +39,7 @@ local LootBagCrouchLoop = false;
 RegisterCommand('inventory', function()
     if not tvRP.isInComa({}) then
         if not inventoryOpen then
-            TriggerServerEvent('GBRP:FetchPersonalInventory')
+            TriggerServerEvent('GMT:FetchPersonalInventory')
             inventoryOpen = true; 
             SetNuiFocus(true, true)
             SetNuiFocusKeepInput(true)
@@ -54,7 +54,7 @@ RegisterCommand('inventory', function()
             --     tvRP.vc_openDoor({VehTypeC, 5})
             --     inventoryType = 'CarBoot'
             --     
-            --     TriggerServerEvent('GBRP:FetchTrunkInventory', NVeh)
+            --     TriggerServerEvent('GMT:FetchTrunkInventory', NVeh)
             -- end
 
         else
@@ -73,7 +73,7 @@ RegisterCommand('inventory', function()
                 if debug then 
                     print('Requested lootbag to close.')
                 end
-                TriggerServerEvent('GBRP:CloseLootbag')
+                TriggerServerEvent('GMT:CloseLootbag')
                 IsLootBagOpening = false;
                 ResetPedMovementClipset(PlayerPedId(), 0.30 )
                 LootBagCrouchLoop = false;
@@ -92,8 +92,8 @@ function LoadAnimDict(dict)
     end
 end
 
-RegisterNetEvent('GBRP:InventoryOpen')
-AddEventHandler('GBRP:InventoryOpen', function(toggle, lootbag)
+RegisterNetEvent('GMT:InventoryOpen')
+AddEventHandler('GMT:InventoryOpen', function(toggle, lootbag)
     IsLootBagOpening = lootbag
     if IsLootBagOpening then
         LoadAnimDict('amb@medic@standing@kneel@base')
@@ -117,23 +117,23 @@ AddEventHandler('GBRP:InventoryOpen', function(toggle, lootbag)
 end)
 
 
-RegisterNetEvent('GBRP:ToggleNUIFocus')
-AddEventHandler('GBRP:ToggleNUIFocus', function(value)
+RegisterNetEvent('GMT:ToggleNUIFocus')
+AddEventHandler('GMT:ToggleNUIFocus', function(value)
     --print('focus', value)
     SetNuiFocus(value, value)
     SetNuiFocusKeepInput(value)
 end)
 
-RegisterNetEvent('GBRP:SendSecondaryInventoryData')
-AddEventHandler('GBRP:SendSecondaryInventoryData', function(InventoryData, CurrentKG, MaxKg)
+RegisterNetEvent('GMT:SendSecondaryInventoryData')
+AddEventHandler('GMT:SendSecondaryInventoryData', function(InventoryData, CurrentKG, MaxKg)
     SendNUIMessage({action = 'loadSecondaryItems', items = InventoryData, CurrentKG = CurrentKG, MaxKG = MaxKg, invType = inventoryType})
     if debug then
         print('Sent secondary inventory data to client.')
     end
 end)
 
-RegisterNetEvent('GBRP:FetchPersonalInventory')
-AddEventHandler('GBRP:FetchPersonalInventory', function(table, CurrentKG, MaxKG)
+RegisterNetEvent('GMT:FetchPersonalInventory')
+AddEventHandler('GMT:FetchPersonalInventory', function(table, CurrentKG, MaxKG)
     SendNUIMessage({action = 'loadItems', items = table, CurrentKG = CurrentKG, MaxKG = MaxKG})
     if debug then
         print('Sent inventory data to client.')
@@ -141,7 +141,7 @@ AddEventHandler('GBRP:FetchPersonalInventory', function(table, CurrentKG, MaxKG)
 end)
 
 RegisterNUICallback('UseBtn', function(data, cb)
-    TriggerServerEvent('GBRP:UseItem', data.itemId, data.invType)
+    TriggerServerEvent('GMT:UseItem', data.itemId, data.invType)
     cb(true);
     PlaySound(-1, "SELECT", "HUD_FRONTEND_DEFAULT_SOUNDSET", 0, 0, 1)
 
@@ -150,13 +150,13 @@ RegisterNUICallback('UseBtn', function(data, cb)
 end)
 
 RegisterNUICallback('TrashBtn', function(data, cb)
-    TriggerServerEvent('GBRP:TrashItem', data.itemId, data.invType)
+    TriggerServerEvent('GMT:TrashItem', data.itemId, data.invType)
     cb(true);
     PlaySound(-1, "SELECT", "HUD_FRONTEND_DEFAULT_SOUNDSET", 0, 0, 1)
 end)
 
 RegisterNUICallback('GiveBtn', function(data, cb)
-    TriggerServerEvent('GBRP:GiveItem', data.itemId, data.invType)
+    TriggerServerEvent('GMT:GiveItem', data.itemId, data.invType)
     cb(true)
     PlaySound(-1, "SELECT", "HUD_FRONTEND_DEFAULT_SOUNDSET", 0, 0, 1)
 end)
@@ -164,9 +164,9 @@ end)
 
 RegisterNUICallback('MoveBtn', function(data, cb)
     if not IsLootBagOpening then
-        TriggerServerEvent('GBRP:MoveItem', data.invType, data.itemId, VehTypeA)
+        TriggerServerEvent('GMT:MoveItem', data.invType, data.itemId, VehTypeA)
     else 
-        TriggerServerEvent('GBRP:MoveItem', 'LootBag', data.itemId, LootBagIDNew)
+        TriggerServerEvent('GMT:MoveItem', 'LootBag', data.itemId, LootBagIDNew)
     end
     PlaySound(-1, "SELECT", "HUD_FRONTEND_DEFAULT_SOUNDSET", 0, 0, 1)
     cb(true)
@@ -174,9 +174,9 @@ end)
 
 RegisterNUICallback('MoveXBtn', function(data, cb)
     if not IsLootBagOpening then
-        TriggerServerEvent('GBRP:MoveItemX', data.invType, data.itemId, VehTypeA)
+        TriggerServerEvent('GMT:MoveItemX', data.invType, data.itemId, VehTypeA)
     else 
-        TriggerServerEvent('GBRP:MoveItemX', 'LootBag', data.itemId, LootBagIDNew)
+        TriggerServerEvent('GMT:MoveItemX', 'LootBag', data.itemId, LootBagIDNew)
     end
     PlaySound(-1, "SELECT", "HUD_FRONTEND_DEFAULT_SOUNDSET", 0, 0, 1)
     cb(true)
@@ -186,9 +186,9 @@ end)
 RegisterNUICallback('MoveAllBtn', function(data, cb)
     if not IsLootBagOpening then
         local nearestVeh2 = vRP.getNearestVehicle({3})
-        TriggerServerEvent('GBRP:MoveItemAll', data.invType, data.itemId, VehTypeA, NetworkGetNetworkIdFromEntity(nearestVeh2))
+        TriggerServerEvent('GMT:MoveItemAll', data.invType, data.itemId, VehTypeA, NetworkGetNetworkIdFromEntity(nearestVeh2))
     else 
-        TriggerServerEvent('GBRP:MoveItemAll', 'LootBag', data.itemId, LootBagIDNew)
+        TriggerServerEvent('GMT:MoveItemAll', 'LootBag', data.itemId, LootBagIDNew)
     end
     PlaySound(-1, "SELECT", "HUD_FRONTEND_DEFAULT_SOUNDSET", 0, 0, 1)
     cb(true)
@@ -612,7 +612,7 @@ AddEventHandler('IFN:whatIsThis', function()
             
                        inventoryType = 'CarBoot'
                        
-                       TriggerServerEvent('GBRP:FetchTrunkInventory', GetEntityArchetypeName(nearestVeh), NetworkGetNetworkIdFromEntity(nearestVeh))
+                       TriggerServerEvent('GMT:FetchTrunkInventory', GetEntityArchetypeName(nearestVeh), NetworkGetNetworkIdFromEntity(nearestVeh))
 
                        
           

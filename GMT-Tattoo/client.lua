@@ -300,7 +300,7 @@ Citizen.CreateThread(function()
 										TattooData = {}
 										TattooData["collection"] = tattoo.Collection
 										TattooData["hash"] = tattoo.HashNameMale
-										TriggerServerEvent("GBRP:saveTattoos", TattooData)
+										TriggerServerEvent("GMT:saveTattoos", TattooData)
 									elseif hovered then
 										DrawTattoo(tattoo.Collection, tattoo.HashNameMale)
 									end
@@ -328,7 +328,7 @@ Citizen.CreateThread(function()
 										TattooData = {}
 										TattooData["collection"] = tattoo.Collection
 										TattooData["hash"] = tattoo.HashNameFemale
-										TriggerServerEvent("GBRP:saveTattoos", TattooData)
+										TriggerServerEvent("GMT:saveTattoos", TattooData)
 									elseif hovered then
 										DrawTattoo(tattoo.Collection, tattoo.HashNameFemale)
 									end
@@ -437,8 +437,8 @@ function alert(msg)
     DisplayHelpTextFromStringLabel(0,0,1,-1)
 end
 
-RegisterNetEvent("GBRP:setTattos")
-AddEventHandler("GBRP:setTattos",function(setTattos)
+RegisterNetEvent("GMT:setTattos")
+AddEventHandler("GMT:setTattos",function(setTattos)
     if setTattos then
 		collection = setTattos["collection"]
 		nameHash = setTattos["hash"]

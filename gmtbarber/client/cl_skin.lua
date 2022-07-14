@@ -457,7 +457,7 @@ RegisterNUICallback('updateSkin', function(data)
 		faceSaveData["eyeshadowcolour"] = eyeshadowcolour
 		faceSaveData["lipstickcolour"] = lipstickcolour
 
-		TriggerServerEvent("GBRP:saveFaceData",faceSaveData)
+		TriggerServerEvent("GMT:saveFaceData",faceSaveData)
 	end
 end)
 
@@ -634,8 +634,8 @@ Citizen.CreateThread(function()
 	end 
 end)
 
-RegisterNetEvent("GBRP:setHairstyle")
-AddEventHandler("GBRP:setHairstyle",function(hairstyle)
+RegisterNetEvent("GMT:setHairstyle")
+AddEventHandler("GMT:setHairstyle",function(hairstyle)
     if hairstyle then
         dad = hairstyle["dad"] or 0
         mum = hairstyle["mum"] or 0
@@ -699,7 +699,7 @@ function drawNativeNotification(text)
     DisplayHelpTextFromStringLabel(0, 0, 1, -1)
 end
 
-local GBRPFaceDataBlips = {
+local GMTFaceDataBlips = {
 	{-815.59008789063,-182.16806030273,37.568920135498},
 	{139.21583557129,-1708.9689941406,29.301620483398},
 	{-1281.9802246094,-1119.6861572266,7.0001249313354},
@@ -713,7 +713,7 @@ local playedSound = false
 
 Citizen.CreateThread(function()
 
-	for k, v in pairs(GBRPFaceDataBlips) do
+	for k, v in pairs(GMTFaceDataBlips) do
         local blip = AddBlipForCoord(table.unpack(v))
         SetBlipSprite(blip, 71)
         SetBlipDisplay(blip, 4)		
@@ -727,7 +727,7 @@ Citizen.CreateThread(function()
     while true do
         Citizen.Wait(0)
 
-        for k, v in pairs(GBRPFaceDataBlips) do
+        for k, v in pairs(GMTFaceDataBlips) do
 
             local plyCoords = GetEntityCoords(GetPlayerPed(-1), false)
             local dist = #(plyCoords-vector3(table.unpack(v)))

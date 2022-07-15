@@ -5,34 +5,43 @@ tvRP = Proxy.getInterface("vRP")
 inGreenzone = false
 instaffmode = false
 
-stThomas = {x = 332.97, y = -592.82, z = 70.23}
-legionJD = {x = 147.18, y = -1039.93, z = 48.22}
-cityHall = {x = -539.65, y = -213.34, z = 36.65 }
-legionGarage = {x = 243.92, y = -779.87, z = 29.62}
-adminIsland = {x = 3498.01, y = 2573.98, z = 10.8}
-vipIsland = {x = -2179.93, y = 5187.72, z = 16.26}
+stThomas = {x = 333.91488647461, y = -597.16156005859, z = 29.292747497559}
+legionJD = {x = 150.11642456055, y = -1039.6853027344, z = 29.367973327637}
+cityHall = {x = -540.54748535156, y = -216.42681884766, z = 37.64966583252}
+legionGarage = {x = 246.30143737793, y = -782.50170898438, z = 30.573167800903}
+adminIsland = {x = 3463.3479003906, y = 2589.4458007813, z = 17.442699432373}
+vipIsland = {x = -2181.7966308594, y = 5189.8286132813, z = 17.64377784729}
 casino = {x = 1112.1011962891, y = 227.21548461914, z = -49.624801635742}
-beachCinema = {x = -1670.4360351563, y = -902.43530273438, z = 8.4033660888672}
+beachCinema = {x = -1671.5692138672, y = -912.63940429688, z = 8.2297477722168}
 groveStreet = {x = 108.45377349854, y = -1943.3997802734, z = 20.803728103638}
 missionRow = {x = 448.98864746094, y = -984.71618652344, z = 30.68931388855}
-londonHospital = {x = 336.99, y = -1400.88, z = 31.51}
+londonHospital = {x = 337.64172363281, y = -1393.6368408203, z = 32.509204864502}
 viptp = {x = -2341.7902832031, y = 284.36248779297, z = 169.4672088623}
-vipcity = {x = -333.3, y = -700.77, z = 31.91}
-vespuccipd = {x = -1081.23, y = -842.82, z = 30.35}
+vipcity = {x = -335.1215820313, y = 266.88153076172, z = 169.60194396973}
+vespuccipd = {x = -1079.5734863281, y = -843.14739990234, z = 4.8841333389282}
+gz1 = {x = -110.09871673584, y = 6464.6030273438, z = 31.62672996521}
+gz2 = {x = 1133.0970458984, y = 250.78565979004, z = -51.035778045654}
+gz3 = {x = 13.929432868958, y = 6711.216796875, z = -105.85443878174}
+gz4 = {x = -2335.1215820313, y = 266.88153076172, z = 169.60194396973}
+
 
 
 local blips = {
-	{title="Safe Zone", colour=2, id=1, pos=vector3(stThomas.x, stThomas.y, stThomas.z),dist=37.5,nonRP=false,setBit=false},
-	{title="Safe Zone", colour=2, id=1, pos=vector3(londonHospital.x, londonHospital.y, londonHospital.z),dist=54,nonRP=false,setBit=false},
-	{title="Safe Zone", colour=2, id=1, pos=vector3(legionJD.x, legionJD.y, legionJD.z),dist=28,nonRP=false,setBit=false},
+	{title="Safe Zone", colour=2, id=1, pos=vector3(stThomas.x, stThomas.y, stThomas.z),dist=40,nonRP=false,setBit=false},
+	{title="Safe Zone", colour=2, id=1, pos=vector3(londonHospital.x, londonHospital.y, londonHospital.z),dist=50,nonRP=false,setBit=false},
+	{title="Safe Zone", colour=2, id=1, pos=vector3(legionJD.x, legionJD.y, legionJD.z),dist=25,nonRP=false,setBit=false},
 	{title="Safe Zone", colour=2, id=1, pos=vector3(viptp.x, viptp.y, viptp.z),dist=40,nonRP=false,setBit=false},
-	{title="Safe Zone", colour=2, id=1, pos=vector3(cityHall.x, cityHall.y, cityHall.z),dist=53,nonRP=false,setBit=false},
-	{title="Safe Zone", colour=2, id=1, pos=vector3(legionGarage.x, legionGarage.y, legionGarage.z),dist=39,nonRP=false,setBit=false},
-	{title="Safe Zone", colour=2, id=1, pos=vector3(adminIsland.x, adminIsland.y, adminIsland.z),dist=95,adminzone=true,setBit=true},
-	{title="Safe Zone", colour=2, id=1, pos=vector3(vipIsland.x, vipIsland.y, vipIsland.z),dist=151.75,nonRP=true,setBit=false},
+	{title="Safe Zone", colour=2, id=1, pos=vector3(cityHall.x, cityHall.y, cityHall.z),dist=50,nonRP=false,setBit=false},
+	{title="Safe Zone", colour=2, id=1, pos=vector3(legionGarage.x, legionGarage.y, legionGarage.z),dist=40,nonRP=false,setBit=false},
+	{title="Safe Zone", colour=2, id=1, pos=vector3(adminIsland.x, adminIsland.y, adminIsland.z),dist=40,adminzone=true,setBit=true},
+	{title="Safe Zone", colour=2, id=1, pos=vector3(vipIsland.x, vipIsland.y, vipIsland.z),dist=150,nonRP=true,setBit=false},
 	{title="Safe Zone", colour=2, id=1, pos=vector3(casino.x, casino.y, casino.z),dist=75,nonRP=false,setBit=false,interior=true},
-	{title="Safe Zone", colour=2, id=1, pos=vector3(vipcity.x, vipcity.y, vipcity.z),dist=33,nonRP=false,setBit=false},
-	{title="Safe Zone", colour=2, id=1, pos=vector3(vespuccipd.x, vespuccipd.y, vespuccipd.z),dist=47,nonRP=false,setBit=false},
+	{title="Safe Zone", colour=2, id=1, pos=vector3(vipcity.x, vipcity.y, vipcity.z),dist=30,nonRP=false,setBit=false},
+	{title="Safe Zone", colour=2, id=1, pos=vector3(vespuccipd.x, vespuccipd.y, vespuccipd.z),dist=45,nonRP=false,setBit=false},
+	{title="Safe Zone", colour=2, id=1, pos=vector3(gz1.x, gz1.y, gz1.z),dist=20,nonRP=false,setBit=false},
+	{title="Safe Zone", colour=2, id=1, pos=vector3(gz2.x, gz2.y, gz2.z),dist=100,nonRP=false,setBit=false},
+	{title="Safe Zone", colour=2, id=1, pos=vector3(gz3.x, gz3.y, gz3.z),dist=47,nonRP=false,setBit=false},
+	{title="Safe Zone", colour=2, id=1, pos=vector3(gz4.x, gz4.y, gz4.z),dist=50,nonRP=false,setBit=false},
 	--{title="Safe Zone", colour=2, id=1, pos=vector3(missionRow.x, missionRow.y, missionRow.z),dist=45,nonRP=false,setBit=false,interior=true},
 	--{title="Safe Zone", colour=2, id=1, pos=vector3(beachCinema),dist=30,nonRP=false,setBit=false,interior=true},
 	

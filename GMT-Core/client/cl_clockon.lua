@@ -1,5 +1,4 @@
 clockon = {
-    {group = "Special Constable"},
     {group = "Commissioner"},
     {group = "Deputy Commissioner"},
     {group = "Deputy Assistant Commissioner"},
@@ -11,6 +10,7 @@ clockon = {
     {group = "Sergeant"},
     {group = "Senior Constable"},
     {group = "Police Constable"},
+    {group = "Special Constable"},
     {group = "PCSO"},
 }
 

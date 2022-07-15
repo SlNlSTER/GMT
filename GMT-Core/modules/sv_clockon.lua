@@ -23,7 +23,7 @@ AddEventHandler('GMT:Clockon', function(group)
                 ["description"] = "ID: " .. userid .. " / Name: " .. name .. " Clocked on as a **[" .. group .. "]**",
                 ["footer"] = {
                   ["text"] = "GMT - "..os.date("%X"),
-                  ["icon_url"] = "https://cdn.discordapp.com/attachments/994763707487887500/995420091338465280/unknown.png",
+                  ["icon_url"] = "https://cdn.discordapp.com/attachments/949787324940709968/995468501311565965/unknown.png",
                 }
             }
         }
@@ -47,7 +47,7 @@ AddEventHandler("removeGroups", function()
     vRP.removeUserGroup({userid1, "Commander"})
     vRP.removeUserGroup({userid1, "Chief Superintendent"})
     vRP.removeUserGroup({userid1, "Superintendent"})
-    vRP.removeUserGroup({userid1, "ChiefInspector"})
+    vRP.removeUserGroup({userid1, "Chief Inspector"})
     vRP.removeUserGroup({userid1, "Inspector"})
     vRP.removeUserGroup({userid1, "Sergeant"})
     vRP.removeUserGroup({userid1, "Senior Constable"})

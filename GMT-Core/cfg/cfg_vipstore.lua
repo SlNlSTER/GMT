@@ -4,7 +4,7 @@ VIP.perm = "vip.guns" -- player.phone is default for everyone
 VIP.maxArmourPrice = 100000
 
 VIP.gunshops = {
-    vector3(-2151.0087890625,5191.5229492188,15.718823432922)
+    vector3(-2166.6569824219,5197.5517578125,16.880397796631)
 }
 
 

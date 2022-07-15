@@ -5,31 +5,34 @@ tvRP = Proxy.getInterface("vRP")
 inGreenzone = false
 instaffmode = false
 
-stThomas = {x = 333.91488647461, y = -597.16156005859, z = 29.292747497559}
-legionJD = {x = 154.30529785156, y = -1049.1298828125, z = 29.243709564209}
-cityHall = {x = -538.44488525391, y = -218.1847076416, z = 40.40007400512}
-legionGarage = {x = 246.30143737793, y = -782.50170898438, z = 30.573167800903}
-adminIsland = {x = 3511.8503417969, y = 2567.5361328125, z = 9.545202255249}
-vipIsland = {x = -2167.8471679688, y = 5196.4565429688, z = 16.880462646484}
+stThomas = {x = 332.97, y = -592.82, z = 70.23}
+legionJD = {x = 147.18, y = -1039.93, z = 48.22}
+cityHall = {x = -539.65, y = -213.34, z = 36.65 }
+legionGarage = {x = 243.92, y = -779.87, z = 29.62}
+adminIsland = {x = 3498.01, y = 2573.98, z = 10.8}
+vipIsland = {x = -2179.93, y = 5187.72, z = 16.26}
 casino = {x = 1112.1011962891, y = 227.21548461914, z = -49.624801635742}
 beachCinema = {x = -1670.4360351563, y = -902.43530273438, z = 8.4033660888672}
 groveStreet = {x = 108.45377349854, y = -1943.3997802734, z = 20.803728103638}
 missionRow = {x = 448.98864746094, y = -984.71618652344, z = 30.68931388855}
-londonHospital = {x = 341.17095947266, y = -1396.7863769531, z = 32.509269714355}
+londonHospital = {x = 336.99, y = -1400.88, z = 31.51}
 viptp = {x = -2341.7902832031, y = 284.36248779297, z = 169.4672088623}
-
+vipcity = {x = -333.3, y = -700.77, z = 31.91}
+vespuccipd = {x = -1081.23, y = -842.82, z = 30.35}
 
 
 local blips = {
-	{title="Safe Zone", colour=2, id=1, pos=vector3(stThomas.x, stThomas.y, stThomas.z),dist=55,nonRP=false,setBit=false},
-	{title="Safe Zone", colour=2, id=1, pos=vector3(londonHospital.x, londonHospital.y, londonHospital.z),dist=40,nonRP=false,setBit=false},
-	{title="Safe Zone", colour=2, id=1, pos=vector3(legionJD.x, legionJD.y, legionJD.z),dist=55,nonRP=false,setBit=false},
+	{title="Safe Zone", colour=2, id=1, pos=vector3(stThomas.x, stThomas.y, stThomas.z),dist=37.5,nonRP=false,setBit=false},
+	{title="Safe Zone", colour=2, id=1, pos=vector3(londonHospital.x, londonHospital.y, londonHospital.z),dist=54,nonRP=false,setBit=false},
+	{title="Safe Zone", colour=2, id=1, pos=vector3(legionJD.x, legionJD.y, legionJD.z),dist=28,nonRP=false,setBit=false},
 	{title="Safe Zone", colour=2, id=1, pos=vector3(viptp.x, viptp.y, viptp.z),dist=40,nonRP=false,setBit=false},
-	{title="Safe Zone", colour=2, id=1, pos=vector3(cityHall.x, cityHall.y, cityHall.z),dist=60,nonRP=false,setBit=false},
-	{title="Safe Zone", colour=2, id=1, pos=vector3(legionGarage.x, legionGarage.y, legionGarage.z),dist=40,nonRP=false,setBit=false},
-	{title="Safe Zone", colour=2, id=1, pos=vector3(adminIsland.x, adminIsland.y, adminIsland.z),dist=105,adminzone=true,setBit=true},
-	{title="Safe Zone", colour=2, id=1, pos=vector3(vipIsland.x, vipIsland.y, vipIsland.z),dist=130,nonRP=true,setBit=false},
-	{title="Safe Zone", colour=2, id=1, pos=vector3(casino.x, casino.y, casino.z),dist=70,nonRP=false,setBit=false,interior=true},
+	{title="Safe Zone", colour=2, id=1, pos=vector3(cityHall.x, cityHall.y, cityHall.z),dist=53,nonRP=false,setBit=false},
+	{title="Safe Zone", colour=2, id=1, pos=vector3(legionGarage.x, legionGarage.y, legionGarage.z),dist=39,nonRP=false,setBit=false},
+	{title="Safe Zone", colour=2, id=1, pos=vector3(adminIsland.x, adminIsland.y, adminIsland.z),dist=95,adminzone=true,setBit=true},
+	{title="Safe Zone", colour=2, id=1, pos=vector3(vipIsland.x, vipIsland.y, vipIsland.z),dist=151.75,nonRP=true,setBit=false},
+	{title="Safe Zone", colour=2, id=1, pos=vector3(casino.x, casino.y, casino.z),dist=75,nonRP=false,setBit=false,interior=true},
+	{title="Safe Zone", colour=2, id=1, pos=vector3(vipcity.x, vipcity.y, vipcity.z),dist=33,nonRP=false,setBit=false},
+	{title="Safe Zone", colour=2, id=1, pos=vector3(vespuccipd.x, vespuccipd.y, vespuccipd.z),dist=47,nonRP=false,setBit=false},
 	--{title="Safe Zone", colour=2, id=1, pos=vector3(missionRow.x, missionRow.y, missionRow.z),dist=45,nonRP=false,setBit=false,interior=true},
 	--{title="Safe Zone", colour=2, id=1, pos=vector3(beachCinema),dist=30,nonRP=false,setBit=false,interior=true},
 	
@@ -40,25 +43,25 @@ if not purge then
 	local pos = AddBlipForRadius(-1670.4360351563,-902.43530273438,8.4033660888672, 30.0) -- big screen
 	SetBlipColour(pos, 2)
 	SetBlipAlpha(pos, 170)
-	local pos = AddBlipForRadius(333.91488647461,-597.16156005859,29.292747497559, 55.0) -- st thomas
+	local pos = AddBlipForRadius(332.97, -592.82, 70.23, 37.5) -- st thomas
 	SetBlipColour(pos, 2)
 	SetBlipAlpha(pos, 170)
-	local pos = AddBlipForRadius(154.30529785156,-1049.1298828125,29.243709564209, 55.0) -- jd green 
+	local pos = AddBlipForRadius(147.18, -1039.93, 48.22, 28.0) -- jd green 
 	SetBlipColour(pos, 2)
 	SetBlipAlpha(pos, 170)
 	local pos = AddBlipForRadius(108.45377349854,-1943.3997802734,20.803728103638, 35.0) -- Green circle at weed
 	SetBlipColour(pos, 2)
 	SetBlipAlpha(pos, 70)
-	local pos = AddBlipForRadius(246.30143737793,-782.50170898438,30.573167800903, 40.0) -- legion garage
+	local pos = AddBlipForRadius(243.92, -779.87, 29.62, 39.0) -- legion garage
 	SetBlipColour(pos, 2)
 	SetBlipAlpha(pos, 170)
 	local pos = AddBlipForRadius(-2341.7902832031,284.36248779297,169.4672088623, 40.0) -- viptp
 	SetBlipColour(pos, 2)
 	SetBlipAlpha(pos, 170)
-	local pos = AddBlipForRadius(-538.44488525391,-218.1847076416,40.400074005127, 60.0) -- town hall
+	local pos = AddBlipForRadius(-539.65, -213.34, 36.65, 53.0) -- city hall
 	SetBlipColour(pos, 2)
 	SetBlipAlpha(pos, 170)
-	local pos = AddBlipForRadius(341.12100219727,-1396.7502441406,32.509265899658, 40.0) -- london hospital
+	local pos = AddBlipForRadius(336.99, -1400.88, 31.51, 54.0) -- london hospital
 	SetBlipColour(pos, 2)
 	SetBlipAlpha(pos, 170)
 	-- local pos = AddBlipForRadius(448.98864746094,-984.71618652344,30.68931388855, 45.0) -- mission row
@@ -162,7 +165,7 @@ Citizen.CreateThread(function()
 			SetEntityAlpha(PlayerPedId(), 150)
 		end
 		if setDrawNonRpZoneUI then
-			bank_drawTxt(0.83, 1.40, 1.0, 1.0, 0.43, "You have entered a non-RP greenzone, you may talk OOC here", 0, 255, 0, 255)
+			bank_drawTxt(0.83, 1.40, 1.0, 1.0, 0.43, "~w~You have entered a non-RP greenzone, you may talk out of character here", 0, 255, 0, 255)
 			DisableControlAction(2, 37, true) -- disable weapon wheel (Tab)
 			DisablePlayerFiring(GetPlayerPed(-1),true) -- Disables firing all together if they somehow bypass inzone Mouse Disable
 			DisableControlAction(0, 45, true)
@@ -174,7 +177,7 @@ Citizen.CreateThread(function()
 		end
 		if setDrawAdminIsland then
 			inRedZone = false
-			bank_drawTxt(0.83, 1.40, 1.0, 1.0, 0.43, "You have entered Admin Island, You may talk OOC here", 0, 255, 0, 255)
+			bank_drawTxt(0.83, 1.40, 1.0, 1.0, 0.43, "~w~You have entered a non-RP greenzone, You may talk out of character here", 0, 255, 0, 255)
 			DisableControlAction(2, 37, true) -- disable weapon wheel (Tab)
 			DisablePlayerFiring(GetPlayerPed(-1),true) -- Disables firing all together if they somehow bypass inzone Mouse Disable
 			DisableControlAction(0, 45, true)

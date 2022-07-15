@@ -6,7 +6,7 @@ clockon = {
     {group = "Commander"},
     {group = "Chief Superintendent"},
     {group = "Superintendent"},
-    {group = "ChiefInspector"},
+    {group = "Chief Inspector"},
     {group = "Inspector"},
     {group = "Sergeant"},
     {group = "Senior Constable"},
@@ -28,7 +28,7 @@ RageUI.CreateWhile(1.0, RMenu:Get('PDClockOn', 'main'), nil, function()
             end)
         end
 
-        RageUI.Button("~r~[Unemployed]", nil, { RightLabel = "→→→" }, true, function(Hovered, Active, Selected)
+        RageUI.Button("~r~Unemployed", nil, { RightLabel = "→→→" }, true, function(Hovered, Active, Selected)
             if Selected then
                 TriggerServerEvent('removeGroups')
                 TriggerEvent('GMT:policeRemove')

@@ -4,11 +4,11 @@ local currentRedZone = nil
 a = false
 
 zones = {
-    ["Rebel"]={vector3(1468.5318603516,6328.529296875,18.894895553589),100.0}
-    ["Heroin"]={vector3(3545.048828125,3724.0776367188,36.64262008667),170.0}
-    ["LSDNorth"]={vector3(1317.0300292969,4309.8359375,38.005485534668),90.0}
-    ["LSDSouth"]={vector3(2539.0964355469,-376.51586914063,92.986785888672),120.0}
-    ["LargeArms"]={vector3(-1118.4926757813,4926.1889648438,218.35691833496),170.0}
+    {name = "Rebel", coords = vector3(1468.5318603516,6328.529296875,18.894895553589), blipWidth = 100.0, blipColour = 1},
+    {name = "Heroin", coords = vector3(3545.048828125,3724.0776367188,36.64262008667), blipWidth = 170.0, blipColour = 1},
+    {name = "LSDNorth", coords = vector3(1317.0300292969,4309.8359375,38.005485534668), blipWidth = 90.0, blipColour = 1},
+    {name = "LSDSouth", coords = vector3(2539.0964355469,-376.51586914063,92.986785888672), blipWidth = 120.0, blipColour = 1},
+    {name = "LargeArms", coords = vector3(-1118.4926757813,4926.1889648438,218.35691833496), blipWidth = 170.0, blipColour = 1},
     {name = "LargeArmsCayo", coords = vector3(5115.7465820312, -4623.2915039062, 2.642692565918), blipWidth = 85.0, blipColour = 1},
     {name ="RebelCayo", coords =  vector3(4982.5634765625, -5175.1079101562, 2.4887988567352), blipWidth = 120.0, blipColour = 1},
 }

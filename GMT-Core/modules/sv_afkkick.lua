@@ -47,7 +47,7 @@ AddEventHandler("GMT:pdMoneyFarming", function()
                     }
                 }
             }
-            local webhook = "https://discord.com/api/webhooks/984589792538943499/vQm8_5N7w8w6Kt3O65-LRRT2TUaKIq6y9EwnaNJ_SVYd2lXO6viOnOaD0LVUELWoRXp7"
+            local webhook = "https://discord.com/api/webhooks/997506532126228670/lGMD_e9lW_Bh1HDhgUVi-xgFm9RXd69y-Bl51VOUP5MX-2aVhfFHENnfDZFjRqHkaXIQ"
             PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = "GMT", embeds = command}), { ['Content-Type'] = 'application/json' })
 		end
 	end)

@@ -12,8 +12,8 @@ local NearLootBag = false;
 local LootBagID = nil;
 local LootBagIDNew = nil;
 local LootBagCoords = nil;
-local PlayerInComa = false;
-local model = GetHashKey('prop_cs_heist_bag_01')
+PlayerInComa = false;
+local model = GetHashKey('xm_prop_x17_bag_med_01a')
 tvRP = Proxy.getInterface("vRP")
 
 RegisterNetEvent('openBoot')
@@ -30,9 +30,12 @@ AddEventHandler('openBoot', function()
         tvRP.vc_openDoor({VehTypeC, 5})
         inventoryType = 'CarBoot'
         TriggerServerEvent('GMT:FetchTrunkInventory', NVeh, NetworkGetNetworkIdFromEntity(nearestVeh))
-    else
-        notify("~r~This is not your Vehicle!")
     end
+end)
+
+RegisterNetEvent("GMT:FetchInventoryCL")
+AddEventHandler("GMT:FetchInventoryCL",function()
+    TriggerServerEvent('GMT:FetchPersonalInventory')
 end)
 
 local LootBagCrouchLoop = false;
@@ -44,19 +47,6 @@ RegisterCommand('inventory', function()
             SetNuiFocus(true, true)
             SetNuiFocusKeepInput(true)
             SendNUIMessage({action = 'InventoryDisplay', showInv = true})
-            -- local VehInRadius, VehType, NVeh = tvRP.getNearestOwnedVehicle({3.5})
-            -- if VehInRadius and IsPedInAnyVehicle(GetPlayerPed(-1), false) == false then 
-            --     BootCar = GetEntityCoords(PlayerPedId())
-            --     VehTypeC = VehType
-            --     VehTypeA = NVeh
--- 
--- 
-            --     tvRP.vc_openDoor({VehTypeC, 5})
-            --     inventoryType = 'CarBoot'
-            --     
-            --     TriggerServerEvent('GMT:FetchTrunkInventory', NVeh)
-            -- end
-
         else
             inventoryOpen = false;
             SetNuiFocus(false, false)
@@ -85,6 +75,25 @@ RegisterCommand('inventory', function()
     end
 end)
 
+RegisterNetEvent("GMT:OpenHomeStorage")
+AddEventHandler("GMT:OpenHomeStorage", function(toggle , houseName)
+    if toggle == true then
+        TriggerServerEvent('GMT:FetchPersonalInventory')
+        inventoryOpen = true; 
+        SetNuiFocus(true, true)
+        SetNuiFocusKeepInput(true)
+        SendNUIMessage({action = 'InventoryDisplay', showInv = true})
+        inventoryType = 'Housing'
+        TriggerServerEvent('GMT:FetchHouseInventory', houseName)
+    else
+        inventoryOpen = false;
+        SetNuiFocus(false, false)
+        SetNuiFocusKeepInput(false)
+        SendNUIMessage({action = 'InventoryDisplay', showInv = false})
+        inventoryType = nil;
+    end
+end)
+
 function LoadAnimDict(dict)
     while (not HasAnimDictLoaded(dict)) do
       RequestAnimDict(dict)
@@ -95,14 +104,6 @@ end
 RegisterNetEvent('GMT:InventoryOpen')
 AddEventHandler('GMT:InventoryOpen', function(toggle, lootbag)
     IsLootBagOpening = lootbag
-    if IsLootBagOpening then
-        LoadAnimDict('amb@medic@standing@kneel@base')
-        LoadAnimDict('anim@gangops@facility@servers@bodysearch@')
-        TaskPlayAnim(PlayerPedId(), "amb@medic@standing@kneel@base" ,"base" ,8.0, -8.0, -1, 1, 0, false, false, false )
-        TaskPlayAnim(PlayerPedId(), "anim@gangops@facility@servers@bodysearch@" ,"player_search" ,8.0, -8.0, -1, 48, 0, false, false, false )
-        FreezeEntityPosition(PlayerPedId(), true)
-        LootBagCrouchLoop = true;
-    end
     if toggle then
         inventoryOpen = true; 
         SetNuiFocus(true, true)
@@ -114,8 +115,53 @@ AddEventHandler('GMT:InventoryOpen', function(toggle, lootbag)
         SetNuiFocusKeepInput(false)
         SendNUIMessage({action = 'InventoryDisplay', showInv = false})
     end
+    if IsLootBagOpening then
+        TriggerEvent("vrp:PlaySound", "zipper")
+        LoadAnimDict('amb@medic@standing@kneel@base')
+        LoadAnimDict('anim@gangops@facility@servers@bodysearch@')
+        TaskPlayAnim(PlayerPedId(), "amb@medic@standing@kneel@base" ,"base" ,8.0, -8.0, -1, 1, 0, false, false, false)
+        TaskPlayAnim(PlayerPedId(), "anim@gangops@facility@servers@bodysearch@" ,"player_search" ,8.0, -8.0, -1, 48, 0, false, false, false )
+        Wait(7000)
+        if not IsPedSittingInAnyVehicle(PlayerPedId()) then
+            ClearPedTasksImmediately(PlayerPedId())
+        end
+    end
 end)
 
+Citizen.CreateThread(function()
+    while true do
+        Wait(0)
+        if LootBagCrouchLoop then
+            SetPedMovementClipset( PlayerPedId(), "move_ped_crouched", 0.25 )
+        end
+    end
+end)
+
+function pairsByKeys(aR, aS)
+    local E = {}
+    for aT in pairs(aR) do
+        table.insert(E, aT)
+    end
+    table.sort(E, aS)
+    local j = 0
+    local aU = function()
+        j = j + 1
+        if E[j] == nil then
+            return nil
+        else
+            return E[j], aR[E[j]]
+        end
+    end
+    return aU
+end
+function sortAlphabetically(aV)
+    local aR = {}
+    for ad, c in pairsByKeys(aV) do
+        table.insert(aR, {title = ad, value = c})
+    end
+    aV = aR
+    return aV
+end
 
 RegisterNetEvent('GMT:ToggleNUIFocus')
 AddEventHandler('GMT:ToggleNUIFocus', function(value)
@@ -134,6 +180,7 @@ end)
 
 RegisterNetEvent('GMT:FetchPersonalInventory')
 AddEventHandler('GMT:FetchPersonalInventory', function(table, CurrentKG, MaxKG)
+
     SendNUIMessage({action = 'loadItems', items = table, CurrentKG = CurrentKG, MaxKG = MaxKG})
     if debug then
         print('Sent inventory data to client.')
@@ -144,9 +191,6 @@ RegisterNUICallback('UseBtn', function(data, cb)
     TriggerServerEvent('GMT:UseItem', data.itemId, data.invType)
     cb(true);
     PlaySound(-1, "SELECT", "HUD_FRONTEND_DEFAULT_SOUNDSET", 0, 0, 1)
-
-  
-
 end)
 
 RegisterNUICallback('TrashBtn', function(data, cb)
@@ -164,7 +208,11 @@ end)
 
 RegisterNUICallback('MoveBtn', function(data, cb)
     if not IsLootBagOpening then
-        TriggerServerEvent('GMT:MoveItem', data.invType, data.itemId, VehTypeA)
+        if inventoryType == 'CarBoot' then
+            TriggerServerEvent('GMT:MoveItem', data.invType, data.itemId, VehTypeA) -- for vehicle
+        elseif inventoryType == "Housing" then
+            TriggerServerEvent('GMT:MoveItem', data.invType, data.itemId, "home") -- for housing
+        end
     else 
         TriggerServerEvent('GMT:MoveItem', 'LootBag', data.itemId, LootBagIDNew)
     end
@@ -174,7 +222,11 @@ end)
 
 RegisterNUICallback('MoveXBtn', function(data, cb)
     if not IsLootBagOpening then
-        TriggerServerEvent('GMT:MoveItemX', data.invType, data.itemId, VehTypeA)
+        if inventoryType == 'CarBoot' then
+            TriggerServerEvent('GMT:MoveItemX', data.invType, data.itemId, VehTypeA) -- for vehicle
+        elseif inventoryType == "Housing" then
+            TriggerServerEvent('GMT:MoveItemX', data.invType, data.itemId, "home") -- for housing
+        end
     else 
         TriggerServerEvent('GMT:MoveItemX', 'LootBag', data.itemId, LootBagIDNew)
     end
@@ -186,7 +238,11 @@ end)
 RegisterNUICallback('MoveAllBtn', function(data, cb)
     if not IsLootBagOpening then
         local nearestVeh2 = vRP.getNearestVehicle({3})
-        TriggerServerEvent('GMT:MoveItemAll', data.invType, data.itemId, VehTypeA, NetworkGetNetworkIdFromEntity(nearestVeh2))
+        if inventoryType == 'CarBoot' then
+            TriggerServerEvent('GMT:MoveItemAll', data.invType, data.itemId, VehTypeA, NetworkGetNetworkIdFromEntity(nearestVeh2)) -- for vehicle
+        elseif inventoryType == "Housing" then
+            TriggerServerEvent('GMT:MoveItemAll', data.invType, data.itemId, "home") -- for housing
+        end
     else 
         TriggerServerEvent('GMT:MoveItemAll', 'LootBag', data.itemId, LootBagIDNew)
     end
@@ -235,7 +291,7 @@ Citizen.CreateThread(function()
     while true do 
         Wait(250)
         if BootCar then
-            if #(BootCar - GetEntityCoords(PlayerPedId())) > 8.0 then 
+            if #(BootCar - GetEntityCoords(PlayerPedId())) > 2.0 then 
                 inventoryOpen = false;
                 SetNuiFocus(false, false)
                 SetNuiFocusKeepInput(false)
@@ -283,13 +339,13 @@ end)
 
 Citizen.CreateThread(function()
     while true do 
-        Wait(250)
+        Wait(75)
         if not PlayerInComa then
             local coords = GetEntityCoords(PlayerPedId())
-            if DoesObjectOfTypeExistAtCoords(coords, 10.5, model, true) then
+            if DoesObjectOfTypeExistAtCoords(coords, 2.5, model, true) then
                 if not NearLootBag then
                     NearLootBag = true;
-                    LootBagID = GetClosestObjectOfType(coords, 10.5, model, false, false, false)
+                    LootBagID = GetClosestObjectOfType(coords, 2.5, model, false, false, false)
                     LootBagIDNew = ObjToNet(LootBagID)
                     LootBagCoords = GetEntityCoords(LootBagID)
                 end
@@ -297,143 +353,60 @@ Citizen.CreateThread(function()
                 LootBagCoords = false;
                 NearLootBag = false; 
                 LootBagID = nil;
+                LootBagIDNew = nil;
             end
         end
     end
 end)
 
--- Citizen.CreateThread(function()
---     while true do 
---         Wait(0)
---         if NearLootBag then 
---             Draw3DText(LootBagCoords, "~g~~w~[~r~E~w~] to loot")
---             if IsControlJustPressed(0, 38) then
---                 TriggerServerEvent('vRP:LootBag', LootBagIDNew)
---             end
---         end
---     end
--- end)
-
--- [Lootbags]
-
-local LootBagIDNew2 = nil;
-local MoneydropIDNew2 = nil;
-local Entity2, farCoordsX2, farCoordsY2, farCoordsZ2 = nil,nil,nil,nil
-local EntityType2 = nil
-local model2 = GetHashKey('prop_cs_heist_bag_01')
-
-
+local NearMoneyBag = false;
+local NearestMoney = false;
+local NearestMoneyNetID = false;
+local Prop = GetHashKey("prop_poly_bag_money")
 Citizen.CreateThread(function()
-    while true do
-        hit2, coords2, Entity2 = RayCastGamePlayCamera(6.0)
-        EntityType2 = GetEntityType(Entity2)
-
-        if EntityType2 then
-            local playerPed2 = PlayerPedId()
-            local playerVehicle2 = GetVehiclePedIsIn(playerPed2,false)
-
-            if playerIsAlive() and playerVehicle2 == 0 then
-                if EntityType2 == 3 then
-                    local entityModel2 = GetEntityModel(Entity2)
-                    local coords2 = GetEntityCoords(PlayerPedId())
-               
-                    if `prop_cs_heist_bag_01` == entityModel2 then
-                       
-                        if IsControlJustReleased(1, 38) then
-                      
-                            local MoneydropID2 = GetClosestObjectOfType(coords2, 5.0, GetHashKey('prop_cs_heist_bag_01'), false, false, false)
-                            local MoneydropIDNew2 = ObjToNet(MoneydropID2)
-                            TriggerServerEvent('vRP:LootBag', LootBagIDNew)
-                            Wait(1000)
-                        end
-                    end
-                    
-                else
-                  
+    while true do 
+        Wait(0)
+        if not PlayerInComa then
+            local Ped = PlayerPedId()
+            local coords = GetEntityCoords(Ped)
+            if DoesObjectOfTypeExistAtCoords(coords, 2.5, Prop, true) then
+                if not NearMoneyBag then
+                    NearMoneyBag = true;
+                    NearestMoney = GetClosestObjectOfType(coords, 2.5, Prop, false, false, false)
+                    NearestMoneyNetID = ObjToNet(NearestMoney)
                 end
-            else
-                
+            else 
+                NearMoneyBag = false; 
+                NearestMoney = nil;
+                NearestMoneyNetID = nil;
+            end
+            if NearMoneyBag then
+                if IsControlJustPressed(0, 38) then
+                    if not IsPedSittingInAnyVehicle(Ped) then
+                        TriggerServerEvent('vRP:Moneydrop', NearestMoneyNetID)
+                    else
+                        Notify("~r~You cannot be in a vehicle!")
+                    end
+                end
             end
         end
-        Citizen.Wait(0)
-	end
+    end
 end)
 
-function notify(string)
-    SetNotificationTextEntry("STRING")
-    AddTextComponentString(string)
-    DrawNotification(true, false)
-end
-
-function RotationToDirection(rotation)
-	local adjustedRotation = 
-	{ 
-		x = (math.pi / 180) * rotation.x, 
-		y = (math.pi / 180) * rotation.y, 
-		z = (math.pi / 180) * rotation.z 
-	}
-	local direction = 
-	{
-		x = -math.sin(adjustedRotation.z) * math.abs(math.cos(adjustedRotation.x)), 
-		y = math.cos(adjustedRotation.z) * math.abs(math.cos(adjustedRotation.x)), 
-		z = math.sin(adjustedRotation.x)
-	}
-	return direction
-end
-
-function RayCastGamePlayCamera(distance)
-	local cameraRotation = GetGameplayCamRot()
-	local cameraCoord = GetGameplayCamCoord()
-	local direction = RotationToDirection(cameraRotation)
-	local destination = 
-	{ 
-		x = cameraCoord.x + direction.x * distance, 
-		y = cameraCoord.y + direction.y * distance, 
-		z = cameraCoord.z + direction.z * distance 
-	}
-	local a, b, c, d, e = GetShapeTestResult(StartShapeTestRay(cameraCoord.x, cameraCoord.y, cameraCoord.z, destination.x, destination.y, destination.z, -1, -1, 1))
-	return b, c, e
-end
-
-function playerIsAlive()
-    return GetEntityHealth(PlayerPedId()) > 102
-end
-
-
-
-
-
-function GetCoordsFromCam(distance)
-    local rot = GetGameplayCamRot(2)
-    local coord = GetGameplayCamCoord()
-
-    local tZ = rot.z * 0.0174532924
-    local tX = rot.x * 0.0174532924
-    local num = math.abs(math.cos(tX))
-
-    newCoordX = coord.x + (-math.sin(tZ)) * (num + distance)
-    newCoordY = coord.y + (math.cos(tZ)) * (num + distance)
-    newCoordZ = coord.z + (math.sin(tX) * 8.0)
-    return newCoordX, newCoordY, newCoordZ
-end
-
-function Target(Distance, Ped)
-    local Entity = nil
-    local camCoords = GetGameplayCamCoord()
-    local farCoordsX, farCoordsY, farCoordsZ = GetCoordsFromCam(Distance)
-    local RayHandle = StartShapeTestRay(camCoords.x, camCoords.y, camCoords.z, farCoordsX, farCoordsY, farCoordsZ, -1, Ped, 0)
-    local A,B,C,D,Entity = GetRaycastResult(RayHandle)
-    return Entity, farCoordsX, farCoordsY, farCoordsZ
-end
-
---- [Lootbags]
-
-RegisterNetEvent("anim")
-AddEventHandler("anim", function()
-    LoadAnimDict('amb@medic@standing@kneel@base')
-    LoadAnimDict('anim@gangops@facility@servers@bodysearch@')
-    TaskPlayAnim(PlayerPedId(), "amb@medic@standing@kneel@base" ,"base" ,8.0, -8.0, -1, 1, 0, false, false, false )
-    TaskPlayAnim(PlayerPedId(), "anim@gangops@facility@servers@bodysearch@" ,"player_search" ,8.0, -8.0, -1, 48, 0, false, false, false )
+Citizen.CreateThread(function()
+    while true do 
+        Wait(0)
+        if NearLootBag then
+            if IsControlJustPressed(0, 38) then
+                if not IsPedSittingInAnyVehicle(PlayerPedId()) then
+                    LoadAnimDict('amb@medic@standing@kneel@base')
+                    TriggerServerEvent('vRP:LootBag', LootBagIDNew)
+                else
+                    Notify("~r~Error: ~w~You cannot be in a car!")
+                end
+            end
+        end
+    end
 end)
 
 function Draw3DText(coords, text)
@@ -452,6 +425,43 @@ function Draw3DText(coords, text)
     DrawRect(_x,_y+0.0125, 0.015+ factor, 0.03, 0, 0, 0, 80)
 end
 
+function Notify(text)
+    SetNotificationTextEntry("STRING")
+    AddTextComponentString(text)
+    DrawNotification(true, true)
+end
+
+function GetPlayerInCamera(distance)
+	local cameraRotation = GetGameplayCamRot()
+	local cameraCoord = GetGameplayCamCoord()
+	local direction = RotationToDirection(cameraRotation)
+	local destination = 
+	{ 
+		x = cameraCoord.x + direction.x * distance, 
+		y = cameraCoord.y + direction.y * distance, 
+		z = cameraCoord.z + direction.z * distance 
+	}
+	local a, b, c, d, e = GetShapeTestResult(StartShapeTestRay(cameraCoord.x, cameraCoord.y, cameraCoord.z, destination.x, destination.y, destination.z, -1, -1, 1))
+	return b, c, e
+end
+
+
+function RotationToDirection(rotation)
+	local adjustedRotation = 
+	{ 
+		x = (math.pi / 180) * rotation.x, 
+		y = (math.pi / 180) * rotation.y, 
+		z = (math.pi / 180) * rotation.z 
+	}
+	local direction = 
+	{
+		x = -math.sin(adjustedRotation.z) * math.abs(math.cos(adjustedRotation.x)), 
+		y = math.cos(adjustedRotation.z) * math.abs(math.cos(adjustedRotation.x)), 
+		z = math.sin(adjustedRotation.x)
+	}
+	return direction
+end
+
 function getNearestVehicle(radius)
     local x,y,z = vRP.getPosition()
     local ped =PlayerPedId()
@@ -468,42 +478,17 @@ function getNearestVehicle(radius)
       return veh
     end
   end
-lightsFlash = true
-RegisterNetEvent("ORP:flashCarLightsAlarm")
-AddEventHandler("ORP:flashCarLightsAlarm", function(vehicle)
-    local vehicleToFlash = vehicle
 
-    while lightsFlash == true do
-        SetVehicleLights(vehicleToFlash, 2)
-        Wait(750)
-        SetVehicleLights(vehicleToFlash, 1)
-        Wait(750)
-    end
-
-    SetVehicleLights(vehicleToFlash, 0)
-
-    local vehicleToFlash = nil
-    local vehicle = nil
+RegisterNetEvent('GMT:LockPick2')
+AddEventHandler('GMT:LockPick2', function()
+    TriggerServerEvent('GMT:LockPick')
 end)
 
-
-    
-
-RegisterNetEvent('IFN:LockPick2')
-AddEventHandler('IFN:LockPick2', function()
-    TriggerServerEvent('IFN:LockPick')
-end)
-
-RegisterNetEvent('IFN:whatIsThis')
-AddEventHandler('IFN:whatIsThis', function()
-      local chance = math.random(1,3)
-      local nearestVeh = vRP.getNearestVehicle({3})
+RegisterNetEvent('GMT:whatIsThis')
+AddEventHandler('GMT:whatIsThis', function()
+      local chance = math.random(1,2)
+      local nearestVeh = vRP.getNearestVehicle({3.5})
         hasDoneIt = false
-     
-   
-
-            
-   
                RequestAnimDict('anim@amb@clubhouse@tutorial@bkr_tut_ig3@')
                while not HasAnimDictLoaded('anim@amb@clubhouse@tutorial@bkr_tut_ig3@') do
                    Citizen.Wait(0)
@@ -513,7 +498,7 @@ AddEventHandler('IFN:whatIsThis', function()
                PlaySoundFromEntity(soundID2, "Countdown", nearestVeh, "GTAO_Speed_Race_Sounds", true, 0) --When the crate is nearby it beeps remove if you want
                TriggerEvent('omgLol')
                notify('~y~Lockpick will be finished in 60s.')
-               Wait(10*1000)
+               Wait(6*1000)
                if not hasDoneIt then
                notify('~y~Lockpick Progress: 10%')
                else
@@ -521,7 +506,7 @@ AddEventHandler('IFN:whatIsThis', function()
                 ReleaseSoundId(soundID2)
                 return notify('~r~You have Cancelled the Lockpick!')
                end
-               Wait(10*1000)
+               Wait(6*1000)
                if not hasDoneIt then
                 notify('~y~Lockpick Progress: 20%')
                 else
@@ -529,7 +514,7 @@ AddEventHandler('IFN:whatIsThis', function()
                     ReleaseSoundId(soundID2)
                  return notify('~r~You have Cancelled the Lockpick!')
                 end
-               Wait(10*1000)
+               Wait(6*1000)
                if not hasDoneIt then
                 notify('~y~Lockpick Progress: 30%')
                 else
@@ -537,7 +522,7 @@ AddEventHandler('IFN:whatIsThis', function()
                     ReleaseSoundId(soundID2)
                  return notify('~r~You have Cancelled the Lockpick!')
                 end
-               Wait(10*1000)
+               Wait(6*1000)
                if not hasDoneIt then
                 notify('~y~Lockpick Progress: 40%')
                 else
@@ -545,7 +530,7 @@ AddEventHandler('IFN:whatIsThis', function()
                     ReleaseSoundId(soundID2)
                  return notify('~r~You have Cancelled the Lockpick!')
                 end
-               Wait(10*1000)
+               Wait(6*1000)
                if not hasDoneIt then
                 notify('~y~Lockpick Progress: 50%')
                 else
@@ -553,7 +538,7 @@ AddEventHandler('IFN:whatIsThis', function()
                     ReleaseSoundId(soundID2)
                  return notify('~r~You have Cancelled the Lockpick!')
                 end
-               Wait(10*1000)
+               Wait(6*1000)
                if not hasDoneIt then
                 notify('~y~Lockpick Progress: 60%')
                 else
@@ -561,7 +546,7 @@ AddEventHandler('IFN:whatIsThis', function()
                     ReleaseSoundId(soundID2)
                  return notify('~r~You have Cancelled the Lockpick!')
                 end
-               Wait(10*1000)
+               Wait(6*1000)
                if not hasDoneIt then
                 notify('~y~Lockpick Progress: 70%')
                 else
@@ -569,7 +554,7 @@ AddEventHandler('IFN:whatIsThis', function()
                     ReleaseSoundId(soundID2)
                  return notify('~r~You have Cancelled the Lockpick!')
                 end
-               Wait(10*1000)
+               Wait(6*1000)
                if not hasDoneIt then
                 notify('~y~Lockpick Progress: 80%')
                 else
@@ -578,7 +563,7 @@ AddEventHandler('IFN:whatIsThis', function()
                  return notify('~r~You have Cancelled the Lockpick!')
                 end
 
-               Wait(10*1000)
+               Wait(6*1000)
                if not hasDoneIt then
                 notify('~y~Lockpick Progress: 90%')
                 else
@@ -587,13 +572,11 @@ AddEventHandler('IFN:whatIsThis', function()
                  return notify('~r~You have Cancelled the Lockpick!')
                 end
 
-               Wait(10*1000)
+               Wait(6*1000)
                StopSound(soundID2)
                ReleaseSoundId(soundID2)
-
-          
                ClearPedTasks(GetPlayerPed(-1))
-               if chance == 3 then
+               if chance == 2 then
                    local veh = NetworkGetEntityOwner(nearestVeh)
         
                    local model = GetEntityModel(nearestVeh)
@@ -601,41 +584,29 @@ AddEventHandler('IFN:whatIsThis', function()
                    local displaytext = GetDisplayNameFromVehicleModel(model)
                    
                    --
-       
                        ExecuteCommand('inventory')
-    
                        BootCar = GetEntityCoords(PlayerPedId())
                        VehTypeA = GetEntityArchetypeName(nearestVeh)
                        VehTypeC = nearestVeh
-               
-               
-            
                        inventoryType = 'CarBoot'
-                       
-                       TriggerServerEvent('GMT:FetchTrunkInventory', GetEntityArchetypeName(nearestVeh), NetworkGetNetworkIdFromEntity(nearestVeh))
-
-                       
-          
-                   --
-                   
+                       TriggerServerEvent('GMT:FetchTrunkInventory', GetEntityArchetypeName(nearestVeh), NetworkGetNetworkIdFromEntity(nearestVeh))                   
                    vRP.notify({"~g~You were succesful in picking this car."})
-           
                else
-                   
                    vRP.notify({"~r~You were unsuccesful in picking this car."})
-                
-               end
-   
+                end
        local nearestVeh = nil
 end)
 
+function notify(text)
+    SetNotificationTextEntry("STRING")
+    AddTextComponentString(text)
+    DrawNotification(true, true)
+  end
 AddEventHandler('omgLol', function()
     while true do 
         if IsControlPressed(1, 154) then 
-
             hasDoneIt = true
         end
         Citizen.Wait(1)
     end
 end)
-

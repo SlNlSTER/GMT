@@ -197,7 +197,7 @@ AddEventHandler('GMT:GiveTicketMoney', function(admin, ticket, reason, isInTicke
             }
         }
     }
-    local webhook = "https://discord.com/api/webhooks/989908757309972530/cXlAD3HxgjPp7HxTZ0mAHATpo7LSRzPZhbP4qtNY3TotOI-_jVfra5-d2RxURzj90bT0"
+    local webhook = "https://discord.com/api/webhooks/997506168085819533/UNrDv474HrmGsThnN6EWEvICKQRZWm6tDFsqFgWdIxTtJvY7ll3aeFcq6a-rx-sA9eGC"
     PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = "GMT", embeds = command}), { ['Content-Type'] = 'application/json' })
     end
 end)

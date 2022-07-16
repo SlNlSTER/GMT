@@ -4,7 +4,7 @@ local LootBagIDNew = nil;
 local LootBagCoords = nil;
 local PlayerInComa = false;
 local ItemsInLootBag = {}
-local model = GetHashKey('p_ld_heist_bag_s_1')
+local model = GetHashKey('xs_prop_arena_bag_01')
 local MoneyBag = false;
 
 RMenu.Add('vRPLootBags', 'main', RageUI.CreateMenu("Lootbag", "~b~Lootbag Menu",1300,100))

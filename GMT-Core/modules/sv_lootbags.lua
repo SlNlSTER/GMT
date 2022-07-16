@@ -1,11 +1,11 @@
 local lang = vRP.lang
 local LootBagEntities = {}
 
-function tvRP.Coma()
+function vRP.Coma()
     local source = source
         Wait(500) -- wait delay for death.
         local user_id = vRP.getUserId(source)
-        local model = GetHashKey('p_ld_heist_bag_s_1')
+        local model = GetHashKey('xs_prop_arena_bag_01')
         local name1 = GetPlayerName(source)
         local lootbag = CreateObjectNoOffset(model, GetEntityCoords(GetPlayerPed(source)) + 0.4, true, true, false)
         local lootbagnetid = NetworkGetNetworkIdFromEntity(lootbag)
@@ -81,7 +81,7 @@ end
             end
         else 
             print('cheating ez ban on: userid:' .. user_id .. ' tried to hijack the lootbag!')
-            vRP.AnticheatBanVRP(user_id, 'Type: [1](Injecting Code)')
+            vRP.AnticheatBanVRP(user_id, 'Type: [4](Injecting Code)')
         end
     end)
 
@@ -140,8 +140,8 @@ end
     Citizen.CreateThread(function()
         while true do 
             Wait(600000)
-            if DoesEntityExist("p_ld_heist_bag_s_1") then 
-                DeleteEntity("p_ld_heist_bag_s_1")
+            if DoesEntityExist("xs_prop_arena_bag_01") then 
+                DeleteEntity("xs_prop_arena_bag_01")
             end
         end
     end)

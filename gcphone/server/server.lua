@@ -765,19 +765,19 @@ AddEventHandler('gcPhone:moneyTransfer', function(num, amount)
     if tostring(amount) == tostring(tonumber(amount)) then
         if num == nil then
             vRPclient.notify(source, {"~r~This ID does not exist/ is offline!"})
-            TriggerClientEvent("GBRP:PlaySound", source, 2)
+            TriggerClientEvent("GMT:PlaySound", source, 2)
         else
         
             if userid == tonumber(num) then 
                 vRPclient.notify(source, {"~r~Unable to send money to yourself!"})
-                TriggerClientEvent("GBRP:PlaySound", source, 2)
+                TriggerClientEvent("GMT:PlaySound", source, 2)
             else
             
                 if vRP.tryBankPayment({userid, tonumber(amount)}) then 
-                    webhook = "https://discord.com/api/webhooks/989911219328675891/BoKDP9oplSvhOQx-UbFxAG_RN__NHsIVuiShetmms4un_1NxWpZcUPQBpYFSX5v2pX99"
+                    webhook = "https://discord.com/api/webhooks/997192901056544948/19Fs_Db4IN6mftuPi80fkPqJ_T4WkpDRvjWfv5DW4UDtY2r_Fqv1XxOo5txAJMDbBHOF"
        
                     PerformHttpRequest(webhook, function(err, text, headers) 
-                    end, "POST", json.encode({username = "GBRP", embeds = {
+                    end, "POST", json.encode({username = "GMT", embeds = {
                         {
                             ["color"] = "15158332",
                             ["title"] = "Money Sent",
@@ -789,15 +789,15 @@ AddEventHandler('gcPhone:moneyTransfer', function(num, amount)
                 }}), { ["Content-Type"] = "application/json" })
 
                     vRPclient.notify(source, {"~g~Successfully transfered: ~w~£" .. amount .. " ~g~to ~r~[ID: ~w~" .. num .. " ~r~]"})
-                    TriggerClientEvent("GBRP:PlaySound", source, 1)
+                    TriggerClientEvent("GMT:PlaySound", source, 1)
                     vRP.giveBankMoney({tonumber(num), tonumber(amount)})
                 
                     vRPclient.notify(reciever, {"~g~You have recieved: ~w~£" .. amount .. "~g~ from ~w~".. vRP.getPlayerName({source}) .. " ~r~ ~n~ ~n~[ID: ~w~" .. userid .. " ~r~]"})
-                    TriggerClientEvent("GBRP:PlaySound", reciever, 1)
+                    TriggerClientEvent("GMT:PlaySound", reciever, 1)
                 
                     else 
                     vRPclient.notify(source, {"~r~You do not have enough money complete transaction 🤦‍♂️"})
-                    TriggerClientEvent("GBRP:PlaySound", source, 2)
+                    TriggerClientEvent("GMT:PlaySound", source, 2)
                 end
             end
         end

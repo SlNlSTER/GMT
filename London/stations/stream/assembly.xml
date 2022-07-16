@@ -1,0 +1,168 @@
+<?xml version="1.0"?>
+<package version="2.0" id="{7E0040FF-17D4-42A7-A800-6E755BCB5358}" target="Five">
+  <metadata>
+    <name>London Underground Stations</name>
+    <version>
+      <major>1</major>
+      <minor>3</minor>
+    </version>
+    <author>
+      <displayName>E999_KieranMerrilees</displayName>
+    </author>
+    		<description > <![CDATA[
+		This project aims to replace all the Los Santos underground stations for London's!
+ 
+		I am working on many more projects, but these do take a while! I've also taken over the Grand Theft Heathrow project so do keep checking back for more!
+		
+		=Credits= 
+		Texture Work - E999_KieranMerrilees/Zomby991
+		Creating OIV File - Albo1125 ]]></description>
+		
+		<largeDescription displayName="Changelog"><![CDATA[
+		V1.0:
+		- Public release
+        V1.1:
+        - Fixed the OIV file
+		V1.2:
+		- Fixed the OIV file FOR REAL NOW!
+		V1.3:
+		- Changed the advertisement stands inside the stations ]]>
+		</largeDescription>
+  </metadata>
+  <colors>
+    <headerBackground useBlackTextColor="False">$FF23366A</headerBackground>
+    <iconBackground>$00000000</iconBackground>
+  </colors>
+  <content>
+    <archive path="x64l.rpf" createIfNotExist="True" type="RPF7">
+      <archive path="levels\gta5\_cityw\airport_01\ap1_01_b.rpf" createIfNotExist="True" type="RPF7">
+        <add source="rpf\x64l.rpf\ap1_01_b_subway.ydr">\ap1_01_b_subway.ydr</add>
+        <add source="rpf\x64l.rpf\ap1_01_b_lsiaterm_shell+hidr.ytd">\ap1_01_b_lsiaterm_shell+hidr.ytd</add>
+        <add source="rpf\x64l.rpf\ap1_01_b_lsiaterm_shell.ydr">\ap1_01_b_lsiaterm_shell.ydr</add>
+      </archive>
+	  <archive path="levels\gta5\_cityw\airport_01\ap1_02.rpf" createIfNotExist="True" type="RPF7">
+        <add source="rpf\x64l.rpf\ap1_02_bld13xxbot.ydr">\ap1_02_bld13xxbot.ydr</add>
+      </archive>
+	  <archive path="levels\gta5\_cityw\airport_01\ap1_03.rpf" createIfNotExist="True" type="RPF7">
+        <add source="rpf\x64l.rpf\ap1_03.ytd">\ap1_03.ytd</add>
+      </archive>
+	  <archive path="levels\gta5\_cityw\beverly_01\bh1_rd.rpf" createIfNotExist="True" type="RPF7">
+        <add source="rpf\x64l.rpf\bh1_rd2_portola_subwayshell+hidr.ytd">\bh1_rd2_portola_subwayshell+hidr.ytd</add>
+        <add source="rpf\x64l.rpf\bh1_rd2_portola_subwayshell.ydr">\bh1_rd2_portola_subwayshell.ydr</add>
+      </archive>
+	  <archive path="levels\gta5\_citye\sunset\bt1_04.rpf" createIfNotExist="True" type="RPF7">
+        <add source="rpf\x64l.rpf\bt1_04_mall03+hidr.ytd">\bt1_04_mall03+hidr.ytd</add>
+        <add source="rpf\x64l.rpf\bt1_04_mall03.ydr">\bt1_04_mall03.ydr</add>
+        <add source="rpf\x64l.rpf\bt1_04_burton_subwaybits+hidr.ytd">\bt1_04_burton_subwaybits+hidr.ytd</add>
+        <add source="rpf\x64l.rpf\bt1_04_burton_subwaybits.ydr">\bt1_04_burton_subwaybits.ydr</add>
+      </archive>
+	  <archive path="levels\gta5\_cityw\koreatown_01\kt1_09.rpf" createIfNotExist="True" type="RPF7">
+        <add source="rpf\x64l.rpf\kt1_09+hi.ytd">\kt1_09+hi.ytd</add>
+        <add source="rpf\x64l.rpf\kt1_09_lod.ytd">\kt1_09_lod.ytd</add>
+        <add source="rpf\x64l.rpf\kt1_09.ytd">\kt1_09.ytd</add>
+      </archive>
+	  <archive path="levels\gta5\_cityw\koreatown_01\kt1_16.rpf" createIfNotExist="True" type="RPF7">
+		<add source="rpf\x64l.rpf\kt1_16_ground_04.ydr">\kt1_16_ground_04.ydr</add>
+		<add source="rpf\x64l.rpf\kt1_16_ground_04+hidr.ytd">\kt1_16_ground_04+hidr.ytd</add>
+	  </archive>
+	  <archive path="levels\gta5\_cityw\koreatown_01\kt1_rd.rpf" createIfNotExist="True" type="RPF7">
+        <add source="rpf\x64l.rpf\kt1_rd_tram_01.ydr">\kt1_rd_tram_01.ydr</add>
+        <add source="rpf\x64l.rpf\kt1_rd_tram_01+hidr.ytd">\kt1_rd_tram_01+hidr.ytd</add>
+      </archive>
+    </archive>
+
+    <archive path="x64i.rpf" createIfNotExist="True" type="RPF7">
+      <archive path="levels\gta5\_citye\downtown_01\dt1_21.rpf" createIfNotExist="True" type="RPF7">
+        <add source="rpf\x64i.rpf\dt1_21_station+hidr.ytd">\dt1_21_station+hidr.ytd</add>
+        <add source="rpf\x64i.rpf\dt1_21_station.ydr">\dt1_21_station.ydr</add>
+        <add source="rpf\x64i.rpf\dt1_21_lod.ytd">\dt1_21_lod.ytd</add>
+        <add source="rpf\x64i.rpf\dt1_21_bld+hi.ytd">\dt1_21_bld+hi.ytd</add>
+        <add source="rpf\x64i.rpf\dt1_21_bld.ytd">\dt1_21_bld.ytd</add>
+      </archive>
+	  <archive path="levels\gta5\props\recreational\v_coin_op.rpf" createIfNotExist="True" type="RPF7">
+        <add source="rpf\x64i.rpf\prop_train_ticket_02.ydr">\prop_train_ticket_02.ydr</add>
+        <add source="rpf\x64i.rpf\prop_train_ticket_02+hidr.ytd">\prop_train_ticket_02+hidr.ytd</add>
+        <add source="rpf\x64i.rpf\prop_vend_coffe_01.ydr">\prop_vend_coffe_01.ydr</add>
+        <add source="rpf\x64i.rpf\prop_vend_coffe_01+hidr.ytd">\prop_vend_coffe_01+hidr.ytd</add>
+        <add source="rpf\x64i.rpf\prop_vend_soda_01.yft">\prop_vend_soda_01.yft</add>
+        <add source="rpf\x64i.rpf\prop_vend_soda_02.yft">\prop_vend_soda_02.yft</add>
+        <add source="rpf\x64i.rpf\prop_vend_soda_02+hifr.ytd">\prop_vend_soda_02+hifr.ytd</add>
+      </archive>
+    </archive>
+    <archive path="x64c.rpf" createIfNotExist="True" type="RPF7">
+      <archive path="levels\gta5\interiors\int_props\int_services.rpf" createIfNotExist="True" type="RPF7">
+        <add source="rpf\x64c.rpf\v_serv_metro_paybooth.ydr">\v_serv_metro_paybooth.ydr</add>
+        <add source="rpf\x64c.rpf\v_serv_metro_paybooth+hidr.ytd">\v_serv_metro_paybooth+hidr.ytd</add>
+        <add source="rpf\x64c.rpf\v_serv_metro_signconnect.ydr">\v_serv_metro_signconnect.ydr</add>
+        <add source="rpf\x64c.rpf\v_serv_metro_signconnect+hidr.ytd">\v_serv_metro_signconnect+hidr.ytd</add>
+        <add source="rpf\x64c.rpf\v_serv_metro_signlossantos.ydr">\v_serv_metro_signlossantos.ydr</add>
+        <add source="rpf\x64c.rpf\v_serv_metro_signlossantos+hidr.ytd">\v_serv_metro_signlossantos+hidr.ytd</add>
+        <add source="rpf\x64c.rpf\v_serv_metro_signmap.ydr">\v_serv_metro_signmap.ydr</add>
+        <add source="rpf\x64c.rpf\v_serv_metro_signmap+hidr.ytd">\v_serv_metro_signmap+hidr.ytd</add>
+        <add source="rpf\x64c.rpf\v_serv_metro_signroutes.ydr">\v_serv_metro_signroutes.ydr</add>
+        <add source="rpf\x64c.rpf\v_serv_metro_signroutes+hidr.ytd">\v_serv_metro_signroutes+hidr.ytd</add>
+        <add source="rpf\x64c.rpf\v_serv_metro_signtravel.ydr">\v_serv_metro_signtravel.ydr</add>
+        <add source="rpf\x64c.rpf\v_serv_metro_signtravel+hidr.ytd">\v_serv_metro_signtravel+hidr.ytd</add>
+		<add source="rpf\x64c.rpf\v_serv_metro_advertstand1.ydr">\v_serv_metro_advertstand1.ydr</add>
+		<add source="rpf\x64c.rpf\v_serv_metro_advertstand1+hidr.ytd">\v_serv_metro_advertstand1+hidr.ytd</add>
+		<add source="rpf\x64c.rpf\v_serv_metro_advertstand2.ydr">\v_serv_metro_advertstand2.ydr</add>
+		<add source="rpf\x64c.rpf\v_serv_metro_advertstand2+hidr.ytd">\v_serv_metro_advertstand2+hidr.ytd</add>
+		<add source="rpf\x64c.rpf\v_serv_metro_advertstand3.ydr">\v_serv_metro_advertstand3.ydr</add>
+		<add source="rpf\x64c.rpf\v_serv_metro_advertstand3+hidr.ytd">\v_serv_metro_advertstand3+hidr.ytd</add>
+      </archive>
+    </archive>
+
+    <archive path="x64h.rpf" createIfNotExist="True" type="RPF7">
+      <archive path="levels\gta5\interiors\v_int_metro_subway1.rpf" createIfNotExist="True" type="RPF7">
+        <add source="rpf\x64h.rpf\metro_subway1_txd.ytd">\metro_subway1_txd.ytd</add>
+        <add source="rpf\x64h.rpf\metro_subway1_txd+hi.ytd">\metro_subway1_txd+hi.ytd</add>
+        <add source="rpf\x64h.rpf\mt1_info_a.ydr">\mt1_info_a.ydr</add>
+        <add source="rpf\x64h.rpf\mt1_info_a+hidr.ytd">\mt1_info_a+hidr.ytd</add>
+        <add source="rpf\x64h.rpf\subway1_txd.ytd">\subway1_txd.ytd</add>
+        <add source="rpf\x64h.rpf\subway1_txd+hi.ytd">\subway1_txd+hi.ytd</add>
+      </archive>
+	  <archive path="levels\gta5\interiors\v_int_metro_subway2.rpf" createIfNotExist="True" type="RPF7">
+        <add source="rpf\x64h.rpf\subway2_txd.ytd">\subway2_txd.ytd</add>
+        <add source="rpf\x64h.rpf\subway2_txd+hi.ytd">\subway2_txd+hi.ytd</add>
+      </archive>
+	  <archive path="levels\gta5\interiors\v_int_metro_subway3.rpf" createIfNotExist="True" type="RPF7">
+        <add source="rpf\x64h.rpf\dcl_metro_brd_3.ydr">\dcl_metro_brd_3.ydr</add>
+        <add source="rpf\x64h.rpf\dcl_metro_brd_3+hidr.ytd">\dcl_metro_brd_3+hidr.ytd</add>
+        <add source="rpf\x64h.rpf\metro_subway3_txd.ytd">\metro_subway3_txd.ytd</add>
+        <add source="rpf\x64h.rpf\metro_subway3_txd+hi.ytd">\metro_subway3_txd+hi.ytd</add>
+      </archive>
+	  <archive path="levels\gta5\interiors\v_int_metro_subway4.rpf" createIfNotExist="True" type="RPF7">
+        <add source="rpf\x64h.rpf\metro_subway4_txd.ytd">\metro_subway4_txd.ytd</add>
+        <add source="rpf\x64h.rpf\metro_subway4_txd+hi.ytd">\metro_subway4_txd+hi.ytd</add>
+      </archive>
+	  <archive path="levels\gta5\interiors\v_int_metro_subway5.rpf" createIfNotExist="True" type="RPF7">
+        <add source="rpf\x64h.rpf\metro_subway5_txd.ytd">\metro_subway5_txd.ytd</add>
+        <add source="rpf\x64h.rpf\metro_subway5_txd+hi.ytd">\metro_subway5_txd+hi.ytd</add>
+      </archive>
+	  <archive path="levels\gta5\interiors\v_int_metro_subway6.rpf" createIfNotExist="True" type="RPF7">
+        <add source="rpf\x64h.rpf\metro_subway6_txd.ytd">\metro_subway6_txd.ytd</add>
+        <add source="rpf\x64h.rpf\metro_subway6_txd+hi.ytd">\metro_subway6_txd+hi.ytd</add>
+      </archive>
+    </archive>
+
+    <archive path="x64k.rpf" createIfNotExist="True" type="RPF7">
+      <archive path="levels\gta5\_citye\scentral_01\sc1_00c.rpf" createIfNotExist="True" type="RPF7">
+        <add source="rpf\x64k.rpf\sc1_00c_sc1`_00c_platform.ydr">\sc1_00c_sc1`_00c_platform.ydr</add>
+        <add source="rpf\x64k.rpf\sc1_00c_sc1`_00c_platform+hidr.ytd">\sc1_00c_sc1`_00c_platform+hidr.ytd</add>
+      </archive>
+	  <archive path="levels\gta5\_citye\scentral_01\sc1_23.rpf" createIfNotExist="True" type="RPF7">
+        <add source="rpf\x64k.rpf\sc1_23_tram.ydr">\sc1_23_tram.ydr</add>
+        <add source="rpf\x64k.rpf\sc1_23_tram+hidr.ytd">\sc1_23_tram+hidr.ytd</add>
+      </archive>
+    </archive>
+	
+	<archive path="x64w.rpf" createIfNotExist="True" type="RPF7">
+      <archive path="dlcpacks\mpbusiness2\dlc.rpf" createIfNotExist="True" type="RPF7">
+	    <archive path="x64\levels\gta5\props\v_business2.rpf" createIfNotExist="True" type="RPF7">
+          <add source="rpf\x64w.rpf\prop_train_ticket_02_tu.ydr">\prop_train_ticket_02_tu.ydr</add>
+          <add source="rpf\x64w.rpf\prop_vend_snak_01_tu.ydr">\prop_vend_snak_01_tu.ydr</add>
+        </archive>
+	  </archive>
+    </archive>
+  </content>
+</package>

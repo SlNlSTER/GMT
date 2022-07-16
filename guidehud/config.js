@@ -37,7 +37,7 @@ var config = {
 // Home page annountments.
 var announcements = [
 	'Welcome to the #1 British FiveM Community.',
-  'Welcome to GMT! While we load you in, we advise that you grab a cup of tea, some biscuits and switch off.',
+  'Welcome to GMT.',
 ]
 
 // Add/Modify rules below.

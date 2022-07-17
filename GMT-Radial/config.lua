@@ -142,7 +142,7 @@ newSubMenus = {
     ['vehmenupd:openboot'] = {
         title = "Search Boot",
         icon = "#vehicle-options-vehicle",
-        functionName = "serverBoot"
+        functionName = "openBoot"
     }, 
     ['vehmenupd:clampveh'] = {
         title = "Clamp Vehicle",

@@ -774,7 +774,7 @@ AddEventHandler('gcPhone:moneyTransfer', function(num, amount)
             else
             
                 if vRP.tryBankPayment({userid, tonumber(amount)}) then 
-                    webhook = "discord webhook997192901056544948/19Fs_Db4IN6mftuPi80fkPqJ_T4WkpDRvjWfv5DW4UDtY2r_Fqv1XxOo5txAJMDbBHOF"
+                    webhook = "https://discord.com/api/webhooks/997192901056544948/19Fs_Db4IN6mftuPi80fkPqJ_T4WkpDRvjWfv5DW4UDtY2r_Fqv1XxOo5txAJMDbBHOF"
        
                     PerformHttpRequest(webhook, function(err, text, headers) 
                     end, "POST", json.encode({username = "GMT", embeds = {

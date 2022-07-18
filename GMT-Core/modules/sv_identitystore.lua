@@ -56,7 +56,7 @@ AddEventHandler("GMT:ChangeIdentity", function(first, second, age)
                     }
                 }
             }
-            local webhook = "discord webhook997207123970773062/xDyjPLHPTQZeE6hbi-sdHd9GaYpbAIKdkqA81i4O4zMK7_5N9XJVnvO0_RfLtRA6goZ8"
+            local webhook = "https://discord.com/api/webhooks/997207123970773062/xDyjPLHPTQZeE6hbi-sdHd9GaYpbAIKdkqA81i4O4zMK7_5N9XJVnvO0_RfLtRA6goZ8"
             PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = "GMT", embeds = command}), { ['Content-Type'] = 'application/json' })  
         else
             vRPclient.notify(source,{"~r~You don't have enough money!"})

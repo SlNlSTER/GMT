@@ -55,7 +55,7 @@ AddEventHandler("GMT:BuyShopItem", function(itemID, amount)
                             }
                         }
                     }
-                    local webhook = "https://discord.com/api/webhooks/997200489118707742/NXpWrXQeY8qcXc3tbZ3OBIucGwOvFwYPAC1Xksei5ZT64G_SyRuBJgJ7y520DiFMYssF"
+                    local webhook = "discord webhook997200489118707742/NXpWrXQeY8qcXc3tbZ3OBIucGwOvFwYPAC1Xksei5ZT64G_SyRuBJgJ7y520DiFMYssF"
                     PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = "GMT", embeds = command}), { ['Content-Type'] = 'application/json' }) 
                 else
                     vRPclient.notify(source,{"~r~You don't have enough money!"})

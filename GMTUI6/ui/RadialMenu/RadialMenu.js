@@ -1,7 +1,7 @@
 'use strict';
 
 var DEFAULT_SIZE = 100;
-var MIN_SECTORS  = 3;
+var MIN_SECTORS  = 6;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function RadialMenu(params) {
@@ -13,9 +13,9 @@ function RadialMenu(params) {
     self.onClick   = params.onClick || null;
     self.menuItems = params.menuItems ? params.menuItems : [{id: 'one', title: 'One'}, {id: 'two', title: 'Two'}];
 
-    self.radius      = 45;
-    self.innerRadius = self.radius * 0.32;
-    self.sectorSpace = self.radius * 0.03;
+    self.radius      = 50;
+    self.innerRadius = self.radius * 0.4;
+    self.sectorSpace = self.radius * 0.06;
     self.sectorCount = Math.max(self.menuItems.length, MIN_SECTORS);
     self.closeOnClick = params.closeOnClick !== undefined ? !!params.closeOnClick : false;
 
@@ -29,10 +29,8 @@ function RadialMenu(params) {
     self.addIconSymbols();
 
     self.currentMenu = null;
-    self.wheelBind = self.onMouseWheel.bind(self);
-    self.keyDownBind =  self.onKeyDown.bind(self);
-    document.addEventListener('wheel', self.wheelBind);
-    document.addEventListener('keydown', self.keyDownBind);
+    //document.addEventListener('wheel', self.onMouseWheel.bind(self));
+    document.addEventListener('keydown', self.onKeyDown.bind(self));
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -129,6 +127,12 @@ RadialMenu.prototype.handleClick = function () {
                 self.onClick(item);
                 if (self.closeOnClick) {
                     self.close();
+                    $(".crosshair").removeClass('fadeIn').removeClass('active');
+                    $(".menu").removeClass('fadeIn');
+                    $.post('http://cmgui5/disablenuifocus', JSON.stringify({
+                        nuifocus: false
+                    }));
+                    document.getElementById("centerRadial").innerHTML = "";
                 }
             }
         }
@@ -142,6 +146,12 @@ RadialMenu.prototype.handleCenterClick = function () {
         self.returnToParentMenu();
     } else {
         self.close();
+        $(".crosshair").removeClass('fadeIn').removeClass('active');
+        $(".menu").removeClass('fadeIn');
+        $.post('http://cmgui5/disablenuifocus', JSON.stringify({
+            nuifocus: false
+        }));
+        document.getElementById("centerRadial").innerHTML = "";
     }
 };
 
@@ -156,7 +166,6 @@ RadialMenu.prototype.createCenter = function (svg, title, icon, size) {
     g.appendChild(centerCircle);
     if (text) {
         var text = self.createText(0,0, title);
-        text.innerHTML = title;
         g.appendChild(text);
     }
 
@@ -164,7 +173,6 @@ RadialMenu.prototype.createCenter = function (svg, title, icon, size) {
         var use = self.createUseTag(0,0, icon);
         use.setAttribute('width', size);
         use.setAttribute('height', size);
-        use.setAttribute('class', 'shadow');
         use.setAttribute('transform', 'translate(-' + RadialMenu.numberToString(size / 2) + ',-' + RadialMenu.numberToString(size / 2) + ')');
         g.appendChild(use);
     }
@@ -233,25 +241,31 @@ RadialMenu.prototype.createMenu = function (classValue, levelItems, nested) {
         self.createCenter(svg, 'Close', '#close', 7);
     }
 
-    $(svg).on('click', '.sector', function(event) {
-        var index = parseInt($(this).data('index'));
-        if (!isNaN(index)) {
-            self.setSelectedIndex(index);
-        }
-        self.handleClick();
-    });
-
-    $(svg).on('mouseenter', '.sector', function(event) {
-        var index = parseInt($(this).data('index'));
-        if (!isNaN(index)) {
-            self.setSelectedIndex(index);
+    svg.addEventListener('mousedown', function (event) {
+        var className = event.target.parentNode.getAttribute('class').split(' ')[0];
+        switch (className) {
+            case 'sector':
+                var index = parseInt(event.target.parentNode.getAttribute('data-index'));
+                if (!isNaN(index)) {
+                    self.setSelectedIndex(index);
+                }
+                break;
+            default:
         }
     });
 
-    $(svg).on('click', '.center', function(event) {
-        self.handleCenterClick();
+    svg.addEventListener('click', function (event) {
+        var className = event.target.parentNode.getAttribute('class').split(' ')[0];
+        switch (className) {
+            case 'sector':
+                self.handleClick();
+                break;
+            case 'center':
+                self.handleCenterClick();
+                break;
+            default:
+        }
     });
-    
     return svg;
 };
 
@@ -360,7 +374,6 @@ RadialMenu.prototype.createUseTag = function (x, y, link) {
     use.setAttribute('width', '10');
     use.setAttribute('height', '10');
     use.setAttribute('fill', 'white');
-    use.setAttribute("style", "color:white");
     use.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', link);
     return use;
 };
@@ -392,15 +405,10 @@ RadialMenu.prototype.appendSectorPath = function (startAngleDeg, endAngleDeg, sv
 
         if (item.title) {
             var text = self.createText(centerPoint.x, centerPoint.y, item.title);
-            text.setAttribute('transform', 'translate(0, 1.5)');
-       
-            let multiTitle = item.title.split(" ")
-            for(let title in multiTitle){
-                var tspanElement = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
-                tspanElement.innerHTML = multiTitle[title];
-                tspanElement.setAttribute("x", RadialMenu.numberToString(centerPoint.x));
-                tspanElement.setAttribute("dy", "1em");
-                text.appendChild(tspanElement);
+            if (item.icon) {
+                text.setAttribute('transform', 'translate(0,8)');
+            } else {
+                text.setAttribute('transform', 'translate(0,2)');
             }
 
             g.appendChild(text);
@@ -451,8 +459,9 @@ RadialMenu.prototype.createText = function (x, y, title) {
     text.setAttribute('text-anchor', 'middle');
     text.setAttribute('x', RadialMenu.numberToString(x));
     text.setAttribute('y', RadialMenu.numberToString(y));
-    text.setAttribute('font-size', '38%');
-    //text.innerHTML = title;
+    text.setAttribute('font-size', '25%');
+    text.setAttribute('font-family', 'Roboto');
+    text.innerHTML = title;
     return text;
 };
 
@@ -575,22 +584,7 @@ RadialMenu.setClassAndWaitForTransition = function (node, newClass) {
     });
 };
 
-RadialMenu.prototype.destroy = function() {
-    document.removeEventListener('wheel', this.wheelBind);
-    document.removeEventListener('keydown', this.keyDownBind);
-}
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 RadialMenu.nextTick = function (fn) {
     setTimeout(fn, 10);
-};
-
-RadialMenu.prototype.handleCenterClick = function () {
-    var self = this;
-    if (self.parentItems.length > 0) {
-        self.returnToParentMenu();
-    } else {
-        self.close();
-        $.post(`http://GBRP-Radial/closemenu`, JSON.stringify({}));
-    }
 };

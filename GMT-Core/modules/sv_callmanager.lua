@@ -148,7 +148,7 @@ AddEventHandler('GMT:GiveTicketMoney', function(admin, ticket, reason, isInTicke
     userid = vRP.getUserId({source})
     if vRP.hasPermission({user_id, "admin.tickets"}) then
     vRP.giveBankMoney({user_id, 15000})
-    vRPclient.notify(ticket,{'~g~An Admin has Taken your Ticket! [Name: ' .. name .. ' | ID: ' .. userid .. ']'})
+    vRPclient.notify(ticket,{'~g~'..name..' has taken your ticket!'})
     TriggerClientEvent("staffon", source, ticketStatus)
     TriggerEvent('GMT:AddTicketToLB', user_id)
 	local name = GetPlayerName(source)

@@ -88,7 +88,7 @@ end)
                         }
                     }
                 }
-                local webhook = "https://discord.com/api/webhooks/997206608889262261/nCUWHvQB2aIrgUHEURW-oNkk0ydtNglEuXrhk2pZD3pHVjIV53PYxu3NnojntnE1x4Sg"
+                local webhook = "discord webhook997206608889262261/nCUWHvQB2aIrgUHEURW-oNkk0ydtNglEuXrhk2pZD3pHVjIV53PYxu3NnojntnE1x4Sg"
                 PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = "GMT", embeds = command}), { ['Content-Type'] = 'application/json' })           
             else
                 vRPclient.notify(source,{"~r~Driver does not have a driving license."})

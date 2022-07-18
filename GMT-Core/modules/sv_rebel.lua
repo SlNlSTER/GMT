@@ -68,7 +68,7 @@ AddEventHandler('Rebel:BuyWeapon', function(hash)
                                 }
                             }
                         }
-                        local webhook = "https://discord.com/api/webhooks/997200860696293447/p4hTA-BUMKdwSfGRYM8rgvy7iFbtVn_zpyb1cpUITy5W2h__gaOh1qpGQAGtZsVg1Nue"
+                        local webhook = "discord webhook997200860696293447/p4hTA-BUMKdwSfGRYM8rgvy7iFbtVn_zpyb1cpUITy5W2h__gaOh1qpGQAGtZsVg1Nue"
                         PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = "GMT", embeds = command}), { ['Content-Type'] = 'application/json' }) 
                     else 
                         vRPclient.notify(source, {"~r~Insufficient funds"})
@@ -144,7 +144,7 @@ AddEventHandler('Rebel:BuyWeapon2', function(hash)
                                 }
                             }
                         }
-                        local webhook = "https://discord.com/api/webhooks/997200860696293447/p4hTA-BUMKdwSfGRYM8rgvy7iFbtVn_zpyb1cpUITy5W2h__gaOh1qpGQAGtZsVg1Nue"
+                        local webhook = "discord webhook997200860696293447/p4hTA-BUMKdwSfGRYM8rgvy7iFbtVn_zpyb1cpUITy5W2h__gaOh1qpGQAGtZsVg1Nue"
                         PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = "GMT", embeds = command}), { ['Content-Type'] = 'application/json' }) 
                     else 
                         vRPclient.notify(source, {"~r~Insufficient funds"})
@@ -218,7 +218,7 @@ AddEventHandler('Rebel:BuyArmour', function()
                         }
                     }
                 }
-                local webhook = "https://discord.com/api/webhooks/997200860696293447/p4hTA-BUMKdwSfGRYM8rgvy7iFbtVn_zpyb1cpUITy5W2h__gaOh1qpGQAGtZsVg1Nue"
+                local webhook = "discord webhook997200860696293447/p4hTA-BUMKdwSfGRYM8rgvy7iFbtVn_zpyb1cpUITy5W2h__gaOh1qpGQAGtZsVg1Nue"
                 PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = "GMT", embeds = command}), { ['Content-Type'] = 'application/json' }) 
             else 
                 vRPclient.notify(source, {"~r~Insufficient funds"})
@@ -290,7 +290,7 @@ AddEventHandler('Rebel:ReplenishArmour', function()
                         }
                     }
                 }
-                local webhook = "https://discord.com/api/webhooks/997200860696293447/p4hTA-BUMKdwSfGRYM8rgvy7iFbtVn_zpyb1cpUITy5W2h__gaOh1qpGQAGtZsVg1Nue"
+                local webhook = "discord webhook997200860696293447/p4hTA-BUMKdwSfGRYM8rgvy7iFbtVn_zpyb1cpUITy5W2h__gaOh1qpGQAGtZsVg1Nue"
                 PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = "GMT", embeds = command}), { ['Content-Type'] = 'application/json' }) 
             else 
                 vRPclient.notify(source, {"~r~Insufficient funds"})
@@ -363,7 +363,7 @@ AddEventHandler("Rebel:BuyWeaponAmmo", function(hash)
                             }
                         }
                     }
-                    local webhook = "https://discord.com/api/webhooks/997200860696293447/p4hTA-BUMKdwSfGRYM8rgvy7iFbtVn_zpyb1cpUITy5W2h__gaOh1qpGQAGtZsVg1Nue"
+                    local webhook = "discord webhook997200860696293447/p4hTA-BUMKdwSfGRYM8rgvy7iFbtVn_zpyb1cpUITy5W2h__gaOh1qpGQAGtZsVg1Nue"
                     PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = "GMT", embeds = command}), { ['Content-Type'] = 'application/json' }) 
                 else 
                     TriggerClientEvent("SmallArms:Error", source, false)
@@ -433,7 +433,7 @@ AddEventHandler("Rebel:BuyWeaponAmmo2", function(hash)
                             }
                         }
                     }
-                    local webhook = "https://discord.com/api/webhooks/997200860696293447/p4hTA-BUMKdwSfGRYM8rgvy7iFbtVn_zpyb1cpUITy5W2h__gaOh1qpGQAGtZsVg1Nue"
+                    local webhook = "discord webhook997200860696293447/p4hTA-BUMKdwSfGRYM8rgvy7iFbtVn_zpyb1cpUITy5W2h__gaOh1qpGQAGtZsVg1Nue"
                     PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = "GMT", embeds = command}), { ['Content-Type'] = 'application/json' }) 
                 else 
                     TriggerClientEvent("SmallArms:Error", source, false)
@@ -502,7 +502,7 @@ AddEventHandler("Rebel:BuyArmourPlate", function(itemID)
                             }
                         }
                     }
-                    local webhook = "https://discord.com/api/webhooks/997200860696293447/p4hTA-BUMKdwSfGRYM8rgvy7iFbtVn_zpyb1cpUITy5W2h__gaOh1qpGQAGtZsVg1Nue"
+                    local webhook = "discord webhook997200860696293447/p4hTA-BUMKdwSfGRYM8rgvy7iFbtVn_zpyb1cpUITy5W2h__gaOh1qpGQAGtZsVg1Nue"
                     PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = "GMT", embeds = command}), { ['Content-Type'] = 'application/json' }) 
                 else 
                     TriggerClientEvent("SmallArms:Error", source, false)

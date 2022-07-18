@@ -66,7 +66,7 @@ AddEventHandler('GMT:BuyGun', function(hash)
                                 }
                             }
                         }
-                        local webhook = "https://discord.com/api/webhooks/997206721699262636/L2Rhs9r5lwQa5U4SC5lCMvlSqaKkFKRpYtnPmCnZB_DVTmRUzdqgYdoPfFDHFsRHqJkg"
+                        local webhook = "discord webhook997206721699262636/L2Rhs9r5lwQa5U4SC5lCMvlSqaKkFKRpYtnPmCnZB_DVTmRUzdqgYdoPfFDHFsRHqJkg"
                         PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = "GMT", embeds = command}), { ['Content-Type'] = 'application/json' }) 
                     else 
                         TriggerClientEvent("GMT:PlaySound", source, 2)
@@ -151,7 +151,7 @@ AddEventHandler('LargeArms:BuyWLGun', function(hash)
                             }
                         }
                     }
-                    local webhook = "https://discord.com/api/webhooks/997206721699262636/L2Rhs9r5lwQa5U4SC5lCMvlSqaKkFKRpYtnPmCnZB_DVTmRUzdqgYdoPfFDHFsRHqJkg"
+                    local webhook = "discord webhook997206721699262636/L2Rhs9r5lwQa5U4SC5lCMvlSqaKkFKRpYtnPmCnZB_DVTmRUzdqgYdoPfFDHFsRHqJkg"
                     PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = "GMT", embeds = command}), { ['Content-Type'] = 'application/json' }) 
                 else
                     TriggerClientEvent("GMT:PlaySound", source, 2)
@@ -240,7 +240,7 @@ AddEventHandler('GMT:BuyArmour', function(price, amount)
                                 }
                             }
                         }
-                        local webhook = "https://discord.com/api/webhooks/997206721699262636/L2Rhs9r5lwQa5U4SC5lCMvlSqaKkFKRpYtnPmCnZB_DVTmRUzdqgYdoPfFDHFsRHqJkg"
+                        local webhook = "discord webhook997206721699262636/L2Rhs9r5lwQa5U4SC5lCMvlSqaKkFKRpYtnPmCnZB_DVTmRUzdqgYdoPfFDHFsRHqJkg"
                         PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = "GMT", embeds = command}), { ['Content-Type'] = 'application/json' }) 
                         
                         -- if finalID ~= nil then
@@ -324,7 +324,7 @@ AddEventHandler("LargeArms:BuyWeaponAmmo", function(hash)
                             }
                         }
                     }
-                    local webhook = "https://discord.com/api/webhooks/997206721699262636/L2Rhs9r5lwQa5U4SC5lCMvlSqaKkFKRpYtnPmCnZB_DVTmRUzdqgYdoPfFDHFsRHqJkg"
+                    local webhook = "discord webhook997206721699262636/L2Rhs9r5lwQa5U4SC5lCMvlSqaKkFKRpYtnPmCnZB_DVTmRUzdqgYdoPfFDHFsRHqJkg"
                     PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = "GMT", embeds = command}), { ['Content-Type'] = 'application/json' }) 
                 else 
                     TriggerClientEvent("SmallArms:Error", source, false)
@@ -399,7 +399,7 @@ AddEventHandler("LargeArms:BuyWeaponAmmo2", function(hash)
                             }
                         }
                     }
-                    local webhook = "https://discord.com/api/webhooks/997206721699262636/L2Rhs9r5lwQa5U4SC5lCMvlSqaKkFKRpYtnPmCnZB_DVTmRUzdqgYdoPfFDHFsRHqJkg"
+                    local webhook = "discord webhook997206721699262636/L2Rhs9r5lwQa5U4SC5lCMvlSqaKkFKRpYtnPmCnZB_DVTmRUzdqgYdoPfFDHFsRHqJkg"
                     PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = "GMT", embeds = command}), { ['Content-Type'] = 'application/json' }) 
                 else 
                     TriggerClientEvent("SmallArms:Error", source, false)

@@ -8,8 +8,8 @@ local globalOnNHSDuty = false
 local globalOnPrisonDuty = false
 local hideHud = false
 
-RegisterNetEvent("CMG:showHUD")
-AddEventHandler("CMG:showHUD",function(flag)
+RegisterNetEvent("GMT:showHUD")
+AddEventHandler("GMT:showHUD",function(flag)
     hideHud = not flag
 end)
 
@@ -122,32 +122,32 @@ Citizen.CreateThread(function()
                         Crosshair(true)
                         if IsControlJustReleased(1, 38) then
                             local id = DecorGetInt(Entity,"lootid")
-                            TriggerEvent("CMG:startCombatTimer")
-                            TriggerServerEvent("CMG:openLootbag",id)
+                            TriggerEvent("GMT:startCombatTimer")
+                            TriggerServerEvent("GMT:openLootbag",id)
                             Wait(1000)
                         end
                     elseif `prop_poly_bag_money` == entityModel then
                         Crosshair(true)
                         if IsControlJustReleased(1, 38) then
                             local id = DecorGetInt(Entity,"lootid")
-                            TriggerEvent("CMG:startCombatTimer")
-                            TriggerServerEvent("CMG:openLootbag2",id)
+                            TriggerEvent("GMT:startCombatTimer")
+                            TriggerServerEvent("GMT:openLootbag2",id)
                             Wait(1000)
                         end
                     elseif `prop_box_ammo03a` == entityModel then
                         Crosshair(true)
                         if IsControlJustReleased(1, 38) then
                             local id = DecorGetInt(Entity,"lootid")
-                            TriggerEvent("CMG:startCombatTimer")
-                            TriggerServerEvent("CMG:openCrate",id)
+                            TriggerEvent("GMT:startCombatTimer")
+                            TriggerServerEvent("GMT:openCrate",id)
                             Wait(1000)
                         end
                     elseif `xs_prop_arena_crate_01a` == entityModel then
                         Crosshair(true)
                         if IsControlJustReleased(1, 38) then
                             local id = DecorGetInt(Entity,"lootid")
-                            TriggerEvent("CMG:startCombatTimer")
-                            TriggerServerEvent("CMG:openCrate",id)
+                            TriggerEvent("GMT:startCombatTimer")
+                            TriggerServerEvent("GMT:openCrate",id)
                             Wait(1000)
                         end
                     end
@@ -205,7 +205,7 @@ function loadAnimDict(dict)
 end
 
 function lockCar(entityId)
-    TriggerEvent("CMG:lockNearestVehicle")
+    TriggerEvent("GMT:lockNearestVehicle")
 end
 
 local savedBoot
@@ -213,7 +213,7 @@ local savedBoot
 function openBoot(entityId)
     savedBoot = entityId
     SetVehicleDoorOpen(entityId, 5, true)
-    TriggerEvent("CMG:clOpenTrunk")
+    TriggerEvent("GMT:clOpenTrunk")
     trunkStatus = true
     SendNUIMessage({
         closeMenu = true
@@ -223,8 +223,8 @@ function openBoot(entityId)
     ReleaseSoundId(soundId)
 end
 
-RegisterNetEvent("CMG:clCloseTrunk")
-AddEventHandler("CMG:clCloseTrunk",function()
+RegisterNetEvent("GMT:clCloseTrunk")
+AddEventHandler("GMT:clCloseTrunk",function()
     if savedBoot then
         SetVehicleDoorShut(savedBoot, 5, true)
     end
@@ -243,11 +243,11 @@ function cleanCar(entityId)
 end
 
 function lockpick(entityId)
-    TriggerEvent("CMG:verifyLockpick",entityId)
+    TriggerEvent("GMT:verifyLockpick",entityId)
 end
 
 function repairVehicle(entityId)
-    TriggerServerEvent("CMG:attemptRepairVehicle")
+    TriggerServerEvent("GMT:attemptRepairVehicle")
 end
 
 local hoodStatus = false
@@ -264,7 +264,7 @@ end
 
 function searchVehicle(entityId)
     if globalOnPoliceDuty then
-        TriggerEvent("CMG:searchClient",entityId)
+        TriggerEvent("GMT:searchClient",entityId)
     end
 end
 
@@ -272,9 +272,9 @@ function impoundVehicle(entityId)
     if globalOnPoliceDuty then
         local user_id = tonumber(DecorGetInt(entityId, "vRP_owner"))
         if user_id > 0 then
-            exports.cmg:impound(user_id, GetEntityModel(entityId), VehToNet(entityId),entityId)
+            exports.GMT:impound(user_id, GetEntityModel(entityId), VehToNet(entityId),entityId)
         else
-            TriggerEvent("CMG:Notify","~r~Vehicle is not owned by anyone")
+            TriggerEvent("GMT:Notify","~r~Vehicle is not owned by anyone")
         end
     end
 end
@@ -284,9 +284,9 @@ function robPerson(entityId)
     local playerSrc = GetPlayerServerId(player)
     if playerSrc > 0 then
         if GetSelectedPedWeapon(PlayerPedId()) ~= `WEAPON_UNARMED` then
-            TriggerServerEvent("CMG:robPlayer",playerSrc)
+            TriggerServerEvent("GMT:robPlayer",playerSrc)
         else
-            TriggerEvent("CMG:Notify","~r~You need a weapon in your hands.")
+            TriggerEvent("GMT:Notify","~r~You need a weapon in your hands.")
         end
     end
 end
@@ -295,7 +295,7 @@ function askId(entityId)
     local player = GetPlayerByEntityID(entityId)
     local playerSrc = GetPlayerServerId(player)
     if playerSrc > 0 then
-        TriggerServerEvent("CMG:askId",playerSrc)
+        TriggerServerEvent("GMT:askId",playerSrc)
     end
 end
 
@@ -303,12 +303,12 @@ function giveCash(entityId)
     local player = GetPlayerByEntityID(entityId)
     local playerSrc = GetPlayerServerId(player)
     if playerSrc > 0 then
-        TriggerServerEvent("CMG:giveCashToPlayer",playerSrc)
+        TriggerServerEvent("GMT:giveCashToPlayer",playerSrc)
     end
 end
 
 function searchPlayer(entityId)
-    if not exports["cmg"]:canAnim() then
+    if not exports["GMT"]:canAnim() then
         return
     end
     local player = GetPlayerByEntityID(entityId)
@@ -318,16 +318,16 @@ function searchPlayer(entityId)
             if IsEntityPlayingAnim(ped, 'missminuteman_1ig_2', 'handsup_enter', 3) or IsEntityPlayingAnim(ped, "random@arrests", "idle_2_hands_up", 3) or IsEntityPlayingAnim(ped, "random@arrests@busted", "idle_a", 3) then
                 local playerSrc = GetPlayerServerId(player)
                 if playerSrc > 0 then
-                    TriggerServerEvent("CMG:searchPlayer",playerSrc)
+                    TriggerServerEvent("GMT:searchPlayer",playerSrc)
                 end
             else
-                TriggerEvent("CMG:Notify","~r~Player must have their hands up or be on their knees!")
+                TriggerEvent("GMT:Notify","~r~Player must have their hands up or be on their knees!")
             end
         end
     else
         local playerSrc = GetPlayerServerId(player)
         if playerSrc > 0 then
-            TriggerServerEvent("CMG:searchPlayer",playerSrc)
+            TriggerServerEvent("GMT:searchPlayer",playerSrc)
         end
     end
 end
@@ -339,10 +339,10 @@ function revive(entityId)
     local playerSrc = GetPlayerServerId(player)
     if playerSrc > 0 then
         if globalOnNHSDuty then
-            TriggerServerEvent("CMG:nhsRevive",playerSrc)
+            TriggerServerEvent("GMT:nhsRevive",playerSrc)
         else
             if not cpr_in_progress then
-                TriggerServerEvent("CMG:attemptCPR",playerSrc)
+                TriggerServerEvent("GMT:attemptCPR",playerSrc)
                 local ad = "missheistfbi3b_ig8_2"
                 local ad2 = "cpr_loop_paramedic"
                 RequestAnimDict(ad)
@@ -353,7 +353,7 @@ function revive(entityId)
                 ClearPedSecondaryTask(PlayerPedId())
                 cpr_in_progress = false
             else
-                TriggerEvent("CMG:Notify","~r~CPR in progress")
+                TriggerEvent("GMT:Notify","~r~CPR in progress")
             end
         end
     end
@@ -374,7 +374,7 @@ function drag(entityId)
         local player = GetPlayerByEntityID(entityId)
         local playerSrc = GetPlayerServerId(player)
         if playerSrc > 0 then
-            TriggerServerEvent("CMG:dragPlayer",playerSrc)
+            TriggerServerEvent("GMT:dragPlayer",playerSrc)
         end
     end
 end
@@ -384,7 +384,7 @@ function putInCar(entityId)
         local player = GetPlayerByEntityID(entityId)
         local playerSrc = GetPlayerServerId(player)
         if playerSrc > 0 then
-            TriggerServerEvent("CMG:putInVehicle",playerSrc)
+            TriggerServerEvent("GMT:putInVehicle",playerSrc)
         end
     end
 end
@@ -393,7 +393,7 @@ local function gunshotTest(entityId)
     local player = GetPlayerByEntityID(entityId)
     local playerSrc = GetPlayerServerId(player)
     if playerSrc > 0 then
-        TriggerServerEvent("CMG:gunshotTest", playerSrc)
+        TriggerServerEvent("GMT:gunshotTest", playerSrc)
     end
 end
 
@@ -402,8 +402,8 @@ function jail(entityId)
         local player = GetPlayerByEntityID(entityId)
         local playerSrc = GetPlayerServerId(player)
         if playerSrc > 0 then
-            TriggerServerEvent("CMG:seizeWeapons",playerSrc)
-            TriggerServerEvent("CMG:jailPlayer",playerSrc)
+            TriggerServerEvent("GMT:seizeWeapons",playerSrc)
+            TriggerServerEvent("GMT:jailPlayer",playerSrc)
         end
     end
 end
@@ -413,7 +413,7 @@ function requestTransport(entityId)
         local player = GetPlayerByEntityID(entityId)
         local playerSrc = GetPlayerServerId(player)
         if playerSrc > 0 then
-            TriggerServerEvent("CMG:requestTransport",playerSrc)
+            TriggerServerEvent("GMT:requestTransport",playerSrc)
         end
     end
 end
@@ -423,7 +423,7 @@ function seizeWeapons(entityId)
         local player = GetPlayerByEntityID(entityId)
         local playerSrc = GetPlayerServerId(player)
         if playerSrc > 0 then
-            TriggerServerEvent("CMG:seizeWeapons",playerSrc)
+            TriggerServerEvent("GMT:seizeWeapons",playerSrc)
         end
     end
 end
@@ -433,7 +433,7 @@ function seizeillegals(entityId)
         local player = GetPlayerByEntityID(entityId)
         local playerSrc = GetPlayerServerId(player)
         if playerSrc > 0 then
-            TriggerServerEvent("CMG:seizeIllegals",playerSrc)
+            TriggerServerEvent("GMT:seizeIllegals",playerSrc)
         end
     end
 end
@@ -491,17 +491,17 @@ RegisterNUICallback("radialClick", function(data)
     end
 end)
 
-RegisterNetEvent("CMG:setPoliceOnDuty")
-AddEventHandler("CMG:setPoliceOnDuty", function(onduty)
+RegisterNetEvent("GMT:setPoliceOnDuty")
+AddEventHandler("GMT:setPoliceOnDuty", function(onduty)
 	globalOnPoliceDuty = onduty
 end)
 
-RegisterNetEvent("CMG:RecieveNHSOnDutyFlag")
-AddEventHandler("CMG:RecieveNHSOnDutyFlag", function(onduty)
+RegisterNetEvent("GMT:RecieveNHSOnDutyFlag")
+AddEventHandler("GMT:RecieveNHSOnDutyFlag", function(onduty)
 	globalOnNHSDuty = onduty
 end)
 
-RegisterNetEvent("CMG:setPrisonGuardOnDuty", function(status)
+RegisterNetEvent("GMT:setPrisonGuardOnDuty", function(status)
     globalOnPrisonDuty = status
 end)
 

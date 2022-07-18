@@ -77,10 +77,11 @@ AddEventHandler("ORP:flashLights", function(nearestVeh)
 end) 
 
 RegisterNetEvent('GMT:FetchTrunkInventory')
-AddEventHandler('GMT:FetchTrunkInventory', function(spawnCode)
+AddEventHandler('GMT:FetchTrunkInventory', function(spawnCode, vehid)
     local source = source
-    local user_id = vRP.getUserId({source})
-    if InventoryCoolDown[source] then vRPclient.notify(source, {'~r~Please relog to fix your issue.'}) return end
+    local idz = NetworkGetEntityFromNetworkId(vehid)
+    local user_id = vRP.getUserId({NetworkGetEntityOwner(idz)})
+    if InventoryCoolDown[source] then vRPclient.notify(source, {'~r~The server is having trouble caching the boot linked with your ID. Please rejoin.'}) return end
     local carformat = "chest:u1veh_" .. spawnCode .. '|' .. user_id
     vRP.getSData({carformat, function(cdata)
         local processedChest = {};
@@ -740,13 +741,15 @@ AddEventHandler('vRP:InComa', function()
                 return 
             end
 
-            local model = GetHashKey('xm_prop_x17_bag_med_01a')
+            local model = GetHashKey('xs_prop_arena_bag_01')
             local name1 = GetPlayerName(source)
             local lootbag = CreateObjectNoOffset(model, GetEntityCoords(GetPlayerPed(source)), true, true, false)
             local lootbagnetid = NetworkGetNetworkIdFromEntity(lootbag)
             --PlaceObjectOnGroundProperly(lootbag)
             local ndata = vRP.getUserDataTable({user_id})
             local stored_inventory = nil;
+
+            TriggerEvent('GMT:StoreWeaponsRequest', source)
 
             LootBagEntities[lootbagnetid] = {lootbag, lootbag, false, source}
             LootBagEntities[lootbagnetid].Items = {}

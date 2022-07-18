@@ -13,7 +13,7 @@ local LootBagID = nil;
 local LootBagIDNew = nil;
 local LootBagCoords = nil;
 PlayerInComa = false;
-local model = GetHashKey('xm_prop_x17_bag_med_01a')
+local model = GetHashKey('xs_prop_arena_bag_01')
 tvRP = Proxy.getInterface("vRP")
 
 RegisterNetEvent('openBoot')
@@ -30,12 +30,9 @@ AddEventHandler('openBoot', function()
         tvRP.vc_openDoor({VehTypeC, 5})
         inventoryType = 'CarBoot'
         TriggerServerEvent('GMT:FetchTrunkInventory', NVeh, NetworkGetNetworkIdFromEntity(nearestVeh))
+    else
+        notify("~r~This is not your Vehicle!")
     end
-end)
-
-RegisterNetEvent("GMT:FetchInventoryCL")
-AddEventHandler("GMT:FetchInventoryCL",function()
-    TriggerServerEvent('GMT:FetchPersonalInventory')
 end)
 
 local LootBagCrouchLoop = false;
@@ -137,31 +134,6 @@ Citizen.CreateThread(function()
     end
 end)
 
-function pairsByKeys(aR, aS)
-    local E = {}
-    for aT in pairs(aR) do
-        table.insert(E, aT)
-    end
-    table.sort(E, aS)
-    local j = 0
-    local aU = function()
-        j = j + 1
-        if E[j] == nil then
-            return nil
-        else
-            return E[j], aR[E[j]]
-        end
-    end
-    return aU
-end
-function sortAlphabetically(aV)
-    local aR = {}
-    for ad, c in pairsByKeys(aV) do
-        table.insert(aR, {title = ad, value = c})
-    end
-    aV = aR
-    return aV
-end
 
 RegisterNetEvent('GMT:ToggleNUIFocus')
 AddEventHandler('GMT:ToggleNUIFocus', function(value)
@@ -180,7 +152,6 @@ end)
 
 RegisterNetEvent('GMT:FetchPersonalInventory')
 AddEventHandler('GMT:FetchPersonalInventory', function(table, CurrentKG, MaxKG)
-
     SendNUIMessage({action = 'loadItems', items = table, CurrentKG = CurrentKG, MaxKG = MaxKG})
     if debug then
         print('Sent inventory data to client.')
@@ -342,10 +313,10 @@ Citizen.CreateThread(function()
         Wait(75)
         if not PlayerInComa then
             local coords = GetEntityCoords(PlayerPedId())
-            if DoesObjectOfTypeExistAtCoords(coords, 2.5, model, true) then
+            if DoesObjectOfTypeExistAtCoords(coords, 1.5, model, true) then
                 if not NearLootBag then
                     NearLootBag = true;
-                    LootBagID = GetClosestObjectOfType(coords, 2.5, model, false, false, false)
+                    LootBagID = GetClosestObjectOfType(coords, 1.5, model, false, false, false)
                     LootBagIDNew = ObjToNet(LootBagID)
                     LootBagCoords = GetEntityCoords(LootBagID)
                 end
@@ -369,10 +340,10 @@ Citizen.CreateThread(function()
         if not PlayerInComa then
             local Ped = PlayerPedId()
             local coords = GetEntityCoords(Ped)
-            if DoesObjectOfTypeExistAtCoords(coords, 2.5, Prop, true) then
+            if DoesObjectOfTypeExistAtCoords(coords, 1.5, Prop, true) then
                 if not NearMoneyBag then
                     NearMoneyBag = true;
-                    NearestMoney = GetClosestObjectOfType(coords, 2.5, Prop, false, false, false)
+                    NearestMoney = GetClosestObjectOfType(coords, 1.5, Prop, false, false, false)
                     NearestMoneyNetID = ObjToNet(NearestMoney)
                 end
             else 
@@ -486,8 +457,8 @@ end)
 
 RegisterNetEvent('GMT:whatIsThis')
 AddEventHandler('GMT:whatIsThis', function()
-      local chance = math.random(1,2)
-      local nearestVeh = vRP.getNearestVehicle({3.5})
+      local chance = math.random(1,3)
+      local nearestVeh = vRP.getNearestVehicle({3})
         hasDoneIt = false
                RequestAnimDict('anim@amb@clubhouse@tutorial@bkr_tut_ig3@')
                while not HasAnimDictLoaded('anim@amb@clubhouse@tutorial@bkr_tut_ig3@') do
@@ -576,7 +547,7 @@ AddEventHandler('GMT:whatIsThis', function()
                StopSound(soundID2)
                ReleaseSoundId(soundID2)
                ClearPedTasks(GetPlayerPed(-1))
-               if chance == 2 then
+               if chance == 3 then
                    local veh = NetworkGetEntityOwner(nearestVeh)
         
                    local model = GetEntityModel(nearestVeh)
@@ -597,11 +568,6 @@ AddEventHandler('GMT:whatIsThis', function()
        local nearestVeh = nil
 end)
 
-function notify(text)
-    SetNotificationTextEntry("STRING")
-    AddTextComponentString(text)
-    DrawNotification(true, true)
-  end
 AddEventHandler('omgLol', function()
     while true do 
         if IsControlPressed(1, 154) then 

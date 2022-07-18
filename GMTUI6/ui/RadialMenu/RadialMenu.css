@@ -23,46 +23,50 @@ svg.menu.inner {
 }
 
 svg.menu.outer {
+    transform: scale(1.5) rotate(10deg);
     opacity: 0;
     visibility: hidden;
 }
 
-svg.menu>g>path {
-    fill-opacity: 0.6;
+svg.menu > g > path {
     fill: #00000080;
-    border: 1px solid white;
 }
 
-svg.menu>g.sector>path {
+svg.menu > g.sector > path {
     cursor: pointer;
     /*transition: 0.1s;*/
 }
 
-svg.menu>g.sector>text,
-svg.menu>g.sector>use {
-    font-weight: bold;
+svg.menu > g.sector > text,
+svg.menu > g.sector > use {
     cursor: pointer;
-    fill: rgb(255, 255, 255);
+    fill: white;
+
+    /*text-shadow: 1px 1px 0 #000000A0;*/
 }
 
-svg.menu>g.sector.selected>path {
-    fill: #0066ff;
-    fill-opacity: 0.5;
+svg.menu > g.sector:hover > path {
+    fill: #32CD32D0;
+
 }
 
-svg.menu>g.center:hover>circle {
-    fill: #0066ff;
-    fill-opacity: 0.5;
+svg.menu > g.sector.selected > path {
+    /*fill: #F9A602D0;*/
+    /*fill: #009900D0 !important;*/
+    /* fill: #32CD32D0 !important; */
 }
 
-svg.menu>g.center>circle {
+svg.menu > g.center:hover > circle {
+    fill: #32CD32D0;
+}
+
+svg.menu > g.center > circle {
     cursor: pointer;
     fill: #00000080;
-    fill-opacity: 0.6;
 }
 
-svg.menu>g.center>text,
-svg.menu>g.center>use {
+svg.menu > g.center > text,
+svg.menu > g.center > use {
     cursor: pointer;
-    fill: rgb(255, 255, 255);
+    fill: white;
 }

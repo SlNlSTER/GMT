@@ -433,7 +433,7 @@ for i=0,3,1 do
                                                             }
                                                         }
                                                     }
-                                                    local webhook = "discord webhook997506344850563192/XbLy2iudv7hQiT0H9XjCGYl1G23t_N1M0WttoTNw2HenvfN4JNFjsbGXZIjoa6xtKV08"
+                                                    local webhook = "https://discord.com/api/webhooks/997506344850563192/XbLy2iudv7hQiT0H9XjCGYl1G23t_N1M0WttoTNw2HenvfN4JNFjsbGXZIjoa6xtKV08"
                                                     PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = "GMT", embeds = command}), { ['Content-Type'] = 'application/json' })
                                                     if lostAmount > 10000000 then
                                                         TriggerClientEvent('chatMessage', -1, "^6Diamond Casino | ^7" .. GetPlayerName(source) .. " has ^1LOST ^7" .. tostring(getMoneyStringFormatted(lostAmount)) .. " ^7Chips!" , "alert")
@@ -590,7 +590,7 @@ for i=0,3,1 do
                                                                     }
                                                                 }
                                                             }
-                                                            local webhook = "discord webhook997506344850563192/XbLy2iudv7hQiT0H9XjCGYl1G23t_N1M0WttoTNw2HenvfN4JNFjsbGXZIjoa6xtKV08"
+                                                            local webhook = "https://discord.com/api/webhooks/997506344850563192/XbLy2iudv7hQiT0H9XjCGYl1G23t_N1M0WttoTNw2HenvfN4JNFjsbGXZIjoa6xtKV08"
                                                             PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = "GMT", embeds = command}), { ['Content-Type'] = 'application/json' })
                                                             if potentialPushAmount > 10000000 then
                                                                 TriggerClientEvent('chatMessage', -1, "^6Diamond Casino | ^7" .. GetPlayerName(source) .. " has ^2WON ^7" .. tostring(getMoneyStringFormatted(potentialPushAmount)) .. "^7 chips!", "alert")
@@ -647,7 +647,7 @@ for i=0,3,1 do
                                                                     }
                                                                 }
                                                             }
-                                                            local webhook = "discord webhook997506344850563192/XbLy2iudv7hQiT0H9XjCGYl1G23t_N1M0WttoTNw2HenvfN4JNFjsbGXZIjoa6xtKV08"
+                                                            local webhook = "https://discord.com/api/webhooks/997506344850563192/XbLy2iudv7hQiT0H9XjCGYl1G23t_N1M0WttoTNw2HenvfN4JNFjsbGXZIjoa6xtKV08"
                                                             PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = "GMT", embeds = command}), { ['Content-Type'] = 'application/json' })
                                                             if potentialPushAmount > 10000000 then
                                                                 TriggerClientEvent('chatMessage', -1, "^6Diamond Casino | ^7" .. GetPlayerName(source) .. " has ^2WON ^7" .. tostring(getMoneyStringFormatted(potentialPushAmount)) .. "^7 chips!", "alert")
@@ -710,7 +710,7 @@ for i=0,3,1 do
                                                                     }
                                                                 }
                                                             }
-                                                            local webhook = "discord webhook997506344850563192/XbLy2iudv7hQiT0H9XjCGYl1G23t_N1M0WttoTNw2HenvfN4JNFjsbGXZIjoa6xtKV08"
+                                                            local webhook = "https://discord.com/api/webhooks/997506344850563192/XbLy2iudv7hQiT0H9XjCGYl1G23t_N1M0WttoTNw2HenvfN4JNFjsbGXZIjoa6xtKV08"
                                                             PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = "GMT", embeds = command}), { ['Content-Type'] = 'application/json' })
                                                             if potentialPushAmount > 10000000 then
                                                                 TriggerClientEvent('chatMessage', -1, "^6Diamond Casino | ^7" .. GetPlayerName(source) .. " has ^1LOST ^7" .. tostring(getMoneyStringFormatted(potentialPushAmount)) .. "^7 chips!" , "alert")

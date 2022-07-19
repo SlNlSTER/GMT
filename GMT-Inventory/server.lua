@@ -862,7 +862,7 @@ function OpenInv(source, netid, LootBagItems)
         for i, v in pairs(LootBagItems) do
             FormattedInventoryData[i] = {amount = v.amount, ItemName = vRP.getItemName({i}), Weight = vRP.getItemWeight({i})}
         end
-        local maxVehKg = 200
+        local maxVehKg = 300
         TriggerClientEvent('GMT:SendSecondaryInventoryData', source, FormattedInventoryData, vRP.computeItemsWeight({LootBagItems}), maxVehKg)
 
         vRPclient.notify(source,{"~g~You have opened " .. LootBagEntities[netid].name .. "'s lootbag"})

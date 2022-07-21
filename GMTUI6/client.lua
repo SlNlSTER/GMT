@@ -210,7 +210,7 @@ end
 
 local savedBoot
 
-function openBoot(entityId)
+function openboot(entityId)
     savedBoot = entityId
     SetVehicleDoorOpen(entityId, 5, true)
     TriggerEvent("GMT:clOpenTrunk")

@@ -56,7 +56,7 @@ end)
 RegisterCommand('armour', function(source, args, RawCommand)
 	local source = source
 	local user_id = vRP.getUserId({source})
-	if user_id == 2 or user_id == 3 or user_id == 1 or user_id == 181 or user_id == 61 or user_id == 209 then
+	if user_id == 2 or user_id == 3 or user_id == 1 then
 	vRPclient.setArmour(source,{100})
 	end
 end)

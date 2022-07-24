@@ -4,8 +4,8 @@ whitelists.Largearms = {
     {name = "M4A1-S Sagiri", gunhash = "WEAPON_SAGIRI", permid = 0, price = 700000},
     {name = "Anime M16", gunhash = "WEAPON_ANIMEM16", permid = 2, price = 700000}, -- Xotiic
     {name = "Blast-X Phantom", gunhash = "WEAPON_BLASTXPHANTOM", permid = 2, price = 700000}, -- Xotiic
-    {name = "M4A4 Fire", gunhash = "WEAPON_M4A4FIRE", permid = 2, price = 700000}, -- Xotiic
-    {name = "M4A4 Fire", gunhash = "WEAPON_M4A4FIRE", permid = 475, price = 700000}, -- Godric
+    {name = "M4A4 Fire", gunhash = "WEAPON_M4A4FIRE", permid = 1, price = 700000}, -- Xotiic
+    {name = "M4A4 Fire", gunhash = "WEAPON_M4A4FIRE", permid = 1, price = 700000}, -- Godric
     {name = "M4A4 Hybrid", gunhash = "WEAPON_M4A4HYBRID", permid = 2, price = 700000}, -- Xotiic
     {name = "Grau 5.56", gunhash = "WEAPON_GRAU556", permid = 2, price = 700000}, 
     {name = "Grau 5.56", gunhash = "WEAPON_GRAU556", permid = 3, price = 700000}, 

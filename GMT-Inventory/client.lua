@@ -113,7 +113,7 @@ AddEventHandler('GMT:InventoryOpen', function(toggle, lootbag)
         SendNUIMessage({action = 'InventoryDisplay', showInv = false})
     end
     if IsLootBagOpening then
-        TriggerEvent("vrp:PlaySound", "zipper")
+        TriggerEvent("HVC:PlaySound", "zipper")
         LoadAnimDict('amb@medic@standing@kneel@base')
         LoadAnimDict('anim@gangops@facility@servers@bodysearch@')
         TaskPlayAnim(PlayerPedId(), "amb@medic@standing@kneel@base" ,"base" ,8.0, -8.0, -1, 1, 0, false, false, false)

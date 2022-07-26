@@ -169,15 +169,6 @@ Config.ExtraCommands = {
 		OffsetX = 0.04,
 		OffsetY = 0.0,
 	},
-	[Lang("RESET")] = {
-		Func = function() if not ResetClothing(true) then Notify(Lang("AlreadyWearing")) end end,
-		Sprite = "reset",
-		Desc = Lang("Reset2"),
-		Name = Lang("Reset"),
-		OffsetX = 0.12,
-		OffsetY = 0.2,
-		Rotate = true
-	},
 	["clothingexit"] = {
 		Func = function() MenuOpened = false end,
 		Sprite = "exit",

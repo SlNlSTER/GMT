@@ -1,5 +1,6 @@
 local UserID = 0
 local PlayerCount = 0
+local frames = 0
 
 RegisterNetEvent('discord:getpermid2')
 AddEventHandler('discord:getpermid2', function(UserID)

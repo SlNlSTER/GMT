@@ -4,3 +4,4 @@ AddEventHandler('GetActivePlayers', function()
     -- Callback to client
     TriggerClientEvent('GetActivePlayers:CB', source, count)
 end)
+

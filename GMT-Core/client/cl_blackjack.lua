@@ -409,9 +409,9 @@ Citizen.CreateThread(function()
     end
 end)
 
-RMenu.Add('GMTblackjack', 'instructions', RageUI.CreateMenu("", "test",0,100,"casinoui_cards_blackjack", "casinoui_cards_blackjack"))
+RMenu.Add('GMTblackjack', 'instructions', RageUI.CreateMenu("", "test",0,100,"casinoui_cards_blackjack", "blackjack"))
 RMenu:Get('GMTblackjack', 'instructions'):SetSubtitle("~b~BLACKJACK")
-RMenu.Add('GMTblackjack_high', 'instructions', RageUI.CreateMenu("", "test",0,100,"casinoui_cards_blackjack_high", "casinoui_cards_blackjack_high"))
+RMenu.Add('GMTblackjack_high', 'instructions', RageUI.CreateMenu("", "test",0,100,"casinoui_cards_blackjack_high", "blackjack"))
 RMenu:Get('GMTblackjack_high', 'instructions'):SetSubtitle("~b~BLACKJACK")
 
 

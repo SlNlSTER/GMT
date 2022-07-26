@@ -225,7 +225,7 @@ staffonlist = {}
 
 RegisterCommand("staffon", function(source)
     local user_id = vRP.getUserId({source})
-    if vRP.hasPermission({user_id, "admin.tickets"}) then
+    if vRP.hasPermission({user_id, "admin.menu"}) then
         if staffonlist[tostring(user_id)] == true then
             vRPclient.notify(source,{"~r~Already staffon'd"})
             return
@@ -240,7 +240,7 @@ end)
 RegisterCommand("staffoff", function(source)
     local user_id = vRP.getUserId({source})
     level = GetPedArmour(GetPlayerPed(source))
-    if vRP.hasPermission({user_id, "admin.tickets"}) then
+    if vRP.hasPermission({user_id, "admin.menu"}) then
         if staffonlist[tostring(user_id)] == nil then
             vRPclient.notify(source,{"~r~Not staffon'd"})
             return

@@ -1,0 +1,13 @@
+///////////////////////////////Made By elkie1991#9162///////////////////////////////
+
+Here is my Halifax Bank textures i made for my uk server but it got leaked so thought i may aswell release it 
+
+install is easy just copy and paste urp-Halifax into your resources then open your server.cfg and input
+
+start urp-Halifax
+
+now your ready to enjoy your texture in city 
+
+any question come over to 
+
+www.discord.io/GGCUnknownRP

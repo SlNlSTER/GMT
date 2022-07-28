@@ -31,7 +31,6 @@ RegisterServerEvent('openRigCrate', function(playerCoords, boxCoords)
                 lootrandom = math.random(1, 3)
 
                 if lootrandom == 1 then 
-                    [Legendary]
                     vRP.giveInventoryItem({user_id, "wbody|" .. 'WEAPON_SCORPIANBLUE', 1, true})
                     vRP.giveInventoryItem({user_id, '9mm Bullets', 250, true})
 
@@ -45,7 +44,6 @@ RegisterServerEvent('openRigCrate', function(playerCoords, boxCoords)
                         args = { playerName, msg }
                     })
                 elseif lootrandom == 2 then 
-                    [Epic]
                     vRP.giveInventoryItem({user_id, "wbody|" .. 'WEAPON_NERFMOSIN', 1, true})
                                         vRP.giveInventoryItem({user_id, '7.62 Bullets', 250, true})
 
@@ -58,7 +56,7 @@ RegisterServerEvent('openRigCrate', function(playerCoords, boxCoords)
                     })
 
                 elseif lootrandom == 3 then 
-                    [Uncommon]
+
                     vRP.giveInventoryItem({user_id, "wbody|" .. 'WEAPON_VESPER', 1, true})
                     vRP.giveInventoryItem({user_id, '9mm Bullets', 250, true})
 
@@ -71,7 +69,6 @@ RegisterServerEvent('openRigCrate', function(playerCoords, boxCoords)
                         args = { playerName, msg }
                     })
                 elseif lootrandom == 4 then 
-                    [Common]
                     vRP.giveInventoryItem({user_id, "wbody|" .. 'WEAPON_BROOM', 1, true})
 
                     vRP.giveInventoryItem({user_id, "wbody|" .. 'WEAPON_UMP45', 1, true})

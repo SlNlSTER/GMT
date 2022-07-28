@@ -30,7 +30,7 @@ RegisterServerEvent('openRigCrate', function(playerCoords, boxCoords)
                 used = true
                 lootrandom = math.random(1, 3)
 
-                if lootrandom == 1 then [Legendary]
+                if lootrandom == 1 then 
                     [Legendary]
                     vRP.giveInventoryItem({user_id, "wbody|" .. 'WEAPON_SCORPIANBLUE', 1, true})
                     vRP.giveInventoryItem({user_id, '9mm Bullets', 250, true})

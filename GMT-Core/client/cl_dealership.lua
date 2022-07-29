@@ -1,26 +1,20 @@
 dealership = {}
 
 dealership.main = {
-    {spawncode = "polo2018", vehname = "Polo 2018", price = 50000, desciption = ""},
-    {spawncode = "punto", vehname = "Punto",  price = 30000, desciption = ""},
-    {spawncode = "sciroccos81", vehname = "Volvo JDM",  price = 55000, desciption = ""},
-    {spawncode = "bs17", vehname = "BMW RR",  price = 0, desciption = ""},
-    {spawncode = "nightblade2", vehname = "Nightblade", price = 35000, desciption = ""},
-    {spawncode = "r6", vehname = "R6 Motorbike", price = 65000, desciption = ""},
-    {spawncode = "audif103", vehname = "Audi 103",  price = 20000, desciption = ""},
-    {spawncode = "bmwe65", vehname = "BMW 65", price = 15000, desciption = ""},
-    {spawncode = "e34", vehname = "BMW M5 OLD",  price = 20000, desciption = ""},
-    {spawncode = "m3e46", vehname = "BMW M3",  price = 25000, desciption = ""},
-    {spawncode = "13fmb302", vehname = "Dodge Boss",  price = 30000, desciption = ""},
-    {spawncode = "rs5", vehname = "Audi RS5",  price = 100000, desciption = ""},
-    {spawncode = "ast", vehname = "Aston Martin",  price = 40000, desciption = ""},
-    {spawncode = "f4090", vehname = "Ferrari F4", price = 110000, desciption = ""},
-    {spawncode = "pm19", vehname = "Porsche Macan",  price = 100000, desciption = ""},
-    {spawncode = "x5e53", vehname = "BMW X5", price = 50000, desciption = ""},
-    {spawncode = "x6m", vehname = "X6M",  price = 45000, desciption = ""},
-    {spawncode = "jantikzurus", vehname = "Lamborghini Urus Roadster",  price = 850000, desciption = ""},
-    {spawncode = "m977hl", vehname = "M977HL",  price = 5000000, desciption = "200KG"},
-    {spawncode = "oh6a", vehname = "OH-6A",  price = 5000000, desciption = "150KG Helicopoter"},
+    {spawncode = "rs5", vehname = "Audi RS5",  price = 0, desciption = ""},
+    {spawncode = "agerarsc", vehname = "Koenigsegg Agera",  price = 100000, desciption = ""},
+    {spawncode = "cooperworks", vehname = "Mini Cooper",  price = 100000, desciption = ""},
+    {spawncode = "golfgti7", vehname = "Volkswagen Golf GTI",  price = 100000, desciption = ""},
+    {spawncode = "lada2107", vehname = "Lada 2107",  price = 100000, desciption = ""},
+    {spawncode = "lp580", vehname = "Lamborghini Huracan",  price = 100000, desciption = ""},
+    {spawncode = "pts21", vehname = "Porsche 992 turbo s",  price = 100000, desciption = ""},
+    {spawncode = "rmodmi8lb", vehname = "RMOD Bmw i8",  price = 100000, desciption = ""},
+    {spawncode = "rsvr16", vehname = "Range Rover SVR 2016",  price = 100000, desciption = ""},
+    {spawncode = "sf90", vehname = "Ferrari SF90 Stradale",  price = 100000, desciption = ""},
+    {spawncode = "tahoe", vehname = "Chevrolet Tahoe",  price = 100000, desciption = ""},
+    
+    
+
     
 }
 

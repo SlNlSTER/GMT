@@ -1,12 +1,12 @@
 dealership = {}
 
 dealership.main = {
-    {spawncode = "rs5", vehname = "Audi RS5",  price = 0, desciption = ""},
+    {spawncode = "lp580", vehname = "Starter Lamborghini Huracan",  price = 0, desciption = ""},
+    {spawncode = "rs5", vehname = "Audi RS5",  price = 100000, desciption = ""},
     {spawncode = "agerarsc", vehname = "Koenigsegg Agera",  price = 100000, desciption = ""},
     {spawncode = "cooperworks", vehname = "Mini Cooper",  price = 100000, desciption = ""},
     {spawncode = "golfgti7", vehname = "Volkswagen Golf GTI",  price = 100000, desciption = ""},
     {spawncode = "lada2107", vehname = "Lada 2107",  price = 100000, desciption = ""},
-    {spawncode = "lp580", vehname = "Lamborghini Huracan",  price = 100000, desciption = ""},
     {spawncode = "pts21", vehname = "Porsche 992 turbo s",  price = 100000, desciption = ""},
     {spawncode = "rmodmi8lb", vehname = "RMOD Bmw i8",  price = 100000, desciption = ""},
     {spawncode = "rsvr16", vehname = "Range Rover SVR 2016",  price = 100000, desciption = ""},
@@ -305,7 +305,8 @@ Citizen.CreateThread(function()
       while true do 
         Citizen.Wait(0)
         if testdriveenabled then
-            DrawAdvancedTextOutline(0.605, 0.513, 0.005, 0.0028, 0.4, "Test Drive left: "..testdrivetimer.." seconds", 255, 255, 255, 255, 7, 0)
+            DrawAdvancedTextOutline(0.175, 0.795, 0.005, 0.0028, 0.4, "Test Drive left: "..testdrivetimer.." seconds", 255, 255, 255, 255, 7, 0)
+
         end
       end 
   end)

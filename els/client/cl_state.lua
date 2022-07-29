@@ -7,7 +7,7 @@
 SavedVehicles = {}
 EnabledVehicles = {}
 
-RegisterNetEvent("CMGELS:changeStage", function(netId, stage)
+RegisterNetEvent("GMTELS:changeStage", function(netId, stage)
 	if not VehicleConfigs then return end
 
 	local state = GetSavedVehicleState(netId)
@@ -16,7 +16,7 @@ RegisterNetEvent("CMGELS:changeStage", function(netId, stage)
 	Controller.OnStageChange(state)
 end)
 
-RegisterNetEvent("CMGELS:toggleSiren", function(netId, tone)
+RegisterNetEvent("GMTELS:toggleSiren", function(netId, tone)
 	if not VehicleConfigs then return end
 
 	local state = GetSavedVehicleState(netId)
@@ -25,7 +25,7 @@ RegisterNetEvent("CMGELS:toggleSiren", function(netId, tone)
 	Controller.OnSirenChange(state)
 end)
 
-RegisterNetEvent("CMGELS:toggleBullhorn", function(netId, enabled)
+RegisterNetEvent("GMTELS:toggleBullhorn", function(netId, enabled)
 	if not VehicleConfigs then return end
 
 	local state = GetSavedVehicleState(netId)
@@ -36,7 +36,7 @@ RegisterNetEvent("CMGELS:toggleBullhorn", function(netId, enabled)
 	Controller.OnBullhornChange(state)
 end)
 
-RegisterNetEvent("CMGELS:patternChange", function(netId, patternIndex, enabled)
+RegisterNetEvent("GMTELS:patternChange", function(netId, patternIndex, enabled)
 	if not VehicleConfigs then return end
 
 	local state = GetSavedVehicleState(netId)
@@ -45,7 +45,7 @@ RegisterNetEvent("CMGELS:patternChange", function(netId, patternIndex, enabled)
 	state.pattern[pattern].enabled = enabled
 end)
 
-RegisterNetEvent("CMGELS:vehicleRemoved", function(netId)
+RegisterNetEvent("GMTELS:vehicleRemoved", function(netId)
 	local state = SavedVehicles[netId]
 
 	if state then VehicleLeftScope(netId, state) end
@@ -53,7 +53,7 @@ RegisterNetEvent("CMGELS:vehicleRemoved", function(netId)
 	SavedVehicles[netId] = nil
 end)
 
-RegisterNetEvent("CMGELS:indicatorChange", function(netId, indicator, enabled)
+RegisterNetEvent("GMTELS:indicatorChange", function(netId, indicator, enabled)
 	if not NetworkDoesNetworkIdExist(netId) then return end
 
 	local entity = NetworkGetEntityFromNetworkId(netId)

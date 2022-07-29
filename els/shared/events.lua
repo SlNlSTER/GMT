@@ -1,10 +1,10 @@
 local lookup = {
-    ["CMGELS:changeStage"] = "CMGELS:1",
-    ["CMGELS:toggleSiren"] = "CMGELS:2",
-    ["CMGELS:toggleBullhorn"] = "CMGELS:3",
-    ["CMGELS:patternChange"] = "CMGELS:4",
-    ["CMGELS:vehicleRemoved"] = "CMGELS:5",
-    ["CMGELS:indicatorChange"] = "CMGELS:6"
+    ["GMTELS:changeStage"] = "GMTELS:1",
+    ["GMTELS:toggleSiren"] = "GMTELS:2",
+    ["GMTELS:toggleBullhorn"] = "GMTELS:3",
+    ["GMTELS:patternChange"] = "GMTELS:4",
+    ["GMTELS:vehicleRemoved"] = "GMTELS:5",
+    ["GMTELS:indicatorChange"] = "GMTELS:6"
 }
 
 local origRegisterNetEvent = RegisterNetEvent
@@ -19,7 +19,7 @@ if IsDuplicityVersion() then
     end
 
     TriggerClientScopeEvent = function(name, target, ...)
-        exports["cmg"]:TriggerClientScopeEvent(lookup[name], target, ...)
+        exports["GMT"]:TriggerClientScopeEvent(lookup[name], target, ...)
     end
 else
     local origTriggerServerEvent = TriggerServerEvent

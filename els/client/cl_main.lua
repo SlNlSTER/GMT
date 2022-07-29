@@ -80,7 +80,7 @@ function PerformInitialisation()
 end
 
 function WriteLoadError(name, message)
-	print(string.format("[CMG ELS] Unable to load VCF for %s. %s.", name, message))
+	print(string.format("[GMT ELS] Unable to load VCF for %s. %s.", name, message))
 end
 
 function ProcessCurrentVehicle()
@@ -235,13 +235,13 @@ function ProcessCivilianVehicle(isDriver)
 	if IsControlJustPressed(0, Config.Keyboard.IndicatorLeft) then
 		local indicator = GetVehicleIndicatorLights(CurrentVehicle)
 		local enabled = not (indicator == 1)
-		TriggerServerEvent("CMGELS:indicatorChange", 1, enabled)
+		TriggerServerEvent("GMTELS:indicatorChange", 1, enabled)
 	end
 
 	if IsControlJustPressed(0, Config.Keyboard.IndicatorRight) then
 		local indicator = GetVehicleIndicatorLights(CurrentVehicle)
 		local enabled = not (indicator == 2)
-		TriggerServerEvent("CMGELS:indicatorChange", 2, enabled)
+		TriggerServerEvent("GMTELS:indicatorChange", 2, enabled)
 	end
 end
 
@@ -272,7 +272,7 @@ function OnKeyStageChange()
 
 	PlaySoundFrontend(-1, "NAV_UP_DOWN", "HUD_FRONTEND_DEFAULT_SOUNDSET", 1)
 
-	TriggerServerEvent("CMGELS:changeStage", state.stage)
+	TriggerServerEvent("GMTELS:changeStage", state.stage)
 
 	if state.stage == 1 and IsAmbulanceSound(state.config.sounds.srnTone1.audioString) then
 		Citizen.CreateThreadNow(PlayNineNineModeSound)
@@ -290,7 +290,7 @@ function OnKeyBullhorn(enable)
 
 	Controller.OnBullhornChange(state)
 
-	TriggerServerEvent("CMGELS:toggleBullhorn", enable)
+	TriggerServerEvent("GMTELS:toggleBullhorn", enable)
 end
 
 function OnKeySiren(tone, pressed)
@@ -308,7 +308,7 @@ function OnKeySiren(tone, pressed)
 
 	Controller.OnSirenChange(state)
 
-	TriggerServerEvent("CMGELS:toggleSiren", tone)
+	TriggerServerEvent("GMTELS:toggleSiren", tone)
 
 	if state.siren.tone ~= 0 then
 		Citizen.CreateThreadNow(PlaySirenSwitchSound)
@@ -327,7 +327,7 @@ function OnKeyPattern(patternName)
 	PlaySoundFrontend(-1, "NAV_UP_DOWN", "HUD_FRONTEND_DEFAULT_SOUNDSET", 1)
 
 	local patternIndex = GetIndexFromPattern(patternName)
-	TriggerServerEvent("CMGELS:patternChange", patternIndex, pattern.enabled)
+	TriggerServerEvent("GMTELS:patternChange", patternIndex, pattern.enabled)
 end
 
 function DisableCurrentVehicle()
@@ -336,13 +336,13 @@ function DisableCurrentVehicle()
 	if state.bullhorn.enabled then
 		state.bullhorn.enabled = false
 		Controller.OnBullhornChange(state)
-		TriggerServerEvent("CMGELS:toggleBullhorn", false)
+		TriggerServerEvent("GMTELS:toggleBullhorn", false)
 	end
 
 	if state.siren.tone ~= 0 or state.stage ~= 0 then
 		state.stage = 0
 		Controller.OnStageChange(state)
-		TriggerServerEvent("CMGELS:changeStage", 0)
+		TriggerServerEvent("GMTELS:changeStage", 0)
 	end
 end
 

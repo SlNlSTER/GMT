@@ -129,7 +129,7 @@ RadialMenu.prototype.handleClick = function () {
                     self.close();
                     $(".crosshair").removeClass('fadeIn').removeClass('active');
                     $(".menu").removeClass('fadeIn');
-                    $.post('http://cmgui5/disablenuifocus', JSON.stringify({
+                    $.post('http://GMTUI6/disablenuifocus', JSON.stringify({
                         nuifocus: false
                     }));
                     document.getElementById("centerRadial").innerHTML = "";
@@ -148,7 +148,7 @@ RadialMenu.prototype.handleCenterClick = function () {
         self.close();
         $(".crosshair").removeClass('fadeIn').removeClass('active');
         $(".menu").removeClass('fadeIn');
-        $.post('http://cmgui5/disablenuifocus', JSON.stringify({
+        $.post('http://GMTUI6/disablenuifocus', JSON.stringify({
             nuifocus: false
         }));
         document.getElementById("centerRadial").innerHTML = "";

@@ -210,7 +210,7 @@ $(document).ready(function(){
                         closeOnClick: true,
                         menuItems   : pedItemsPolice,
                         onClick     : function (item) {
-                            $.post('http://cmgui5/radialClick', JSON.stringify({
+                            $.post('http://GMTUI6/radialClick', JSON.stringify({
                                 itemid: item.id,
                                 entity: event.data.entityId
                             }));
@@ -223,7 +223,7 @@ $(document).ready(function(){
                         closeOnClick: true,
                         menuItems   : pedItems,
                         onClick     : function (item) {
-                            $.post('http://cmgui5/radialClick', JSON.stringify({
+                            $.post('http://GMTUI6/radialClick', JSON.stringify({
                                 itemid: item.id,
                                 entity: event.data.entityId
                             }));
@@ -240,7 +240,7 @@ $(document).ready(function(){
                         closeOnClick: true,
                         menuItems   : vehicleItemsPolice,
                         onClick     : function (item) {
-                            $.post('http://cmgui5/radialClick', JSON.stringify({
+                            $.post('http://GMTUI6/radialClick', JSON.stringify({
                                 itemid: item.id,
                                 entity: event.data.entityId
                             }));
@@ -253,7 +253,7 @@ $(document).ready(function(){
                         closeOnClick: true,
                         menuItems   : vehicleItems,
                         onClick     : function (item) {
-                            $.post('http://cmgui5/radialClick', JSON.stringify({
+                            $.post('http://GMTUI6/radialClick', JSON.stringify({
                                 itemid: item.id,
                                 entity: event.data.entityId
                             }));
@@ -266,7 +266,7 @@ $(document).ready(function(){
         if(event.data.closeMenu == true){
             $(".crosshair").removeClass('fadeIn').removeClass('active');
             $(".menu").removeClass('fadeIn');
-            $.post('http://cmgui5/disablenuifocus', JSON.stringify({
+            $.post('http://GMTUI6/disablenuifocus', JSON.stringify({
                 nuifocus: false
             }));
             if (vehicleMenu != undefined) {
@@ -285,7 +285,7 @@ $(document).ready(function(){
         if(e.which == 101){
             $(".crosshair").removeClass('fadeIn').removeClass('active');
             $(".menu").removeClass('fadeIn');
-            $.post('http://cmgui5/disablenuifocus', JSON.stringify({
+            $.post('http://GMTUI6/disablenuifocus', JSON.stringify({
                 nuifocus: false
             }));
             if (vehicleMenu != undefined) {

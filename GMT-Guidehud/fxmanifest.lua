@@ -1,7 +1,9 @@
-shared_script '@FiveEye/FiveEye.lua'
+
 
 fx_version "bodacious"
 game "gta5"
+
+author "Ian Moore34" 
 
 ui_page "HUD/ui.html"
 

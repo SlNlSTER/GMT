@@ -123,7 +123,7 @@ Citizen.CreateThread(function()
                         if IsControlJustReleased(1, 38) then
                             local id = DecorGetInt(Entity,"lootid")
                             TriggerEvent("GMT:startCombatTimer")
-                            TriggerServerEvent("GMT:openLootbag",id)
+                            TriggerServerEvent("vRP:LootBag",id)
                             Wait(1000)
                         end
                     elseif `prop_poly_bag_money` == entityModel then
@@ -131,7 +131,7 @@ Citizen.CreateThread(function()
                         if IsControlJustReleased(1, 38) then
                             local id = DecorGetInt(Entity,"lootid")
                             TriggerEvent("GMT:startCombatTimer")
-                            TriggerServerEvent("GMT:openLootbag2",id)
+                            TriggerServerEvent("vRP:Moneydrop",id)
                             Wait(1000)
                         end
                     elseif `prop_box_ammo03a` == entityModel then
@@ -210,11 +210,10 @@ end
 
 local savedBoot
 
-function openboot(entityId)
+function openBoot(entityId)
+    TriggerEvent('openBoot')
     savedBoot = entityId
     SetVehicleDoorOpen(entityId, 5, true)
-    TriggerEvent("GMT:clOpenTrunk")
-    trunkStatus = true
     SendNUIMessage({
         closeMenu = true
     })

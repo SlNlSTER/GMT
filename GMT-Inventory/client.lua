@@ -26,8 +26,6 @@ AddEventHandler('openBoot', function()
         VehTypeC = VehType
         VehTypeA = NVeh
 
-
-        tvRP.vc_openDoor({VehTypeC, 5})
         inventoryType = 'CarBoot'
         TriggerServerEvent('GMT:FetchTrunkInventory', NVeh, NetworkGetNetworkIdFromEntity(nearestVeh))
     else
@@ -51,7 +49,7 @@ RegisterCommand('inventory', function()
             SendNUIMessage({action = 'InventoryDisplay', showInv = false})
             inventoryType = nil;
             if BootCar then
-                tvRP.vc_closeDoor({VehTypeC, 5})
+                TriggerEvent('GMT:clCloseTrunk')
                 BootCar = nil;
                 VehTypeC = nil;
                 VehTypeA = nil;
@@ -267,7 +265,7 @@ Citizen.CreateThread(function()
                 SetNuiFocus(false, false)
                 SetNuiFocusKeepInput(false)
                 SendNUIMessage({action = 'InventoryDisplay', showInv = false})
-                tvRP.vc_closeDoor({VehTypeC, 5})
+                TriggerEvent('GMT:clCloseTrunk')
                 BootCar = nil;
                 VehTypeC = nil;
                 VehTypeA = nil;
@@ -282,7 +280,7 @@ Citizen.CreateThread(function()
                 SendNUIMessage({action = 'InventoryDisplay', showInv = false})
                 inventoryType = nil;
                 if BootCar then
-                    tvRP.vc_closeDoor({VehTypeC, 5})
+                    TriggerEvent('GMT:clCloseTrunk')
                     BootCar = nil;
                     VehTypeC = nil;
                     VehTypeA = nil;

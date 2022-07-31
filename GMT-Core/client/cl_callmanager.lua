@@ -220,22 +220,6 @@ RegisterCommand("return", function()
     end
 end)
 
-RegisterNetEvent("staffon")
-AddEventHandler("staffon", function(isInTicket)
-
-    TriggerEvent("GMT:vehicleMenu", true, isInTicket)
-    if GetEntityHealth(GetPlayerPed(-1)) <= 103 then
-    TriggerEvent('GMT:FixClient')
-    end
-end)
-
-RegisterNetEvent("staffoff")
-AddEventHandler("staffoff", function()
-    isInTicket = false
-    TriggerEvent("GMT:vehicleMenu", false, isInTicket) 
-end)
-
-
 RegisterNetEvent('GMT:AdminTicketCooldown')
 AddEventHandler('GMT:AdminTicketCooldown', function(source, Reason)
     if AdminTicketCooldown == false then

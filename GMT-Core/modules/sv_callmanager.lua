@@ -149,7 +149,7 @@ AddEventHandler('GMT:GiveTicketMoney', function(admin, ticket, reason, isInTicke
     if vRP.hasPermission({user_id, "admin.tickets"}) then
     vRP.giveBankMoney({user_id, 15000})
     vRPclient.notify(ticket,{'~g~'..name..' has taken your ticket!'})
-    TriggerClientEvent("staffon", source, ticketStatus)
+    vRPclient.staffMode(source, {true})
     TriggerEvent('GMT:AddTicketToLB', user_id)
 	local name = GetPlayerName(source)
 
@@ -218,38 +218,6 @@ AddEventHandler('GMT:AddTicketToLB', function(user_id)
         end
     end)
 end
-end)
-
-staffonlist = {}
-
-
-RegisterCommand("staffon", function(source)
-    local user_id = vRP.getUserId({source})
-    if vRP.hasPermission({user_id, "admin.menu"}) then
-        if staffonlist[tostring(user_id)] == true then
-            vRPclient.notify(source,{"~r~Already staffon'd"})
-            return
-        end
-        isInTicket = false
-        TriggerClientEvent("staffon", source, isInTicket)
-        vRPclient.notify(source,{"~g~You are now on Duty!"})
-        staffonlist[tostring(user_id)] = true
-    end
-end)
-
-RegisterCommand("staffoff", function(source)
-    local user_id = vRP.getUserId({source})
-    level = GetPedArmour(GetPlayerPed(source))
-    if vRP.hasPermission({user_id, "admin.menu"}) then
-        if staffonlist[tostring(user_id)] == nil then
-            vRPclient.notify(source,{"~r~Not staffon'd"})
-            return
-        end
-        isInTicket = false
-        TriggerClientEvent("staffoff", source)
-        vRPclient.notify(source,{"~r~You are now off Duty!"})
-        staffonlist[tostring(user_id)] = nil
-    end
 end)
 
 function Notify( text )

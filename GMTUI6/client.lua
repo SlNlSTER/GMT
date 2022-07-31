@@ -205,7 +205,7 @@ function loadAnimDict(dict)
 end
 
 function lockCar(entityId)
-    TriggerEvent("GMT:lockNearestVehicle")
+    ExecuteCommand('lockcar')
 end
 
 local savedBoot

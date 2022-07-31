@@ -26,7 +26,7 @@ const audio = [
     { name: "drill", file: "drill.ogg", volume: 0.20 },
     { name: "alarm", file: "alarm.ogg", volume: 0.40 },
     { name: "starter", file: "GMTStarter.ogg", volume: 0.40 },
-    { name: "supplydrop", file: "supplydrop.ogg", volume: 0.40 },
+    { name: "supplydrop", file: "supplydrop.ogg", volume: 0.05 },
 ]
 
 var audioPlayer = null;

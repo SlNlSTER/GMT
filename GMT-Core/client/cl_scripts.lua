@@ -248,3 +248,65 @@ function stunGun()
     SetPedMotionBlur(playerPed, false)
 end
 
+local a = false
+RegisterCommand(
+    "flipcar",
+    function()
+        local b, c = vRP.getPlayerVehicle()
+        if b == 0 then
+            notify("You are not in a vehicle")
+            return
+        end
+        if not c then
+            notify("You are not the driver of this vehicle")
+            return
+        end
+        if GetIsVehicleEngineRunning(b) then
+            notify("You must have the engine off to flip the vehicle")
+            return
+        end
+        if IsVehicleOnAllWheels(b) then
+            notify("Your vehicle does not require flipping")
+            return
+        end
+        if a then
+            notify("Your vehicle is already waiting to be flipped")
+            return
+        end
+        a = true
+        notify("Flipping your vehicle in 30 seconds. Please remain stationary")
+        local d = vRP.getPlayerPed()
+        local e = GetEntityHealth(d)
+        local f = GetGameTimer()
+        while GetGameTimer() - f < 30000 do
+            if vRP.getPlayerVehicle() ~= b then
+                notify("Cancelling flip as you left the vehicle")
+                a = false
+                return
+            end
+            if GetEntityHealth(d) ~= e then
+                notify("Cancelling flip as you recieved damage")
+                a = false
+                return
+            end
+            if GetEntitySpeed(b) >= 4.4704 then
+                notify("Cancelling flip as you are not stationary")
+                a = false
+                return
+            end
+            if GetIsVehicleEngineRunning(b) then
+                notify("Cancelling flip as you turned the engine on")
+                a = false
+                return
+            end
+            Citizen.Wait(0)
+        end
+        SetVehicleOnGroundProperly(b)
+        SetVehicleEngineOn(b, true, true, false)
+        notify("Your vehicle has been flipped")
+        a = false
+    end
+)
+
+
+

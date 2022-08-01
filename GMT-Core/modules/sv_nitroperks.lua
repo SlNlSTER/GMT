@@ -5,8 +5,7 @@ AddEventHandler('NitroPerks:craftmoped', function()
     name = GetPlayerName(source)
     exports["discord-roles2"]:isRolePresent(source,{cfgroles.boosterRole},function(hasRole)
         if hasRole == true then 
-            ExecuteCommand('playanim')
-            Citizen.Wait(5000)
+            Citizen.Wait(3500)
             print('[NitroPerks] ' .. name .. ' has crafted a moped')
             TriggerClientEvent("NitroPerks:spawnmoped", source)
         else

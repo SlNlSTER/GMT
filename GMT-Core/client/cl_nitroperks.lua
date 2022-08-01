@@ -18,11 +18,12 @@ end
 
 
 RegisterCommand('moped', function()
+  ExecuteCommand('playanim')
     TriggerServerEvent('NitroPerks:craftmoped')
 end)
 
 RegisterCommand("playanim", function()
-    TaskStartScenarioInPlace(PlayerPedId(), 'WORLD_HUMAN_HAMMERING', false, true)
+  TaskStartScenarioInPlace(PlayerPedId(), 'WORLD_HUMAN_HAMMERING', false, true)
 end)
 
 

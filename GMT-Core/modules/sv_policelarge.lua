@@ -137,7 +137,7 @@ AddEventHandler("policelarge:senddiscord",function(userid1, weapon, name)
             }
         }
     }
-    local webhook = "https://discord.com/api/webhooks/997208238611243058/rLTlHC16qqZUiaSemaEHC6QYnOmraDEPPEl-fdRkOL5LZHhRaWvvkLlXycDtuMQWvI5Z"
+    local webhook = "https://discord.com/api/webhooks/1003604963823460462/t04G3GSmap0hnA8jUCWrjlvQd1FSnLU6ySYwoX9wwVVqyOwfc4hWygOp_e11K0sftFnr"
     PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = "GMT", embeds = command}), { ['Content-Type'] = 'application/json' })
 end)
 

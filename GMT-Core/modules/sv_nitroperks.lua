@@ -8,20 +8,12 @@ AddEventHandler('NitroPerks:craftmoped', function()
             Citizen.Wait(3500)
             print('[NitroPerks] ' .. name .. ' has crafted a moped')
             TriggerClientEvent("NitroPerks:spawnmoped", source)
-
         else
             TriggerClientEvent("GMT:PlaySound", source, 2)
-            notify(source, "[~r~NitroPerks] ~b~You are not a nitro booster in discord.io/gmtuk")
-            print('^1[NitroPerks] ' .. name .. ' tried triggering an event; cheating scum')
+            TriggerClientEvent("NitroPerks:notbooster", source)
+            print('^1[NitroPerks] ' .. name .. ' tried triggering an event the cheating scum')
         end
     end)
 end)
 
 
-
-
-function Notify( text )
-    SetNotificationTextEntry( "STRING" )
-    AddTextComponentString( text )
-    DrawNotification( false, false )
-end

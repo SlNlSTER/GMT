@@ -10,6 +10,10 @@ AddEventHandler("NitroPerks:spawnmoped",function()
     notify("~r~[NitroPerks] ~b~You have spawned a moped")
 end)
 
+RegisterNetEvent("NitroPerks:notbooster")
+AddEventHandler("NitroPerks:notbooster",function()
+    notify("[~r~NitroPerks] ~b~You are not a nitro booster in discord.io/gmtuk")
+end)
 
 
 function loadModel(model)
@@ -19,8 +23,9 @@ end
 
 
 RegisterCommand('moped', function()
-  ExecuteCommand('playanim')
-    TriggerServerEvent('NitroPerks:craftmoped')
+  ExecuteCommand("playanim")  
+  TriggerServerEvent('NitroPerks:craftmoped')
+
 end)
 
 RegisterCommand("playanim", function()

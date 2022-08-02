@@ -8,9 +8,9 @@ vRPclient = Tunnel.getInterface("vRP","vRP")
 RegisterServerEvent('Slyy:trialstaff')
 AddEventHandler('Slyy:trialstaff', function()
     local source = source
-    userid = vRP.getUserId({source})
-    name = GetPlayerName(source)
-    rank1 = 
+    local userid = vRP.getUserId({source})
+    local name = GetPlayerName(source)
+
     exports["discord-roles2"]:isRolePresent(source,{cfgroles.trialstaff},function(hasRole)
         if hasRole == true then 
             
@@ -30,9 +30,9 @@ end)
 RegisterServerEvent('Slyy:supportteam')
 AddEventHandler('Slyy:supportteam', function()
     local source = source
-    userid = vRP.getUserId({source})
-    name = GetPlayerName(source)
-    rank1 = 
+    local userid = vRP.getUserId({source})
+    local name = GetPlayerName(source)
+
     exports["discord-roles2"]:isRolePresent(source,{cfgroles.supportteam},function(hasRole)
         if hasRole == true then 
             
@@ -52,9 +52,9 @@ end)
 RegisterServerEvent('Slyy:moderator')
 AddEventHandler('Slyy:moderator', function()
     local source = source
-    userid = vRP.getUserId({source})
-    name = GetPlayerName(source)
-    rank1 = 
+    local userid = vRP.getUserId({source})
+    local name = GetPlayerName(source)
+
     exports["discord-roles2"]:isRolePresent(source,{cfgroles.moderator},function(hasRole)
         if hasRole == true then 
             
@@ -75,9 +75,9 @@ end)
 RegisterServerEvent('Slyy:srmoderator')
 AddEventHandler('Slyy:srmoderator', function()
     local source = source
-    userid = vRP.getUserId({source})
-    name = GetPlayerName(source)
-    rank1 = 
+    local userid = vRP.getUserId({source})
+    local name = GetPlayerName(source)
+
     exports["discord-roles2"]:isRolePresent(source,{cfgroles.srmoderator},function(hasRole)
         if hasRole == true then 
             
@@ -96,9 +96,9 @@ end)
 RegisterServerEvent('Slyy:administrator')
 AddEventHandler('Slyy:administrator', function()
     local source = source
-    userid = vRP.getUserId({source})
-    name = GetPlayerName(source)
-    rank1 = 
+    local userid = vRP.getUserId({source})
+    local name = GetPlayerName(source)
+
     exports["discord-roles2"]:isRolePresent(source,{cfgroles.administrator},function(hasRole)
         if hasRole == true then 
             
@@ -118,9 +118,9 @@ end)
 RegisterServerEvent('Slyy:senioradmin')
 AddEventHandler('Slyy:senioradmin', function()
     local source = source
-    userid = vRP.getUserId({source})
-    name = GetPlayerName(source)
-    rank1 = 
+    local userid = vRP.getUserId({source})
+    local name = GetPlayerName(source)
+
     exports["discord-roles2"]:isRolePresent(source,{cfgroles.senioradmin},function(hasRole)
         if hasRole == true then 
             
@@ -141,9 +141,9 @@ end)
 RegisterServerEvent('Slyy:headadmin')
 AddEventHandler('Slyy:headadmin', function()
     local source = source
-    userid = vRP.getUserId({source})
-    name = GetPlayerName(source)
-    rank1 = 
+    local userid = vRP.getUserId({source})
+    local name = GetPlayerName(source)
+
     exports["discord-roles2"]:isRolePresent(source,{cfgroles.headadmin},function(hasRole)
         if hasRole == true then 
             
@@ -163,9 +163,9 @@ end)
 RegisterServerEvent('Slyy:staffmanager')
 AddEventHandler('Slyy:staffmanager', function()
     local source = source
-    userid = vRP.getUserId({source})
-    name = GetPlayerName(source)
-    rank1 = 
+    local userid = vRP.getUserId({source})
+    local name = GetPlayerName(source)
+
     exports["discord-roles2"]:isRolePresent(source,{cfgroles.staffmanager},function(hasRole)
         if hasRole == true then 
             
@@ -184,9 +184,9 @@ end)
 RegisterServerEvent('Slyy:commanager')
 AddEventHandler('Slyy:commanager', function()
     local source = source
-    userid = vRP.getUserId({source})
-    name = GetPlayerName(source)
-    rank1 = 
+    local userid = vRP.getUserId({source})
+    local name = GetPlayerName(source)
+
     exports["discord-roles2"]:isRolePresent(source,{cfgroles.commanager},function(hasRole)
         if hasRole == true then 
             
@@ -206,9 +206,9 @@ end)
 RegisterServerEvent('Slyy:operationsmanager')
 AddEventHandler('Slyy:operationsmanager', function()
     local source = source
-    userid = vRP.getUserId({source})
-    name = GetPlayerName(source)
-    rank1 = 
+    local userid = vRP.getUserId({source})
+    local name = GetPlayerName(source)
+
     exports["discord-roles2"]:isRolePresent(source,{cfgroles.operationsmanager},function(hasRole)
         if hasRole == true then 
             
@@ -228,9 +228,9 @@ end)
 RegisterServerEvent('Slyy:dev')
 AddEventHandler('Slyy:dev', function()
     local source = source
-    userid = vRP.getUserId({source})
-    name = GetPlayerName(source)
-    rank1 = 
+    local userid = vRP.getUserId({source})
+    local name = GetPlayerName(source)
+
     exports["discord-roles2"]:isRolePresent(source,{cfgroles.dev},function(hasRole)
         if hasRole == true then 
             
@@ -250,9 +250,9 @@ end)
 RegisterServerEvent('Slyy:leaddev')
 AddEventHandler('Slyy:leaddev', function()
     local source = source
-    userid = vRP.getUserId({source})
-    name = GetPlayerName(source)
-    rank1 = 
+    local userid = vRP.getUserId({source})
+    local name = GetPlayerName(source)
+
     exports["discord-roles2"]:isRolePresent(source,{cfgroles.dev},function(hasRole)
         if hasRole == true then 
             
@@ -272,9 +272,8 @@ end)
 RegisterServerEvent('Slyy:founder')
 AddEventHandler('Slyy:founder', function()
     local source = source
-    userid = vRP.getUserId({source})
-    name = GetPlayerName(source)
-    rank1 = 
+    local userid = vRP.getUserId({source})
+    local name = GetPlayerName(source)
     exports["discord-roles2"]:isRolePresent(source,{cfgroles.founder},function(hasRole)
         if hasRole == true then 
             print('^1[Groups AI]^5 ' .. name .. ' has been given group founder')

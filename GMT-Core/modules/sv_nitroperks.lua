@@ -1,8 +1,8 @@
 RegisterServerEvent('NitroPerks:craftmoped')
 AddEventHandler('NitroPerks:craftmoped', function()
     local source = source
-    userid = vRP.getUserId({source})
-    name = GetPlayerName(source)
+    local userid = vRP.getUserId({source})
+    local name = GetPlayerName(source)
     exports["discord-roles2"]:isRolePresent(source,{cfgroles.boosterRole},function(hasRole)
         if hasRole == true then 
             Citizen.Wait(3500)

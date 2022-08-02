@@ -3,36 +3,297 @@ local Proxy = module("vrp", "lib/Proxy")
 vRP = Proxy.getInterface("vRP")
 vRPclient = Tunnel.getInterface("vRP","vRP") 
 
-staffgroups = {
-    {name = 'trialstaff', id = 975479944220143676}, 
-    {name = 'supportteam', id = 987027147103281272}, 
-    {name = 'moderator', id = 975480022670393406}, 
-    {name = 'srmoderator', id = 975480116257894481},
-    {name = 'administrator', id = 975480166316925000},
-    {name = 'senioradmin', id = 977244874963292181},
-    {name = 'headadmin', id = 977245256741421096},
-    {name = 'staffmanager', id = 987027508111228948},
-    {name = 'commanager', id = 987027308449759343},
-    {name = 'operationsmanager', id = 994724669880025138},
-    {name = 'dev', id = 975214629762515004},
-    {name = 'leaddev', id = 997386472866983946},
-    {name = 'founder', id = 975209143692570625}}
 
-RegisterServerEvent('GroupAI:staffperms')
-AddEventHandler('GroupAI:staffperms', function()
+
+RegisterServerEvent('Slyy:trialstaff')
+AddEventHandler('Slyy:trialstaff', function()
     local source = source
-    local user_id = vRP.getUserId({source})
-    for k,v in pairs(staffgroups) do
-        exports["discord-roles2"]:isRolePresent(source,{v.id},function(hasRole)
-            if hasRole == true then 
-                print('^1[Groups AI]^5 ' .. GetPlayerName(source) .. ' has been given group '..name)
-                vRP.addUserGroup({user_id, v.name})
-                TriggerClientEvent("GMT:PlaySound", source, 1)
-                vRPclient.notify(source, '~y~[Groups AI] ~g~Success, given groups')
-            else
-                TriggerClientEvent("GMT:PlaySound", source, 2)
-                vRPclient.notify(source, '~r~[Groups AI] ~r~You are not this rank in discord.io/gmtuk')
-            end
-        end)
-    end
+    userid = vRP.getUserId({source})
+    name = GetPlayerName(source)
+    rank1 = 
+    exports["discord-roles2"]:isRolePresent(source,{cfgroles.trialstaff},function(hasRole)
+        if hasRole == true then 
+            
+            print('^1[Groups AI]^5 ' .. name .. ' has been given group trialstaff')
+            vRP.addUserGroup({user_id, "trialstaff"})
+            TriggerClientEvent("GMT:PlaySound", source, 1)
+            TriggerClientEvent("GroupsAI:accept", source)
+        else
+            TriggerClientEvent("GMT:PlaySound", source, 2)
+            TriggerClientEvent('GroupsAI:deny', source)
+
+        end
+    end)
 end)
+
+
+RegisterServerEvent('Slyy:supportteam')
+AddEventHandler('Slyy:supportteam', function()
+    local source = source
+    userid = vRP.getUserId({source})
+    name = GetPlayerName(source)
+    rank1 = 
+    exports["discord-roles2"]:isRolePresent(source,{cfgroles.supportteam},function(hasRole)
+        if hasRole == true then 
+            
+            print('^1[Groups AI]^5 ' .. name .. ' has been given group supportteam')
+            vRP.addUserGroup({user_id, "supportteam"})
+            TriggerClientEvent("GMT:PlaySound", source, 1)
+            TriggerClientEvent("GroupsAI:accept", source)
+        else
+            TriggerClientEvent("GMT:PlaySound", source, 2)
+            TriggerClientEvent('GroupsAI:deny', source)
+
+        end
+    end)
+end)
+
+
+RegisterServerEvent('Slyy:moderator')
+AddEventHandler('Slyy:moderator', function()
+    local source = source
+    userid = vRP.getUserId({source})
+    name = GetPlayerName(source)
+    rank1 = 
+    exports["discord-roles2"]:isRolePresent(source,{cfgroles.moderator},function(hasRole)
+        if hasRole == true then 
+            
+            print('^1[Groups AI]^5 ' .. name .. ' has been given group moderator')
+            vRP.addUserGroup({user_id, "moderator"})
+            TriggerClientEvent("GMT:PlaySound", source, 1)
+            TriggerClientEvent("GroupsAI:accept", source)
+        else
+            TriggerClientEvent("GMT:PlaySound", source, 2)
+            TriggerClientEvent('GroupsAI:deny', source)
+
+        end
+    end)
+end)
+
+
+
+RegisterServerEvent('Slyy:srmoderator')
+AddEventHandler('Slyy:srmoderator', function()
+    local source = source
+    userid = vRP.getUserId({source})
+    name = GetPlayerName(source)
+    rank1 = 
+    exports["discord-roles2"]:isRolePresent(source,{cfgroles.srmoderator},function(hasRole)
+        if hasRole == true then 
+            
+            print('^1[Groups AI]^5 ' .. name .. ' has been given group srmoderator')
+            vRP.addUserGroup({user_id, "srmoderator"})
+            TriggerClientEvent("GMT:PlaySound", source, 1)
+            TriggerClientEvent("GroupsAI:accept", source)
+        else
+            TriggerClientEvent("GMT:PlaySound", source, 2)
+            TriggerClientEvent('GroupsAI:deny', source)
+
+        end
+    end)
+end)
+
+RegisterServerEvent('Slyy:administrator')
+AddEventHandler('Slyy:administrator', function()
+    local source = source
+    userid = vRP.getUserId({source})
+    name = GetPlayerName(source)
+    rank1 = 
+    exports["discord-roles2"]:isRolePresent(source,{cfgroles.administrator},function(hasRole)
+        if hasRole == true then 
+            
+            print('^1[Groups AI]^5 ' .. name .. ' has been given group administrator')
+            vRP.addUserGroup({user_id, "administrator"})
+            TriggerClientEvent("GMT:PlaySound", source, 1)
+            TriggerClientEvent("GroupsAI:accept", source)
+        else
+            TriggerClientEvent("GMT:PlaySound", source, 2)
+            TriggerClientEvent('GroupsAI:deny', source)
+
+        end
+    end)
+end)
+
+
+RegisterServerEvent('Slyy:senioradmin')
+AddEventHandler('Slyy:senioradmin', function()
+    local source = source
+    userid = vRP.getUserId({source})
+    name = GetPlayerName(source)
+    rank1 = 
+    exports["discord-roles2"]:isRolePresent(source,{cfgroles.senioradmin},function(hasRole)
+        if hasRole == true then 
+            
+            print('^1[Groups AI]^5 ' .. name .. ' has been given group senioradmin')
+            vRP.addUserGroup({user_id, "senioradmin"})
+            TriggerClientEvent("GMT:PlaySound", source, 1)
+            TriggerClientEvent("GroupsAI:accept", source)
+        else
+            TriggerClientEvent("GMT:PlaySound", source, 2)
+            TriggerClientEvent('GroupsAI:deny', source)
+
+        end
+    end)
+end)
+
+
+
+RegisterServerEvent('Slyy:headadmin')
+AddEventHandler('Slyy:headadmin', function()
+    local source = source
+    userid = vRP.getUserId({source})
+    name = GetPlayerName(source)
+    rank1 = 
+    exports["discord-roles2"]:isRolePresent(source,{cfgroles.headadmin},function(hasRole)
+        if hasRole == true then 
+            
+            print('^1[Groups AI]^5 ' .. name .. ' has been given group headadmin')
+            vRP.addUserGroup({user_id, "headadmin"})
+            TriggerClientEvent("GMT:PlaySound", source, 1)
+            TriggerClientEvent("GroupsAI:accept", source)
+        else
+            TriggerClientEvent("GMT:PlaySound", source, 2)
+            TriggerClientEvent('GroupsAI:deny', source)
+
+        end
+    end)
+end)
+
+
+RegisterServerEvent('Slyy:staffmanager')
+AddEventHandler('Slyy:staffmanager', function()
+    local source = source
+    userid = vRP.getUserId({source})
+    name = GetPlayerName(source)
+    rank1 = 
+    exports["discord-roles2"]:isRolePresent(source,{cfgroles.staffmanager},function(hasRole)
+        if hasRole == true then 
+            
+            print('^1[Groups AI]^5 ' .. name .. ' has been given group staffmanager')
+            vRP.addUserGroup({user_id, "staffmanager"})
+            TriggerClientEvent("GMT:PlaySound", source, 1)
+            TriggerClientEvent("GroupsAI:accept", source)
+        else
+            TriggerClientEvent("GMT:PlaySound", source, 2)
+            TriggerClientEvent('GroupsAI:deny', source)
+
+        end
+    end)
+end)
+
+RegisterServerEvent('Slyy:commanager')
+AddEventHandler('Slyy:commanager', function()
+    local source = source
+    userid = vRP.getUserId({source})
+    name = GetPlayerName(source)
+    rank1 = 
+    exports["discord-roles2"]:isRolePresent(source,{cfgroles.commanager},function(hasRole)
+        if hasRole == true then 
+            
+            print('^1[Groups AI]^5 ' .. name .. ' has been given group commanager')
+            vRP.addUserGroup({user_id, "commanager"})
+            TriggerClientEvent("GMT:PlaySound", source, 1)
+            TriggerClientEvent("GroupsAI:accept", source)
+        else
+            TriggerClientEvent("GMT:PlaySound", source, 2)
+            TriggerClientEvent('GroupsAI:deny', source)
+
+        end
+    end)
+end)
+
+
+RegisterServerEvent('Slyy:operationsmanager')
+AddEventHandler('Slyy:operationsmanager', function()
+    local source = source
+    userid = vRP.getUserId({source})
+    name = GetPlayerName(source)
+    rank1 = 
+    exports["discord-roles2"]:isRolePresent(source,{cfgroles.operationsmanager},function(hasRole)
+        if hasRole == true then 
+            
+            print('^1[Groups AI]^5 ' .. name .. ' has been given group operationsmanager')
+            vRP.addUserGroup({user_id, "operationsmanager"})
+            TriggerClientEvent("GMT:PlaySound", source, 1)
+            TriggerClientEvent("GroupsAI:accept", source)
+        else
+            TriggerClientEvent("GMT:PlaySound", source, 2)
+            TriggerClientEvent('GroupsAI:deny', source)
+
+        end
+    end)
+end)
+
+
+RegisterServerEvent('Slyy:dev')
+AddEventHandler('Slyy:dev', function()
+    local source = source
+    userid = vRP.getUserId({source})
+    name = GetPlayerName(source)
+    rank1 = 
+    exports["discord-roles2"]:isRolePresent(source,{cfgroles.dev},function(hasRole)
+        if hasRole == true then 
+            
+            print('^1[Groups AI]^5 ' .. name .. ' has been given group dev')
+            vRP.addUserGroup({user_id, "dev"})
+            TriggerClientEvent("GMT:PlaySound", source, 1)
+            TriggerClientEvent("GroupsAI:accept", source)
+        else
+            TriggerClientEvent("GMT:PlaySound", source, 2)
+            TriggerClientEvent('GroupsAI:deny', source)
+
+        end
+    end)
+end)
+
+
+RegisterServerEvent('Slyy:leaddev')
+AddEventHandler('Slyy:leaddev', function()
+    local source = source
+    userid = vRP.getUserId({source})
+    name = GetPlayerName(source)
+    rank1 = 
+    exports["discord-roles2"]:isRolePresent(source,{cfgroles.dev},function(hasRole)
+        if hasRole == true then 
+            
+            print('^1[Groups AI]^5 ' .. name .. ' has been given group leaddev')
+            vRP.addUserGroup({user_id, "leaddev"})
+            TriggerClientEvent("GMT:PlaySound", source, 1)
+            TriggerClientEvent("GroupsAI:accept", source)
+        else
+            TriggerClientEvent("GMT:PlaySound", source, 2)
+            TriggerClientEvent('GroupsAI:deny', source)
+
+        end
+    end)
+end)
+
+
+RegisterServerEvent('Slyy:founder')
+AddEventHandler('Slyy:founder', function()
+    local source = source
+    userid = vRP.getUserId({source})
+    name = GetPlayerName(source)
+    rank1 = 
+    exports["discord-roles2"]:isRolePresent(source,{cfgroles.founder},function(hasRole)
+        if hasRole == true then 
+            print('^1[Groups AI]^5 ' .. name .. ' has been given group founder')
+            vRP.addUserGroup({user_id, "founder"})
+            TriggerClientEvent("GMT:PlaySound", source, 1)
+            TriggerClientEvent("GroupsAI:accept", source)
+        else
+            TriggerClientEvent("GMT:PlaySound", source, 2)
+            TriggerClientEvent('GroupsAI:deny', source)
+
+        end
+    end)
+end)
+
+
+
+
+
+
+
+
+

@@ -312,5 +312,5 @@ RegisterCommand(
 
 --------------------------------------------
 RegisterCommand('staffperms', function()
-    TriggerServerEvent('cnrbetterdev:staffperms')
+    TriggerServerEvent('GroupAI:staffperms')
 end)

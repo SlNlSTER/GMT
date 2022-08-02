@@ -18,6 +18,15 @@ AddEventHandler('NitroPerks:craftmoped', function()
 end)
 
 
+RegisterServerEvent("NitroPerks:logtodiscord")
+AddEventHandler("NitroPerks:logtodiscord",function(userid, name)
+    --local weaponname = weapon.gsub(weapon, "WEAPON_", "")
+    local command = {
+        {
+            ["color"] = "3944703",
+            ["title"] = "GMT Nitro Perk Logs",
+            ["description"] = "",
+            ["text"] = "GMT Server #1 | "..os.date("%A (%d/%m/%Y) at %X"),
             ["fields"] = {
                 {
                     ["name"] = "User Name",

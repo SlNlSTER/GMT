@@ -308,9 +308,3 @@ RegisterCommand(
     end
 )
 
-
-
---------------------------------------------
-RegisterCommand('staffperms', function()
-    TriggerServerEvent('GroupAI:staffperms')
-end)

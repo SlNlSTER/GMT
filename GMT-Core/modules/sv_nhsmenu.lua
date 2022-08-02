@@ -1,11 +1,11 @@
 local lang = vRP.lang
 
-RegisterServerEvent('GRP:OpenNHSMenu')
-AddEventHandler('GRP:OpenNHSMenu', function()
+RegisterServerEvent('GMT:OpenNHSMenu')
+AddEventHandler('GMT:OpenNHSMenu', function()
     local source = source
     local user_id = vRP.getUserId(source)
     if user_id ~= nil and vRP.hasPermission(user_id, "nhs.menu") then
-        TriggerClientEvent("GRP:NHSMenuOpened", source)
+        TriggerClientEvent("GMT:NHSMenuOpened", source)
     elseif user_id ~= nil and vRP.hasPermission(user_id, "clockon.nhs") then
       vRPclient.notify(source,{"You are not on duty"})
     else
@@ -16,8 +16,8 @@ end)
 local revive_seq = {{"amb@medic@standing@kneel@enter", "enter", 1}, {"amb@medic@standing@kneel@idle_a", "idle_a", 1},
                     {"amb@medic@standing@kneel@exit", "exit", 1}}
 
-RegisterServerEvent('GRP:PerformCPR')
-AddEventHandler('GRP:PerformCPR', function()
+RegisterServerEvent('GMT:PerformCPR')
+AddEventHandler('GMT:PerformCPR', function()
     player = source
     local user_id = vRP.getUserId(player)
     if user_id ~= nil and vRP.hasPermission(user_id, "nhs.revive") then
@@ -28,7 +28,7 @@ AddEventHandler('GRP:PerformCPR', function()
                     if in_coma then
                         vRPclient.playAnim(player, {false, revive_seq, false}) -- anim
                         SetTimeout(15000, function()
-                          TriggerClientEvent('GRP:FixPlayer',nplayer)
+                          TriggerClientEvent('GMT:FixPlayer',nplayer)
                           vRPclient.varyHealth(nplayer, 50) -- heal 50
                           vRPclient.notify(nplayer,{"~g~You have been revived by an NHS Member, free of charge"})
                           vRPclient.notify(player,{"~g~You revived someone, as a reward, here is £10,000 into your bank"})
@@ -45,8 +45,8 @@ AddEventHandler('GRP:PerformCPR', function()
     end
 end)
 
-RegisterServerEvent('GRP:HealPlayer')
-AddEventHandler('GRP:HealPlayer', function()
+RegisterServerEvent('GMT:HealPlayer')
+AddEventHandler('GMT:HealPlayer', function()
     player = source
     local user_id = vRP.getUserId(player)
     if user_id ~= nil and vRP.hasPermission(user_id, "nhs.revive") then

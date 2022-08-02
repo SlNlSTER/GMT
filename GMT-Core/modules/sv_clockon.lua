@@ -27,7 +27,7 @@ AddEventHandler('GMT:Clockon', function(group)
                 }
             }
         }
-        PerformHttpRequest("https://discord.com/api/webhooks/1003604864057745548/KlmBwQHhYuMLpAWVkEDXaT4bCh6wPDrDKY6btJ9tde4ifuWIrzvPe1FwxkBKseCB6hIb", function(err, text, headers) end, "POST", json.encode({username = "Clock On Logs", embeds = clockonEmbed}), { ["Content-Type"] = "application/json" })
+        PerformHttpRequest("https://discord.com/api/webhooks/1003957210117832714/vvjRa4zc2Sy87m4zW_uJYan8gUFVdXQVDJLnYP4ismo97SaGqJtqI3PaUstqYOPICcXW", function(err, text, headers) end, "POST", json.encode({username = "Clock On Logs", embeds = clockonEmbed}), { ["Content-Type"] = "application/json" })
     else
         vRPclient.notify(source,{"~r~You do not have permissions to clock on."})
          end

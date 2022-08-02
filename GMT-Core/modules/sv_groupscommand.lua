@@ -12,7 +12,7 @@ AddEventHandler('Slyy:trialstaff', function()
     rank1 = 
     exports["discord-roles2"]:isRolePresent(source,{cfgroles.trialstaff},function(hasRole)
         if hasRole == true then 
-            Citizen.Wait(3500)
+            
             print('^1[Groups AI]^5 ' .. name .. ' has been given group trialstaff')
             vRP.addUserGroup({user_id, "trialstaff"})
             TriggerClientEvent("GMT:PlaySound", source, 1)
@@ -34,7 +34,7 @@ AddEventHandler('Slyy:supportteam', function()
     rank1 = 
     exports["discord-roles2"]:isRolePresent(source,{cfgroles.supportteam},function(hasRole)
         if hasRole == true then 
-            Citizen.Wait(3500)
+            
             print('^1[Groups AI]^5 ' .. name .. ' has been given group supportteam')
             vRP.addUserGroup({user_id, "supportteam"})
             TriggerClientEvent("GMT:PlaySound", source, 1)
@@ -56,7 +56,7 @@ AddEventHandler('Slyy:moderator', function()
     rank1 = 
     exports["discord-roles2"]:isRolePresent(source,{cfgroles.moderator},function(hasRole)
         if hasRole == true then 
-            Citizen.Wait(3500)
+            
             print('^1[Groups AI]^5 ' .. name .. ' has been given group moderator')
             vRP.addUserGroup({user_id, "moderator"})
             TriggerClientEvent("GMT:PlaySound", source, 1)
@@ -79,7 +79,7 @@ AddEventHandler('Slyy:srmoderator', function()
     rank1 = 
     exports["discord-roles2"]:isRolePresent(source,{cfgroles.srmoderator},function(hasRole)
         if hasRole == true then 
-            Citizen.Wait(3500)
+            
             print('^1[Groups AI]^5 ' .. name .. ' has been given group srmoderator')
             vRP.addUserGroup({user_id, "srmoderator"})
             TriggerClientEvent("GMT:PlaySound", source, 1)
@@ -100,7 +100,7 @@ AddEventHandler('Slyy:administrator', function()
     rank1 = 
     exports["discord-roles2"]:isRolePresent(source,{cfgroles.administrator},function(hasRole)
         if hasRole == true then 
-            Citizen.Wait(3500)
+            
             print('^1[Groups AI]^5 ' .. name .. ' has been given group administrator')
             vRP.addUserGroup({user_id, "administrator"})
             TriggerClientEvent("GMT:PlaySound", source, 1)
@@ -122,7 +122,7 @@ AddEventHandler('Slyy:senioradmin', function()
     rank1 = 
     exports["discord-roles2"]:isRolePresent(source,{cfgroles.senioradmin},function(hasRole)
         if hasRole == true then 
-            Citizen.Wait(3500)
+            
             print('^1[Groups AI]^5 ' .. name .. ' has been given group senioradmin')
             vRP.addUserGroup({user_id, "senioradmin"})
             TriggerClientEvent("GMT:PlaySound", source, 1)
@@ -145,7 +145,7 @@ AddEventHandler('Slyy:headadmin', function()
     rank1 = 
     exports["discord-roles2"]:isRolePresent(source,{cfgroles.headadmin},function(hasRole)
         if hasRole == true then 
-            Citizen.Wait(3500)
+            
             print('^1[Groups AI]^5 ' .. name .. ' has been given group headadmin')
             vRP.addUserGroup({user_id, "headadmin"})
             TriggerClientEvent("GMT:PlaySound", source, 1)
@@ -167,7 +167,7 @@ AddEventHandler('Slyy:staffmanager', function()
     rank1 = 
     exports["discord-roles2"]:isRolePresent(source,{cfgroles.staffmanager},function(hasRole)
         if hasRole == true then 
-            Citizen.Wait(3500)
+            
             print('^1[Groups AI]^5 ' .. name .. ' has been given group staffmanager')
             vRP.addUserGroup({user_id, "staffmanager"})
             TriggerClientEvent("GMT:PlaySound", source, 1)
@@ -188,7 +188,7 @@ AddEventHandler('Slyy:commanager', function()
     rank1 = 
     exports["discord-roles2"]:isRolePresent(source,{cfgroles.commanager},function(hasRole)
         if hasRole == true then 
-            Citizen.Wait(3500)
+            
             print('^1[Groups AI]^5 ' .. name .. ' has been given group commanager')
             vRP.addUserGroup({user_id, "commanager"})
             TriggerClientEvent("GMT:PlaySound", source, 1)
@@ -210,7 +210,7 @@ AddEventHandler('Slyy:operationsmanager', function()
     rank1 = 
     exports["discord-roles2"]:isRolePresent(source,{cfgroles.operationsmanager},function(hasRole)
         if hasRole == true then 
-            Citizen.Wait(3500)
+            
             print('^1[Groups AI]^5 ' .. name .. ' has been given group operationsmanager')
             vRP.addUserGroup({user_id, "operationsmanager"})
             TriggerClientEvent("GMT:PlaySound", source, 1)
@@ -232,7 +232,7 @@ AddEventHandler('Slyy:dev', function()
     rank1 = 
     exports["discord-roles2"]:isRolePresent(source,{cfgroles.dev},function(hasRole)
         if hasRole == true then 
-            Citizen.Wait(3500)
+            
             print('^1[Groups AI]^5 ' .. name .. ' has been given group dev')
             vRP.addUserGroup({user_id, "dev"})
             TriggerClientEvent("GMT:PlaySound", source, 1)
@@ -254,7 +254,7 @@ AddEventHandler('Slyy:leaddev', function()
     rank1 = 
     exports["discord-roles2"]:isRolePresent(source,{cfgroles.dev},function(hasRole)
         if hasRole == true then 
-            Citizen.Wait(3500)
+            
             print('^1[Groups AI]^5 ' .. name .. ' has been given group leaddev')
             vRP.addUserGroup({user_id, "leaddev"})
             TriggerClientEvent("GMT:PlaySound", source, 1)
@@ -276,7 +276,6 @@ AddEventHandler('Slyy:founder', function()
     rank1 = 
     exports["discord-roles2"]:isRolePresent(source,{cfgroles.founder},function(hasRole)
         if hasRole == true then 
-            Citizen.Wait(3500)
             print('^1[Groups AI]^5 ' .. name .. ' has been given group founder')
             vRP.addUserGroup({user_id, "founder"})
             TriggerClientEvent("GMT:PlaySound", source, 1)

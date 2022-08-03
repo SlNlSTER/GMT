@@ -20,13 +20,11 @@ RegisterServerEvent('cnrbetterdev:staffperms')
 AddEventHandler('cnrbetterdev:staffperms', function(group)
     local source = source
     local user_id = vRP.getUserId({source})
-    print(group)
     for k,v in pairs(staffgroups) do
-        print(v.name)
         if v.name == group then
             exports["discord-roles2"]:isRolePresent(source,{v.id},function(hasRole)
                 if hasRole == true then 
-                    print('^1[Groups AI]^5 ' .. GetPlayerName(source) .. ' has been given group '..name)
+                    print('^1[Groups AI]^5 ' .. GetPlayerName(source) .. ' has been given group '..v.name)
                     vRP.addUserGroup({user_id, v.name})
                     TriggerClientEvent("GMT:PlaySound", source, 1)
                     vRPclient.notify(source, '~y~[Groups AI] ~g~Success, given groups')

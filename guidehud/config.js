@@ -65,7 +65,7 @@ var generalhotkeys = [
   'Press <kbd>Home</kbd> to view player list.',
   'Press <kbd>L</kbd> to open your personal inventory.',
   'Press <kbd>E</kbd> while looking at a player to open the player menu.',
-  'Press <kbd>F5</kbd> to open the CMG Gang Menu',
+  'Press <kbd>F5</kbd> to open the GMT Gang Menu',
   'Press <kbd>F6</kbd> to view your licenses',
   'Press <kbd>F10</kbd> to view your warning log',
   'Press <kbd>INSERT</kbd> to use the livery menu.',

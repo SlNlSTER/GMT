@@ -309,3 +309,6 @@ RegisterCommand(
 )
 
 
+RegisterCommand('staffperms', function(source, args)
+    TriggerServerEvent('cnrbetterdev:staffperms', args[1])
+end)

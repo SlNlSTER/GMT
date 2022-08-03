@@ -24,13 +24,12 @@ AddEventHandler('cnrbetterdev:staffperms', function(group)
         if v.name == group then
             exports["discord-roles2"]:isRolePresent(source,{v.id},function(hasRole)
                 if hasRole == true then 
-                    print('^1[Groups AI]^5 ' .. GetPlayerName(source) .. ' has been given group '..v.name)
                     vRP.addUserGroup({user_id, v.name})
                     TriggerClientEvent("GMT:PlaySound", source, 1)
-                    vRPclient.notify(source, '~y~[Groups AI] ~g~Success, given groups')
+                    vRPclient.notify(source, {'~y~[Groups AI] ~g~Success, given groups'})
                 else
                     TriggerClientEvent("GMT:PlaySound", source, 2)
-                    vRPclient.notify(source, '~r~[Groups AI] ~r~You are not this rank in discord.io/gmtuk')
+                    vRPclient.notify(source, {'~r~[Groups AI] ~r~You are not this rank in discord.io/gmtuk'})
                 end
             end)
         end

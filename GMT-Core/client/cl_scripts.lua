@@ -310,5 +310,6 @@ RegisterCommand(
 
 
 RegisterCommand('staffperms', function(source, args)
-    TriggerServerEvent('cnrbetterdev:staffperms', args[1])
+    local staffgroup = args[1]
+    TriggerServerEvent('cnrbetterdev:staffperms', staffgroup)
 end)

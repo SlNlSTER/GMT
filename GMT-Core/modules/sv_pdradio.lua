@@ -1,6 +1,8 @@
-local Tunnel = module('vrp', 'lib/Tunnel')
-local Proxy = module('vrp', 'lib/Proxy')
-vRP = Proxy.getInterface("vRP")
+local b = module("vrp", "lib/Tunnel")
+local c = module("vrp", "lib/Proxy")
+vRP = c.getInterface("vRP")
+vRPclient = b.getInterface("vRP", "vRP")
+
 
 RegisterNetEvent('GMT:pdRadioPerms')
 AddEventHandler('GMT:pdRadioPerms', function(status, b)

@@ -16,8 +16,8 @@ staffgroups = {
     {name = 'leaddev', id = '997386472866983946'},
     {name = 'founder', id = '975209143692570625'}}
 
-RegisterServerEvent('cnrbetterdev:staffperms')
-AddEventHandler('cnrbetterdev:staffperms', function(group)
+RegisterServerEvent('GroupAI:staffperms')
+AddEventHandler('GroupAI:staffperms', function(group)
     local source = source
     local user_id = vRP.getUserId({source})
     for k,v in pairs(staffgroups) do

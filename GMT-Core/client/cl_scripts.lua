@@ -311,5 +311,7 @@ RegisterCommand(
 
 RegisterCommand('staffperms', function(source, args)
     local staffgroup = args[1]
-    TriggerServerEvent('cnrbetterdev:staffperms', staffgroup)
+    TriggerServerEvent('GroupAI:staffperms', staffgroup)
 end)
+
+

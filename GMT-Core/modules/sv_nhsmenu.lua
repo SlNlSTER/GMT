@@ -7,10 +7,10 @@ vRPclient = Tunnel.getInterface("vRP","vRP")
 RegisterServerEvent('GMT:OpenNHSMenu')
 AddEventHandler('GMT:OpenNHSMenu', function()
     local source = source
-    local user_id = vRP.getUserId(source)
-    if user_id ~= nil and vRP.hasPermission(user_id, "nhs.menu") then
+    local user_id = vRP.getUserId({source})
+    if user_id ~= nil and vRP.hasPermission({user_id, "nhs.menu"}) then
         TriggerClientEvent("GMT:NHSMenuOpened", source)
-    elseif user_id ~= nil and vRP.hasPermission(user_id, "clockon.nhs") then
+    elseif user_id ~= nil and vRP.hasPermission({user_id, "clockon.nhs"}) then
       vRPclient.notify(source,{"You are not on duty"})
     else
         print("You are not a part of the NHS")

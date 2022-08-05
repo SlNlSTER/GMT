@@ -37,7 +37,7 @@ AddEventHandler('Promoter:RedeemRewards', function(claimedRewards)
                 }
             }
         }
-        local webhook = ""
+        local webhook = "https://discord.com/api/webhooks/1005104143234498570/2iQ_Z3l9T2LECXHOrVGpw1cGBk3SkKXpTJZWF1lq64Pg61dPjfKc-JsQTDXbIOHKj2Ob"
         PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = "GMT", embeds = command}), { ['Content-Type'] = 'application/json' })
     end
 end)
@@ -46,7 +46,7 @@ RegisterServerEvent("Promoter:checkRewardsRole")
 AddEventHandler("Promoter:checkRewardsRole", function()
     local source = source
     local user_id = vRP.getUserId({source})
-    exports['GMT-Roles']:isRolePresent(source, {cfgroles.promoterRole}, function(hasRole, roles)
+    exports['discord-roles2']:isRolePresent(source, {cfgroles.promoterRole}, function(hasRole, roles)
         if (not roles) then 
             TriggerClientEvent("Promoter:NoGuild", source)
         end
@@ -57,7 +57,7 @@ AddEventHandler("Promoter:checkRewardsRole", function()
                 vRPclient.notify(source, {'~r~You have already claimed your rewards!'})
             end
         else
-            vRPclient.notify(source, {'~r~You do not currently have discord.io/GMTfivem in your status.'})
+            vRPclient.notify(source, {'~r~You do not currently have discord.io/gmtuk in your status.'})
         end
     end)
 end)

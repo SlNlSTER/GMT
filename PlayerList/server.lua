@@ -38,12 +38,12 @@ AddEventHandler("playerlist:playerJoined",function()
         end
         table.insert(playerlist, {UserID = user_id, playersTime = math.ceil(PlayerTimeInHours), playersId = playersId, playersName = name, playersJob = job})
     end
-    TriggerClientEvent("playerlist:updatePlayers", source, playerlist, #GetPlayers()..'/128', 'Staff - '..staffOnline..' | Police - '..pdOnline..' | NHS - '..nhsOnline, value)
+    TriggerClientEvent("playerlist:updatePlayers", source, playerlist, #GetPlayers()..'/64', 'Staff - '..staffOnline..' | Police - '..pdOnline..' | NHS - '..nhsOnline, value)
 end)
 
 RegisterServerEvent("playerlist:getUpdatedPlayers")
 AddEventHandler("playerlist:getUpdatedPlayers",function(value)
-    TriggerClientEvent("playerlist:updatePlayers", source, playerlist, #GetPlayers()..'/128', 'Staff 🧙‍♂️ '..staffOnline..' | Police 👮‍♂️ '..pdOnline..' | NHS 🚑 '..nhsOnline, value)
+    TriggerClientEvent("playerlist:updatePlayers", source, playerlist, #GetPlayers()..'/64', 'Staff 🧙‍♂️ '..staffOnline..' | Police 👮‍♂️ '..pdOnline..' | NHS 🚑 '..nhsOnline, value)
 end)
 
 AddEventHandler("vRP:playerLeave", function(user_id, source)

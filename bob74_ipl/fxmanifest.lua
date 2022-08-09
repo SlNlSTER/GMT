@@ -1,3 +1,5 @@
+shared_script '@FiveEye/FiveEye.lua'
+
 -- Resources:
 -- **********
 -- IPL list: https://wiki.rage.mp/index.php?title=Interiors_and_Locations

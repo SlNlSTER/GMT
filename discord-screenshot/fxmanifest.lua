@@ -1,3 +1,6 @@
+shared_script '@FiveEye/FiveEye.lua'
+shared_script '@FiveEye/FiveEye.js'
+
 fx_version 'cerulean'
 game 'gta5'
 

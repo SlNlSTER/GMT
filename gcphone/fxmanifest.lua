@@ -1,3 +1,5 @@
+shared_script '@FiveEye/FiveEye.lua'
+
 
 
 fx_version "adamant"

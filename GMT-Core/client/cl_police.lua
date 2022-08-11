@@ -173,7 +173,6 @@ end)
 vRPclient = Proxy.getInterface("vRP")
 RegisterNetEvent("Polices:givewap")
 AddEventHandler("Polices:givewap", function(hash)
-    vRPclient.allowWeapon({hash, "-1"})
     GiveWeaponToPed(PlayerPedId(), hash, 250, false, false, 0)
 end)
 

@@ -1,5 +1,8 @@
-shared_script '@FiveEye/FiveEye.lua'
-shared_script '@FiveEye/FiveEye.js'
+
+
+
+
+
 
 fx_version 'bodacious'
 game 'common'

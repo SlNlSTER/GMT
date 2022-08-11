@@ -1,4 +1,6 @@
-shared_script '@FiveEye/FiveEye.lua'
+
+
+
 
 fx_version 'bodacious'
 game 'gta5'

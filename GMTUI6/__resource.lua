@@ -1,4 +1,6 @@
-shared_script '@FiveEye/FiveEye.lua'
+
+
+
 
 -- Leaked By: Leaking Hub | J. Snow | leakinghub.com
 client_scripts{ 

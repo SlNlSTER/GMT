@@ -15769,7 +15769,7 @@ class mysql_MySQL {
       if (!error) {
         const formattedVersion = formatVersion(result[0]['VERSION()']);
         profiler.setVersion(formattedVersion);
-        this.logger.success('Database server connection established.');
+        this.logger.success('^4Connected to database with 0 errors.');
       } else {
         this.logger.error(error.message);
       }
@@ -16161,7 +16161,7 @@ var ConnectionConfig = __webpack_require__(9);
 
 
 function getConfigFromConnectionString() {
-  const connectionString = GetConvar('mysql_connection_string', 'mysql://root@localhost/fivem');
+  const connectionString = GetConvar('mysql_connection_string', 'mysql://root@localhost/gmtfivem');
   let cfg = {};
 
   if (/(?:database|initial\scatalog)=(?:(.*?);|(.*))/gi.test(connectionString)) {
@@ -16196,7 +16196,7 @@ const defaultCfg = {
   host: '127.0.0.1',
   user: 'root',
   password: '',
-  database: 'fivem',
+  database: 'gmtfivem',
   supportBigNumbers: true,
   multipleStatements: true
 }; // Switch to just connecting immediately

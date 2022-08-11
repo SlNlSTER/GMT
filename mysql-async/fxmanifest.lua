@@ -1,12 +1,6 @@
 
 
 
-
-
-
-
-
-
 fx_version 'adamant'
 game 'common'
 

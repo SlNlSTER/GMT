@@ -76,5 +76,5 @@ if Config.SqlKeybinding then
 	end)
   end)
 else
-	print("[dp] ^3Sql Keybinding^7 is turned ^1off^7, if you want to enable /emotebind, import dpkeybinding.sql and set ^3SqlKeybinding = ^2true^7 in config.lua.")
+	print("^8 Loaded ^5[DP] ^4Emotes")
 end

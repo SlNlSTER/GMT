@@ -64,13 +64,13 @@ function PerformInitialisation()
 				end)
 
 				if not isSuccessful then
-					WriteLoadError(name, errorMsg)
+					
 				end
 			else
-				WriteLoadError(name, "Vehicle model does not exist in the game")
+				
 			end
 		else
-			WriteLoadError(name, "File does not exist")
+			
 		end
 	end
 

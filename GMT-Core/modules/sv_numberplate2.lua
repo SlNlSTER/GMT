@@ -3,7 +3,7 @@ local Proxy = module("vrp", "lib/Proxy")
 
 vRP = Proxy.getInterface("vRP")
 vRPclient = Tunnel.getInterface("vRP","vRP_Numberplate")
-MySQL = module("vrp_mysql", "MySQL")
+MySQL = module("ghmattimysql", "MySQL")
 
 local forbiddenNames = {
 	"%^1",

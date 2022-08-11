@@ -6,7 +6,7 @@ vRPclient = Tunnel.getInterface("vRP","JudHousing")
 
 --SQL
 
-MySQL = module("vrp_mysql", "MySQL")
+MySQL = module("ghmattimysql", "MySQL")
 
 MySQL.createCommand("vRP/get_address","SELECT home, number FROM vrp_user_homes WHERE user_id = @user_id")
 MySQL.createCommand("vRP/get_home_owner","SELECT user_id FROM vrp_user_homes WHERE home = @home AND number = @number")

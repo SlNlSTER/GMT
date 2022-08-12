@@ -17,6 +17,7 @@ client_scripts {
 	"src/menu/windows/*.lua",
 	"cl_blackjack.lua",
 	"cl_casinoteleporter.lua",
+	"cl_casinochips.lua",
 }
 
 

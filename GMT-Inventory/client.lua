@@ -400,6 +400,12 @@ function Notify(text)
     DrawNotification(true, true)
 end
 
+function notify(text)
+    SetNotificationTextEntry("STRING")
+    AddTextComponentString(text)
+    DrawNotification(true, true)
+end
+
 function GetPlayerInCamera(distance)
 	local cameraRotation = GetGameplayCamRot()
 	local cameraCoord = GetGameplayCamCoord()

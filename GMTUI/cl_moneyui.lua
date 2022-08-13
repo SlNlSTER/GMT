@@ -49,8 +49,8 @@ function showhudUI(flag)
     })
 end
 
-RegisterNetEvent("GBRP-Client:UI:Toggle")
-AddEventHandler("GBRP-Client:UI:Toggle", function(toggle)
+RegisterNetEvent("GMT-Client:UI:Toggle")
+AddEventHandler("GMT-Client:UI:Toggle", function(toggle)
     showhudUI(toggle)
 end)
 

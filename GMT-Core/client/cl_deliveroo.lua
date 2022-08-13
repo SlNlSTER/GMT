@@ -35,7 +35,7 @@ Citizen.CreateThread(function()
 	SetBlipColour(blip, 1)
 	SetBlipAsShortRange(blip, true)
 	BeginTextCommandSetBlipName("STRING")
-	AddTextComponentString("Bus Driver")
+	AddTextComponentString("Deliveroo Job")
 	EndTextCommandSetBlipName(blip)
 
     while true do
@@ -44,7 +44,7 @@ Citizen.CreateThread(function()
         if delivery == 0 then
             DrawMarker(39, start+1 - 0.98, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0, 255, 0, 60, true, false, 2, true)
             if isInArea(start, 2) then
-                alert("Press ~INPUT_VEH_HORN~ To start Bus Driver job!")
+                alert("Press ~INPUT_VEH_HORN~ To start deliveroo job!")
                 if IsControlJustPressed(0, 51) then
                     jobveh = CreateVehicle(vehicleHash, start, 160.0, true, false)
                     SetPedIntoVehicle(GetPlayerPed(-1), jobveh, -1)

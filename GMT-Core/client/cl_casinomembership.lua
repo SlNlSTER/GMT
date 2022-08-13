@@ -58,7 +58,7 @@ Citizen.CreateThread(function()
     end
 end)
 
-RMenu.Add("GMT:CasinoLicenseStore", "main", RageUI.CreateMenu("", "~b~Casino License Store", 1350, 50,"banners","blackjack"))
+RMenu.Add("GMT:CasinoLicenseStore", "main", RageUI.CreateMenu("", "~b~Casino License Store", 1350, 50,"banners","shopui_title_casino"))
 RMenu.Add("GMT:CasinoLicenseStore", "sub", RageUI.CreateSubMenu(RMenu:Get("GMT:CasinoLicenseStore", "main"), "", "~b~License Store", 1350, 50))
 RMenu.Add("GMT:CasinoLicenseStore", "remove", RageUI.CreateSubMenu(RMenu:Get("GMT:CasinoLicenseStore", "main"), "", "~b~Confirm Remove License", 1350, 50))
 RMenu.Add("GMT:CasinoLicenseStore", "confirm", RageUI.CreateSubMenu(RMenu:Get("GMT:CasinoLicenseStore", "sub"), "", "~b~Confirm License Purchase", 1350, 50))

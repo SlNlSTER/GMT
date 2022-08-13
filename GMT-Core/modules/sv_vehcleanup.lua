@@ -1,3 +1,8 @@
+local Tunnel = module("vrp", "lib/Tunnel")
+local Proxy = module("vrp", "lib/Proxy")
+vRP = Proxy.getInterface("vRP")
+vRPclient = Tunnel.getInterface("vRP","vRP")
+
 local CheckTime = 1
 deleteTime = 30 --Seconds
 
@@ -42,8 +47,8 @@ end)
 
 
 RegisterCommand('entity', function(source, args, RawCommand)
-    local user_id = vRP.getUserId(source)
-    if vRP.hasPermission(user_id, "admin.tickets") then
+    local user_id = vRP.getUserId({source})
+    if vRP.hasPermission({user_id, "admin.tickets"}) then
     TriggerClientEvent('GMT:EntityCleanUp', -1)
     end
 end)

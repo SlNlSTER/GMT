@@ -27,6 +27,14 @@ RageUI.CreateWhile(1.0, true, function()
 
                 end
                 if (Selected) then
+                    DoScreenFadeOut(1000)
+                    Wait(1000)
+                    DoScreenFadeIn(1000)
+                    notify("~r~You have left Diamond Casino")
+                    ExecuteCommand("hidecasinoui")
+                    Wait(100)
+                    ExecuteCommand("showui")
+                    PlaySoundFrontend(-1, "HUD_AWARDS", "MEDAL_GOLD", 0)
                     SetEntityCoords(GetPlayerPed(-1),casinoEntranceVector.x,casinoEntranceVector.y,casinoEntranceVector.z)
                     for k,v in pairs(cardObjects) do
                         for _,obj in pairs(v) do
@@ -51,6 +59,13 @@ RageUI.CreateWhile(1.0, true, function()
 
                 end
                 if (Selected) then
+                    DoScreenFadeOut(1000)
+                    Wait(1000)
+                    DoScreenFadeIn(1000)
+                    notify("~y~You have entered Diamond Casino!")
+                    ExecuteCommand("hideui")
+                    Wait(100)
+                    ExecuteCommand("showcasinoui")
                     SetEntityCoords(GetPlayerPed(-1),casinoExitVector.x,casinoExitVector.y,casinoExitVector.z)
                 end
             end)
@@ -87,3 +102,9 @@ Citizen.CreateThread(function()
         Wait(100)
     end
 end)
+
+function notify(msg)
+    SetNotificationTextEntry("STRING")
+    AddTextComponentString(msg)
+    DrawNotification(true, false)
+end

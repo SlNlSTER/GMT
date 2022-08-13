@@ -102,17 +102,39 @@ Citizen.CreateThread(
 RegisterCommand(
     "hideui",
     function()
-        a = true
         TriggerEvent("GMT-Client:UI:Toggle", false)
     end
 )
 RegisterCommand(
     "showui",
     function()
-        a = false
         TriggerEvent("GMT-Client:UI:Toggle", true)
     end
 )
+
+RegisterCommand(
+    "hidecasinoui",
+    function()
+        TriggerEvent("GMT-Client:UI2:Toggle", false)
+    end
+)
+
+
+RegisterCommand(
+    "showcasinoui",
+    function()
+        TriggerEvent("GMT-Client:UI2:Toggle", true)
+    end
+)
+
+
+
+AddEventHandler("playerSpawned", function()
+    TriggerEvent("GMT-Client:UI2:Toggle", false)
+end)
+
+
+
 RegisterNetEvent("GMT:ToggleHud")
 AddEventHandler(
     "GMT:ToggleHud",
@@ -125,15 +147,3 @@ AddEventHandler(
         end
     end
 )
-Citizen.CreateThread(
-    function()
-        while true do
-            if a then
-                HideHudAndRadarThisFrame()
-                TriggerEvent("chat:clear")
-            end
-            Wait(0)
-        end
-    end
-)
-

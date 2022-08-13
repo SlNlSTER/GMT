@@ -26,13 +26,6 @@ $(document).ready(function(){
         $( ".hud" ).css( "top", yAnchor + "px" );
     }
 
-    // Clock based on user's local hour
-    function updateClock() {
-    var now = new Date(),
-        time = (now.getHours()<10?'0':'') + now.getHours() + ':' + (now.getMinutes()<10?'0':'') + now.getMinutes();
 
-    setTimeout(updateClock, 1000);
-    }
-    updateClock();
 
 });

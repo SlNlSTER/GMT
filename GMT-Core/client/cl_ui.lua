@@ -120,14 +120,6 @@ RegisterCommand(
 )
 
 
-RegisterCommand(
-    "showcasinoui",
-    function()
-        TriggerEvent("GMT-Client:UI2:Toggle", true)
-    end
-)
-
-
 
 AddEventHandler("playerSpawned", function()
     TriggerEvent("GMT-Client:UI2:Toggle", false)

@@ -28,7 +28,7 @@ Citizen.CreateThread(function()
                 exports.rprogress:Start("", 5000)
                 ClearPedTasksImmediately(ped)
 
-                GBRPcfgdrugsServer.LSDGather()
+                GMTcfgdrugsServer.LSDGather()
                 Action = false
               else
                 vRP.notify({"~r~You cant gather Lysergic Acid while Driving!"})
@@ -62,7 +62,7 @@ Citizen.CreateThread(function()
               TaskStartScenarioInPlace(ped, 'WORLD_HUMAN_CLIPBOARD', false, true)
 
               exports.rprogress:Start("", 5000)
-              GBRPcfgdrugsServer.CanProcessLSD({}, function(canProcess, ketAmount)
+              GMTcfgdrugsServer.CanProcessLSD({}, function(canProcess, ketAmount)
                 if canProcess and ketAmount then
 
                   local pid = PlayerPedId()
@@ -73,7 +73,7 @@ Citizen.CreateThread(function()
 
                   Citizen.Wait(1)
 
-                  GBRPcfgdrugsServer.ProcessLSD()
+                  GMTcfgdrugsServer.ProcessLSD()
 
                   vRP.notify({"~w~Processed~g~ LSD~w~ 1."})
                   Action = false
@@ -161,7 +161,7 @@ RageUI.CreateWhile(1.0, RMenu:Get('LSDMenu', 'LSD Seller'):SetPosition(1300, 50)
 end)
 
 function sellingLSDUnits()
-    GBRPcfgdrugsServer.SellLSD({tonumber(1)})
+    GMTcfgdrugsServer.SellLSD({tonumber(1)})
     return false
 end
 

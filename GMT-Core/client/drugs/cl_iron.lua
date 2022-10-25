@@ -27,7 +27,7 @@ Citizen.CreateThread(function()
               TaskStartScenarioInPlace(ped, 'WORLD_HUMAN_GARDENER_PLANT', false, true)
                 exports.rprogress:Start("", 5000)
                 ClearPedTasksImmediately(ped)
-                GBRPcfgdrugsServer.IronGather()
+                GMTcfgdrugsServer.IronGather()
                 Action = false
               else
                 vRP.notify({"~r~How the fuck are you supposed to gather sitting in that thing?"})
@@ -60,14 +60,14 @@ Citizen.CreateThread(function()
               TaskStartScenarioInPlace(ped, 'WORLD_HUMAN_WELDING', false, true)
 
               exports.rprogress:Start("", 5000)
-              GBRPcfgdrugsServer.IronCanProcess({}, function(canProcess, ketAmount)
+              GMTcfgdrugsServer.IronCanProcess({}, function(canProcess, ketAmount)
                 if canProcess and ketAmount then
                   local pid = PlayerPedId()
 
 
                   Citizen.Wait(1)
 
-                  GBRPcfgdrugsServer.IronDoneProcessing()
+                  GMTcfgdrugsServer.IronDoneProcessing()
                   vRP.notify({"~w~Processed~g~ Iron~w~ 1."})
                   Action = false
 
@@ -159,7 +159,7 @@ RageUI.CreateWhile(1.0, RMenu:Get('IronMenu', 'Iron Seller'):SetPosition(1300, 5
 end)
 
 function sellingIronUnits()
-     GBRPcfgdrugsServer.SellIronJob({tonumber(1)})
+     GMTcfgdrugsServer.SellIronJob({tonumber(1)})
     return false
 end
 

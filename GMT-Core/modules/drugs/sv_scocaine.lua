@@ -4,7 +4,7 @@
 
 
 
-function GBRPcfgdrugsServer.CocaineGather()
+function GMTcfgdrugsServer.CocaineGather()
   local user_id = vRP.getUserId({source})
 
   if user_id ~= nil and vRP.hasPermission({user_id, "cocaine.job"}) then
@@ -23,13 +23,13 @@ function GBRPcfgdrugsServer.CocaineGather()
   end
 end
 
-function GBRPcfgdrugsServer.CocaineCanProcess()
+function GMTcfgdrugsServer.CocaineCanProcess()
   local user_id = vRP.getUserId({source})
   return vRP.hasPermission({user_id, "cocaine.job"}),
   vRP.getInventoryItemAmount({user_id, 'cocoa'}) >= 4
 end
 
-function GBRPcfgdrugsServer.CocaineDoneProcessing()
+function GMTcfgdrugsServer.CocaineDoneProcessing()
   local user_id = vRP.getUserId({source})
   if vRP.getInventoryItemAmount({user_id, 'cocoa'}) >= 4 then
     vRP.tryGetInventoryItem({user_id, 'cocoa', 4, false})
@@ -37,7 +37,7 @@ function GBRPcfgdrugsServer.CocaineDoneProcessing()
   end
 end
 
-function GBRPcfgdrugsServer.SellCocaineJob(amount)
+function GMTcfgdrugsServer.SellCocaineJob(amount)
  local user_id = vRP.getUserId({source})
  if vRP.tryGetInventoryItem({user_id,'cocaine', 1}) then
    local item = vRP.getInventoryItemAmount({user_id,'cocaine'})

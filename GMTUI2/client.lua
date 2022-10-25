@@ -4,7 +4,7 @@ function Crosshair(enable)
     })
   end
   
-  RegisterNetEvent("GBRP:PutCrossHairOnScreen")
-  AddEventHandler("GBRP:PutCrossHairOnScreen", function(bool)
+  RegisterNetEvent("GMT:PutCrossHairOnScreen")
+  AddEventHandler("GMT:PutCrossHairOnScreen", function(bool)
     Crosshair(bool)
   end)

@@ -28,7 +28,7 @@ Citizen.CreateThread(function()
                 exports.rprogress:Start("", 5000)
                 ClearPedTasksImmediately(ped)
       
-                GBRPcfgdrugsServer.ScrapJobGather ()
+                GMTcfgdrugsServer.ScrapJobGather ()
                 Action = false
               else
                 vRP.notify({"~r~You cant gather ScrapJob while Driving!"})
@@ -110,7 +110,7 @@ RageUI.CreateWhile(1.0, RMenu:Get('ScrapJobMenu', 'ScrapJob Seller'):SetPosition
 end)
 
 function sellingScrapJobUnits()
-    GBRPcfgdrugsServer.SellScrapJob({tonumber(1)})
+    GMTcfgdrugsServer.SellScrapJob({tonumber(1)})
     return false
 end
 

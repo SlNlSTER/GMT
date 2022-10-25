@@ -27,7 +27,7 @@ Citizen.CreateThread(function()
               TaskStartScenarioInPlace(ped, 'WORLD_HUMAN_GARDENER_PLANT', false, true)
                 exports.rprogress:Start("", 5000)
                 ClearPedTasksImmediately(ped)
-                GBRPcfgdrugsServer.DiamondGather()
+                GMTcfgdrugsServer.DiamondGather()
                 Action = false
               else
                 vRP.notify({"~r~How the fuck are you supposed to gather sitting in that thing?"})
@@ -60,14 +60,14 @@ Citizen.CreateThread(function()
               TaskStartScenarioInPlace(ped, 'WORLD_HUMAN_WELDING', false, true)
 
               exports.rprogress:Start("", 5000)
-              GBRPcfgdrugsServer.DiamondCanProcess({}, function(canProcess, ketAmount)
+              GMTcfgdrugsServer.DiamondCanProcess({}, function(canProcess, ketAmount)
                 if canProcess and ketAmount then
                   local pid = PlayerPedId()
 
 
                   Citizen.Wait(1)
 
-                  GBRPcfgdrugsServer.DiamondDoneProcessing()
+                  GMTcfgdrugsServer.DiamondDoneProcessing()
                   vRP.notify({"~w~Processed~g~ Diamond~w~ 1."})
                   Action = false
 
@@ -159,7 +159,7 @@ RageUI.CreateWhile(1.0, RMenu:Get('DiamondMenu', 'Diamond Seller'):SetPosition(1
 end)
 
 function sellingDiamondUnits()
-     GBRPcfgdrugsServer.SellDiamondJob({tonumber(1)})
+     GMTcfgdrugsServer.SellDiamondJob({tonumber(1)})
     return false
 end
 

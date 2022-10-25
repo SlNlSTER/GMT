@@ -29,7 +29,7 @@ AddEventHandler('KillFeed:Killed', function(killer, weapon, killedCoords, killer
     end
 
     TriggerClientEvent('KillFeed:AnnounceKill', -1, GetPlayerName(source), GetPlayerName(killer), weapon, distance, killedCoords, killerGroup, killedGroup)
-    TriggerEvent("GBRP:KillLogsKilledBy", source, killer, weapon)
+    TriggerEvent("GMT:KillLogsKilledBy", source, killer, weapon)
 end)
 
 RegisterNetEvent('KillFeed:Died')
@@ -45,5 +45,5 @@ AddEventHandler('KillFeed:Died', function(coords)
     end
 
     TriggerClientEvent('KillFeed:AnnounceDeath', -1, GetPlayerName(source), coords, killedGroup)
-    TriggerEvent("GBRP:KillLogsCommitedSuicide", source)
+    TriggerEvent("GMT:KillLogsCommitedSuicide", source)
 end)

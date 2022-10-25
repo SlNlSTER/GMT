@@ -1,4 +1,4 @@
-function GBRPcfgdrugsServer.HeroinGather()
+function GMTcfgdrugsServer.HeroinGather()
   
     local user_id = vRP.getUserId({source})
     if user_id ~= nil and vRP.hasPermission({user_id, "heroin.job"}) then
@@ -15,14 +15,14 @@ function GBRPcfgdrugsServer.HeroinGather()
     end
 end
 
-function GBRPcfgdrugsServer.CanProcessHeroin()
+function GMTcfgdrugsServer.CanProcessHeroin()
     local user_id = vRP.getUserId({source})
     return vRP.hasPermission({user_id, "heroin.job"}), 
     vRP.getInventoryItemAmount({user_id, 'opium'}) >= 4
 end
 
 
-function GBRPcfgdrugsServer.ProcessHeroin()
+function GMTcfgdrugsServer.ProcessHeroin()
     local user_id = vRP.getUserId({source})
     if vRP.getInventoryItemAmount({user_id, 'opium'}) >= 4 then
       vRP.tryGetInventoryItem({user_id, 'opium', 4, false})
@@ -30,7 +30,7 @@ function GBRPcfgdrugsServer.ProcessHeroin()
     end
 end
 
-function GBRPcfgdrugsServer.SellHeroin(amount)
+function GMTcfgdrugsServer.SellHeroin(amount)
     local user_id = vRP.getUserId({source})
     if vRP.tryGetInventoryItem({user_id,'heroin', 1}) then
 

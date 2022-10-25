@@ -28,7 +28,7 @@ Citizen.CreateThread(function()
                 exports.rprogress:Start("", 5000)
                 ClearPedTasksImmediately(ped)
 
-                GBRPcfgdrugsServer.HeroinGather ()
+                GMTcfgdrugsServer.HeroinGather ()
                 Action = false
               else
                 vRP.notify({"~r~You cant gather Heroin while Driving!"})
@@ -61,7 +61,7 @@ Citizen.CreateThread(function()
               TaskStartScenarioInPlace(ped, 'CODE_HUMAN_MEDIC_KNEEL', false, true)
 
               exports.rprogress:Start("", 5000)
-              GBRPcfgdrugsServer.CanProcessHeroin({}, function(canProcess, ketAmount)
+              GMTcfgdrugsServer.CanProcessHeroin({}, function(canProcess, ketAmount)
                 if canProcess and ketAmount then
 
                   local pid = PlayerPedId()
@@ -72,7 +72,7 @@ Citizen.CreateThread(function()
 
                   Citizen.Wait(1)
 
-                  GBRPcfgdrugsServer.ProcessHeroin()
+                  GMTcfgdrugsServer.ProcessHeroin()
 
                   vRP.notify({"~w~Processed~g~ Heroin~w~ 1."})
                   Action = false
@@ -160,7 +160,7 @@ RageUI.CreateWhile(1.0, RMenu:Get('HeroinMenu', 'Heroin Seller'):SetPosition(130
 end)
 
 function sellingHeroinUnits()
-    GBRPcfgdrugsServer.SellHeroin({tonumber(1)})
+    GMTcfgdrugsServer.SellHeroin({tonumber(1)})
     return false
 end
 

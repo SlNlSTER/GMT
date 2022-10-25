@@ -392,9 +392,9 @@ for i=0,3,1 do
                                                     local command = {
                                                         {
                                                             ["color"] = "15806495",
-                                                            ["title"] = "GBRP Casino Logs",
+                                                            ["title"] = "GMT Casino Logs",
                                                             ["description"] = "Blackjack Loss",
-                                                            ["text"] = "GBRP Server #1 | "..os.date("%A (%d/%m/%Y) at %X"),
+                                                            ["text"] = "GMT Server #1 | "..os.date("%A (%d/%m/%Y) at %X"),
                                                             ["fields"] = {
                                                                 {
                                                                     ["name"] = "Player Name",
@@ -430,7 +430,7 @@ for i=0,3,1 do
                                                         }
                                                     }
                                                     local webhook = "https://discord.com/api/webhooks/989910389305266176/EjSSoby3wIBYORDMgrKt7GqoMgaCJ_sZ1E9bSqMVCjrllq5mvvROno9-9wyVBfCF9evw"
-                                                    PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = "GBRP", embeds = command}), { ['Content-Type'] = 'application/json' })
+                                                    PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = "GMT", embeds = command}), { ['Content-Type'] = 'application/json' })
                                                     if lostAmount > 10000000 then
                                                         TriggerClientEvent('chatMessage', -1, "^6Diamond Casino | ^7" .. GetPlayerName(source) .. " has ^1LOST ^7" .. tostring(getMoneyStringFormatted(lostAmount)) .. " ^7Chips!" , "ooc")
                                                     end
@@ -549,9 +549,9 @@ for i=0,3,1 do
                                                             local command = {
                                                                 {
                                                                     ["color"] = "3135805",
-                                                                    ["title"] = "GBRP Casino Logs",
+                                                                    ["title"] = "GMT Casino Logs",
                                                                     ["description"] = "Blackjack Win",
-                                                                    ["text"] = "GBRP Server #1 | "..os.date("%A (%d/%m/%Y) at %X"),
+                                                                    ["text"] = "GMT Server #1 | "..os.date("%A (%d/%m/%Y) at %X"),
                                                                     ["fields"] = {
                                                                         {
                                                                             ["name"] = "Player Name",
@@ -587,7 +587,7 @@ for i=0,3,1 do
                                                                 }
                                                             }
                                                             local webhook = "https://discord.com/api/webhooks/989910389305266176/EjSSoby3wIBYORDMgrKt7GqoMgaCJ_sZ1E9bSqMVCjrllq5mvvROno9-9wyVBfCF9evw"
-                                                            PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = "GBRP", embeds = command}), { ['Content-Type'] = 'application/json' })
+                                                            PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = "GMT", embeds = command}), { ['Content-Type'] = 'application/json' })
                                                             if potentialPushAmount > 10000000 then
                                                                 TriggerClientEvent('chatMessage', -1, "^6Diamond Casino | ^7" .. GetPlayerName(source) .. " has ^2WON ^7" .. tostring(getMoneyStringFormatted(potentialPushAmount)) .. "^7 chips!", "ooc")
                                                             end
@@ -606,9 +606,9 @@ for i=0,3,1 do
                                                             local command = {
                                                                 {
                                                                     ["color"] = "3135805",
-                                                                    ["title"] = "GBRP Casino Logs",
+                                                                    ["title"] = "GMT Casino Logs",
                                                                     ["description"] = "Blackjack Win",
-                                                                    ["text"] = "GBRP Server #1 | "..os.date("%A (%d/%m/%Y) at %X"),
+                                                                    ["text"] = "GMT Server #1 | "..os.date("%A (%d/%m/%Y) at %X"),
                                                                     ["fields"] = {
                                                                         {
                                                                             ["name"] = "Player Name",
@@ -644,7 +644,7 @@ for i=0,3,1 do
                                                                 }
                                                             }
                                                             local webhook = "https://discord.com/api/webhooks/989910389305266176/EjSSoby3wIBYORDMgrKt7GqoMgaCJ_sZ1E9bSqMVCjrllq5mvvROno9-9wyVBfCF9evw"
-                                                            PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = "GBRP", embeds = command}), { ['Content-Type'] = 'application/json' })
+                                                            PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = "GMT", embeds = command}), { ['Content-Type'] = 'application/json' })
                                                             if potentialPushAmount > 10000000 then
                                                                 TriggerClientEvent('chatMessage', -1, "^6Diamond Casino | ^7" .. GetPlayerName(source) .. " has ^2WON ^7" .. tostring(getMoneyStringFormatted(potentialPushAmount)) .. "^7 chips!", "ooc")
                                                             end
@@ -669,9 +669,9 @@ for i=0,3,1 do
                                                             local command = {
                                                                 {
                                                                     ["color"] = "15806495",
-                                                                    ["title"] = "GBRP Casino Logs",
+                                                                    ["title"] = "GMT Casino Logs",
                                                                     ["description"] = "Blackjack Loss",
-                                                                    ["text"] = "GBRP Server #1 | "..os.date("%A (%d/%m/%Y) at %X"),
+                                                                    ["text"] = "GMT Server #1 | "..os.date("%A (%d/%m/%Y) at %X"),
                                                                     ["fields"] = {
                                                                         {
                                                                             ["name"] = "Player Name",
@@ -707,7 +707,7 @@ for i=0,3,1 do
                                                                 }
                                                             }
                                                             local webhook = "https://discord.com/api/webhooks/989910389305266176/EjSSoby3wIBYORDMgrKt7GqoMgaCJ_sZ1E9bSqMVCjrllq5mvvROno9-9wyVBfCF9evw"
-                                                            PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = "GBRP", embeds = command}), { ['Content-Type'] = 'application/json' })
+                                                            PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = "GMT", embeds = command}), { ['Content-Type'] = 'application/json' })
                                                             if potentialPushAmount > 10000000 then
                                                                 TriggerClientEvent('chatMessage', -1, "^6Diamond Casino | ^7" .. GetPlayerName(source) .. " has ^1LOST ^7" .. tostring(getMoneyStringFormatted(potentialPushAmount)) .. "^7 chips!" , "ooc")
                                                             end

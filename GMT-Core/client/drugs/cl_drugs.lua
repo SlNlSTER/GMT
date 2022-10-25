@@ -1,7 +1,7 @@
-GBRPcfgdrugsClientT = {}
-Tunnel.bindInterface("GBRP_cfgdrugs",GBRPcfgdrugsClientT)
-Proxy.addInterface("GBRP_cfgdrugs",GBRPcfgdrugsClientT)
-GBRPcfgdrugsServer = Tunnel.getInterface("GBRP_cfgdrugs","GBRP_cfgdrugs")
+GMTcfgdrugsClientT = {}
+Tunnel.bindInterface("GMT_cfgdrugs",GMTcfgdrugsClientT)
+Proxy.addInterface("GMT_cfgdrugs",GMTcfgdrugsClientT)
+GMTcfgdrugsServer = Tunnel.getInterface("GMT_cfgdrugs","GMT_cfgdrugs")
 vRP = Proxy.getInterface("vRP")
 
 pedcoords = vector3(0,0,0)

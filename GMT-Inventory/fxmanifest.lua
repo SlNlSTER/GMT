@@ -4,7 +4,7 @@
 
 
 
--- GBRP
+-- GMT
 
 fx_version 'cerulean'
 games { 'gta5' }

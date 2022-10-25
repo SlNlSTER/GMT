@@ -1,4 +1,4 @@
-function GBRPcfgdrugsServer.WeedGather()
+function GMTcfgdrugsServer.WeedGather()
   
     local user_id = vRP.getUserId({source})
     if user_id ~= nil and vRP.hasPermission({user_id, "weed.job"}) then
@@ -15,14 +15,14 @@ function GBRPcfgdrugsServer.WeedGather()
     end
 end
 
-function GBRPcfgdrugsServer.CanProcessWeed()
+function GMTcfgdrugsServer.CanProcessWeed()
     local user_id = vRP.getUserId({source})
     return vRP.hasPermission({user_id, "weed.job"}), 
     vRP.getInventoryItemAmount({user_id, 'leef'}) >= 4
 end
 
 
-function GBRPcfgdrugsServer.ProcessWeed()
+function GMTcfgdrugsServer.ProcessWeed()
     local user_id = vRP.getUserId({source})
     if vRP.getInventoryItemAmount({user_id, 'leef'}) >= 4 then
       vRP.tryGetInventoryItem({user_id, 'leef', 4, false})
@@ -30,7 +30,7 @@ function GBRPcfgdrugsServer.ProcessWeed()
     end
 end
 
-function GBRPcfgdrugsServer.SellWeed(amount)
+function GMTcfgdrugsServer.SellWeed(amount)
     local user_id = vRP.getUserId({source})
     if vRP.tryGetInventoryItem({user_id,'weed2', 1}) then
 

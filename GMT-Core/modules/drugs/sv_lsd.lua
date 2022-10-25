@@ -1,4 +1,4 @@
-function GBRPcfgdrugsServer.LSDGather()
+function GMTcfgdrugsServer.LSDGather()
   
     local user_id = vRP.getUserId({source})
     if user_id ~= nil and vRP.hasPermission({user_id, "lsd.job"}) then
@@ -15,14 +15,14 @@ function GBRPcfgdrugsServer.LSDGather()
     end
 end
 
-function GBRPcfgdrugsServer.CanProcessLSD()
+function GMTcfgdrugsServer.CanProcessLSD()
     local user_id = vRP.getUserId({source})
     return vRP.hasPermission({user_id, "lsd.job"}), 
     vRP.getInventoryItemAmount({user_id, 'acid'}) >= 4
 end
 
 
-function GBRPcfgdrugsServer.ProcessLSD()
+function GMTcfgdrugsServer.ProcessLSD()
     local user_id = vRP.getUserId({source})
     if vRP.getInventoryItemAmount({user_id, 'acid'}) >= 4 then
       vRP.tryGetInventoryItem({user_id, 'acid', 4, false})
@@ -30,7 +30,7 @@ function GBRPcfgdrugsServer.ProcessLSD()
     end
 end
 
-function GBRPcfgdrugsServer.SellLSD(amount)
+function GMTcfgdrugsServer.SellLSD(amount)
     local user_id = vRP.getUserId({source})
     if vRP.tryGetInventoryItem({user_id,'LSD', 1}) then
 

@@ -1,5 +1,5 @@
 
-function GBRPcfgdrugsServer.IronGather()
+function GMTcfgdrugsServer.IronGather()
   local user_id = vRP.getUserId({source})
 
   if user_id ~= nil and vRP.hasPermission({user_id, "iron.job"}) then
@@ -18,13 +18,13 @@ function GBRPcfgdrugsServer.IronGather()
   end
 end
 
-function GBRPcfgdrugsServer.IronCanProcess()
+function GMTcfgdrugsServer.IronCanProcess()
   local user_id = vRP.getUserId({source})
   return vRP.hasPermission({user_id, "iron.job"}),
   vRP.getInventoryItemAmount({user_id, 'ironore'}) >= 4
 end
 
-function GBRPcfgdrugsServer.IronDoneProcessing()
+function GMTcfgdrugsServer.IronDoneProcessing()
   local user_id = vRP.getUserId({source})
   if vRP.getInventoryItemAmount({user_id, 'ironore'}) >= 4 then
     vRP.tryGetInventoryItem({user_id, 'ironore', 4, false})
@@ -32,7 +32,7 @@ function GBRPcfgdrugsServer.IronDoneProcessing()
   end
 end
 
-function GBRPcfgdrugsServer.SellIronJob(amount)
+function GMTcfgdrugsServer.SellIronJob(amount)
  local user_id = vRP.getUserId({source})
  if vRP.tryGetInventoryItem({user_id,'iron', 1}) then
    local item = vRP.getInventoryItemAmount({user_id,'iron'})

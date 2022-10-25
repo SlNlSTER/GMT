@@ -27,7 +27,7 @@ Citizen.CreateThread(function()
                 exports.rprogress:Start("", 5000)
                 ClearPedTasksImmediately(ped)
       
-                GBRPcfgdrugsServer.WeedGather ()
+                GMTcfgdrugsServer.WeedGather ()
                 Action = false
               else
                 vRP.notify({"~r~You cant gather Weed while Driving!"})
@@ -62,13 +62,13 @@ Citizen.CreateThread(function()
               while (not HasAnimDictLoaded("weapons@first_person@aim_rng@generic@projectile@thermal_charge@")) do Citizen.Wait(0) end
               TaskStartScenarioInPlace(ped, 'WORLD_HUMAN_GARDENER_PLANT', false, true)
               exports.rprogress:Start("", 5000)
-              GBRPcfgdrugsServer.CanProcessWeed({}, function(canProcess, ketAmount)
+              GMTcfgdrugsServer.CanProcessWeed({}, function(canProcess, ketAmount)
                 if canProcess and ketAmount then
 
           
 
 
-                  GBRPcfgdrugsServer.ProcessWeed()
+                  GMTcfgdrugsServer.ProcessWeed()
 
                   vRP.notify({"~w~Processed~g~ Weed~w~ 1."})
                   Action = false
@@ -156,7 +156,7 @@ RageUI.CreateWhile(1.0, RMenu:Get('WeedMenu', 'Weed Seller'):SetPosition(1300, 5
 end)
 
 function sellingWeedUnits()
-    GBRPcfgdrugsServer.SellWeed({tonumber(1)})
+    GMTcfgdrugsServer.SellWeed({tonumber(1)})
     return false
 end
 

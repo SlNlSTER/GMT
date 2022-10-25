@@ -1,4 +1,4 @@
-function GBRPcfgdrugsServer.ScrapJobGather()
+function GMTcfgdrugsServer.ScrapJobGather()
   
     local user_id = vRP.getUserId({source})
     if user_id ~= nil and vRP.hasPermission({user_id, "scrap.job"}) then
@@ -15,7 +15,7 @@ function GBRPcfgdrugsServer.ScrapJobGather()
     end
 end
 
-function GBRPcfgdrugsServer.SellScrapJob(amount)
+function GMTcfgdrugsServer.SellScrapJob(amount)
     local user_id = vRP.getUserId({source})
     if vRP.tryGetInventoryItem({user_id,'scrap', 1}) then
 

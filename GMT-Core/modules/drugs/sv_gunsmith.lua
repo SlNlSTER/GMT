@@ -1,5 +1,5 @@
 
-function GBRPcfgdrugsServer.DiamondGather()
+function GMTcfgdrugsServer.DiamondGather()
   local user_id = vRP.getUserId({source})
 
   if user_id ~= nil and vRP.hasPermission({user_id, "diamond.job"}) then
@@ -18,13 +18,13 @@ function GBRPcfgdrugsServer.DiamondGather()
   end
 end
 
-function GBRPcfgdrugsServer.DiamondCanProcess()
+function GMTcfgdrugsServer.DiamondCanProcess()
   local user_id = vRP.getUserId({source})
   return vRP.hasPermission({user_id, "diamond.job"}),
   vRP.getInventoryItemAmount({user_id, 'crystal'}) >= 4
 end
 
-function GBRPcfgdrugsServer.DiamondDoneProcessing()
+function GMTcfgdrugsServer.DiamondDoneProcessing()
   local user_id = vRP.getUserId({source})
   if vRP.getInventoryItemAmount({user_id, 'crystal'}) >= 4 then
     vRP.tryGetInventoryItem({user_id, 'crystal', 4, false})
@@ -32,7 +32,7 @@ function GBRPcfgdrugsServer.DiamondDoneProcessing()
   end
 end
 
-function GBRPcfgdrugsServer.SellDiamondJob(amount)
+function GMTcfgdrugsServer.SellDiamondJob(amount)
  local user_id = vRP.getUserId({source})
  if vRP.tryGetInventoryItem({user_id,'diamond', 1}) then
    local item = vRP.getInventoryItemAmount({user_id,'diamond'})
